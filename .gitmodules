@@ -1,0 +1,6 @@
+[submodule "web/FlintSparqlEditor"]
+	path = web/FlintSparqlEditor
+	url = https://github.com/TSO-Openup/FlintSparqlEditor.git
+[submodule "PGC"]
+	path = PGC
+	url = https://github.com/wouterbeek/PrologGenericsCollection.git

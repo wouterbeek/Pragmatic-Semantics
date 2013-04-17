@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY expression 'http://www.wouterbeek.com/prasem/expression.owl#'>
+    <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+    <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+    <!ENTITY xsd 'http://www.w3.org/2001/XMLSchema#'>
+]>
+
+<rdf:RDF
+    xmlns:expression="&expression;"
+    xmlns:rdf="&rdf;"
+    xmlns:rdfs="&rdfs;"
+    xmlns:xsd="&xsd;"
+>
+<rdf:Description rdf:about="&expression;qq_derivative_greater_than">
+  <rdfs:subClassOf rdf:resource="&expression;derivative"/>
+  <rdfs:subClassOf rdf:resource="&expression;greater_than"/>
+  <rdfs:subClassOf rdf:resource="&expression;qq"/>
+  <rdfs:label xml:lang="en">'s derivative is greater than</rdfs:label>
+  <expression:has_abbreviation xml:lang="en">&#x3b4;&#62;</expression:has_abbreviation>
+  <expression:has_conflicting_expression rdf:resource="&expression;qq_derivative_equal_to"/>
+  <expression:has_conflicting_expression rdf:resource="&expression;qq_derivative_smaller_than"/>
+  <expression:has_conflicting_expression rdf:resource="&expression;qq_derivative_smaller_than_or_equal_to"/>
+  <expression:can_instantiate rdf:datatype="&xsd;boolean">true</expression:can_instantiate>
+</rdf:Description>
+
+</rdf:RDF>

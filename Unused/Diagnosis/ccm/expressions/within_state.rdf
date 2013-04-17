@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY expression 'http://www.wouterbeek.com/prasem/expression.owl#'>
+    <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+    <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+]>
+
+<rdf:RDF
+    xmlns:expression="&expression;"
+    xmlns:rdf="&rdf;"
+    xmlns:rdfs="&rdfs;"
+>
+<rdf:Description rdf:about="&expression;within_state">
+  <rdfs:subClassOf rdf:resource="&expression;expression"/>
+  <rdfs:label xml:lang="en">within state</rdfs:label>
+</rdf:Description>
+
+</rdf:RDF>

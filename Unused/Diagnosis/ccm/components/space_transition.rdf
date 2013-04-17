@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY component 'http://www.wouterbeek.com/prasem/component.owl#'>
+    <!ENTITY component_cloud 'http://www.wouterbeek.com/prasem/component_cloud.owl#'>
+    <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+    <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+    <!ENTITY space 'http://www.wouterbeek.com/prasem/space.owl#'>
+    <!ENTITY xsd 'http://www.w3.org/2001/XMLSchema#'>
+]>
+
+<rdf:RDF
+    xmlns:component="&component;"
+    xmlns:component_cloud="&component_cloud;"
+    xmlns:rdf="&rdf;"
+    xmlns:rdfs="&rdfs;"
+    xmlns:space="&space;"
+    xmlns:xsd="&xsd;"
+>
+<rdf:Description rdf:about="&component;space_transition">
+  <rdfs:subClassOf rdf:resource="&component;component"/>
+  <rdfs:label xml:lang="en">space transition</rdfs:label>
+  <component_cloud:has_input_space_definition rdf:resource="&space;space"/>
+  <component_cloud:has_output_space_definition rdf:resource="&space;space"/>
+  <component:can_instantiate rdf:datatype="&xsd;boolean">fail</component:can_instantiate>
+  <component:has_space_delta rdf:datatype="&xsd;int">2</component:has_space_delta>
+</rdf:Description>
+
+</rdf:RDF>

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY component 'http://www.wouterbeek.com/prasem/component.owl#'>
+    <!ENTITY expression 'http://www.wouterbeek.com/prasem/expression.owl#'>
+    <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+    <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+    <!ENTITY xsd 'http://www.w3.org/2001/XMLSchema#'>
+]>
+
+<rdf:RDF
+    xmlns:component="&component;"
+    xmlns:expression="&expression;"
+    xmlns:rdf="&rdf;"
+    xmlns:rdfs="&rdfs;"
+    xmlns:xsd="&xsd;"
+>
+<rdf:Description rdf:about="&component;hierarchical_competitive_quantity_influence">
+  <rdfs:subClassOf rdf:resource="&component;competitive"/>
+  <rdfs:subClassOf rdf:resource="&component;hierarchical_aggregate"/>
+  <rdfs:subClassOf rdf:resource="&component;quantity_influence"/>
+  <rdfs:label xml:lang="en">hierarchical competitive quantity influence</rdfs:label>
+  <component:has_abbreviation xml:lang="en">hcQI</component:has_abbreviation>
+  <component:has_point_specification rdf:resource="&component;competitive_quantity_influence_point_0"/>
+  <component:has_point_specification rdf:resource="&component;competitive_quantity_influence_point_1"/>
+  <component:has_point_specification rdf:resource="&component;competitive_quantity_influence_point_2"/>
+  <component:has_point_specification rdf:resource="&component;competitive_quantity_influence_point_3"/>
+  <component:has_point_specification rdf:resource="&component;competitive_quantity_influence_point_4"/>
+  <component:has_point_specification rdf:resource="&component;competitive_quantity_influence_point_5"/>
+  <component:has_behavior_rule xml:lang="en">calculate_competitive_quantity_influence</component:has_behavior_rule>
+  <component:can_instantiate rdf:datatype="&xsd;boolean">true</component:can_instantiate>
+  <component:has_probability rdf:datatype="&xsd;float">0.6</component:has_probability>
+</rdf:Description>
+
+</rdf:RDF>
