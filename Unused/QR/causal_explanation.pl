@@ -88,7 +88,7 @@ First we have some methods that work with/on explanation objects.
 Oftentimes, we want to explain multiple things at once, we then wrap several
 explanation objects into one explanation collection object.
 
----+ Aggrgation criterion for causal explanation
+# Aggrgation criterion for causal explanation
 
 Components A and B can be aggregated into a new component C if
 $\langle A, B \rangle \in R^C$ and $In(B) \subseteq In(A) \cup \{ A \}$

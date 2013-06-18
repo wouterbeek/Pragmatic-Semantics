@@ -1,4 +1,4 @@
----+ Diagnosis
+# Diagnosis
 
 Many systems for cognitive diagnosis have been implemented over the years.
 The present implementation aims at establishing a framework for cognitive
@@ -34,7 +34,7 @@ Because of the above two reasons we want to find components at a more
 general level than the state graph. We call this level the global space.
 In the global space we assert every expression that occurs in the simulation.
 
----+ TODO
+# TODO
 
   1. There is a problem with support expressions for the QC component.
      When the component has a quantity relation support expression in

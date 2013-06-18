@@ -86,7 +86,7 @@
 
 /** <module> QR BUILD
 
----+ Entities
+# Entities
 
 These are concepts that do not have properties that change over time.
 The a-temporal properties, that entities may have, are called attributes.
@@ -101,7 +101,7 @@ different (identifiers).
 Different entities that can be lifted out have at least one different
 property (attribute or quantity) in addition to this.
 
----+ Quantities
+# Quantities
 
 These are concepts that change over time.
 
@@ -116,7 +116,7 @@ A quantity is lifted out by (1) its entity and (2) its name.
 A quantity has exactly one magnitude quantity space.
 A quantity has exactly one derivative quantity space.
 
----+ Quantity spaces
+# Quantity spaces
 
 A quantity space is a reified ordered set of value labels,
 called quantity values.

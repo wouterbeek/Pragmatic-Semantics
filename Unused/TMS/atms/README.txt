@@ -1,6 +1,6 @@
----+ TMS
+# TMS
 
----++ What is a TMS?
+## What is a TMS?
 
 A Truth Maintenance System (TMS) is one part of a Problem Solver (PS).
 The other part is the Inference Engine (IE).
@@ -9,11 +9,11 @@ The TMS handles beliefs, assumptions, and contexts.
 The IE sends justifications and assumptions to the TMS.
 The TMS sends beliefs and contradictions to the IE.
 
----++ History
+## History
 
 TMS' were invented in the 1970's.
 
----++ Why use a TMS?
+## Why use a TMS?
 
 The reasons to use a TMS are:
   1. Identifying responsibility for conclusions.
@@ -23,14 +23,14 @@ The reasons to use a TMS are:
      backtracking.
   4. Allows defauklt reasoning to be incorporated.
 
----++ Philosophical ramifications of TMS'es
+## Philosophical ramifications of TMS'es
 
 TMS'es enforce a rigid form of rationality.
 Removing the belief in a fact requires removing each justification that has
 the fact as a consequence.
 A TMS keeps many irrelevant justifications around.
 
----++ Families of TMSs
+## Families of TMSs
 
 |                 | *Simple* | *Complex* |
 | *Constraint*    | *Label*  | *Label*   |
@@ -49,7 +49,7 @@ Families:
 
 Logically, every family is powerfull enough to represent the others.
 
----++ Vocabulary for the logical underpinings of a TMS
+## Vocabulary for the logical underpinings of a TMS
 
 $ Atom :
 See _|atomic formula|_.
@@ -91,7 +91,7 @@ $ Unit clause :
 A clause of one literal.
 
 
----++ Vocabulary of a TMS
+## Vocabulary of a TMS
 
 $ Antecedent :
 A TMS node that is part of the condition of a justification.
@@ -290,7 +290,7 @@ $ Validity :
 $ Well-founded support :
 Each currently believes node has one distinguished justification.
 
----++ TMS actions
+## TMS actions
 
   1. Add a node.
   2. Add a justification.
@@ -299,9 +299,9 @@ Each currently believes node has one distinguished justification.
   5. Run the dependency-directed procedure (keeping records of
      the assumptions of the well-founded arguments of contradictory nodes).
 
----++ JTMS specifics
+## JTMS specifics
 
----++ ATMS specifics
+## ATMS specifics
 
 To be used when the rate of assumption changes is high compared to the
 number of queries about whether a node is in or out. In such cases a JTMS
@@ -359,7 +359,7 @@ $ Premise :
 A node with the _|empty environment|_ as label.
 
 
----+ Temporary section
+# Temporary section
 
 Reading _|A Truth Maintenance System|_ by Jon Doyle now.
 

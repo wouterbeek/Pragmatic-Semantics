@@ -1,4 +1,4 @@
----+ Component Connection Model
+# Component Connection Model
 
 The Component Connection Model (CCM) is the explicit representation of the simulation results on the basis of which the various post-simulation use cases operate. The post-simulation use cases are currently:
 
@@ -6,7 +6,7 @@ The Component Connection Model (CCM) is the explicit representation of the simul
 * Causal Explanation
 * Diagnosis
 
----++ Data types
+## Data types
 
 The CCM uses the following domain-independent data types:
 

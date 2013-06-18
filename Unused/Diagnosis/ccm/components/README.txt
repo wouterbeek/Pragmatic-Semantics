@@ -1,6 +1,6 @@
 Component Definition Hierarchy
 
----+ Introduction
+# Introduction
 
 This directory contains the component definitions for a cognitive diagnosis
 domain.
@@ -28,7 +28,7 @@ There are two types of component definitions:
 
 correction
 
----+ Component fitting algorithm
+# Component fitting algorithm
 
 correction
 
@@ -53,7 +53,7 @@ linking functions and registered operations are considered. For every
 succesful sequence of fucntion applications a list of stored information is
 returned.
 
----+++ Linking functions
+### Linking functions
 
 Much of the reasoning that is required to fit components involves information
 from the component connection model.
@@ -74,7 +74,7 @@ Every function application that is not =|store|= nor one of the
 registered required functions for the component definition under
 consideration, is considered to involve a linking function.
 
----+++ Constants
+### Constants
 
 All reasoning regarding the fitting of components needs to be grounded in the
 component connection model. We use two constant in our component definition
@@ -100,7 +100,7 @@ The support expression is needed to incorporate the knowledge of the specific
 expressions between which a component can be fitted.
 The support knowledge relates 
 
----+++ Example condition satisfaction
+### Example condition satisfaction
 
 Operation = and(neq(has_in2(comp), 0), neq(has_in1(comp), has_out1(comp)))
 
@@ -108,14 +108,14 @@ A condition for a component definition is a compound term of function
 applications that should hold in the component connection model in order for
 the component to apply.
 
----+ COMP-DEF: The Component Definition Specification Language
+# COMP-DEF: The Component Definition Specification Language
 
 Component definitions are given in RDF. For this purpose any RDF serialization
 that can be translated to Prolog can be used. At this point we support the
 RDF/XML and Turtle serializations, but adding aditional ones should be
 trivial.
 
----++ Component Definition Properties and Relations
+## Component Definition Properties and Relations
 
 * =|rdfs:subClassOf, Class|= The RDFS property defining the parent/child relation
 between the defined component and existing higher definitions. Every
@@ -162,13 +162,13 @@ an idle gate.
 (See the documentation for the CCM-CONDITION specification language.)
 (Code is a datatype we defined for easy recognition by Prolog's term store.)
 
----++ Lower Component Definition Specifications
+## Lower Component Definition Specifications
 
 * =|component:can_instantiate|= The property stating that this is a lower
 component definition. Setting this property to =|1|= allows the CCM to look
 for instantiations of this component.
 
----+ Store
+# Store
 
 The store collects the points between which a component could be asserted.
 The store is extended by applying store operations.
@@ -178,7 +178,7 @@ Store operations have syntax =|store(Label:atom, Point:uri)|=.
   =|has_input|= and =|has_output|= properties.
 * =|Point|= The URI of a point. This point is stored under the given label.
 
----+ Modularity, Extensibility, and Conceptual Reuse of the Component Definition Hierarchy
+# Modularity, Extensibility, and Conceptual Reuse of the Component Definition Hierarchy
 
 The strength of the component hierarchy is optimally utilized by specifying
 properties and relations at the right level of generality/specificity. E.g.

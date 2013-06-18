@@ -57,13 +57,13 @@
 Agents are rudimentary representations of rational subjects involved in
 a use case.
 
----+ Believing and considering
+# Believing and considering
 
 For each agent we represent two things:
     1. What an agent considers, i.e., what is in his or her current horizon.
     2. What an agent beliefs, i.e., which propositions s/he holds to be true.
 
----++ Belief
+## Belief
 
 Beliefs is asserted by the ATMS. This agent module adds metadata that TMS's
 typically do not keep track of, e.g., the time at which an agent expressed
@@ -81,17 +81,17 @@ expressions. Agents can therefore believe that something only holds some
 of the time, allowing beliefs of dynamic systems and processes to be
 represented.
 
----++ Consideration
+## Consideration
 
 Both component clouds and point clouds can be considered. Belief is temporal
 and therefore about behavior / system dynamics. Considerations are atemporal
 and are therefore about the invariant structure of the CCM representation.
 
----+ Agent types
+# Agent types
 
 There are currently two agent subtypes: learner and teachers.
 
----++ Learner agent
+## Learner agent
 
 A learner agent has the ability to ask informative question to a teacher
 agent.
@@ -101,7 +101,7 @@ What the learner beliefs are called *observations* in diagnosis.
 What the learner considers is the *scope* of that agent with respect to
 the current CCM.
 
----++ Teacher agent
+## Teacher agent
 
 A teacher agent has the ability to ask normative questions to a learner agent.
 

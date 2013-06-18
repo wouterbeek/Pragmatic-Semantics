@@ -1,13 +1,13 @@
----+ PraSem
+# PraSem
 
 This is the codebase for the NWO project PraSem: Pragmatic Semantics for
 the Web of Data.
 
----++ Modes
+## Modes
 
 You can run this codebase in two modes.
 
----+++ Developer
+### Developer
 
 This loads SWI-Prolog's debug console and writes debug messages to it.
 
@@ -20,7 +20,7 @@ in the Web console.
 
 [[developer.pl]]
 
----+++ User
+### User
 
 This removes the SWI-Prolog console from sight, if possible. This does not
 influence the visibility of the terminal emulater that swipl what started
@@ -28,7 +28,7 @@ from.
 
 [[run.pl]]
 
----++ Personal directory =.PraSem=
+## Personal directory =.PraSem=
 
 When PraSem is started for the first time, it creates a directory called
 =|.PraSem|= in the user's home folder (e.g. =|/home/wouter/.PraSem|=).
@@ -40,7 +40,7 @@ This personal PraSem directory contains the following subdirectories:
     2. =debug=
     3. =log=
 
----+++ The =data= subdirectory
+### The =data= subdirectory
 
 Currently contains the following subdirectories:
     1. *ILP* Contains training files used by the relational learner.
@@ -51,12 +51,12 @@ Currently contains the following subdirectories:
        =|DB/STCN/|=.
     4. *Wordnet* The Prolog version of the _Wordnet_ lexical corpus.
 
----+++ The =debug= subdirectory
+### The =debug= subdirectory
 
 Currently the contents of the =db= RDF graph are written in RDF/XML
 serialization format at the end of each PraSem session.
 
----+++ The =log= subdirectory
+### The =log= subdirectory
 
 The logging system writes files to this subdirectory. Whenever a
 PraSem session ends, a file is created. Since many log files will be created
@@ -66,7 +66,7 @@ in this fashion, they are subdivided into a file hierarchy:
     3. The month (two decimal numbers).
     4. The day (two decimal numbers).
 
----+ plDoc online documentation
+# plDoc online documentation
 
 If you want to make the dynamic tables visible in the plDoc documentation
 server, you need to add the following clause to the =take_block= predicate
@@ -74,7 +74,7 @@ in [[pldoc/doc_wiki.pl]]. (This code cannot be included in SWI-Prolog
 releases because of the security implications of running arbitrary code on
 a server.
 
-==
+~~~{.pl}
 take_block(
   [_-['!', '!', w(Module), '!', '!', w(Predicate), '!', '!', w(Arity0), '!', '!'] | Lines],
   _BaseIndent,
@@ -99,4 +99,4 @@ take_block(
     ),
     Rows
   ).
-==
+~~~
