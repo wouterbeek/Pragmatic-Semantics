@@ -6,18 +6,20 @@ user:project_name('PraSem').
 :- initialization(load_prasem).
 
 load_prasem:-
-  % Entry point
-  source_file(load_prasem, ThisFile),
-  file_directory_name(ThisFile, ThisDirectory),
-  
   % PraSem
-  assert(user:file_search_path(project, ThisDirectory)),
-  assert(user:file_search_path(prasem, ThisDirectory)),
+  use_module(prasem(prasem)),
   
-  % PGC
-  load_pgc_(prasem),
-  
-  % Energy labels
-  assert(user:file_search_path(el, prasem('EnergyLabels'))),
-  load_or_debug_(el).
+  % EnergyLabels
+  absolute_file_name(
+    prasem('EnergyLabels'),
+    EL_Dir,
+    [access(read),file_type(directory)]
+  ),
+  absolute_file_name(
+    load,
+    EL_File,
+    [access(read),file_type(prolog),relative_to(EL_Dir)]
+  ),
+  ensure_loaded(EL_File),
+  load_energylabels(EL_Dir).
 
