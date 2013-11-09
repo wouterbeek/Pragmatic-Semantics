@@ -23,7 +23,6 @@ assert_file_search_paths:-
 
   assert(user:file_search_path(db,           prasem('DB'))),
     assert(user:file_search_path(poems,        db('Poems'))),
-    assert(user:file_search_path(ragent,       db('Ragent'))),
     assert(user:file_search_path(stcn,         db('STCN'))),
     assert(user:file_search_path(wordnet,      db('Wordnet'))),
   assert(user:file_search_path(diagnosis,    prasem('Diagnosis'))),
