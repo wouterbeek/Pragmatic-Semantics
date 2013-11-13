@@ -8,7 +8,7 @@ user:project_name('PraSem').
 load_prasem:-
   % PraSem
   use_module(prasem(prasem)),
-gtrace,
+  
   % Beekeeper
   absolute_file_name(
     prasem('Beekeeper'),
