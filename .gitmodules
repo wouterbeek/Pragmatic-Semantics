@@ -7,3 +7,9 @@
 [submodule "EnergyLabels"]
 	path = EnergyLabels
 	url = https://github.com/wouterbeek/EnergyLabels.git
+[submodule "swi-prolog-on-dotcloud"]
+	path = swi-prolog-on-dotcloud
+	url = https://github.com/mndrix/swi-prolog-on-dotcloud
+[submodule "Beekeeper"]
+	path = Beekeeper
+	url = https://github.com/wouterbeek/Beekeeper.git

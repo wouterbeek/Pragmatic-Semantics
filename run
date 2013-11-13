@@ -1,0 +1,9 @@
+#!/home/dotcloud/pl
+
+:- use_module(library(dotcloud)).
+
+main(_) :-
+  ensure_loaded(load),
+  app_server:start_app_server.
+  %server('WWW').
+
