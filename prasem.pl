@@ -87,10 +87,16 @@ title -->
   html('Pragmatic Semantics for the Web of Data').
 
 problem -->
-  html(\paragraph(\(prasem:problem_p1))).
+  html([
+    \paragraph(\(prasem:problem_p1)),
+    \paragraph(\(prasem:problem_p2))
+  ]).
 
 problem_p1 -->
   html(
     'The Web of Data (WOD) connects data in a similar way as the WWW connects documents. Atomic data-units called resources are connected via typed links with arbitrary resources anywhere on the Web, and together these RDF triples form a gigantic graph of linked data. The meaning of the types can be fixed using standardised schema and ontology languages such as RDFS and OWL. The semantics of these languages are based on logical paradigms that were designed for small and hand-made knowledge bases, and come with a classical model-theory assigning truth to formulae, and entailment based on this truth. In a highly complex, dynamic, context-dependent, opinionated, contradictory and multi-dimensional semantic network as the WOD, these Semantics are insufficient, as they are one-dimensional, often prone to logical fallacies, and usually intractable.'
   ).
-
+problem_p1 -->
+  html(
+    ''
+  ).
