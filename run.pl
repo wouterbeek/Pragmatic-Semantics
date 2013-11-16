@@ -12,19 +12,7 @@ run_prasem:-
   % PGC
   load_pgc(project),
   
-  % EnergyLabels
-  absolute_file_name(
-    prasem('EnergyLabels'),
-    EL_Dir,
-    [access(read),file_type(directory)]
-  ),
-  absolute_file_name(
-    load,
-    EL_File,
-    [access(read),file_type(prolog),relative_to(EL_Dir)]
-  ),
-  ensure_loaded(EL_File),
-  load_energylabels(EL_Dir).
+  ensure_loaded(load).
 
 load_pgc(_Project):-
   user:file_search_path(pgc, _Spec), !.

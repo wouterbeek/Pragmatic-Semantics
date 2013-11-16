@@ -1,0 +1,7 @@
+#!/home/dotcloud/pl
+
+:- use_module(library(dotcloud)).
+
+main(_) :-
+  ensure_loaded(run),
+  app_server:start_app_server.
