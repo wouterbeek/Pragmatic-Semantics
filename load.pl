@@ -21,7 +21,6 @@ load_prasem:-
     [access(read),file_type(prolog),relative_to(BK_Dir)]
   ),
   ensure_loaded(BK_File),
-  load_bk(BK_Dir),
 
   % EnergyLabels
   absolute_file_name(
@@ -34,6 +33,5 @@ load_prasem:-
     EL_File,
     [access(read),file_type(prolog),relative_to(EL_Dir)]
   ),
-  ensure_loaded(EL_File),
-  load_energylabels(EL_Dir).
+  ensure_loaded(EL_File).
 
