@@ -33,5 +33,18 @@ load_prasem:-
     EL_File,
     [access(read),file_type(prolog),relative_to(EL_Dir)]
   ),
-  ensure_loaded(EL_File).
+  ensure_loaded(EL_File),
+
+  % WebQR
+  absolute_file_name(
+    prasem('WebQR'),
+    WebQR_Dir,
+    [access(read),file_type(directory)]
+  ),
+  absolute_file_name(
+    load,
+    WebQR_File,
+    [access(read),file_type(prolog),relative_to(WebQR_Dir)]
+  ),
+  ensure_loaded(WebQR_File).
 
