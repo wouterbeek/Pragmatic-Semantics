@@ -1,0 +1,16 @@
+[submodule "EnergyLabels"]
+	path = EnergyLabels
+	url = https://github.com/wouterbeek/EnergyLabels.git
+	branch = master
+[submodule "Beekeeper"]
+	path = Beekeeper
+	url = https://github.com/wouterbeek/Beekeeper.git
+	branch = master
+[submodule "WebQR"]
+	path = WebQR
+	url = https://github.com/wouterbeek/WebQR.git
+	branch = master
+[submodule "PGC"]
+	path = PGC
+	url = https://github.com/wouterbeek/PGC.git
+	branch = master
