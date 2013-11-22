@@ -14,3 +14,7 @@
 	path = swi-prolog-on-dotcloud
 	url = https://github.com/mndrix/swi-prolog-on-dotcloud.git
 	branch = master
+[submodule "WebQR"]
+	path = WebQR
+	url = https://github.com/wouterbeek/WebQR.git
+	branch = master
