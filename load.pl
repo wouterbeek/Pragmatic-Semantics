@@ -9,42 +9,22 @@ load_prasem:-
   % PraSem
   use_module(prasem(prasem)),
   
-  % Beekeeper
-  absolute_file_name(
-    prasem('Beekeeper'),
-    BK_Dir,
-    [access(read),file_type(directory)]
-  ),
-  absolute_file_name(
-    load,
-    BK_File,
-    [access(read),file_type(prolog),relative_to(BK_Dir)]
-  ),
-  ensure_loaded(BK_File),
+  % Load the various projects.
+  load_project('Beekeeper'),
+  load_project('EnergyLabels'),
+  load_project('IOTW'),
+  load_project('WebQR').
 
-  % EnergyLabels
+load_project(Project):-
   absolute_file_name(
-    prasem('EnergyLabels'),
-    EL_Dir,
+    prasem(Project),
+    Dir,
     [access(read),file_type(directory)]
   ),
   absolute_file_name(
     load,
-    EL_File,
-    [access(read),file_type(prolog),relative_to(EL_Dir)]
+    File,
+    [access(read),file_type(prolog),relative_to(Dir)]
   ),
-  ensure_loaded(EL_File),
-
-  % WebQR
-  absolute_file_name(
-    prasem('WebQR'),
-    WebQR_Dir,
-    [access(read),file_type(directory)]
-  ),
-  absolute_file_name(
-    load,
-    WebQR_File,
-    [access(read),file_type(prolog),relative_to(WebQR_Dir)]
-  ),
-  ensure_loaded(WebQR_File).
+  ensure_loaded(File).
 
