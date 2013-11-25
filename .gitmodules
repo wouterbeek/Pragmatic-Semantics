@@ -1,20 +1,18 @@
 [submodule "EnergyLabels"]
 	path = EnergyLabels
 	url = https://github.com/wouterbeek/EnergyLabels.git
-	branch = master
 [submodule "Beekeeper"]
 	path = Beekeeper
 	url = https://github.com/wouterbeek/Beekeeper.git
-	branch = master
+[submodule "IOTW"]
+	path = IOTW
+	url = https://github.com/wouterbeek/IOTW.git
 [submodule "PGC"]
 	path = PGC
 	url = https://github.com/wouterbeek/PGC.git
-	branch = master
 [submodule "swi-prolog-on-dotcloud"]
 	path = swi-prolog-on-dotcloud
 	url = https://github.com/mndrix/swi-prolog-on-dotcloud.git
-	branch = master
 [submodule "WebQR"]
 	path = WebQR
 	url = https://github.com/wouterbeek/WebQR.git
-	branch = master
