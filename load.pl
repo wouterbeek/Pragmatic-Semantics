@@ -36,4 +36,3 @@ load_prasem:-
   ),
   ensure_loaded(EL_File),
   load_energylabels(EL_Dir).
-
