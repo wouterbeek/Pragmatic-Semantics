@@ -1,5 +1,7 @@
 % The load file for the PraSem project.
 
+:- use_module(os(run_ext)).
+
 :- multifile(user:project_name/1).
 user:project_name('PraSem').
 
@@ -13,7 +15,11 @@ load_prasem:-
   load_project('Beekeeper'),
   load_project('EnergyLabels'),
   load_project('IOTW'),
-  load_project('WebQR').
+  load_project('WebQR'),
+
+  % Enumerate the external program support
+  % for the currently loaded modules.
+  list_external_programs.
 
 load_project(Project):-
   absolute_file_name(
