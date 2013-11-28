@@ -28,4 +28,3 @@ load_or_debug(Project):-
 load_or_debug(Project):-
   Spec =.. [Project,load],
   ensure_loaded(Spec).
-

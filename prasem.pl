@@ -71,7 +71,7 @@ init_prasem:-
   assert_foaf_stefan_schlobach(_S, G).
 
 prasem(_Request):-
-  reply_html_page(app_style, [], \prasem_body).
+  reply_html_page(app_style, \prasem_head, \prasem_body).
 
 prasem_body -->
   html(
@@ -93,6 +93,9 @@ prasem_body -->
       \html_post(toc, TOC)
     ])
   ).
+
+prasem_head -->
+  html(title('What is PraSem?')).
 
 paragraph_50 -->
   html([

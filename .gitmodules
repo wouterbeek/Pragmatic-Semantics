@@ -1,15 +1,18 @@
-[submodule "web/FlintSparqlEditor"]
-	path = web/FlintSparqlEditor
-	url = https://github.com/TSO-Openup/FlintSparqlEditor.git
-[submodule "PGC"]
-	path = PGC
-	url = https://github.com/wouterbeek/PrologGenericsCollection.git
 [submodule "EnergyLabels"]
 	path = EnergyLabels
 	url = https://github.com/wouterbeek/EnergyLabels.git
-[submodule "swi-prolog-on-dotcloud"]
-	path = swi-prolog-on-dotcloud
-	url = https://github.com/mndrix/swi-prolog-on-dotcloud
 [submodule "Beekeeper"]
 	path = Beekeeper
 	url = https://github.com/wouterbeek/Beekeeper.git
+[submodule "IOTW"]
+	path = IOTW
+	url = https://github.com/wouterbeek/IOTW.git
+[submodule "PGC"]
+	path = PGC
+	url = https://github.com/wouterbeek/PGC.git
+[submodule "swi-prolog-on-dotcloud"]
+	path = swi-prolog-on-dotcloud
+	url = https://github.com/mndrix/swi-prolog-on-dotcloud.git
+[submodule "WebQR"]
+	path = WebQR
+	url = https://github.com/wouterbeek/WebQR.git
