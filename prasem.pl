@@ -10,13 +10,10 @@ Pragmatic Semantic for the Web of Data.
 @version 2012, 2013/11
 */
 
-:- use_module(generics(meta_ext)).
 :- use_module(html(html_article)).
 :- use_module(html(html_image)).
-:- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
-:- use_module(library(http/http_path)).
 :- use_module(library(http/http_server_files)).
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
@@ -44,7 +41,7 @@ Pragmatic Semantic for the Web of Data.
 
 
 assert_foaf_stefan_schlobach(S, G):-
-  rdf_global_id(prasem:'StefanSchlobach', S), 
+  rdf_global_id(prasem:'StefanSchlobach', S),
   % foaf:firstName
   rdf_assert_literal(S, foaf:firstName, 'Stefan', G),
   % foaf:lastName
