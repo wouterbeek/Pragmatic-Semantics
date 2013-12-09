@@ -14,25 +14,22 @@ Pragmatic Semantic for the Web of Data.
 :- use_module(html(html_image)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
-:- use_module(library(http/http_server_files)).
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(rdf(rdf_build)).
 :- use_module(rdf(rdf_lit_build)).
 :- use_module(rdfs(rdfs_label_build)).
-:- use_module(server(app_ui)).
+:- use_module(server(app_ui)). % Uses the default application style.
 :- use_module(server(web_modules)).
 :- use_module(xml(xml_namespace)).
 
 :- xml_register_namespace(foaf, 'http://xmlns.com/foaf/0.1/').
 :- xml_register_namespace(prasem, 'http://xmlns.com/foaf/0.1/').
 
-:- web_module_add('What is prasem?', prasem, prasem).
-
 % /img
-:- db_add_novel(http:location(img, root(img), [])).
 :- db_add_novel(user:file_search_path(img, prasem(img))).
-:- http_handler(img(.), serve_files_in_directory(img), [prefix]).
+
+:- web_module_add('What is prasem?', prasem, prasem).
 
 :- http_handler(root(prasem), prasem, []).
 
