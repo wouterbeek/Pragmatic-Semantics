@@ -4,3 +4,4 @@
 :- assert(user:debug_project).
 
 :- [run].
+
