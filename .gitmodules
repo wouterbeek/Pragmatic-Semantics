@@ -16,3 +16,9 @@
 [submodule "WebQR"]
 	path = WebQR
 	url = https://github.com/wouterbeek/WebQR.git
+[submodule "STCN"]
+	path = STCN
+	url = https://github.com/wouterbeek/STCN.git
+[submodule "humR"]
+	path = humR
+	url = https://github.com/wouterbeek/humR.git

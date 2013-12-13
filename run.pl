@@ -12,6 +12,7 @@ run_prasem:-
   % PGC
   load_pgc(project),
   
+  % PraSem
   ensure_loaded(load).
 
 load_pgc(_Project):-

@@ -1,24 +1,26 @@
-:- module(disjunction_dcg, []).
-:- use_module(library(apply)).
+:- module(test, []).
 
-:- meta_predicate(p(3,*,?,?)).
-p(_DCG, [], Y, Y).
-p(DCG, [H|T], Y1, Y3):-
-  call(DCG, H, Y1, Y2),
-  p(DCG, T, Y2, Y3).
+:- meta_predicate(dcg_multi(//,+,-,?,?)).
+:- meta_predicate(dcg_multi(//,+,+,-,?,?)).
 
-:- meta_predicate(';'(2,2,?,?)).
-';'(DCG1, _DCG2, Y1, Y2):-
-  call(DCG1, Y1, Y2).
-';'(_DCG1, DCG2, Y1, Y2):-
-  call(DCG2, Y1, Y2).
+a(a) --> "a".
+b(b) --> "b".
+ab(X) --> a(X).
+ab(X) --> b(X).
 
-q(C) --> [C].
-r(D) --> [C], {D is C - 32}.
+dcg_multi(DCG, Min-Max, Args) -->
+  dcg_multi(DCG, 0, Min-Max, Args).
+
+dcg_multi(_DCG, Max, _Min-Max, []) --> [].
+dcg_multi(DCG, C0, Min-Max, [H|T]) -->
+  call(DCG, H),
+  {C1 is C0 + 1},
+  dcg_multi(DCG, C1, Min-Max, T).
+dcg_multi(_DCG, C, Min-_Max, []) --> {C >= Min}.
 
 :- initialization(test).
 test:-
-  atom_codes(swiprolog, Codes),
-  phrase(p((q ; r), Result), Codes),
-  writeln(Result).
-
+  dcg_multi(ab, 3-3, Args1, `aba`, []),
+  writeln(Args1),
+  dcg_multi((a ; b), 3-3, Args2, `aba`, []),
+  writeln(Args2).

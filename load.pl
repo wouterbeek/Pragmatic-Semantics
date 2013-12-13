@@ -12,9 +12,11 @@ load_prasem:-
   use_module(prasem(prasem)),
   
   % Load the various projects.
-  load_project('Beekeeper'),
-  load_project('EnergyLabels'),
-  load_project('IOTW'),
+  %load_project('Beekeeper'),
+  %load_project('EnergyLabels'),
+  %load_project(humR),
+  %load_project('IOTW'),
+  %load_project('STCN'),
   load_project('WebQR'),
 
   % Enumerate the external program support
