@@ -1,4 +1,6 @@
 *~
 *.db
+*.dot
+*.jpeg
 Data/
 password
