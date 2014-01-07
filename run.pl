@@ -23,7 +23,7 @@ load_pgc(Project):-
   load_or_debug(pgc).
 
 load_or_debug(Project):-
-  predicate_property(debug_project, visible), !,
+  predicate_property(user:debug_project, visible), !,
   Spec =.. [Project,debug],
   ensure_loaded(Spec).
 load_or_debug(Project):-

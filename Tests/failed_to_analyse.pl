@@ -48,7 +48,7 @@ is_meta(separator).
 %      The maxmim width of a line of characters (default `80`).
 %      This is the length at which line wrapping occurs.
 %
-% @param Options A list of name-value pairs.
+% @arg Options A list of name-value pairs.
 
 dcg_line_wrap(O1) -->
   {
@@ -164,9 +164,9 @@ is_repetition_value(V):-
 % Returns either the given value or the default value in case there is no
 % value given.
 %
-% @param Value A term or a variable.
-% @param Default A term.
-% @param SetValue A term.
+% @arg Value A term or a variable.
+% @arg Default A term.
+% @arg SetValue A term.
 
 default(Value, Default, Default):-
   var(Value), !.
