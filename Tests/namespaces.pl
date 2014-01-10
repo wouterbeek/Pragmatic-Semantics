@@ -1,10 +1,7 @@
-:- use_module(library(debug)).
 :- use_module(library(option)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdf_turtle_write)).
 :- use_module(library(semweb/turtle)).
-
-:- debug(test).
 
 :- initialization(test).
 
