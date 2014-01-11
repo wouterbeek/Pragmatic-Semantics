@@ -1,6 +1,7 @@
 :- module(failed_to_analyse, []).
 
 :- use_module(library(apply)).
+:- use_module(library(error)).
 :- use_module(library(option)).
 :- use_module(library(settings)).
 
@@ -156,7 +157,7 @@ repetition(Rep, Min2, Max2):-
 % i.e., is either an integer or the atom `inf`.
 
 is_repetition_value(V):-
-  nonneg(V), !.
+  must_be(nonneg, V), !.
 is_repetition_value(V):-
   V == inf.
 
@@ -171,8 +172,4 @@ is_repetition_value(V):-
 default(Value, Default, Default):-
   var(Value), !.
 default(Value, _Default, Value).
-
-nonneg(Term):-
-  integer(Term),
-  Term >= 0.
 
