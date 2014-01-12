@@ -24,7 +24,7 @@ Pragmatic Semantic for the Web of Data.
 :- use_module(xml(xml_namespace)).
 
 :- xml_register_namespace(foaf, 'http://xmlns.com/foaf/0.1/').
-:- xml_register_namespace(prasem, 'http://xmlns.com/foaf/0.1/').
+:- xml_register_namespace(prasem, 'http://www.wouterbeek.com/prasem#').
 
 % /img
 :- db_add_novel(user:file_search_path(img, prasem(img))).
