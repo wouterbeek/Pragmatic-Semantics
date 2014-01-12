@@ -16,9 +16,10 @@ load_prasem:-
   %load_project('EnergyLabels'),
   %load_project(humR),
   %load_project('IOTW'),
-  load_project('SacknerArchive'),
+  %load_project('SacknerArchive'),
+  load_project('SemURI'),
   %load_project('STCN'),
-  load_project('WebQR'),
+  %load_project('WebQR'),
 
   % Enumerate the external program support
   % for the currently loaded modules.
