@@ -14,8 +14,8 @@ load_semuri:-
   assert(user:file_search_path(semuri, ThisDir)),
   
   % DEB
-  use_module(rdf_web(rdf_web)),
-  use_module(rdf_web(rdf_describe_web)),
+  use_module(rdf_web(rdf_table)),
+  use_module(rdf_web(rdf_tabular)),
   
   use_module(semuri(semuri_script)).
 
