@@ -8,33 +8,34 @@ Automated script that run the experiments for the project on Semantic URIs.
 @version 2014/01
 */
 
-:- use_module(ckan(datahub_io)).
-%:- use_module(ckan(data_gov_uk)).
+:- use_module(ckan(data_gov_uk)). % Meta-call.
+:- use_module(ckan(datahub_io)). % Meta-call.
+:- use_module(generics(db_ext)).
 :- use_module(generics(meta_ext)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
-:- use_module(library(semweb/rdfs)).
+:- use_module(os(dir_ext)).
 :- use_module(rdf(rdf_lit_read)).
 :- use_module(rdf(rdf_serial)).
 
 :- initialization(thread_create(semuri_script, _, [])).
 
 :- debug(ckan).
+:- debug(http).
+:- debug(semuri).
 
 
+
+ckan_site(datahub_io).
+ckan_site(data_gov_uk).
 
 semuri_script:-
-  % Prepare.
-  (
-    absolute_file_name(
-      data(ckan),
-      File,
-      [access(read),file_errors(fail),file_type(turtle)]
-    )
-  ->
-    rdf_load2(File, [format(turtle),graph(ckan)])
-  ;
-    ckan_to_rdf
+  create_nested_directory(data('CKAN')),
+  db_add_novel(user:file_search_path(ckan_data, data('CKAN'))),
+
+  forall(
+    ckan_site(CKAN_Site),
+    scrape_ckan_site(CKAN_Site)
   ),
 
   % Collect datasets.
@@ -102,4 +103,25 @@ semuri_script(_Package):-
   % Steven (JAR)
   % Table output HTML
   true.
+
+scrape_ckan_site(Site):-
+  create_nested_directory(ckan_data(Site)),
+  (
+    absolute_file_name(
+      ckan_data(Site),
+      File1,
+      [access(read),file_errors(fail),file_type(turtle)]
+    )
+  ->
+    rdf_load2(File1, [format(turtle),graph(ckan)])
+  ;
+    atomic_list_concat([Site,ckan_to_rdf], '_', Pred),
+    call(Pred, [graph(Site)]),
+    absolute_file_name(
+      ckan_data(Site),
+      File2,
+      [access(write),file_type(turtle)]
+    ),
+    rdf_save2(File2, [format(turtle),graph(Site)])
+  ).
 
