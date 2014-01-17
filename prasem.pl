@@ -30,7 +30,7 @@ Pragmatic Semantic for the Web of Data.
 :- db_add_novel(user:file_search_path(img, prasem(img))).
 
 :- http_handler(root(prasem), prasem, []).
-:- web_module_add('What is prasem?', prasem, prasem).
+:- initialization(web_module_add('What is prasem?', prasem)).
 
 :- initialization(init_prasem).
 
