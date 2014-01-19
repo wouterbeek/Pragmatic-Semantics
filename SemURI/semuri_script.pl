@@ -21,7 +21,9 @@ Automated script that run the experiments for the project on Semantic URIs.
 :- initialization(thread_create(semuri_script, _, [])).
 
 :- debug(ckan).
+:- debug(ckan_to_rdf).
 :- debug(http).
+:- debug(rdf_image).
 :- debug(semuri).
 
 
