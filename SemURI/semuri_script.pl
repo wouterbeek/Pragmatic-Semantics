@@ -1,4 +1,9 @@
-:- module(semuri_script, []).
+:- module(
+  semuri_script,
+  [
+    semuri_script/0
+  ]
+).
 
 /** <module> Semantic URIs script
 
@@ -10,15 +15,18 @@ Automated script that run the experiments for the project on Semantic URIs.
 
 :- use_module(ckan(data_gov_uk)). % Meta-call.
 :- use_module(ckan(datahub_io)). % Meta-call.
+:- use_module(ckan(rdf_tabular_ckan)). % Load Web interface.
+:- use_module(generics(archive_ext)).
 :- use_module(generics(db_ext)).
 :- use_module(generics(meta_ext)).
+:- use_module(generics(uri_ext)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
+:- use_module(library(semweb/rdfs)).
 :- use_module(os(dir_ext)).
+:- use_module(os(file_ext)).
 :- use_module(rdf(rdf_lit_read)).
 :- use_module(rdf(rdf_serial)).
-
-:- initialization(thread_create(semuri_script, _, [])).
 
 :- debug(ckan).
 :- debug(ckan_to_rdf).
@@ -32,31 +40,66 @@ ckan_site(datahub_io).
 ckan_site(data_gov_uk).
 
 semuri_script:-
-  create_nested_directory(data('CKAN')),
-  db_add_novel(user:file_search_path(ckan_data, data('CKAN'))),
+  thread_create(run_semuri_script, _, []).
 
-  forall(
-    ckan_site(CKAN_Site),
-    scrape_ckan_site(CKAN_Site)
-  ),
+run_semuri_script:-
+  %create_nested_directory(data('CKAN')),
+  %db_add_novel(user:file_search_path(ckan_data, data('CKAN'))),
+
+  %forall(
+  %  ckan_site(CKAN_Site),
+  %  scrape_ckan_site(CKAN_Site)
+  %),
 
   % Collect datasets.
   setoff(
-    Resource,
+    Resource-URL,
     (
-      rdf_literal(Resource, ckan:format, Format, ckan),
-      once(rdf_format(Format))
+      rdfs_individual_of(Resource, ckan:'Resource'),
+      (
+        rdf_literal(Resource, ckan:format, Format, _),
+        rdf_format(Format)
+      ;
+        rdf_literal(Resource, ckan:mimetype, Mimetype, _),
+        rdf_mimetype(Mimetype)
+      ),
+      rdf_literal(Resource, ckan:url, URL, _)
     ),
-    Packages
+    Pairs
   ),
-  length(Packages, NumberOfPackages),
+  length(Pairs, NumberOfPackages),
   debug(
     semuri,
     'Now about to run the experiment on ~d datasets.',
     [NumberOfPackages]
   ),
 
-  maplist(semuri_script, Packages).
+  maplist(stage2, Pairs).
+
+stage2(Package-URL):-
+gtrace,
+  ap(
+    [process(rdft),project(iotw)],
+    [
+      ap_stage([from(input,'RDFT',archive)], extract_archive),
+      ap_stage([], tsv_convert_directory),
+      ap_stage([args([turtle])], rdf_convert_directory),
+      ap_stage([], owl_materialize),
+      ap_stage([args([turtle])], rdf_convert_directory),
+      ap_stage([between(1,5),to(output)], rdft_experiment)
+    ]
+  ).
+  ap(
+    [process(ckan),project(semuri)],
+    [
+      ap_stage([from
+  download_to_file(URL, File),
+  file_name_type(_, archive, File),
+  file_directory_name(File, Dir1),
+  archive_extract(File, Dir1),
+  absolute_file_name(conv, Dir2, [access(write),file_type(Dir1)]),
+  rdf_convert_directory
+  true.
 
 rdf_format('RDF').
 rdf_format('XML').
