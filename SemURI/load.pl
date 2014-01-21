@@ -17,5 +17,5 @@ load_semuri:-
   use_module(rdf_web(rdf_table)),
   use_module(rdf_web(rdf_tabular)),
   
-  use_module(semuri(semuri_script)).
+  use_module(semuri(semuri)).
 
