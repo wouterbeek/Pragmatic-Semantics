@@ -50,7 +50,7 @@ semuri(_Request):-
   ).
 
 error_action(Action) -->
-  html(span(class=action, Action)).
+  html(div(class=action, Action)).
 
 error_and_text(error(Formal,Context)) --> !,
   {Formal =.. [ErrorKind|_]},
@@ -98,7 +98,7 @@ error_formal(existence_error(Type,Term)) --> !,
 error_formal(http_status(Status)) --> !,
   {'Status-Code'(Status, Reason)},
   html(div(class=http_status, [Status,': ',Reason])).
-error_format(io_error(Mode,Stream)) -->
+error_formal(io_error(Mode,Stream)) -->
   html(
     div(class=io_error, [
       \error_mode(Mode),
@@ -114,9 +114,9 @@ error_formal(instantiation_error(Term)) --> !,
 error_formal(permission_error(Action,Type,Term)) --> !,
   html(
     div(class=permission_error, [
-      error_action(Action),
-      error_type(Type),
-      error_term(Term)
+      \error_action(Action),
+      \error_type(Type),
+      \error_term(Term)
     ])
   ).
 error_formal(process_error(Program,exit(Status))) --> !,
@@ -132,7 +132,7 @@ error_formal(representation_error(Reason)) --> !,
       \error_reason(Reason)
     )
   ).
-error_format(socket_error(Reason)) --> !,
+error_formal(socket_error(Reason)) --> !,
   html(div(class=socket_error, \error_reason(Reason))).
 error_formal(syntax_error(Culprit)) --> !,
   html(div(class=syntax_error, Culprit)).
@@ -207,7 +207,7 @@ error_stream(Stream) -->
 
 error_term(Term) -->
   {term_to_atom(Term, Atom)},
-  html(span(term=term, Atom)).
+  html(div(class=term, Atom)).
 
 error_type(Type) -->
   html(span(class=error_type, Type)).
