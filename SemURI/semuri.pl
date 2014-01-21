@@ -35,7 +35,8 @@ semuri(_Request):-
     'People',
     'Tags',
     'Download',
-    'Archive'
+    'Archive',
+    'Triples'
   ],
   reply_html_page(
     app_style,
@@ -105,10 +106,18 @@ error_formal(io_error(Mode,Stream)) -->
       \error_stream(Stream)
     ])
   ).
+error_formal(instantiation_error) --> !,
+  html(div(class=instantiation_error, [])).
 error_formal(instantiation_error(Term)) --> !,
   html(
     div(class=instantiation_error,
       \error_term(Term)
+    )
+  ).
+error_formal(limit_exceeded(max_errors,Max)) --> !,
+  html(
+    div(class=limit_exceeded,
+      div(class=max_errors,['Max: ',Max])
     )
   ).
 error_formal(permission_error(Action,Type,Term)) --> !,
