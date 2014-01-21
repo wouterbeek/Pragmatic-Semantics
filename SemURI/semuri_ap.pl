@@ -31,15 +31,17 @@ Automated processes for semantic URIs.
 
 
 semuri_ap(Site, Resource):-
+  once(rdf_literal(Resource, ckan:url, URL, Site)),
   once(rdf_literal(Resource, ckan:id, ResourceId, Site)),
   once(rdf_literal(Resource, ckan:format, ResourceFormat, Site)),
   (
     once(rdf_literal(Resource, ckan:resource_type, ResourceType, Site))
   ->
-    atomic_list_concat([ResourceId,ResourceFormat,ResourceType], '\n', X1)
+    atomic_list_concat([ResourceId,ResourceFormat,ResourceType,URL], '\n', X1)
   ;
-    atomic_list_concat([ResourceId,ResourceFormat], '\n', X1)
+    atomic_list_concat([ResourceId,ResourceFormat,URL], '\n', X1)
   ),
+  debug(semuri, 'Starting:\n~w', [X1]),
 
   once(rdf(Package, ckan:resources, Resource, Site)),
   once(rdf_literal(Package, ckan:name, PackageName, Site)),
@@ -69,18 +71,20 @@ semuri_ap(Site, Resource):-
   ),
   atomic_list_concat(TagNames, '\n', TagName),
 
-  once(rdf_literal(Resource, ckan:url, URL, Site)),
-
   atomic_list_concat([PackageName,ResourceId], '-', Name),
   Spec =.. [Site,Name],
   create_nested_directory(ckan_data(Spec)),
   db_add_novel(user:file_search_path(Name, Spec)),
+flag(datasets, Id, Id + 1),
+format(user_output, '~w\n', [Id]),
+(Id == 20 -> gtrace ; true),
+(Id == 36 -> gtrace ; true),
   ap(
     Name,
     [
       ap_stage([], download_to_dir(URL)),
-      ap_stage([from(input,_,_)], extract_archives)%,
-      %ap_stage([args([turtle])], rdf_convert_directory)
+      ap_stage([from(input,_,_)], extract_archives),
+      ap_stage([args([turtle])], rdf_convert_directory_)
       %ap_stage([], owl_materialize),
       %ap_stage([args([turtle])], rdf_convert_directory),
       %ap_stage([between(1,5),to(output)], rdft_experiment)
@@ -90,13 +94,26 @@ semuri_ap(Site, Resource):-
 
   assert(semuri:row([X1,X2,OrganizationName,UserName,TagName|T])).
 
-download_to_dir(URL, ToDir, Msg):-
+rdf_convert_directory_(FromDir, ToDir, 'Converted to turtle', ToFormat):-
+  (
+    rdf_convert_directory(FromDir, ToDir, ToFormat)
+  ->
+    true
+  ;
+    gtrace,
+    rdf_convert_directory(FromDir, ToDir, ToFormat)
+  ).
+
+download_to_dir(URL, ToDir, 'Downloaded'):-
   url_to_file(URL, File1),
   directory_file_path(_, File2, File1),
   file_name_extensions(Base, Extensions, File2),
   create_file(ToDir, Base, Extensions, File3),
-  download_to_file(URL, File3), !,
-  format(atom(Msg), 'Downloaded ~w', [File3]).
+  download_to_file(URL, File3),
+  size_file(File3, Size),
+  % Expressed in megabytes.
+  TooBig is 1024 * 1024 * 100,
+  (Size > TooBig -> permission_error(open,'BIG-file',File3) ; true).
 
 extract_archives(FromDir, ToDir, Msg):-
   directory_files([recursive(false)], FromDir, FromFiles),
