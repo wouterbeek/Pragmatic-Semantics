@@ -20,6 +20,7 @@ Automated processes for semantic URIs.
 
 :- use_module(ap(ap)).
 :- use_module(generics(archive_ext)).
+:- use_module(generics(meta_ext)).
 :- use_module(generics(uri_ext)).
 :- use_module(library(lists)).
 :- use_module(os(dir_ext)).
@@ -48,17 +49,17 @@ semuri_ap(Site, Resource):-
   once(rdf(Package, ckan:organization, Organization, Site)),
   once(rdf_literal(Organization, ckan:display_name, OrganizationName, Site)),
 
-  findall(
+  setoff(
     UserName,
     (
-      rdf(Package, ckan:users, User, Site),
+      rdf(Organization, ckan:users, User, Site),
       rdf_literal(User, ckan:fullname, UserName, Site)
     ),
     UserNames
   ),
   atomic_list_concat(UserNames, '\n', UserName),
 
-  findall(
+  setoff(
     TagName,
     (
       rdf(Package, ckan:tags, Tag, Site),
@@ -74,7 +75,6 @@ semuri_ap(Site, Resource):-
   Spec =.. [Site,Name],
   create_nested_directory(ckan_data(Spec)),
   db_add_novel(user:file_search_path(Name, Spec)),
-
   ap(
     Name,
     [
@@ -97,10 +97,6 @@ download_to_dir(URL, ToDir, Msg):-
   create_file(ToDir, Base, Extensions, File3),
   download_to_file(URL, File3), !,
   format(atom(Msg), 'Downloaded ~w', [File3]).
-download_to_dir(URL, _, Msg):-
-  format(atom(Msg), 'Unable to download ~w', [URL]),
-gtrace,
-  throw(error(Msg)).
 
 extract_archives(FromDir, ToDir, Msg):-
   directory_files([recursive(false)], FromDir, FromFiles),
