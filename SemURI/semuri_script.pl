@@ -19,7 +19,9 @@ Automated script that run the experiments for the project on Semantic URIs.
 :- use_module(generics(db_ext)).
 :- use_module(generics(meta_ext)).
 :- use_module(library(apply)).
+:- use_module(library(pairs)).
 :- use_module(os(dir_ext)).
+:- use_module(rdf(rdf_datatype)).
 :- use_module(rdf(rdf_lit_read)).
 :- use_module(semuri(semuri_ap)).
 
@@ -73,19 +75,23 @@ scrape_ckan_site(Site, Resources):-
 
   % Collect datasets.
   setoff(
-    Resource,
+    Size2-Resource,
     (
       rdfs_individual_of(Resource, ckan:'Resource'),
       (
-        rdf_literal(Resource, ckan:format, Format, _),
+        rdf_literal(Resource, ckan:format, Format, Site),
         rdf_format(Format)
       ;
-        rdf_literal(Resource, ckan:mimetype, Mimetype, _),
+        rdf_literal(Resource, ckan:mimetype, Mimetype, Site),
         rdf_mimetype(Mimetype)
-      )
+      ),
+      rdf_literal(Resource, ckan:size, Size1, Site),
+      atom_number(Size1, Size2)
     ),
-    Resources
+    Pairs1
   ),
+  keysort(Pairs1, Pairs2),
+  pairs_values(Pairs2, Resources),
   length(Resources, NumberOfResources),
   debug(
     semuri,
