@@ -139,4 +139,3 @@ rdf_mimetype('text/json').
 rdf_mimetype('text/rdf+n3').
 rdf_mimetype('text/turtle').
 rdf_mimetype('text/xml').
-
