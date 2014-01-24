@@ -12,3 +12,4 @@
 
 www(_):-
   reply_html_page(title('Test'), [p('🔗'),p('↨')]).
+
