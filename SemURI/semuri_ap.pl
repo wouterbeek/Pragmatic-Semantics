@@ -22,11 +22,16 @@ Automated processes for semantic URIs.
 :- use_module(generics(archive_ext)).
 :- use_module(generics(meta_ext)).
 :- use_module(generics(uri_ext)).
+:- use_module(library(apply)).
+:- use_module(library(filesex)).
 :- use_module(library(lists)).
+:- use_module(library(semweb/rdf_db)).
 :- use_module(os(dir_ext)).
 :- use_module(os(file_ext)).
+:- use_module(os(file_mime)).
+:- use_module(rdf(rdf_graph_name)).
 :- use_module(rdf(rdf_lit_read)).
-:- use_module(rdf(rdf_serial_conv)). % Used in AP.
+:- use_module(rdf(rdf_serial)).
 
 
 
@@ -71,20 +76,22 @@ semuri_ap(Site, Resource):-
   ),
   atomic_list_concat(TagNames, '\n', TagName),
 
-  atomic_list_concat([PackageName,ResourceId], '-', Name),
+  % DEB
+  flag(datasets, Id, Id + 1),
+  format(user_output, '~w\n', [Id]),
+
+  atomic_list_concat([Id,PackageName,ResourceId], '-', Name),
   Spec =.. [Site,Name],
   create_nested_directory(ckan_data(Spec)),
   db_add_novel(user:file_search_path(Name, Spec)),
-flag(datasets, Id, Id + 1),
-format(user_output, '~w\n', [Id]),
-(Id == 20 -> gtrace ; true),
-(Id == 36 -> gtrace ; true),
+
   ap(
     Name,
     [
       ap_stage([], download_to_dir(URL)),
       ap_stage([from(input,_,_)], extract_archives),
-      ap_stage([args([turtle])], rdf_convert_directory_)
+      ap_stage([], mime_dir),
+      ap_stage([], rdf_convert)
       %ap_stage([], owl_materialize),
       %ap_stage([args([turtle])], rdf_convert_directory),
       %ap_stage([between(1,5),to(output)], rdft_experiment)
@@ -94,17 +101,40 @@ format(user_output, '~w\n', [Id]),
 
   assert(semuri:row([X1,X2,OrganizationName,UserName,TagName|T])).
 
-rdf_convert_directory_(FromDir, ToDir, 'Converted to turtle', ToFormat):-
-  (
-    rdf_convert_directory(FromDir, ToDir, ToFormat)
-  ->
-    true
-  ;
-    gtrace,
-    rdf_convert_directory(FromDir, ToDir, ToFormat)
+mime_dir(FromDir, ToDir, Msg):-
+  directory_files([], FromDir, FromFiles),
+  maplist(file_mime, FromFiles, MIMEs),
+  atomic_list_concat(MIMEs, ' and ', Msg),
+  forall(
+    member(FromFile, FromFiles),
+    copy_file(FromFile, ToDir)
   ).
 
-download_to_dir(URL, ToDir, 'Downloaded'):-
+rdf_convert(FromDir, ToDir, Msg):-
+  directory_files([], FromDir, FromFiles1),
+  findall(
+    ToFile,
+    (
+      member(FromFile, FromFiles1),
+      file_mime(FromFile, MIME),
+      rdf_mime(MIME),
+      setup_call_cleanup(
+        rdf_new_graph(TmpG),
+        (
+          relative_file_name(FromFile, FromDir, RelativeFile),
+          rdf_load2(FromFile, [graph(TmpG),mime(MIME)]),
+          directory_file_path(ToDir, RelativeFile, ToFile),
+          create_file(ToFile),
+          rdf_save2(ToFile, [format(turtle),graph(TmpG)])
+        ),
+        rdf_unload_graph(TmpG)
+      )
+    ),
+    ToFiles
+  ),
+  atomic_list_concat(ToFiles, ' and ', Msg).
+
+download_to_dir(URL, ToDir, Msg):-
   url_to_file(URL, File1),
   directory_file_path(_, File2, File1),
   file_name_extensions(Base, Extensions, File2),
@@ -113,7 +143,8 @@ download_to_dir(URL, ToDir, 'Downloaded'):-
   size_file(File3, Size),
   % Expressed in megabytes.
   TooBig is 1024 * 1024 * 100,
-  (Size > TooBig -> permission_error(open,'BIG-file',File3) ; true).
+  (Size > TooBig -> permission_error(open,'BIG-file',File3) ; true),
+  relative_file_name(File3, ToDir, Msg).
 
 extract_archives(FromDir, ToDir, Msg):-
   directory_files([recursive(false)], FromDir, FromFiles),

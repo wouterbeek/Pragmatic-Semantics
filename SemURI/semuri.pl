@@ -29,13 +29,14 @@ semuri(_Request):-
     Table
   ),
   Header = [
-    'Resource',
-    'Package',
-    'Organization',
-    'People',
+    'Res',
+    'Pack',
+    'Org',
+    'Users',
     'Tags',
     'Download',
-    'Archive',
+    'MIME',
+    'Arch',
     'Triples'
   ],
   reply_html_page(
@@ -119,6 +120,15 @@ error_formal(limit_exceeded(max_errors,Max)) --> !,
     div(class=limit_exceeded,
       div(class=max_errors,['Max: ',Max])
     )
+  ).
+error_formal(mime_error(_,MustBe_MIME,Is_MIME)) --> !,
+  html(
+    span(class=mime_error, [
+      'Must be ',
+      \mime(MustBe_MIME),
+      ' not ',
+      \mime(Is_MIME)
+    ])
   ).
 error_formal(permission_error(Action,Type,Term)) --> !,
   html(
@@ -220,4 +230,7 @@ error_term(Term) -->
 
 error_type(Type) -->
   html(span(class=error_type, Type)).
+
+mime(MIME) -->
+  html(span(class=mime, MIME)).
 

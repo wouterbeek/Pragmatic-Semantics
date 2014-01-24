@@ -72,10 +72,31 @@ scrape_ckan_site(Site, Resources):-
     ),
     rdf_save2(File2, [format(turtle),graph(Site)])
   ),
-
+  
+/*
+  % @tbd
+  % Clear file from previous run.
+  (
+    absolute_file_name(
+      ckan_data(Site),
+      SiteDir,
+      [access(read),file_errors(fail),file_type(directory)]
+    )
+  ->
+    safe_delete_directory_contents(
+      [include_directories(true),recursive(true)],
+      SiteDir
+    )
+  ;
+    true
+  ),
+*/
+  
   % Collect datasets.
+  % Note that sorting by size makes no sense,
+  % since the semantics of the values of `ckan:size` is unknown.
   setoff(
-    Size2-Resource,
+    Resource,
     (
       rdfs_individual_of(Resource, ckan:'Resource'),
       (
@@ -84,14 +105,10 @@ scrape_ckan_site(Site, Resources):-
       ;
         rdf_literal(Resource, ckan:mimetype, Mimetype, Site),
         rdf_mimetype(Mimetype)
-      ),
-      rdf_literal(Resource, ckan:size, Size1, Site),
-      atom_number(Size1, Size2)
+      )
     ),
-    Pairs1
+    Resources
   ),
-  keysort(Pairs1, Pairs2),
-  pairs_values(Pairs2, Resources),
   length(Resources, NumberOfResources),
   debug(
     semuri,
