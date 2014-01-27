@@ -6,6 +6,7 @@
 @version 2014/01
 */
 
+:- use_module(dcg(dcg_content)).
 :- use_module(html(html_table)).
 :- use_module(http(rfc2616_status_line)).
 :- use_module(library(http/html_write)).
@@ -43,10 +44,9 @@ semuri(_Request):-
     app_style,
     title('Semantic URIs'),
     \html_table(
-      [caption('The Semantic Web Hoax'),
-       cell_dcg(error_and_text),
-       header(true),
-       indexed(true)],
+      [header(true),indexed(true)],
+      `The Semantic Web Hoax`,
+      error_and_text,
       [Header|Table]
     )
   ).
