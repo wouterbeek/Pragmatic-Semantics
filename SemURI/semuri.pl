@@ -6,6 +6,7 @@
 @version 2014/01
 */
 
+:- use_module(html(html_pl_term)).
 :- use_module(html(html_table)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
@@ -36,7 +37,8 @@ semuri(_Request):-
     'Download',
     'MIME',
     'Arch',
-    'Triples'
+    'Triples',
+    'Steven'
   ],
   reply_html_page(
     app_style,
@@ -59,11 +61,13 @@ ap_message(Message) -->
 ap_status(Status) -->
   html(span(class=ap_status, Status)).
 
-ap_term(ap(status(Status),Message)) -->
+ap_term(ap(status(Status),Message)) --> !,
   html(
     div(class=ap, [
       \ap_status(Status),
       \ap_message(Message)
     ])
   ).
+ap_term(PL_Term) -->
+  html_pl_term(PL_Term).
 

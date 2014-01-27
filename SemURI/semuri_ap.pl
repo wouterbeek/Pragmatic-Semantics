@@ -29,6 +29,7 @@ Automated processes for semantic URIs.
 :- use_module(os(dir_ext)).
 :- use_module(os(file_ext)).
 :- use_module(os(file_mime)).
+:- use_module(os(run_ext)).
 :- use_module(rdf(rdf_graph_name)).
 :- use_module(rdf(rdf_lit_read)).
 :- use_module(rdf(rdf_serial)).
@@ -91,26 +92,41 @@ semuri_ap(Site, Resource):-
       ap_stage([], download_to_dir(URL)),
       ap_stage([from(input,_,_)], extract_archives),
       ap_stage([], mime_dir),
-      ap_stage([], rdf_convert)
-      %ap_stage([], owl_materialize),
-      %ap_stage([args([turtle])], rdf_convert_directory),
-      %ap_stage([between(1,5),to(output)], rdft_experiment)
+      ap_stage([], rdf_convert),
+      ap_stage([], stupid_rename)
     ],
     T
   ),
 
   assert(semuri:row([X1,X2,OrganizationName,UserName,TagName|T])).
 
-mime_dir(FromDir, ToDir, Msg):-
+
+steven(FromDir, ToDir, ap(status(succeed),steven)):-
+  directory_files([file_types([turtle])], FromDir, FromFiles),
+  FromFiles = [FromFile|_],
+  maplist(steven(ToDir), FromFile).
+
+steven(ToDir, FromFile):-
+  file_alternative(FromFile, ToDir, triples, dat, ToFile),
+  rename_file(FromFile, ToFile),
+  absolute_file_name(
+    semuri('SemanticURIs-0.0.1-SNAPSHOT-jar-with-dependencies'),
+    JAR_File,
+    [access(read),file_type(jar)]
+  ),
+  run_jar(JAR_File, [file(ToFile)]).
+
+
+mime_dir(FromDir, ToDir, ap(status(succeed),mimes(MIMEs))):-
   directory_files([], FromDir, FromFiles),
   maplist(file_mime, FromFiles, MIMEs),
-  atomic_list_concat(MIMEs, ' and ', Msg),
   forall(
     member(FromFile, FromFiles),
     copy_file(FromFile, ToDir)
   ).
 
-rdf_convert(FromDir, ToDir, Msg):-
+
+rdf_convert(FromDir, ToDir, ap(status(succeed),files(ToFiles))):-
   directory_files([], FromDir, FromFiles1),
   findall(
     ToFile,
@@ -131,10 +147,10 @@ rdf_convert(FromDir, ToDir, Msg):-
       )
     ),
     ToFiles
-  ),
-  atomic_list_concat(ToFiles, ' and ', Msg).
+  ).
 
-download_to_dir(URL, ToDir, Msg):-
+
+download_to_dir(URL, ToDir, ap(status(succeed),file(File3))):-
   url_to_file(URL, File1),
   directory_file_path(_, File2, File1),
   file_name_extensions(Base, Extensions, File2),
@@ -143,18 +159,6 @@ download_to_dir(URL, ToDir, Msg):-
   size_file(File3, Size),
   % Expressed in megabytes.
   TooBig is 1024 * 1024 * 100,
-  (Size > TooBig -> permission_error(open,'BIG-file',File3) ; true),
-  relative_file_name(File3, ToDir, Msg).
+  (Size > TooBig -> permission_error(open,'BIG-file',File3) ; true).
 
-extract_archives(FromDir, ToDir, Msg):-
-  directory_files([recursive(false)], FromDir, FromFiles),
-  findall(
-    Msg,
-    (
-      member(FromFile, FromFiles),
-      extract_archive(FromFile, ToDir, Msg)
-    ),
-    Msgs
-  ),
-  atomic_list_concat(Msgs, '\n', Msg).
 
