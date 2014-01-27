@@ -75,7 +75,7 @@ scrape_ckan_site(Site, Resources):-
   
 /*
   % @tbd
-  % Clear file from previous run.
+  % Clear files from previous run.
   (
     absolute_file_name(
       ckan_data(Site),

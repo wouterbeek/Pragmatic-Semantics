@@ -7,8 +7,8 @@
 */
 
 :- use_module(dcg(dcg_content)).
+:- use_module(html(html_pl_term)).
 :- use_module(html(html_table)).
-:- use_module(http(rfc2616_status_line)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(semuri(semuri_script)).
@@ -38,7 +38,8 @@ semuri(_Request):-
     'Download',
     'MIME',
     'Arch',
-    'Triples'
+    'Triples',
+    'Steven'
   ],
   reply_html_page(
     app_style,
@@ -46,191 +47,89 @@ semuri(_Request):-
     \html_table(
       [header(true),indexed(true)],
       `The Semantic Web Hoax`,
-      error_and_text,
+      ap_term,
       [Header|Table]
     )
   ).
 
-error_action(Action) -->
-  html(div(class=action, Action)).
 
-error_and_text(error(Formal,Context)) --> !,
-  {Formal =.. [ErrorKind|_]},
-  html(
-    span(class=error, [
-      div(class=error_kind, ErrorKind),
-      div(class=formal, \error_formal(Formal)),
-      \error_context(Context)
-    ])
-  ).
-error_and_text(Text) -->
-  html(p(Text)).
 
-error_arity(Arity) -->
-  html(span(class=arity, Arity)).
+% AP TERMS %
 
-error_context(VAR) -->
-  {var(VAR)}, !,
-  [].
-error_context(context(Module:Name/Arity,Msg)) -->
-  html(
-    div(class=context, [
-      \error_predicate(Module, Name, Arity),
-      \error_message(Msg)
-    ])
-  ).
+ap_term(ap(status(Status),Message)) --> !,
+  {atomic_list_concat([ap,Status], '_', Class)},
+  html(div(class=Class, \ap_message(Message))).
+ap_term(PL_Term) -->
+  html_pl_term(PL_Term).
 
-error_formal(VAR) -->
-  {var(VAR)}, !,
-  [].
-error_formal(domain_error(Type,Term)) --> !,
-  html(
-    div(class=domain_error, [
-      \error_type(Type),
-      \error_term(Term)
-    ])
-  ).
-error_formal(existence_error(Type,Term)) --> !,
-  html(
-    div(class=existence_error, [
-      \error_type(Type),
-      \error_term(Term)
-    ])
-  ).
-error_formal(http_status(Status)) --> !,
-  {'Status-Code'(Status, Reason)},
-  html(div(class=http_status, [Status,': ',Reason])).
-error_formal(io_error(Mode,Stream)) -->
-  html(
-    div(class=io_error, [
-      \error_mode(Mode),
-      \error_stream(Stream)
-    ])
-  ).
-error_formal(instantiation_error) --> !,
-  html(div(class=instantiation_error, [])).
-error_formal(instantiation_error(Term)) --> !,
-  html(
-    div(class=instantiation_error,
-      \error_term(Term)
-    )
-  ).
-error_formal(limit_exceeded(max_errors,Max)) --> !,
-  html(
-    div(class=limit_exceeded,
-      div(class=max_errors,['Max: ',Max])
-    )
-  ).
-error_formal(mime_error(_,MustBe_MIME,Is_MIME)) --> !,
-  html(
-    span(class=mime_error, [
-      'Must be ',
-      \mime(MustBe_MIME),
-      ' not ',
-      \mime(Is_MIME)
-    ])
-  ).
-error_formal(permission_error(Action,Type,Term)) --> !,
-  html(
-    div(class=permission_error, [
-      \error_action(Action),
-      \error_type(Type),
-      \error_term(Term)
-    ])
-  ).
-error_formal(process_error(Program,exit(Status))) --> !,
-  html(
-    div(class=process_error, [
-      \error_program(Program),
-      \error_status(Status)
-    ])
-  ).
-error_formal(representation_error(Reason)) --> !,
-  html(
-    div(class=representation_error,
-      \error_reason(Reason)
-    )
-  ).
-error_formal(socket_error(Reason)) --> !,
-  html(div(class=socket_error, \error_reason(Reason))).
-error_formal(syntax_error(Culprit)) --> !,
-  html(div(class=syntax_error, Culprit)).
-error_formal(timeout_error(Mode,Stream)) --> !,
-  html(
-    div(class=timeout_error, [
-      \error_mode(Mode),
-      \error_stream(Stream)
-    ])
-  ).
-error_formal(type_error(Type,Term)) --> !,
-  html(
-    div(class=type_error, [
-      \error_type(Type),
-      \error_term(Term)
-    ])
-  ).
 
-error_functor(Functor) -->
-  html(span(class=functor, Functor)).
+ap_message(download(File)) --> !,
+  html(
+    div(class=download, [
+      div(class=action ,'downloaded'),
+      \file(File)
+    ])
+  ).
+ap_message(error(Formal,Context)) --> !,
+  html_pl_term(error(Formal,Context)).
+ap_message(extract_archive(OnFiles)) --> !,
+  html(
+    div(class=extract_archive, [
+      div(class=action, 'extracted archive'),
+      \on_files(OnFiles)
+    ])
+  ).
+ap_message(mime(OfFiles)) --> !,
+  html(
+    div(class=mime, [
+      div(class=action, 'MIME'),
+      \of_files(OfFiles)
+    ])
+  ).
+ap_message(Message) -->
+  html(span(class=ap_message, html_pl_term(Message))).
 
-error_functor_and_arity(Functor, Arity) -->
+
+file(File) -->
+  html(span(class=file, File)).
+
+nvpair(Property,Value) -->
   html([
-    \error_functor(Functor),
-    '/',
-    \error_arity(Arity)
+    span(class=property, Property),
+    '=',
+    span(class=value, Value)
   ]).
 
-error_message(Msg) -->
-  html(span(class=message, Msg)).
-
-error_mode(Mode) -->
-  html(span(class=mode, Mode)).
-
-error_module(Module) -->
-  html(span(class=module, Module)).
-
-error_predicate(Functor, Arity) -->
+of_file(of_file(File,nvpair(Property,Value))) -->
   html(
-    span(class=predicate,
-      \error_functor_and_arity(Functor, Arity)
-    )
-  ).
-
-error_predicate(Module, Functor, Arity) -->
-  html(
-    span(class=predicate, [
-      \error_module(Module),
+    div(class=of_file, [
+      \file(File),
       ':',
-      \error_functor_and_arity(Functor, Arity)
+      \nvpair(Property,Value)
     ])
   ).
 
-error_program(Program) -->
-  html(div(class=program, ['Program: ',Program])).
+of_files([]) --> !, [].
+of_files([H|T]) -->
+  of_file(H),
+  of_files(T).
 
-error_reason(Reason) -->
-  html(span(class=reason, Reason)).
+on_file(on_file(File,Operation)) -->
+  html(
+    div(class=on_file, [
+      \operation(Operation),
+      '@',
+      \file(File)
+    ])
+  ).
 
-error_status(Status) -->
-  html(div(class=exit_status, ['Status: ',Status])).
+on_files([]) --> !, [].
+on_files([H|T]) -->
+  html([
+    \on_file(H),
+    \on_files(T)
+  ]).
 
-%error_stream(Stream) -->
-%  {stream_property(Stream, alias(Alias))}, !,
-%  html(span(class=stream, Alias)).
-%error_stream(Stream) -->
-%  {stream_property(Stream, file_name(FileName))}, !,
-%  html(span(class=stream, FileName)).
-error_stream(Stream) -->
-  {term_to_atom(Stream, Atom)},
-  html(span(class=stream, Atom)).
-
-error_term(Term) -->
-  {term_to_atom(Term, Atom)},
-  html(div(class=term, Atom)).
-
-error_type(Type) -->
-  html(span(class=error_type, Type)).
-
-mime(MIME) -->
-  html(span(class=mime, MIME)).
+operation(Operation) -->
+  html(span(class=operation, Operation)).
 
