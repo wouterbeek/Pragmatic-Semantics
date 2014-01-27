@@ -65,21 +65,23 @@ ap_term(PL_Term) -->
 ap_message(download(File)) --> !,
   html(
     div(class=download, [
-      'downloaded',
+      div(class=action ,'downloaded'),
       \file(File)
     ])
   ).
+ap_message(error(Formal,Context)) --> !,
+  html_pl_term(error(Formal,Context)).
 ap_message(extract_archive(OnFiles)) --> !,
   html(
     div(class=extract_archive, [
-      'extracted archive',
+      div(class=action, 'extracted archive'),
       \on_files(OnFiles)
     ])
   ).
 ap_message(mime(OfFiles)) --> !,
   html(
     div(class=mime, [
-      'MIME',
+      div(class=action, 'MIME'),
       \of_files(OfFiles)
     ])
   ).

@@ -90,10 +90,10 @@ semuri_ap(Site, Resource):-
     Name,
     [
       ap_stage([], download_to_directory(URL)),
-      ap_stage([from(input,_,_)], extract_archives),
+      ap_stage([], extract_archives),
       ap_stage([], mime_dir),
-      ap_stage([], rdf_convert),
-      ap_stage([], stupid_rename)
+      ap_stage([], rdf_convert_directory),
+      ap_stage([], steven)
     ],
     T
   ),
@@ -102,9 +102,10 @@ semuri_ap(Site, Resource):-
 
 
 steven(FromDir, ToDir, ap(status(succeed),steven)):-
+gtrace,
   directory_files([file_types([turtle])], FromDir, FromFiles),
   FromFiles = [FromFile|_],
-  maplist(steven(ToDir), FromFile).
+  maplist(steven(ToDir), [FromFile]).
 
 steven(ToDir, FromFile):-
   file_alternative(FromFile, ToDir, triples, dat, ToFile),
@@ -115,28 +116,4 @@ steven(ToDir, FromFile):-
     [access(read),file_type(jar)]
   ),
   run_jar(JAR_File, [file(ToFile)]).
-
-
-rdf_convert(FromDir, ToDir, ap(status(succeed),files(ToFiles))):-
-  directory_files([], FromDir, FromFiles1),
-  findall(
-    ToFile,
-    (
-      member(FromFile, FromFiles1),
-      file_mime(FromFile, MIME),
-      rdf_mime(MIME),
-      setup_call_cleanup(
-        rdf_new_graph(TmpG),
-        (
-          relative_file_name(FromFile, FromDir, RelativeFile),
-          rdf_load2(FromFile, [graph(TmpG),mime(MIME)]),
-          directory_file_path(ToDir, RelativeFile, ToFile),
-          create_file(ToFile),
-          rdf_save2(ToFile, [format(turtle),graph(TmpG)])
-        ),
-        rdf_unload_graph(TmpG)
-      )
-    ),
-    ToFiles
-  ).
 
