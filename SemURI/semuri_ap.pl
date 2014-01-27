@@ -89,7 +89,7 @@ semuri_ap(Site, Resource):-
   ap(
     Name,
     [
-      ap_stage([], download_to_dir(URL)),
+      ap_stage([], download_to_directory(URL)),
       ap_stage([from(input,_,_)], extract_archives),
       ap_stage([], mime_dir),
       ap_stage([], rdf_convert),
@@ -117,15 +117,6 @@ steven(ToDir, FromFile):-
   run_jar(JAR_File, [file(ToFile)]).
 
 
-mime_dir(FromDir, ToDir, ap(status(succeed),mimes(MIMEs))):-
-  directory_files([], FromDir, FromFiles),
-  maplist(file_mime, FromFiles, MIMEs),
-  forall(
-    member(FromFile, FromFiles),
-    copy_file(FromFile, ToDir)
-  ).
-
-
 rdf_convert(FromDir, ToDir, ap(status(succeed),files(ToFiles))):-
   directory_files([], FromDir, FromFiles1),
   findall(
@@ -148,17 +139,4 @@ rdf_convert(FromDir, ToDir, ap(status(succeed),files(ToFiles))):-
     ),
     ToFiles
   ).
-
-
-download_to_dir(URL, ToDir, ap(status(succeed),file(File3))):-
-  url_to_file(URL, File1),
-  directory_file_path(_, File2, File1),
-  file_name_extensions(Base, Extensions, File2),
-  create_file(ToDir, Base, Extensions, File3),
-  download_to_file(URL, File3),
-  size_file(File3, Size),
-  % Expressed in megabytes.
-  TooBig is 1024 * 1024 * 100,
-  (Size > TooBig -> permission_error(open,'BIG-file',File3) ; true).
-
 

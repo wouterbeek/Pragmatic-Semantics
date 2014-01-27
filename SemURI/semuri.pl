@@ -55,19 +55,78 @@ semuri(_Request):-
 
 % AP TERMS %
 
+ap_term(ap(status(Status),Message)) --> !,
+  {atomic_list_concat([ap,Status], '_', Class)},
+  html(div(class=Class, \ap_message(Message))).
+ap_term(PL_Term) -->
+  html_pl_term(PL_Term).
+
+
+ap_message(download(File)) --> !,
+  html(
+    div(class=download, [
+      'downloaded',
+      \file(File)
+    ])
+  ).
+ap_message(extract_archive(OnFiles)) --> !,
+  html(
+    div(class=extract_archive, [
+      'extracted archive',
+      \on_files(OnFiles)
+    ])
+  ).
+ap_message(mime(OfFiles)) --> !,
+  html(
+    div(class=mime, [
+      'MIME',
+      \of_files(OfFiles)
+    ])
+  ).
 ap_message(Message) -->
   html(span(class=ap_message, html_pl_term(Message))).
 
-ap_status(Status) -->
-  html(span(class=ap_status, Status)).
 
-ap_term(ap(status(Status),Message)) --> !,
+file(File) -->
+  html(span(class=file, File)).
+
+nvpair(Property,Value) -->
+  html([
+    span(class=property, Property),
+    '=',
+    span(class=value, Value)
+  ]).
+
+of_file(of_file(File,nvpair(Property,Value))) -->
   html(
-    div(class=ap, [
-      \ap_status(Status),
-      \ap_message(Message)
+    div(class=of_file, [
+      \file(File),
+      ':',
+      \nvpair(Property,Value)
     ])
   ).
-ap_term(PL_Term) -->
-  html_pl_term(PL_Term).
+
+of_files([]) --> !, [].
+of_files([H|T]) -->
+  of_file(H),
+  of_files(T).
+
+on_file(on_file(File,Operation)) -->
+  html(
+    div(class=on_file, [
+      \operation(Operation),
+      '@',
+      \file(File)
+    ])
+  ).
+
+on_files([]) --> !, [].
+on_files([H|T]) -->
+  html([
+    \on_file(H),
+    \on_files(T)
+  ]).
+
+operation(Operation) -->
+  html(span(class=operation, Operation)).
 
