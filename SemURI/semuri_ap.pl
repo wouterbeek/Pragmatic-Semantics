@@ -103,21 +103,27 @@ semuri_ap(Site, Resource):-
 
 steven(FromDir, ToDir, ap(status(succeed),steven)):-
   directory_files([file_types([turtle])], FromDir, FromFiles),
-  FromFiles = [FromFile|_],
-  maplist(steven(ToDir), [FromFile]).
+  (
+    FromFiles == []
+  ->
+    existence_error('RDF file', 'No RDF files')
+  ;
+    FromFiles = [FromFile|_],
+    maplist(steven(ToDir), [FromFile])
+  ).
 
 steven(ToDir, FromFile):-
   % The argument to the JAR.
   file_alternative(FromFile, ToDir, triples, dat, ToFile),
   copy_file(FromFile, ToFile),
-  
+
   % The JAR.
   absolute_file_name(
     semuri('SemanticURIs-0.0.1-SNAPSHOT-jar-with-dependencies'),
     JAR_File,
     [access(read),file_type(jar)]
   ),
-  
+
   % @tbd The JAR currently only accepts a directory that contains a file
   % called `triples.dat`.
   % The directory is not allowed to have a trailing slash.
