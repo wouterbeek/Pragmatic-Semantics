@@ -32,7 +32,9 @@ Automated processes for semantic URIs.
 :- use_module(os(run_ext)).
 :- use_module(rdf(rdf_graph_name)).
 :- use_module(rdf(rdf_lit_read)).
+:- use_module(rdf(rdf_meta)).
 :- use_module(rdf(rdf_serial)).
+:- use_module(rdf(rdf_stat)).
 
 
 
@@ -93,12 +95,46 @@ semuri_ap(Site, Resource):-
       ap_stage([], extract_archives),
       ap_stage([], mime_dir),
       ap_stage([], rdf_convert_directory),
+      ap_stage([], void_statistics),
       ap_stage([], steven)
     ],
     T
   ),
 
   assert(semuri:row([X1,X2,OrganizationName,UserName,TagName|T])).
+
+
+void_statistics(FromDir, ToDir, ap(status(succeed),properties(OfFiles))):-
+  directory_files([file_types([turtle])], FromDir, FromFiles),
+  findall(
+    of_file(ToFile,NVPairs),
+    (
+      member(FromFile, FromFiles),
+      file_alternative(FromFile, ToDir, _, _, ToFile),
+      rdf_setup_call_cleanup(
+        'application/x-turtle',
+        FromFile,
+        void_stats(NVPairs),
+        'application/x-turtle',
+        ToFile
+      )
+    ),
+    OfFiles
+  ).
+
+void_stats(NVPairs, Graph):-
+  NVPairs = [
+    nvpair(classes,integer(NC)),
+    nvpair(subjects,integer(NS)),
+    nvpair(properties,integer(NP)),
+    nvpair(objects,integer(NO)),
+    nvpair(triples,integer(NT))
+  ],
+  count_classes(Graph, NC),
+  count_objects(_, _, Graph, NO),
+  count_subjects(_, _, Graph, NS),
+  count_properties(_, _, Graph, NP),
+  rdf_statistics(triples_by_graph(Graph, NT)).
 
 
 steven(FromDir, ToDir, ap(status(succeed),steven)):-

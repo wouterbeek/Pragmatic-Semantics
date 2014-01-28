@@ -38,6 +38,7 @@ semuri(_Request):-
     'Arch',
     'MIME',
     'Triples',
+    'VoID',
     'Steven'
   ],
   reply_html_page(
