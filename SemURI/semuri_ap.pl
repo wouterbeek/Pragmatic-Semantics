@@ -101,8 +101,7 @@ semuri_ap(Site, Resource):-
   assert(semuri:row([X1,X2,OrganizationName,UserName,TagName|T])).
 
 
-steven(FromDir, _, ap(status(succeed),steven)):-
-gtrace,
+steven(FromDir, ToDir, ap(status(succeed),steven)):-
   directory_files([file_types([turtle])], FromDir, FromFiles),
   FromFiles = [FromFile|_],
   maplist(steven(ToDir), [FromFile]).
