@@ -24,17 +24,25 @@ Automated processes for semantic URIs.
 :- use_module(generics(uri_ext)).
 :- use_module(library(apply)).
 :- use_module(library(filesex)).
+:- use_module(library(http/json)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(os(dir_ext)).
 :- use_module(os(file_ext)).
 :- use_module(os(file_mime)).
 :- use_module(os(run_ext)).
+:- use_module(rdf(rdf_datatype)).
 :- use_module(rdf(rdf_graph_name)).
+:- use_module(rdf(rdf_lit_build)).
 :- use_module(rdf(rdf_lit_read)).
 :- use_module(rdf(rdf_meta)).
 :- use_module(rdf(rdf_serial)).
 :- use_module(rdf(rdf_stat)).
+:- use_module(xml(xml_namespace)).
+
+:- xml_register_namespace(su, 'http://www.wouterbeek.com/semuri.owl#').
+:- xml_register_namespace(void, 'http://rdfs.org/ns/void#').
+:- xml_register_namespace(xsd, 'http://www.w3.org/2001/XMLSchema#').
 
 
 
@@ -95,9 +103,9 @@ semuri_ap(Site, Resource):-
       ap_stage([], extract_archives),
       ap_stage([], mime_dir),
       ap_stage([], rdf_convert_directory),
-      ap_stage([], void_statistics),
+      ap_stage([args([Resource,Site])], void_statistics),
       ap_stage([], preprocess),
-      ap_stage([], rdfbits)
+      ap_stage([args([Resource,Site])], compress)
     ],
     T
   ),
@@ -105,7 +113,13 @@ semuri_ap(Site, Resource):-
   assert(semuri:row([X1,X2,OrganizationName,UserName,TagName|T])).
 
 
-void_statistics(FromDir, ToDir, ap(status(succeed),properties(OfFiles))):-
+void_statistics(
+  FromDir,
+  ToDir,
+  ap(status(succeed),properties(OfFiles)),
+  Resource,
+  Site
+):-
   directory_files([file_types([turtle])], FromDir, FromFiles),
   findall(
     of_file(ToFile,NVPairs),
@@ -115,7 +129,7 @@ void_statistics(FromDir, ToDir, ap(status(succeed),properties(OfFiles))):-
       rdf_setup_call_cleanup(
         'application/x-turtle',
         FromFile,
-        void_stats(NVPairs),
+        void_stats(NVPairs, Resource, Site),
         'application/x-turtle',
         ToFile
       )
@@ -123,7 +137,7 @@ void_statistics(FromDir, ToDir, ap(status(succeed),properties(OfFiles))):-
     OfFiles
   ).
 
-void_stats(NVPairs, Graph):-
+void_stats(NVPairs, Resource, Site, Graph):-
   NVPairs = [
     nvpair(classes,integer(NC)),
     nvpair(subjects,integer(NS)),
@@ -132,25 +146,48 @@ void_stats(NVPairs, Graph):-
     nvpair(triples,integer(NT))
   ],
   count_classes(Graph, NC),
+  rdf_assert_datatype(Resource, void:classes, xsd:integer, NC, Site),
   count_objects(_, _, Graph, NO),
+  rdf_assert_datatype(Resource, void:distinctObjects, xsd:integer, NO, Site),
   count_subjects(_, _, Graph, NS),
+  rdf_assert_datatype(Resource, void:distinctSubject, xsd:integer, NS, Site),
   count_properties(_, _, Graph, NP),
-  rdf_statistics(triples_by_graph(Graph, NT)).
+  rdf_assert_datatype(Resource, void:properties, xsd:integer, NP, Site),
+  rdf_statistics(triples_by_graph(Graph, NT)),
+  rdf_assert_datatype(Resource, void:triples, xsd:integer, NT, Site).
 
 
 preprocess(FromDir, ToDir, ap(status(succeed),preprocess)):-
-  absolute_file_name(
-    semuri(preprocess),
-    PreprocessJAR,
-    [access(read),file_type(jar)]
-  ),
-  run_jar(PreprocessJAR, [file(FromDir),file(ToDir)]).
+  absolute_file_name(semuri('RDFmodel'), JAR, [access(read),file_type(jar)]),
+  run_jar(JAR, [preprocess,file(FromDir),file(ToDir)]).
 
-rdfbits(FromDir, _, ap(status(succeed),rdfbits)):-
+
+compress(
+  FromDir,
+  _,
+  ap(status(succeed),properties(NVPairs)),
+  Resource,
+  Site
+):-
+  absolute_file_name(semuri('RDFmodel'), JAR, [access(read),file_type(jar)]),
+  run_jar(JAR, [compress,file(FromDir)]),
   absolute_file_name(
-    semuri(rdfbits),
-    RDFbitsJAR,
-    [access(read),file_type(jar)]
+    stats,
+    StatisticsFile,
+    [extensions([json]),relative_to(FromDir)]
   ),
-  run_jar(RDFbitsJAR, [file(FromDir)]).
+  setup_call_cleanup(
+    open(StatisticsFile, read, Stream),
+    json_read_dict(Stream, Dict),
+    close(Stream)
+  ),
+  findall(
+    nvpair(Key,Value),
+    (
+      get_dict(Key, Dict, Value),
+      rdf_global_id(su:Key, P),
+      rdf_assert_literal(Resource, P, Value, Site)
+    ),
+    NVPairs
+  ).
 
