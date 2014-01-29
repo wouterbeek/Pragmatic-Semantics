@@ -96,7 +96,8 @@ semuri_ap(Site, Resource):-
       ap_stage([], mime_dir),
       ap_stage([], rdf_convert_directory),
       ap_stage([], void_statistics),
-      ap_stage([], steven)
+      ap_stage([], preprocess),
+      ap_stage([], rdfbits)
     ],
     T
   ),
@@ -137,31 +138,19 @@ void_stats(NVPairs, Graph):-
   rdf_statistics(triples_by_graph(Graph, NT)).
 
 
-steven(FromDir, ToDir, ap(status(succeed),steven)):-
-  directory_files([file_types([turtle])], FromDir, FromFiles),
-  (
-    FromFiles == []
-  ->
-    existence_error('RDF file', 'No RDF files')
-  ;
-    FromFiles = [FromFile|_],
-    maplist(steven(ToDir), [FromFile])
-  ).
-
-steven(ToDir, FromFile):-
-  % The argument to the JAR.
-  file_alternative(FromFile, ToDir, triples, dat, ToFile),
-  copy_file(FromFile, ToFile),
-
-  % The JAR.
+preprocess(FromDir, ToDir, ap(status(succeed),preprocess)):-
   absolute_file_name(
-    semuri('SemanticURIs-0.0.1-SNAPSHOT-jar-with-dependencies'),
-    JAR_File,
+    semuri(preprocess),
+    PreprocessJAR,
     [access(read),file_type(jar)]
   ),
+  run_jar(PreprocessJAR, [file(FromDir),file(ToDir)]).
 
-  % @tbd The JAR currently only accepts a directory that contains a file
-  % called `triples.dat`.
-  % The directory is not allowed to have a trailing slash.
-  run_jar(JAR_File, [file(ToDir)]).
+rdfbits(FromDir, _, ap(status(succeed),rdfbits)):-
+  absolute_file_name(
+    semuri(rdfbits),
+    RDFbitsJAR,
+    [access(read),file_type(jar)]
+  ),
+  run_jar(RDFbitsJAR, [file(FromDir)]).
 
