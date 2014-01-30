@@ -36,6 +36,7 @@ Automated processes for semantic URIs.
 :- use_module(rdf(rdf_lit_build)).
 :- use_module(rdf(rdf_lit_read)).
 :- use_module(rdf(rdf_meta)).
+:- use_module(rdf(rdf_randomize_iris)).
 :- use_module(rdf(rdf_serial)).
 :- use_module(rdf(rdf_stat)).
 :- use_module(xml(xml_namespace)).
@@ -105,18 +106,15 @@ semuri_ap(Site, Resource):-
       ap_stage([], rdf_convert_directory),
       ap_stage([args([Resource,Site])], void_statistics),
       ap_stage([], preprocess),
+      ap_stage([args([Resource,Site])], compress),
+      ap_stage([], randomize_iris),
+      ap_stage([], preprocess),
       ap_stage([args([Resource,Site])], compress)
-      %ap_stage([], compress_random_iris)
     ],
     T
   ),
 
   assert(semuri:row([X1,X2,OrganizationName,UserName,TagName|T])).
-
-
-%compress_random_iris(FromDir, ToDir, ap(status(succeed),randomize_iris)):-
-%  directory_files([file_types([turtle])], FromDir, FromFiles),
-%  maplist(compress_random_iris, FromFiles),
 
 
 void_statistics(
@@ -165,19 +163,39 @@ void_stats(NVPairs, Resource, Site, Graph):-
 
 preprocess(FromDir, ToDir, ap(status(succeed),preprocess)):-
   absolute_file_name(semuri('RDFmodel'), JAR, [access(read),file_type(jar)]),
-  run_jar(JAR, [preprocess,file(FromDir),file(ToDir)]).
+  run_jar(JAR, [preprocess,file(FromDir),file(ToDir)]),
+  
+  directory_files([file_types([turtle])], FromDir, FromFiles),
+  maplist(lala(ToDir), FromFiles).
+
+lala(ToDir, FromFile):-
+  file_alternative(FromFile, ToDir, _, _, ToFile),
+  copy_file(FromFile, ToFile).
+
+
+randomize_iris(FromDir, ToDir, ap(status(succeed),randomize_iris)):-
+  directory_files([file_types([turtle])], FromDir, FromFiles),
+  FromFiles = [FromFile|_],
+  file_alternative(FromFile, ToDir, _, _, ToFile),
+  rdf_setup_call_cleanup(
+    [],
+    FromFile,
+    rdf_randomize_iris,
+    [format(turtle)],
+    ToFile
+  ).
 
 
 compress(
   FromDir,
-  _,
-  ap(status(succeed),properties([of_file(File,NVPairs)])),
+  ToDir,
+  ap(status(succeed),properties([of_file(FromFile,NVPairs)])),
   Resource,
   Site
 ):-
   absolute_file_name(
     triples,
-    File,
+    FromFile,
     [access(read),extensions([dat]),relative_to(FromDir)]
   ),
   absolute_file_name(semuri('RDFmodel'), JAR, [access(read),file_type(jar)]),
@@ -188,7 +206,10 @@ compress(
     [stats,compression],
     [NVPairs1,NVPairs2]
   ),
-  append(NVPairs1, NVPairs2, NVPairs).
+  append(NVPairs1, NVPairs2, NVPairs),
+  
+  file_alternative(FromFile, ToDir, _, _, ToFile),
+  copy_file(FromFile, ToFile).
 
 file_to_nvpairs(FromDir, Resource, Site, Base, NVPairs):-
   absolute_file_name(
