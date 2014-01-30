@@ -61,7 +61,7 @@ scrape_ckan_site(Site, Resources):-
       [access(read),file_errors(fail),file_type(turtle)]
     )
   ->
-    rdf_load2(File1, [format(turtle),graph(Site)])
+    rdf_load([format(turtle)], Site, File1)
   ;
     atomic_list_concat([Site,ckan_to_rdf], '_', Pred),
     call(Pred, [graph(Site)]),
@@ -70,11 +70,9 @@ scrape_ckan_site(Site, Resources):-
       File2,
       [access(write),file_type(turtle)]
     ),
-    rdf_save2(File2, [format(turtle),graph(Site)])
+    rdf_save([format(turtle)], Site, File2)
   ),
-  
-/*
-  % @tbd
+
   % Clear files from previous run.
   (
     absolute_file_name(
@@ -83,15 +81,11 @@ scrape_ckan_site(Site, Resources):-
       [access(read),file_errors(fail),file_type(directory)]
     )
   ->
-    safe_delete_directory_contents(
-      [include_directories(true),recursive(true)],
-      SiteDir
-    )
+    delete_directory([include_self(false),safe(false)], SiteDir)
   ;
     true
   ),
-*/
-  
+
   % Collect datasets.
   % Note that sorting by size makes no sense,
   % since the semantics of the values of `ckan:size` is unknown.

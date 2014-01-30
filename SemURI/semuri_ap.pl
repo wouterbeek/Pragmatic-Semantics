@@ -106,11 +106,17 @@ semuri_ap(Site, Resource):-
       ap_stage([args([Resource,Site])], void_statistics),
       ap_stage([], preprocess),
       ap_stage([args([Resource,Site])], compress)
+      %ap_stage([], compress_random_iris)
     ],
     T
   ),
 
   assert(semuri:row([X1,X2,OrganizationName,UserName,TagName|T])).
+
+
+%compress_random_iris(FromDir, ToDir, ap(status(succeed),randomize_iris)):-
+%  directory_files([file_types([turtle])], FromDir, FromFiles),
+%  maplist(compress_random_iris, FromFiles),
 
 
 void_statistics(
@@ -127,10 +133,10 @@ void_statistics(
       member(FromFile, FromFiles),
       file_alternative(FromFile, ToDir, _, _, ToFile),
       rdf_setup_call_cleanup(
-        'application/x-turtle',
+        [mime('application/x-turtle')],
         FromFile,
         void_stats(NVPairs, Resource, Site),
-        'application/x-turtle',
+        [mime('application/x-turtle')],
         ToFile
       )
     ),
@@ -139,11 +145,11 @@ void_statistics(
 
 void_stats(NVPairs, Resource, Site, Graph):-
   NVPairs = [
-    nvpair(classes,integer(NC)),
-    nvpair(subjects,integer(NS)),
-    nvpair(properties,integer(NP)),
-    nvpair(objects,integer(NO)),
-    nvpair(triples,integer(NT))
+    nvpair(classes,NC),
+    nvpair(subjects,NS),
+    nvpair(properties,NP),
+    nvpair(objects,NO),
+    nvpair(triples,NT)
   ],
   count_classes(Graph, NC),
   rdf_assert_datatype(Resource, void:classes, xsd:integer, NC, Site),
@@ -165,14 +171,28 @@ preprocess(FromDir, ToDir, ap(status(succeed),preprocess)):-
 compress(
   FromDir,
   _,
-  ap(status(succeed),properties(NVPairs)),
+  ap(status(succeed),properties([of_file(File,NVPairs)])),
   Resource,
   Site
 ):-
+  absolute_file_name(
+    triples,
+    File,
+    [access(read),extensions([dat]),relative_to(FromDir)]
+  ),
   absolute_file_name(semuri('RDFmodel'), JAR, [access(read),file_type(jar)]),
   run_jar(JAR, [compress,file(FromDir)]),
+  
+  maplist(
+    file_to_nvpairs(FromDir, Resource, Site),
+    [stats,compression],
+    [NVPairs1,NVPairs2]
+  ),
+  append(NVPairs1, NVPairs2, NVPairs).
+
+file_to_nvpairs(FromDir, Resource, Site, Base, NVPairs):-
   absolute_file_name(
-    stats,
+    Base,
     StatisticsFile,
     [extensions([json]),relative_to(FromDir)]
   ),
