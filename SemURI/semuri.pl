@@ -39,8 +39,8 @@ semuri(_Request):-
     'MIME',
     'Triples',
     'VoID',
-    'Preprocess',
-    'RDFbits'
+    'Compress',
+    'CompressRnd'
   ],
   reply_html_page(
     app_style,

@@ -20,6 +20,7 @@ Automated processes for semantic URIs.
 
 :- use_module(ap(ap)).
 :- use_module(generics(archive_ext)).
+:- use_module(generics(codes_ext)).
 :- use_module(generics(meta_ext)).
 :- use_module(generics(uri_ext)).
 :- use_module(library(apply)).
@@ -36,9 +37,9 @@ Automated processes for semantic URIs.
 :- use_module(rdf(rdf_lit_build)).
 :- use_module(rdf(rdf_lit_read)).
 :- use_module(rdf(rdf_meta)).
-:- use_module(rdf(rdf_randomize_iris)).
 :- use_module(rdf(rdf_serial)).
 :- use_module(rdf(rdf_stat)).
+:- use_module(void(void_stat)).
 :- use_module(xml(xml_namespace)).
 
 :- xml_register_namespace(su, 'http://www.wouterbeek.com/semuri.owl#').
@@ -47,12 +48,12 @@ Automated processes for semantic URIs.
 
 
 
-semuri_ap(Site, Resource):-
-  once(rdf_literal(Resource, ckan:url, URL, Site)),
-  once(rdf_literal(Resource, ckan:id, ResourceId, Site)),
-  once(rdf_literal(Resource, ckan:format, ResourceFormat, Site)),
+semuri_ap(Site1, Resource):-
+  once(rdf_literal(Resource, ckan:url, URL, Site1)),
+  once(rdf_literal(Resource, ckan:id, ResourceId, Site1)),
+  once(rdf_literal(Resource, ckan:format, ResourceFormat, Site1)),
   (
-    once(rdf_literal(Resource, ckan:resource_type, ResourceType, Site))
+    once(rdf_literal(Resource, ckan:resource_type, ResourceType, Site1))
   ->
     atomic_list_concat([ResourceId,ResourceFormat,ResourceType,URL], '\n', X1)
   ;
@@ -60,19 +61,19 @@ semuri_ap(Site, Resource):-
   ),
   debug(semuri, 'Starting:\n~w', [X1]),
 
-  once(rdf(Package, ckan:resources, Resource, Site)),
-  once(rdf_literal(Package, ckan:name, PackageName, Site)),
-  once(rdf_literal(Package, ckan:title, PackageTitle, Site)),
+  once(rdf(Package, ckan:resources, Resource, Site1)),
+  once(rdf_literal(Package, ckan:name, PackageName, Site1)),
+  once(rdf_literal(Package, ckan:title, PackageTitle, Site1)),
   atomic_list_concat([PackageName,PackageTitle], '\n', X2),
 
-  once(rdf(Package, ckan:organization, Organization, Site)),
-  once(rdf_literal(Organization, ckan:display_name, OrganizationName, Site)),
+  once(rdf(Package, ckan:organization, Organization, Site1)),
+  once(rdf_literal(Organization, ckan:display_name, OrganizationName, Site1)),
 
   setoff(
     UserName,
     (
-      rdf(Organization, ckan:users, User, Site),
-      rdf_literal(User, ckan:fullname, UserName, Site)
+      rdf(Organization, ckan:users, User, Site1),
+      rdf_literal(User, ckan:fullname, UserName, Site1)
     ),
     UserNames
   ),
@@ -81,8 +82,8 @@ semuri_ap(Site, Resource):-
   setoff(
     TagName,
     (
-      rdf(Package, ckan:tags, Tag, Site),
-      rdf_literal(Tag, ckan:name, TagName, Site)
+      rdf(Package, ckan:tags, Tag, Site1),
+      rdf_literal(Tag, ckan:name, TagName, Site1)
     ),
     TagNames
   ),
@@ -92,11 +93,12 @@ semuri_ap(Site, Resource):-
   flag(datasets, Id, Id + 1),
   format(user_output, '~w\n', [Id]),
 
-  atomic_list_concat([Id,PackageName,ResourceId], '-', Name),
-  Spec =.. [Site,Name],
+  atomic_list_concat([Id,PackageName], '-', Name),
+  Spec =.. [Site1,Name],
   create_nested_directory(ckan_data(Spec)),
   db_add_novel(user:file_search_path(Name, Spec)),
-
+  
+  atomic_list_concat([Site1,semuri], '_', Site2),
   ap(
     Name,
     [
@@ -104,12 +106,9 @@ semuri_ap(Site, Resource):-
       ap_stage([], extract_archives),
       ap_stage([], mime_dir),
       ap_stage([], rdf_convert_directory),
-      ap_stage([args([Resource,Site])], void_statistics),
-      ap_stage([], preprocess),
-      ap_stage([args([Resource,Site])], compress),
-      ap_stage([], randomize_iris),
-      ap_stage([], preprocess),
-      ap_stage([args([Resource,Site])], compress)
+      ap_stage([args([Resource,Site2])], void_statistics),
+      ap_stage([args([Resource,Site2])], compress),
+      ap_stage([args([Resource,Site2])], randomize_iris)
     ],
     T
   ),
@@ -117,101 +116,107 @@ semuri_ap(Site, Resource):-
   assert(semuri:row([X1,X2,OrganizationName,UserName,TagName|T])).
 
 
-void_statistics(
+randomize_iris(
   FromDir,
   ToDir,
-  ap(status(succeed),properties(OfFiles)),
+  ap(status(succeed),properties([of_file(dummy,NVPairs)])),
   Resource,
   Site
 ):-
-  directory_files([file_types([turtle])], FromDir, FromFiles),
-  findall(
-    of_file(ToFile,NVPairs),
-    (
-      member(FromFile, FromFiles),
-      file_alternative(FromFile, ToDir, _, _, ToFile),
-      rdf_setup_call_cleanup(
-        [mime('application/x-turtle')],
-        FromFile,
-        void_stats(NVPairs, Resource, Site),
-        [mime('application/x-turtle')],
-        ToFile
-      )
-    ),
-    OfFiles
-  ).
-
-void_stats(NVPairs, Resource, Site, Graph):-
-  NVPairs = [
-    nvpair(classes,NC),
-    nvpair(subjects,NS),
-    nvpair(properties,NP),
-    nvpair(objects,NO),
-    nvpair(triples,NT)
-  ],
-  count_classes(Graph, NC),
-  rdf_assert_datatype(Resource, void:classes, xsd:integer, NC, Site),
-  count_objects(_, _, Graph, NO),
-  rdf_assert_datatype(Resource, void:distinctObjects, xsd:integer, NO, Site),
-  count_subjects(_, _, Graph, NS),
-  rdf_assert_datatype(Resource, void:distinctSubject, xsd:integer, NS, Site),
-  count_properties(_, _, Graph, NP),
-  rdf_assert_datatype(Resource, void:properties, xsd:integer, NP, Site),
-  rdf_statistics(triples_by_graph(Graph, NT)),
-  rdf_assert_datatype(Resource, void:triples, xsd:integer, NT, Site).
-
-
-preprocess(FromDir, ToDir, ap(status(succeed),preprocess)):-
-  absolute_file_name(semuri('RDFmodel'), JAR, [access(read),file_type(jar)]),
-  run_jar(JAR, [preprocess,file(FromDir),file(ToDir)]),
+  absolute_file_name(
+    lits,
+    FromFileLiterals,
+    [access(read),extensions([txt]),relative_to(FromDir)]
+  ),
+  absolute_file_name(
+    triples,
+    FromFileTriples,
+    [access(read),extensions([dat]),relative_to(FromDir)]
+  ),
+  maplist(copy_file(ToDir, _, _), [FromFileLiterals,FromFileTriples], _),
   
-  directory_files([file_types([turtle])], FromDir, FromFiles),
-  maplist(lala(ToDir), FromFiles).
+  absolute_file_name(
+    uris,
+    FromFileURIs,
+    [access(read),extensions([txt]),relative_to(FromDir)]
+  ),
+  file_lines(FromFileURIs, Lines),
+  file_alternative(FromFileURIs, ToDir, _, _, ToFileURIs),
+  setup_call_cleanup(
+    open(ToFileURIs, write, Stream, []),
+    forall(
+      between(1, Lines, _),
+      put_random_iri(Stream)
+    ),
+    close(Stream)
+  ),
 
-lala(ToDir, FromFile):-
-  file_alternative(FromFile, ToDir, _, _, ToFile),
-  copy_file(FromFile, ToFile).
+  absolute_file_name(semuri('RDFmodel'), JAR, [access(read),file_type(jar)]),
+  run_jar(JAR, [compress,file(ToDir)]),
+
+  maplist(
+    file_to_nvpairs(ToDir, Resource, rnd, Site),
+    [stats,compression],
+    [NVPairs1,NVPairs2]
+  ),
+  append(NVPairs1, NVPairs2, NVPairs).
 
 
-randomize_iris(FromDir, ToDir, ap(status(succeed),randomize_iris)):-
-  directory_files([file_types([turtle])], FromDir, FromFiles),
-  FromFiles = [FromFile|_],
-  file_alternative(FromFile, ToDir, _, _, ToFile),
-  rdf_setup_call_cleanup(
-    [],
-    FromFile,
-    rdf_randomize_iris,
-    [format(turtle)],
-    ToFile
-  ).
+put_random_iri(Stream):-
+  put_codes(Stream, `http://`),
+  forall(
+    between(1, 15, _),
+    (
+      random_between(97, 122, Code),
+      put_code(Stream, Code)
+    )
+  ),
+  put_code(Stream, 10). %LF
 
 
 compress(
   FromDir,
   ToDir,
-  ap(status(succeed),properties([of_file(FromFile,NVPairs)])),
+  ap(status(succeed),properties([of_file(dummy,NVPairs)])),
   Resource,
   Site
 ):-
-  absolute_file_name(
-    triples,
-    FromFile,
-    [access(read),extensions([dat]),relative_to(FromDir)]
+  setup_call_cleanup(
+    create_nested_directory(project(tmp), TmpDir),
+    (
+      absolute_file_name(
+        semuri('RDFmodel'),
+        JAR,
+        [access(read),file_type(jar)]
+      ),
+      run_jar(JAR, [preprocess,file(FromDir),file(TmpDir)])
+    ),
+    (
+      directory_files(
+        [include_directories(false),include_self(false)],
+        TmpDir,
+        TmpFiles
+      ),
+      maplist(copy_file(FromDir, _, _), TmpFiles, _)
+    )
   ),
+
   absolute_file_name(semuri('RDFmodel'), JAR, [access(read),file_type(jar)]),
   run_jar(JAR, [compress,file(FromDir)]),
-  
+
   maplist(
-    file_to_nvpairs(FromDir, Resource, Site),
+    file_to_nvpairs(FromDir, Resource, _, Site),
     [stats,compression],
     [NVPairs1,NVPairs2]
   ),
   append(NVPairs1, NVPairs2, NVPairs),
-  
-  file_alternative(FromFile, ToDir, _, _, ToFile),
-  copy_file(FromFile, ToFile).
 
-file_to_nvpairs(FromDir, Resource, Site, Base, NVPairs):-
+  % Copy the Turtle file to the next AP stage.
+  directory_files([], FromDir, FromFiles),
+  maplist(copy_file(ToDir, _, _), FromFiles, _).
+
+
+file_to_nvpairs(FromDir, Resource, KeyPrefix, Site, Base, NVPairs):-
   absolute_file_name(
     Base,
     StatisticsFile,
@@ -223,11 +228,25 @@ file_to_nvpairs(FromDir, Resource, Site, Base, NVPairs):-
     close(Stream)
   ),
   findall(
-    nvpair(Key,Value),
+    nvpair(Key1,Value),
     (
-      get_dict(Key, Dict, Value),
-      rdf_global_id(su:Key, P),
-      rdf_assert_literal(Resource, P, Value, Site)
+      get_dict(Key1, Dict, Value),
+      (
+        nonvar(Resource),
+        nonvar(Site)
+      ->
+        (
+          var(KeyPrefix)
+        ->
+          Key2 = Key1
+        ;
+          atomic_list_concat([KeyPrefix,Key1], '_', Key2)
+        ),
+        rdf_global_id(su:Key2, P),
+        rdf_assert_datatype(Resource, P, xsd:float, Value, Site)
+      ;
+        true
+      )
     ),
     NVPairs
   ).
