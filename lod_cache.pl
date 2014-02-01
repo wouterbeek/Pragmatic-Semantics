@@ -4,11 +4,18 @@
 
 :- use_module('LOD'('LOD_query')).
 :- use_module('LOD'(cache_it)).
-:- cache_it(
-  'LOD-test',
-  'LOD_cache',
-  'http://dbpedia.org/resource/Monkey',
-  _,
-  _
-).
+
+go:-
+  thread_create(
+    cache_it1(
+      'LOD-test',
+      'LOD_cache',
+      _,
+      'http://dbpedia.org/resource/Banana'
+    ),
+    _,
+    []
+  ).
+
+:- go.
 
