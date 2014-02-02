@@ -25,3 +25,6 @@
 [submodule "humR"]
 	path = humR
 	url = https://github.com/wouterbeek/humR.git
+[submodule "SemanticURIs"]
+	path = SemanticURIs
+	url = http://github.com/wouterbeek/SemanticURIs.git

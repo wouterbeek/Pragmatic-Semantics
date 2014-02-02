@@ -2,6 +2,6 @@
 
 :- [debug].
 
-:- use_module(semuri(semuri_script)).
-:- semuri_script:run_semuri_script.
+:- use_module(semuri(semuri_ap)).
+:- semuri_ap:semuri_ap.
 
