@@ -28,3 +28,6 @@
 [submodule "SemanticURIs"]
 	path = SemanticURIs
 	url = http://github.com/wouterbeek/SemanticURIs.git
+[submodule "DataHives"]
+	path = DataHives
+	url = https://github.com/wouterbeek/DataHives.git

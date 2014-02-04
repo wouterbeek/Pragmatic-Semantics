@@ -5,3 +5,5 @@
 
 :- [run].
 
+:- debug(dh_network).
+

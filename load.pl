@@ -15,13 +15,14 @@ load_prasem:-
   
   % Load the various projects.
   %load_project('Beekeeper'),
+  load_project('DataHives'),
   %load_project('EnergyLabels'),
   %load_project(humR),
   %load_project('IOTW'),
   %load_project('SacknerArchive'),
-  load_project('SemanticURIs'),
+  %load_project('SemanticURIs'),
   %load_project('STCN'),
-  load_project('WebQR'),
+  %load_project('WebQR'),
 
   % Enumerate the external program support
   % for the currently loaded modules.
