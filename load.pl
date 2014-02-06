@@ -1,6 +1,8 @@
 % The load file for the PraSem project.
 
+:- use_module(generics(meta_ext)).
 :- use_module(library(apply)).
+:- use_module(library(lists)).
 :- use_module(os(run_ext)).
 
 :- multifile(user:project_name/1).
@@ -16,7 +18,22 @@ load_prasem:-
   
   current_prolog_flag(argv, Argv),
   include(prasem_subproject, Argv, Subprojects),
-  maplist(load_project, Subprojects),
+  (
+    Subprojects == []
+  ->
+    setoff(
+      Name,
+      prasem_subproject(Name),
+      Names
+    ),
+    forall(
+      nth1(I, Names, Name),
+      format(user_output, '~d\t~w\n', [I,Name])
+    ),
+    halt
+  ;
+    maplist(load_project, Subprojects)
+  ),
   
   % Load the various projects.
 
