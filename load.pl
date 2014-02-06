@@ -1,5 +1,6 @@
 % The load file for the PraSem project.
 
+:- use_module(library(apply)).
 :- use_module(os(run_ext)).
 
 :- multifile(user:project_name/1).
@@ -13,16 +14,11 @@ load_prasem:-
   % PraSem
   use_module(prasem(prasem)),
   
+  current_prolog_flag(argv, Argv),
+  include(prasem_subproject, Argv, Subprojects),
+  maplist(load_project, Subprojects),
+  
   % Load the various projects.
-  %load_project('Beekeeper'),
-  load_project('DataHives'),
-  %load_project('EnergyLabels'),
-  %load_project(humR),
-  %load_project('IOTW'),
-  %load_project('SacknerArchive'),
-  %load_project('SemanticURIs'),
-  %load_project('STCN'),
-  %load_project('WebQR'),
 
   % Enumerate the external program support
   % for the currently loaded modules.
@@ -40,4 +36,14 @@ load_project(Project):-
     [access(read),file_type(prolog),relative_to(Dir)]
   ),
   ensure_loaded(File).
+
+prasem_subproject('Beekeeper').
+prasem_subproject('DataHives').
+prasem_subproject('EnergyLabels').
+prasem_subproject(humR).
+prasem_subproject('IOTW').
+prasem_subproject('SacknerArchive').
+prasem_subproject('SemanticURIs').
+prasem_subproject('STCN').
+prasem_subproject('WebQR').
 
