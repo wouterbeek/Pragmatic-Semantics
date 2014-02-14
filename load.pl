@@ -59,8 +59,9 @@ prasem_subproject('DataHives').
 prasem_subproject('EnergyLabels').
 prasem_subproject(humR).
 prasem_subproject('IOTW').
-prasem_subproject('SacknerArchive').
+prasem_subproject('LODObs').
 prasem_subproject('SemanticURIs').
 prasem_subproject('STCN').
+prasem_subproject('SWAG').
 prasem_subproject('WebQR').
 

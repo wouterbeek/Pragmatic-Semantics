@@ -31,3 +31,6 @@
 [submodule "SWAG"]
 	path = SWAG
 	url = https://github.com/wouterbeek/SWAG.git
+[submodule "LODObs"]
+	path = LODObs
+	url = https://github.com/wouterbeek/LODObs.git

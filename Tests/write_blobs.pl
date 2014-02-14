@@ -10,3 +10,4 @@ test:-
   write_term(Stream, [blobs(portray)]),
   nl,
   halt.
+
