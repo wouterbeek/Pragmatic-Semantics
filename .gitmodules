@@ -1,36 +1,48 @@
 [submodule "EnergyLabels"]
 	path = EnergyLabels
 	url = https://github.com/wouterbeek/EnergyLabels.git
+	branch = master
 [submodule "Beekeeper"]
 	path = Beekeeper
 	url = https://github.com/wouterbeek/Beekeeper.git
+	branch = master
 [submodule "IOTW"]
 	path = IOTW
 	url = https://github.com/wouterbeek/IOTW.git
+	branch = master
 [submodule "PGC"]
 	path = PGC
 	url = https://github.com/wouterbeek/PGC.git
+	branch = master
 [submodule "swi-prolog-on-dotcloud"]
 	path = swi-prolog-on-dotcloud
 	url = https://github.com/mndrix/swi-prolog-on-dotcloud.git
+	branch = master
 [submodule "WebQR"]
 	path = WebQR
 	url = https://github.com/wouterbeek/WebQR.git
+	branch = master
 [submodule "STCN"]
 	path = STCN
 	url = https://github.com/wouterbeek/STCN.git
+	branch = master
 [submodule "humR"]
 	path = humR
 	url = https://github.com/wouterbeek/humR.git
+	branch = master
 [submodule "SemanticURIs"]
 	path = SemanticURIs
 	url = http://github.com/wouterbeek/SemanticURIs.git
+	branch = master
 [submodule "DataHives"]
 	path = DataHives
 	url = https://github.com/wouterbeek/DataHives.git
+	branch = master
 [submodule "SWAG"]
 	path = SWAG
 	url = https://github.com/wouterbeek/SWAG.git
+	branch = master
 [submodule "LODObs"]
 	path = LODObs
 	url = https://github.com/wouterbeek/LODObs.git
+	branch = master
