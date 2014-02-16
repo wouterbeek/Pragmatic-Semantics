@@ -28,7 +28,7 @@ load_prasem:-
     ),
     forall(
       nth1(I, Names, Name),
-      format(user_output, '~d\t~w\n', [I,Name])
+      format(user_output, '~:d\t~w\n', [I,Name])
     ),
     halt
   ;
