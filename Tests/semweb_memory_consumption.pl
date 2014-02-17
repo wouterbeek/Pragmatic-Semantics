@@ -1,60 +1,88 @@
+:- module(test, []).
+
 :- use_module(library(archive)).
 :- use_module(library(debug)).
 :- use_module(library(http/http_open)).
+:- use_module(library(http/http_ssl_plugin)).
+:- use_module(library(lists)).
+:- use_module(library(process)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/turtle)).
+:- use_module(library(uri)).
 
 :- debug(test).
 
 :- initialization(test).
 
-test:-
-  % Download the data file.
-  FileName1 = 'el_4.ttl.tar.gz',
-  (
-    absolute_file_name(FileName1, File1, [access(read),file_errors(fail)]), !
-  ;
-    absolute_file_name(FileName1, File1, [access(write)]),
-    setup_call_cleanup(
-      (
-        open(File1, write, Out, [type(binary)]),
-        http_open('http://www.wouterblog.com/el_4.ttl.tar.gz', In, [])
-      ),
-      copy_stream_data(In, Out),
-      (
-        close(In),
-        close(Out)
-      )
-    )
-  ),
-  
-  % Unpack archive.
-  file_directory_name(File1, Dir),
-  archive_extract(File1, Dir, []),
+url('https://dl.dropboxusercontent.com/s/ud3te781s7lidso/sparql.tar.gz?dl=1&token_hash=AAGp9b36MZiOgCV1NsZ9WpLx6CXeooF4H08Nrt1ewUnhnw').
 
-  % Load the data into Semweb.
-  FileName2 = 'el_4.ttl',
-  G = test,
-  absolute_file_name(FileName2, File2, [access(read)]),
+
+
+archive_found_locally(File):-
+  url(URL),
+  url_to_base(URL, Base),
+  absolute_file_name(
+    Base,
+    File,
+    [access(read),extensions(['tar.gz']),file_errors(fail)]
+  ).
+
+
+cert_verify(_, _, _, _, _).
+
+
+download_archive(File):-
+  url(URL),
+  url_to_base(URL, Base),
+  absolute_file_name(Base, File, [access(write),extensions(['tar.gz'])]),
   setup_call_cleanup(
-    (
-      number_of_triples('SETUP'),
-      rdf_load(File2, [format(turtle),graph(G)])
+    http_open(URL, HTTP_Stream, [cert_verify_hook(cert_verify)]),
+    setup_call_cleanup(
+      open(File, write, FileStream, [type(binary)]),
+      copy_stream_data(HTTP_Stream, FileStream),
+      close(FileStream)
     ),
-    number_of_triples('CALL'),
+    close(HTTP_Stream)
+  ).
+
+
+file_found_locally(File):-
+  url(URL),
+  url_to_base(URL, Base),
+  absolute_file_name(Base, File, [access(read),file_errors(fail)]).
+
+
+load_and_unload_triples(File):-
+  Graph = temporary,
+  setup_call_cleanup(
+    rdf_load(File, [format(turtle),graph(Graph)]),
+    rdf_save_turtle(File, [graph(Graph)]),
     (
-      rdf_unload_graph(G),
-      rdf_gc,
-      number_of_triples('CLEANUP')
+      rdf_unload_graph(Graph),
+      rdf_gc
     )
   ).
 
-number_of_triples(C):-
-  forall(
-    rdf_graph(G),
-    (
-      rdf_statistics(triples_by_graph(G,N)),
-      debug(test, '[~w] Graph ~w has ~w triples.', [C,G,N])
-    )
-  ).
+
+test:-
+  file_found_locally(File), !,
+  load_and_unload_triples(File).
+test:-
+  archive_found_locally(File), !,
+  unpack_archive(File),
+  test.
+test:-
+  download_archive(_), !,
+  test.
+
+
+unpack_archive(File):-
+  process_create(path(tar), [zxvf,file(File)], []).
+
+
+url_to_base(URL, Base):-
+  uri_components(URL, uri_components(_, _, Path, _, _)),
+  atomic_list_concat(PathComponents, '/', Path),
+  reverse(PathComponents, [Tmp|_]),
+  atom_concat(Base, '.tar.gz', Tmp).
 
