@@ -4,4 +4,5 @@
 :- assert(user:debug_project).
 
 :- [run].
+:- assert(user:file_search_path(test, prasem('Tests'))).
 
