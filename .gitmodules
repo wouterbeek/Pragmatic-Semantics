@@ -46,3 +46,6 @@
 	path = LODObs
 	url = https://github.com/wouterbeek/LODObs.git
 	branch = master
+[submodule "Notes"]
+	path = Notes
+	url = https://github.com/wouterbeek/Notes.git
