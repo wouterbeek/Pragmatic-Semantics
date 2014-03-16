@@ -7,7 +7,7 @@ Pragmatic Semantic for the Web of Data.
 
 @author Stefan Schlobach
 @author Wouter Beek
-@version 2012, 2013/11
+@version 2012, 2013/11, 2014/03
 */
 
 :- use_module(html(html_article)).
@@ -17,7 +17,7 @@ Pragmatic Semantic for the Web of Data.
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_lit_build)).
+:- use_module(rdf_term(rdf_string)).
 :- use_module(rdfs(rdfs_label_build)).
 :- use_module(server(app_ui)). % Uses the default application style.
 :- use_module(server(web_modules)).
@@ -39,9 +39,9 @@ Pragmatic Semantic for the Web of Data.
 assert_foaf_stefan_schlobach(S, G):-
   rdf_global_id(prasem:'StefanSchlobach', S),
   % foaf:firstName
-  rdf_assert_literal(S, foaf:firstName, 'Stefan', G),
+  rdf_assert_string(S, foaf:firstName, 'Stefan', G),
   % foaf:lastName
-  rdf_assert_literal(S, foaf:lastName, 'Schlobach', G),
+  rdf_assert_string(S, foaf:lastName, 'Schlobach', G),
   % foaf:page
   assert_foaf_stefan_schlobach_www(S_WWW, G),
   rdf_assert(S, foaf:page, S_WWW, G),
@@ -50,12 +50,12 @@ assert_foaf_stefan_schlobach(S, G):-
   % rdf:type
   rdf_assert_individual(S, foaf:'Person', G),
   % rdfs:label
-  rdfs_assert_label(S, nl, 'Stefan Schlobach', G).
+  rdfs_assert_label(S, 'Stefan Schlobach', nl, G).
 
 assert_foaf_stefan_schlobach_www(S_WWW, G):-
   S_WWW = 'http://www.few.vu.nl/~schlobac/',
   % dc:title
-  rdf_assert_literal(S_WWW, 'Stefan Schlobach\'s VU website.', en, G),
+  rdf_assert_string(S_WWW, 'Stefan Schlobach\'s VU website.', en, G),
   % rdf:type
   rdf_assert_individual(S_WWW, foaf:'Document', G).
 
@@ -135,3 +135,4 @@ p_(30, 50, 'The different orderings cover different aspects of the “true” se
 p_(30, 60, 'Interoperability is then achieved by enriching an ontology with meta-information about semantic orderings, as well as agreement on the weighting of orderings. As there are possibly several pragmatic closures (different solutions on the Pareto-front) also agreement on the weighting of features is required. We will refer to the entailment induced by a given set of orderings as an instantiation of the family of pragmatic semantics.').
 p_(40, 10, 'Another way of looking at it is that the Web of Data is a Complex System [28], with interlinked information at different scales of abstraction. A well-argued claim in the Complex Systems literature suggests that it is impossible to construct logical systems that capture the full meaning of a true Complex System [35]. Results from studying the Web of Data as a Complex System show that considering different scales and levels of interactions make it impossible to engineer a web-scale reasoner (whatever the semantics considered), as traditional, decomposition-based approaches, are doomed with bandwidth limitations between the coordinating components (i.e. the datasets). Traditional semantics deal with this problem by an intrinsic reduction of the complexity: only one world-view, one perspective is considered at the time, the Web of Data is seen as a database. With pragmatic semantics, this advantage gets lost, and the computational price has to be paid, which applies that classical top-down reasoning becomes impossible.').
 p_(40, 20, 'It is often claimed that such systems have to evolve according to biological evolution rules [36], and web-scale semantics and reasoning should emerge from controlled interactions between autonomous components. In [37] we introduced such a calculus based on swarm intelligence where instead of indexing all triples and joining the results, swarms of lightweight agents (so-called boids) autonomously traverse the graph, each representing a reasoning rule, which might be (partially) instantiated. Whenever the conditions of a rule match the node a boid is on, it locally adds the new derived triple. This provides an index-free alternative for reasoning over large distributed dynamic networks of RDF(S) graphs. It calculates the pragmatic closure under the condition of maximising popularity of nodes (as random walks of boids simulate PageRank calculation) and minimizing the length of sub-ontologies, two particular truth orderings. Not all of the conceivable calculi for pragmatic semantics have to be inspired by Computational Intelligence approaches, but PraSem will focus on this family of algorithms.').
+
