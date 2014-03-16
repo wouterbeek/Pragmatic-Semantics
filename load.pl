@@ -11,8 +11,6 @@ user:project_name('PraSem').
 :- initialization(load_prasem).
 
 load_prasem:-
-  assert(user:file_search_path(data, project('Data'))),
-  
   % PraSem
   use_module(prasem(prasem)),
   
