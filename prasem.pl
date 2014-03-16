@@ -17,9 +17,10 @@ Pragmatic Semantic for the Web of Data.
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(rdf(rdf_build)).
+:- use_module(rdf_term(rdf_language_tagged_string)).
 :- use_module(rdf_term(rdf_literal)).
 :- use_module(rdf_term(rdf_string)).
-:- use_module(rdfs(rdfs_label_build)).
+:- use_module(rdfs(rdfs_label_ext)).
 :- use_module(server(app_ui)). % Uses the default application style.
 :- use_module(server(web_modules)).
 :- use_module(xml(xml_namespace)).
@@ -56,8 +57,8 @@ assert_foaf_stefan_schlobach(S, G):-
 assert_foaf_stefan_schlobach_www(S_WWW, G):-
   S_WWW = 'http://www.few.vu.nl/~schlobac/',
   % dc:title
-  rdf_assert_language_tagged_string(S_WWW, 'Stefan Schlobach\'s VU website.',
-      en, G),
+  rdf_assert_language_tagged_string(S_WWW, dc:title,
+      'Stefan Schlobach\'s VU website.', en, G),
   % rdf:type
   rdf_assert_individual(S_WWW, foaf:'Document', G).
 

@@ -56,6 +56,7 @@ prasem_subproject('Beekeeper').
 prasem_subproject('DataHives').
 prasem_subproject('EnergyLabels').
 prasem_subproject(humR).
+prasem_subproject('IDEAology').
 prasem_subproject('IOTW').
 prasem_subproject('LODObs').
 prasem_subproject('SemanticURIs').

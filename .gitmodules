@@ -49,3 +49,6 @@
 [submodule "Notes"]
 	path = Notes
 	url = https://github.com/wouterbeek/Notes.git
+[submodule "IDEAology"]
+	path = IDEAology
+	url = https://github.com/wouterbeek/IDEAology.git
