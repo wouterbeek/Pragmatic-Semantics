@@ -18,8 +18,10 @@
 :- use_module(library(semweb/turtle)).
 :- use_module(library(thread)).
 :- use_module(os(archive_ext)).
+:- use_module(os(file_ext)).
+:- use_module(os(file_mime)).
 :- use_module(rdf(rdf_ntriples_write)).
-:- use_module(rdf(rdf_serial), [rdf_directory_files/2]).
+:- use_module(rdf(rdf_serial), [rdf_directory_files/2,rdf_serialization/5]).
 :- use_module(rdf_term(rdf_string)).
 :- use_module(xml(xml_namespace)).
 
@@ -47,9 +49,19 @@ create_output_dir(OutDir):-
 
 
 delete_file2(File):-
+  nonvar(File),
   access_file(File, write),
   delete_file(File).
 delete_file2(_).
+
+
+download_file(Url, TmpFile):-
+  catch(
+    download_to_file([], Url, TmpFile),
+    E,
+    delete_file2(TmpFile)
+  ),
+  var(E).
 
 
 drop_rdf_file(Graph, Dir):-
@@ -68,6 +80,16 @@ drop_url_file(Url, Dir):-
     with_output_to(Out, writeln(Url)),
     close(Out)
   ).
+
+
+file_correct_extension(File1, File2):-
+  file_mime(File1, MIME),
+  rdf_serialization(Ext, _, _, MIMEs, _),
+  memberchk(MIME, MIMEs),
+  file_alternative(File1, _, _, Ext, File2),
+  File1 \== File2, !,
+  link_file(File1, File2, symbolic).
+file_correct_extension(File, File).
 
 
 is_lod_resource(Site, Resource):-
@@ -109,45 +131,23 @@ metadata_location(datahub_io, 'https://dl.dropboxusercontent.com/s/brxpfdwn4n72c
 
 process_resource(OutDir, Resource):-
   once(rdf_string(Resource, ckan:url, Url, _)),
-  download(Url, TmpFile),
-  unpack(TmpFile),
-  load(TmpFile),
-  save(OutDir, Url), !.
+  download_file(Url, TmpFile),
+  unpack_file(TmpFile),
+  rdf_load_file(TmpFile),
+  rdf_save_file(OutDir, Url), !.
 % Who cares?
 process_resource(_, _).
 
-download(Url, TmpFile):-
-  catch(
-    download_to_file([], Url, TmpFile),
-    E,
-    delete_file2(TmpFile)
-  ),
-  var(E).
 
-unpack(File):-
-  catch(
-    extract_archive(File, _),
-    E,
-    delete_file2(File)
-  ),
-  var(E).
-
-load(File):-
+rdf_load_file(File):-
   file_directory_name(File, Dir),
   setup_call_cleanup(
-    rdf_directory_files(Dir, Files),
-    rdf_load(Files, [graph(dummy)]),
-    maplist(delete_file, Files)
-  ).
-
-save(OutDir, Url):-
-  setup_call_cleanup(
-    url_dir(OutDir, Url, Dir),
+    rdf_directory_files(Dir, Files1),
     (
-      drop_rdf_file(dummy, Dir),
-      drop_url_file(Url, Dir)
+      maplist(file_correct_extension, Files1, Files2),
+      rdf_load(Files2, [graph(dummy)])
     ),
-    rdf_unload_graph(dummy)
+    maplist(delete_file, Files2)
   ).
 
 
@@ -192,6 +192,26 @@ rdf_mimetype('text/json').
 rdf_mimetype('text/rdf+n3').
 rdf_mimetype('text/turtle').
 %rdf_mimetype('text/xml').
+
+
+rdf_save_file(OutDir, Url):-
+  setup_call_cleanup(
+    url_dir(OutDir, Url, Dir),
+    (
+      drop_rdf_file(dummy, Dir),
+      drop_url_file(Url, Dir)
+    ),
+    rdf_unload_graph(dummy)
+  ).
+
+
+unpack_file(File):-
+  catch(
+    extract_archive(File, _),
+    E,
+    delete_file2(File)
+  ),
+  var(E).
 
 
 url_dir(OutDir, Url, Dir):-
