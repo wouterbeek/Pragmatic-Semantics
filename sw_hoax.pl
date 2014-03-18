@@ -207,7 +207,7 @@ rdf_save_file(OutDir, Url):-
 
 unpack_file(File):-
   catch(
-    extract_archive(File, _),
+    extract_archive(File),
     E,
     delete_file2(File)
   ),

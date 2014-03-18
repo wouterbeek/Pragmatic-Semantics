@@ -2,14 +2,14 @@
 
 :- [debug].
 
-:- use_module('LOD'('LOD_query')).
-:- use_module('LOD'(cache_it)).
+:- use_module(lod(lod_query)).
+:- use_module(lod(cache_it)).
 
 go:-
   thread_create(
     cache_it1(
       'LOD-test',
-      'LOD_cache',
+      lod_cache,
       _,
       'http://dbpedia.org/resource/Banana'
     ),
