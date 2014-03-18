@@ -10,6 +10,7 @@
 :- use_module(generics(uri_ext)).
 :- use_module(http(http)).
 :- use_module(library(apply)).
+:- use_module(library(debug)).
 :- use_module(library(filesex)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdf_http_plugin)).
@@ -27,18 +28,25 @@
 
 :- xml_register_namespace(ckan, 'http://www.wouterbeek.com/ckan#').
 
-%:- initialization(sw_hoax).
+:- initialization(sw_hoax).
+
+:- debug(sw_hoax).
 
 
 
 sw_hoax:-
-  sw_hoax(datahub_io).
+  thread_create(sw_hoax(datahub_io), _, []).
 
 sw_hoax(Site):-
   load_metadata(Site),
   create_output_dir(OutDir),
   lod_resources(Site, Resources),
-  maplist(process_resource(OutDir), Resources).
+  findall(
+    process_resource(OutDir, Resource),
+    member(Resource, Resources),
+    Goals
+  ),
+  concurrent(25, Goals, []).
   %concurrent_maplist(process_resource(OutDir), Resources).
 
 
@@ -46,6 +54,12 @@ create_output_dir(OutDir):-
   absolute_file_name(data(.), DataDir, [access(read),file_type(directory)]),
   directory_file_path(DataDir, 'Output', OutDir),
   make_directory_path(OutDir).
+
+
+debug_exception(_, Exception):-
+  var(Exception), !.
+debug_exception(Url, Exception):-
+  debug(sw_hoax, '[*****] Resource ~w; Exception: ~w', [Url,Exception]).
 
 
 delete_file2(File):-
@@ -131,10 +145,17 @@ metadata_location(datahub_io, 'https://dl.dropboxusercontent.com/s/brxpfdwn4n72c
 
 process_resource(OutDir, Resource):-
   once(rdf_string(Resource, ckan:url, Url, _)),
-  download_file(Url, TmpFile),
-  unpack_file(TmpFile),
-  rdf_load_file(TmpFile),
-  rdf_save_file(OutDir, Url), !.
+  catch(
+    (
+      download_file(Url, TmpFile),
+      unpack_file(TmpFile),
+      rdf_load_file(TmpFile),
+      rdf_save_file(OutDir, Url)
+    ),
+    Exception,
+    true
+  ),
+  debug_exception(Url, Exception), !.
 % Who cares?
 process_resource(_, _).
 
