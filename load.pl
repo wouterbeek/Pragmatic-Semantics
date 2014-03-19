@@ -11,12 +11,14 @@ user:project_name('PraSem').
 
 :- initialization(load_prasem).
 
+
+
 load_prasem:-
   % PraSem
   use_module(prasem(prasem)),
   
   current_prolog_flag(argv, Argv),
-  include(prasem_subproject, Argv, Subprojects),
+  include(prasem_subproject_match, Argv, Subprojects),
   (
     Subprojects == []
   ->
@@ -56,6 +58,23 @@ load_project(Project):-
   ),
   ensure_loaded(File).
 
+
+%! prasem_subproject_match(Arg) is semidet.
+% Succeeds if the given argument contains a PraSem project in its prefix.
+%
+% This allows the use of autocompletion in the terminal,
+% since the project names correspond to the names of subdirectories.
+% E.g. `SemanticURIs/` matches `SemanticURIs`.
+
+prasem_subproject_match(Arg):-
+  prasem_subproject(ProjectName),
+  atom_prefix(Arg, ProjectName).
+
+
+%! prasem_subproject(+ProjectName:atom) is semidet.
+%! prasem_subproject(-ProjectName:atom) is nondet.
+% Enumeration of supported PraSem projects.
+
 prasem_subproject('Beekeeper').
 prasem_subproject('DataHives').
 prasem_subproject('EnergyLabels').
@@ -63,6 +82,7 @@ prasem_subproject(humR).
 prasem_subproject('IDEAology').
 prasem_subproject('IOTW').
 prasem_subproject('LODObs').
+prasem_subproject('PGC').
 prasem_subproject('SemanticURIs').
 prasem_subproject('STCN').
 prasem_subproject('SWAG').
