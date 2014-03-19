@@ -12,6 +12,7 @@
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(filesex)).
+:- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdf_http_plugin)).
 :- use_module(library(semweb/rdf_zlib_plugin)).
@@ -19,6 +20,7 @@
 :- use_module(library(semweb/turtle)).
 :- use_module(library(thread)).
 :- use_module(os(archive_ext)).
+:- use_module(os(dir_ext)).
 :- use_module(os(file_ext)).
 :- use_module(os(file_mime)).
 :- use_module(rdf(rdf_ntriples_write)).
@@ -67,6 +69,31 @@ delete_file2(File):-
   access_file(File, write),
   delete_file(File).
 delete_file2(_).
+
+
+delete_root_directory_of_file(File):-
+  file_directory_name(File, Dir),
+  directory_subdirectories(Dir, Subdirs),
+  absolute_file_name(
+    data('.'),
+    RootDir,
+    [access(write),file_type(directory)]
+  ),
+  directory_subdirectories(RootDir, RootSubdirs),
+  append(RootSubdirs, RelativeSubdirs, Subdirs),
+  (
+    RelativeSubdirs == []
+  ->
+    delete_file(File)
+  ;
+    RelativeSubdirs = [RelativeSubdir|_],
+    absolute_file_name(
+      data(RelativeSubdir),
+      RelativeDir,
+      [access(write),file_type(directory)]
+    ),
+    delete_directory_and_contents(RelativeDir)
+  ).
 
 
 download_file(Url, TmpFile):-
@@ -155,7 +182,8 @@ process_resource(OutDir, Resource):-
     Exception,
     true
   ),
-  debug_exception(Url, Exception), !.
+  debug_exception(Url, Exception), !,
+  delete_root_directory_of_file(TmpFile).
 % Who cares?
 process_resource(_, _).
 
