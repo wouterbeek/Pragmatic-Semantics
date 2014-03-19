@@ -8,7 +8,6 @@ run_prasem:-
   file_directory_name(ThisFile, ThisDir),
   assert(user:file_search_path(project, ThisDir)),
   assert(user:file_search_path(prasem, ThisDir)),
-  assert(user:file_search_path(data, project('Data'))),
   
   % PGC
   load_pgc(project),

@@ -2,6 +2,7 @@
 
 :- use_module(generics(meta_ext)).
 :- use_module(library(apply)).
+:- use_module(library(filesex)).
 :- use_module(library(lists)).
 :- use_module(os(run_ext)).
 
@@ -37,7 +38,10 @@ load_prasem:-
 
   % Enumerate the external program support
   % for the currently loaded modules.
-  list_external_programs.
+  list_external_programs,
+  
+  % Allow the Hoax to be loaded using `swipl -s debug.pl LODObs -g sw_hoax`
+  use_module(prasem(sw_hoax)).
 
 load_project(Project):-
   absolute_file_name(
