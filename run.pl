@@ -1,5 +1,10 @@
 #!/home/wbeek/bin/swipl
 
+:- set_prolog_flag(encoding, utf8).
+
+% Do not write module loads to the standard output stream.
+:- set_prolog_flag(verbose_load, silent).
+
 % The run file for the PraSem project.
 
 :- initialization(run_prasem).
