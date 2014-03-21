@@ -1,15 +1,52 @@
 % The load file for the PraSem project.
 
+:- use_module(dcg(dcg_content)).
+:- use_module(dcg(dcg_list)).
 :- use_module(generics(meta_ext)).
 :- use_module(library(apply)).
 :- use_module(library(filesex)).
 :- use_module(library(lists)).
 :- use_module(os(run_ext)).
 
-:- multifile(user:project_name/1).
-user:project_name('PraSem').
+:- multifile(user:project/2).
+user:project('PraSem', 'Pragmatic Semantics for the Wef of Data').
+
+:- multifile(prolog:message//1).
+
+:- multifile(user:cmd_option/4).
+:- multifile(user:process_cmd_option/1).
+:- multifile(user:process_cmd_options/2).
 
 :- initialization(load_prasem).
+
+
+
+% Option: project.
+
+user:cmd_option(p, project, atom, 'Load a PraSem subproject.').
+
+user:process_cmd_option(project(Name)):-
+  prasem_subproject(Name), !,
+  load_project(Name).
+user:process_cmd_option(project(Name)):-
+  print_message(warning, unknown_project(Name)).
+
+user:process_cmd_options(O1, O1):-
+  (
+    memberchk(project(_), O1)
+  ->
+    true
+  ;
+    print_message(information, no_project)
+  ).
+
+prolog:message(no_project) -->
+  `No PraSem project selected.`, nl,
+  {setoff(Name, prasem_subproject(Name), Names)},
+  `The following projects are supported:`, nl,
+  dcg_list(Names).
+prolog:message(unknown_project(Name)) -->
+  `No project named `, atom(Name), nl.
 
 
 
@@ -17,33 +54,13 @@ load_prasem:-
   % PraSem
   use_module(prasem(prasem)),
   
-  current_prolog_flag(argv, Argv),
-  include(prasem_subproject_match, Argv, Subprojects),
-  (
-    Subprojects == []
-  ->
-    setoff(
-      Name,
-      prasem_subproject(Name),
-      Names
-    ),
-    forall(
-      nth1(I, Names, Name),
-      format(user_output, '~:d\t~w\n', [I,Name])
-    ),
-    halt
-  ;
-    maplist(load_project, Subprojects)
-  ),
-  
-  % Load the various projects.
-
   % Enumerate the external program support
   % for the currently loaded modules.
   list_external_programs,
   
   % Allow the Hoax to be loaded using `swipl -s debug.pl LODObs -g sw_hoax`
   use_module(prasem(sw_hoax)).
+
 
 load_project(Project):-
   absolute_file_name(
