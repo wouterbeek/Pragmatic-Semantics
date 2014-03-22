@@ -28,8 +28,6 @@
 
 :- xml_register_namespace(ckan, 'http://www.wouterbeek.com/ckan#').
 
-%:- initialization(sw_hoax).
-
 :- debug(sw_hoax).
 
 
