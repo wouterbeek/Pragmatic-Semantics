@@ -7,13 +7,15 @@ Pragmatic Semantic for the Web of Data.
 
 @author Stefan Schlobach
 @author Wouter Beek
-@version 2012, 2013/11, 2014/03
+@version 2013/11, 2014/03
 */
 
 :- use_module(html(html_article)).
 :- use_module(html(html_image)).
+:- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
+:- use_module(library(http/http_server_files)).
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(rdf(rdf_build)).
@@ -27,6 +29,13 @@ Pragmatic Semantic for the Web of Data.
 
 :- xml_register_namespace(foaf, 'http://xmlns.com/foaf/0.1/').
 :- xml_register_namespace(prasem, 'http://www.wouterbeek.com/prasem#').
+
+% /css
+http:location(css, root(css), []).
+:- db_add_novel(user:file_search_path(css, server(css))).
+%:- db_add_novel(user:file_search_path(css, swag(css))).
+:- http_handler(css(.), serve_files_in_directory(css), [prefix,priority(10)]).
+:- html_resource(css('image.css'), []).
 
 % /img
 :- db_add_novel(user:file_search_path(img, prasem(img))).
@@ -72,7 +81,9 @@ prasem(_Request):-
 prasem_body -->
   html(
     body([
-      \html_image([style='float: right;'], 'prasem.jpg'),
+      div(style='float: right;',
+          \html_image_thumbnail_box([], '', _, _, 'prasem.jpg')
+      ),
       \general_information(
         html('Pragmatic Semantics for the Web of Data'),
         prasem:'StefanSchlobach'
@@ -80,7 +91,7 @@ prasem_body -->
       \html_receive(toc),
       \section('What is the problem?', \(prasem:paragraphs(10))),
       \section('Scientific Topics and Research Questions',
-        \(prasem:paragraphs(20))
+          \(prasem:paragraphs(20))
       ),
       \section('Pragmatic Semantics', \(prasem:paragraphs(30))),
       \section('Calculi for Pragmatic Semantics', \(prasem:paragraphs(40))),
@@ -91,7 +102,10 @@ prasem_body -->
   ).
 
 prasem_head -->
-  html(title('What is PraSem?')).
+  html([
+    title('What is PraSem?'),
+    \html_requires(css('image.css'))
+  ]).
 
 paragraph_50 -->
   html([
