@@ -49,6 +49,8 @@
 [submodule "Notes"]
 	path = Notes
 	url = https://github.com/wouterbeek/Notes.git
+	branch = master
 [submodule "IDEAology"]
 	path = IDEAology
 	url = https://github.com/wouterbeek/IDEAology.git
+	branch = master
