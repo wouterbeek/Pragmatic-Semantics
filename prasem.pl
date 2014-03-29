@@ -32,14 +32,12 @@ Pragmatic Semantic for the Web of Data.
 
 % /css
 http:location(css, root(css), []).
-:- db_add_novel(user:file_search_path(css, server(css))).
-%:- db_add_novel(user:file_search_path(css, swag(css))).
+user:file_search_path(css, server(css)).
 :- http_handler(css(.), serve_files_in_directory(css), [prefix,priority(10)]).
 :- html_resource(css('image.css'), []).
 
 % /img
-:- db_add_novel(user:file_search_path(img, prasem(img))).
-
+user:file_search_path(img, prasem(img)).
 :- http_handler(root(prasem), prasem, []).
 :- web_module_add('What is prasem?', prasem).
 
