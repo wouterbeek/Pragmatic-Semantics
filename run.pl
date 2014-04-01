@@ -78,10 +78,7 @@ run_prasem:-
   % Enumerate the external program support
   % for the currently loaded modules.
   use_module(os(run_ext)),
-  list_external_programs,
-  
-  % Allow the Hoax to be loaded using `swipl -s debug.pl LODObs -g sw_hoax`
-  use_module(prasem(sw_hoax)).
+  list_external_programs.
 
 
 load_or_debug(Project):-
@@ -137,6 +134,7 @@ prasem_subproject_match(Arg):-
 % Enumeration of supported PraSem projects.
 
 prasem_subproject('Beekeeper').
+prasem_subproject('CKAN').
 prasem_subproject('DataHives').
 prasem_subproject('EnergyLabels').
 prasem_subproject(humR).

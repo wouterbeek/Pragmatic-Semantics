@@ -130,26 +130,27 @@ greater_than_or_equal_to(X, Y):-
 % Max = inf.
 % ~~~
 
-repetition(Rep, Min2, Max2):-
+repetition(Rep, Min, Max):-
   (
     Rep == 0
   ->
-    Min2 = 0,
-    Max2 = 0
+    Min = 0,
+    Max = 0
   ;
     % A single value.
     is_repetition_value(Rep)
   ->
-    Min2 = 1,
-    Max2 = Rep
+    Min = 1,
+    Max = Rep
   ;
-    Rep = Min1-Max1,
-    default(Min1, 0, Min2),
-    is_repetition_value(Min2),
-    default(Max1, inf, Max2),
-    is_repetition_value(Max2)
+    Rep = Min-Max,
+    default(0, Min),
+    is_repetition_value(Min),
+    default(inf, Max),
+    is_repetition_value(Max)
   ),
-  greater_than_or_equal_to(Max2, Min2).
+  greater_than_or_equal_to(Max, Min).
+
 
 %! is_repetition_value(+Value) is semidet.
 % Succeeds if the given value could be used to designate
@@ -160,16 +161,4 @@ is_repetition_value(V):-
   must_be(nonneg, V), !.
 is_repetition_value(V):-
   V == inf.
-
-%! default(?Value, +Default:term, -SetValue:term) is det.
-% Returns either the given value or the default value in case there is no
-% value given.
-%
-% @arg Value A term or a variable.
-% @arg Default A term.
-% @arg SetValue A term.
-
-default(Value, Default, Default):-
-  var(Value), !.
-default(Value, _Default, Value).
 
