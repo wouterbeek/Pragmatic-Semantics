@@ -54,3 +54,6 @@
 	path = IDEAology
 	url = https://github.com/wouterbeek/IDEAology.git
 	branch = master
+[submodule "CKAN"]
+	path = CKAN
+	url = https://github.com/wouterbeek/CKAN.git
