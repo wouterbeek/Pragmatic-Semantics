@@ -26,7 +26,12 @@ user:cmd_option(p, project, atom, 'Load a PraSem subproject.').
 
 user:process_cmd_option(project(Name)):-
   prasem_subproject(Name), !,
-  load_project(Name).
+  
+  % Execute the project load file.
+  load_project(Name),
+  
+  % Execute the project debug file, if any.
+  debug_project(Name).
 user:process_cmd_option(project(Name)):-
   print_message(warning, unknown_project(Name)).
 
@@ -104,15 +109,25 @@ load_pgc(Project):-
 % @arg Project Registered with prasem_subproject/1.
 
 load_project(Project):-
+  file_project(Project, load).
+
+debug_project(Project):-
+  % Only in debug mode.
+  predicate_property(user:debug_mode, visible),
+  file_project(Project, debug).
+% Never fail, e.g. when not in debug mode or when there is no debug file.
+debug_project(_).
+
+file_project(Project, FileName):-
   absolute_file_name(
     prasem(Project),
     Dir,
     [access(read),file_type(directory)]
   ),
   absolute_file_name(
-    load,
+    FileName,
     File,
-    [access(read),file_type(prolog),relative_to(Dir)]
+    [access(read),file_errors(fail),file_type(prolog),relative_to(Dir)]
   ),
   ensure_loaded(File).
 

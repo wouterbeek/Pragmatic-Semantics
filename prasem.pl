@@ -39,7 +39,7 @@ user:file_search_path(css, server(css)).
 % /img
 user:file_search_path(img, prasem(img)).
 :- http_handler(root(prasem), prasem, []).
-:- web_module_add('What is prasem?', prasem).
+user:web_module('What is prasem?', prasem).
 
 :- initialization(init_prasem).
 
