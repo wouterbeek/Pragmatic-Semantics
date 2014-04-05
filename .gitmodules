@@ -14,10 +14,6 @@
 	path = PGC
 	url = https://github.com/wouterbeek/PGC.git
 	branch = master
-[submodule "swi-prolog-on-dotcloud"]
-	path = swi-prolog-on-dotcloud
-	url = https://github.com/mndrix/swi-prolog-on-dotcloud.git
-	branch = master
 [submodule "WebQR"]
 	path = WebQR
 	url = https://github.com/wouterbeek/WebQR.git
@@ -57,3 +53,5 @@
 [submodule "CKAN"]
 	path = CKAN
 	url = https://github.com/wouterbeek/CKAN.git
+	branch = master
+

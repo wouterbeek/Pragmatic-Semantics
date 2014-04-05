@@ -1,5 +1,3 @@
-#!/home/wbeek/bin/swipl
-
 :- set_prolog_flag(encoding, utf8).
 
 % Do not write module loads to the standard output stream.
