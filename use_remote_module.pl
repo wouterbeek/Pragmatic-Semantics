@@ -1,12 +1,4 @@
-:- module(
-  use_remote_module,
-  [
-    use_remote_module/2 % +RepositoryId:atom
-                        % +ModuleSpec:compound
-  ]
-).
-
-/** <module> Use remote module
+/* Use remote modules
 
 Allows remote Prolog modules to be imported in the same way in which
 use_module/1 imports local Prolog modules.
@@ -15,6 +7,7 @@ use_module/1 imports local Prolog modules.
 @version 2014/04
 */
 
+:- use_module(library(apply)).
 :- use_module(library(filesex)).
 :- use_module(library(http/http_open)).
 :- use_module(library(http/http_ssl_plugin)).
@@ -28,27 +21,27 @@ use_module/1 imports local Prolog modules.
 %! ) is nondet.
 
 :- multifile(user:github_repository/4).
-:- dynamic(user:github_repository/4).
 
 :- initialization(init_use_remote_module).
 
 init_use_remote_module:-
   source_file(init_use_remote_module, ThisFile),
   file_directory_name(ThisFile, ThisDirectory),
-  assert(user:file_search_path(project, ThisDirectory)),
-  assert(user:file_search_path(os, project('OS'))),
-  assert(user:github_repository(pgc, wouterbeek, 'PGC', ThisDirectory)).
+  assert(
+    user:github_repository(prasem,  wouterbeek, 'PraSemRemote', ThisDirectory)
+  ).
 
 
 
-%! use_remote_module(+Repository:atom, +Module:compound) is det.
-% Loads a Prolog module from the Web.
-%
-% ~~~
-% https://github.com/wouterbeek/PGC/raw/master/OS/file_ext.pl
-% ~~~
+ensure_remote_loaded(FileSpec):-
+  ensure_remote_loaded(prasem, FileSpec).
 
-use_remote_module(RepositoryId, ModuleSpec):-
+ensure_remote_loaded(RepositoryId, FileSpec):-
+  fetch_remote_file(RepositoryId, FileSpec, LocalFile),
+  ensure_loaded(LocalFile).
+
+
+fetch_remote_file(RepositoryId, ModuleSpec, LocalPath):-
   github_repository(RepositoryId, User, RepositoryName, LocalRelativeTo),
   absolute_file_name(ModuleSpec, LocalPath, [file_type(prolog)]),
   relative_file_name(LocalPath, LocalRelativeTo, RelativePath),
@@ -65,14 +58,24 @@ use_remote_module(RepositoryId, ModuleSpec):-
       close(FileStream)
     ),
     close(HttpStream)
-  ),
-  use_remote_module(LocalPath).
+  ).
+
+
+%! use_remote_module(+ModuleSpec:compound) is det.
+
+use_remote_module(ModuleSpec):-
+  use_remote_module(prasem, ModuleSpec).
+
+%! use_remote_module(+Repository:atom, +Module:compound) is det.
+% Loads a Prolog module from the Web.
+%
+% ~~~
+% https://github.com/wouterbeek/PGC/raw/master/OS/file_ext.pl
+% ~~~
+
+use_remote_module(RepositoryId, ModuleSpec):-
+  fetch_remote_file(RepositoryId, ModuleSpec, LocalFile),
+  use_module(LocalFile).
 
 cert_verify(_, _, _, _, _):- !.
-
-
-
-
-
-
 
