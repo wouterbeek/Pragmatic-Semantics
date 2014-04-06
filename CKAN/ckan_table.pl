@@ -6,16 +6,17 @@
 @version 2014/02-2014/03
 */
 
-:- use_module(ap(ap_table)).
-:- use_module(ckan(ckan_db)).
+:- use_remote_module(ap(ap_table)).
+:- use_remote_module(ckan(ckan_db)).
+:- use_remote_module(rdf(rdf_container)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(server(web_modules)).
+
 :- use_module(library(aggregate)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_container)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(server(web_modules)).
 
 http:location(ckan, root(ckan), []).
 :- http_handler(ckan(table), ckan_table, []).

@@ -34,14 +34,14 @@ VoiD covers four areas of metadata:
 @version 2013/03-2013/05, 2013/09-2013/11, 2014/03
 */
 
-:- use_module(generics(thread_ext)).
+:- use_remote_module(generics(thread_ext)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
 :- use_module(library(thread)).
-:- use_module(rdf(rdf_graph_name)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(void(void_db)).
-:- use_module(void(void_stat)).
+:- use_remote_module(rdf(rdf_graph_name)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(void(void_db)).
+:- use_remote_module(void(void_stat)).
 
 
 

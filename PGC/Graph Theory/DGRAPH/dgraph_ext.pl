@@ -117,11 +117,11 @@ Directed graphs.
 @version 2012/08, 2013/07
 */
 
-:- use_module(generics(list_ext)).
-:- use_module(graph_theory(graph_generic)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(graph_theory(graph_generic)).
 :- use_module(library(apply)).
 :- use_module(library(ordsets)).
-:- use_module(ugraph(ugraph_ext)).
+:- use_remote_module(ugraph(ugraph_ext)).
 
 :- meta_predicate(export_dgraph(+,4,+,-)).
 

@@ -63,18 +63,18 @@ the edges and vertices.
 @version 2013/01-2013/04, 2013/07, 2014/03
 */
 
-:- use_module(generics(list_ext)).
-:- use_module(generics(typecheck)).
-:- use_module(graph_theory(graph_traversal)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(typecheck)).
+:- use_remote_module(graph_theory(graph_traversal)).
 :- use_module(library(aggregate)).
 :- use_module(library(lists)).
 :- use_module(library(ordsets)).
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(pl(pl_control)).
-:- use_module(rdf(rdf_export)). % Meta-predicates.
-:- use_module(rdf_graph(rdf_graph_theory)).
-:- use_module(ugraph(ugraph_ext)).
+:- use_remote_module(pl(pl_control)).
+:- use_remote_module(rdf(rdf_export)). % Meta-predicates.
+:- use_remote_module(rdf_graph(rdf_graph_theory)).
+:- use_remote_module(ugraph(ugraph_ext)).
 
 :- meta_predicate(bipartite(+,2,-,-)).
 :- meta_predicate(cubic(2,+)).

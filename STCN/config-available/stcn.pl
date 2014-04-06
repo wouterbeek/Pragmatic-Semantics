@@ -8,8 +8,8 @@ The STCN SW package.
 @version 2013/04
 */
 
-:- use_module(html(html)).
-:- use_module(os(file_ext)).
+:- use_remote_module(html(html)).
+:- use_remote_module(os(file_ext)).
 
 user:file_search_path(kmc, stcn('KMC').
 
@@ -34,7 +34,7 @@ user:file_search_path(kmc, stcn('KMC').
   create_directory(WordnetDirectory),
   assert(user:file_search_path(data_wordnet, data('Wordnet'))).
 
-:- use_module(cliopatria(hooks)).
+:- use_remote_module(cliopatria(hooks)).
 :- use_module(library(http/http_dispatch)).
 
 :- multifile(http:location/3).

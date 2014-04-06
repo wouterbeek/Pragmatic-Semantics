@@ -15,17 +15,17 @@ VoID statistics process for the AP architecture.
 @version 2014/01-2014/03
 */
 
-:- use_module(ap(ap_db)).
-:- use_module(http_parameters(rfc2616_media_type)). % DCG-meta.
+:- use_remote_module(ap(ap_db)).
+:- use_remote_module(http_parameters(rfc2616_media_type)). % DCG-meta.
 :- use_module(library(error)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(os(dir_ext)).
-:- use_module(rdf(rdf_meta)).
-:- use_module(rdf(rdf_stat)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(void(void_stat)). % If only for the namespace.
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(rdf(rdf_meta)).
+:- use_remote_module(rdf(rdf_stat)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(void(void_stat)). % If only for the namespace.
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(rfc2616, 'http://tools.ietf.org/html/rfc2616#').
 

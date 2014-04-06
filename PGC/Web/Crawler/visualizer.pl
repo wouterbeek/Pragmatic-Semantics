@@ -16,8 +16,8 @@ Visualizer predicates.
 */
 
 :- use_module(library(aggregate)).
-:- use_module(os(file_ext)).
-:- use_module(server(link_collection)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(server(link_collection)).
 
 
 

@@ -11,17 +11,17 @@
 @version 2013/09
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(http/http_open)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdf_library)).
 :- use_module(library(semweb/rdf_turtle)).
 :- use_module(library(xpath)).
-:- use_module(os(dir_ext)).
-:- use_module(rdf(rdf_deb)). % Registered as a Web module.
-:- use_module(server(web_console)).
-:- use_module(vocabularies(void)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(rdf(rdf_deb)). % Registered as a Web module.
+:- use_remote_module(server(web_console)).
+:- use_remote_module(vocabularies(void)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- register_module(rdf_deb).
 

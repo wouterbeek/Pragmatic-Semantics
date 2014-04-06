@@ -21,7 +21,7 @@ Predicates that allows RDF tables to be asserted
 @version 2014/01-2014/04
 */
 
-:- use_module(generics(uri_query)).
+:- use_remote_module(generics(uri_query)).
 :- use_module(library(aggregate)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
@@ -29,7 +29,7 @@ Predicates that allows RDF tables to be asserted
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(www_browser)).
-:- use_module(rdf_web(rdf_html_table)).
+:- use_remote_module(rdf_web(rdf_html_table)).
 
 :- meta_predicate(rdf_store_rows(:,+,+)).
 

@@ -27,14 +27,14 @@ Support for the HTML image tag.
 @version 2012/09-2013/06, 2013/10, 2014/03
 */
 
-:- use_module(generics(db_ext)).
-:- use_module(generics(option_ext)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(option_ext)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_path)).
 :- use_module(library(option)).
-:- use_module(math(dimension)).
-:- use_module(os(file_ext)).
-:- use_module(os(image_ext)).
+:- use_remote_module(math(dimension)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(os(image_ext)).
 
 % Register the supported image file types.
 % These are shared with module RDF_DATATYPE.

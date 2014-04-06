@@ -16,19 +16,19 @@ by the predicates they share.
 @version 2013/05, 2013/08-2013/09, 2013/11-2014/01, 2014/03
 */
 
-:- use_module(dcg(dcg_collection)).
-:- use_module(generics(list_ext)).
-:- use_module(generics(meta_ext)).
-:- use_module(gv(gv_file)).
-:- use_module(iotw(inode)).
+:- use_remote_module(dcg(dcg_collection)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(gv(gv_file)).
+:- use_remote_module(iotw(inode)).
 :- use_module(library(aggregate)).
 :- use_module(library(debug)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(os(datetime_ext)).
-:- use_module(os(run_ext)). % DEB
-:- use_module(rdf(rdf_name)).
-:- use_module(xml(xml_dom)).
+:- use_remote_module(os(datetime_ext)).
+:- use_remote_module(os(run_ext)). % DEB
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(xml(xml_dom)).
 
 
 

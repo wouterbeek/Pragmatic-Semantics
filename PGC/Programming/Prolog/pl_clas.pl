@@ -14,14 +14,14 @@ Support for command line arguments given at Prolog startup.
 @version 2014/03-2014/04
 */
 
-:- use_module(generics(db_ext)).
-:- use_module(generics(meta_ext)).
-:- use_module(generics(typecheck)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(generics(typecheck)).
 :- use_module(library(apply)).
 :- use_module(library(filesex)).
 :- use_module(library(lists)).
 :- use_module(library(option)).
-:- use_module(os(dir_infra)).
+:- use_remote_module(os(dir_infra)).
 
 :- multifile(prolog:message//1).
 

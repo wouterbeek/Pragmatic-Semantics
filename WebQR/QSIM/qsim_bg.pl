@@ -20,21 +20,21 @@ Predicates for outputting QSIM behavior graphs:
 @version 2013/09, 2014/01
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(dcg_os)).
-:- use_module(generics(list_ext)).
-:- use_module(generics(option_ext)).
-:- use_module(generics(pair_ext)).
-:- use_module(html(html_dcg)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(dcg_os)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(option_ext)).
+:- use_remote_module(generics(pair_ext)).
+:- use_remote_module(html(html_dcg)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(qsim(qsim_export)).
-:- use_module(qsim(qsim_read)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(qsim(qsim_export)).
+:- use_remote_module(qsim(qsim_read)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(qsim, 'http://www.wouterbeek.com/qsim#').
 

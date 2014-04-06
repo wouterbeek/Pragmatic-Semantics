@@ -27,13 +27,13 @@ Persistency store for SPARQL-related information.
 @version 2012/12-2013/01, 2013/03-2013/05, 2013/07, 2013/09, 2013/11-2014/01
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(debug)).
 :- use_module(library(error)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(lod(lod_location)).
-:- use_module(os(file_ext)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(lod(lod_location)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(xml(xml_namespace)).
 
 %! sparql_remote(
 %!   ?Remote:atom,

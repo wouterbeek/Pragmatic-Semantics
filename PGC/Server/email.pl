@@ -13,7 +13,7 @@
 @version 2014
 */
 
-:- use_module(generics(codes_ext)).
+:- use_remote_module(generics(codes_ext)).
 :- use_module(library(option)).
 :- use_module(library(smtp)).
 

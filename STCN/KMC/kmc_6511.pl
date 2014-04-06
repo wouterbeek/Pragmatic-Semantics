@@ -40,17 +40,17 @@ PPN 324985231 has no exclamation mark after the topic PPN in KMC 6512.
 @version 2013/03, 2013/06, 2013/09, 2014/03
 */
 
-:- use_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_ascii)).
 :- use_module(library(debug)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(stcn(stcn_generic)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(stcn(stcn_generic)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(stcn, 'http://stcn.data2semantics.org/resource/').
 :- xml_register_namespace(stcnv, 'http://stcn.data2semantics.org/vocab/').

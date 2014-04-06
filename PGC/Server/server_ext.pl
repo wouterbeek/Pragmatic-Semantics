@@ -59,15 +59,15 @@ SWI-Prolog defines the following HTTP handlers:
 @version 2013/10-2014/01
 */
 
-:- use_module(generics(meta_ext)).
+:- use_remote_module(generics(meta_ext)).
 :- use_module(library(debug)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/http_json)).
 :- use_module(library(http/http_session)). % Session support.
 :- use_module(library(http/thread_httpd)).
 :- use_module(library(settings)).
-:- use_module(server(web_error)).
-:- use_module(server(authorization)).
+:- use_remote_module(server(web_error)).
+:- use_remote_module(server(authorization)).
 
 :- meta_predicate(dispatch(:)).
 

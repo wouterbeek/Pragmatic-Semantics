@@ -48,8 +48,8 @@ DCGs for the basic rules defined in RFC 4234,
 @version 2013/07-2013/08, 2013/12
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
 
 
 

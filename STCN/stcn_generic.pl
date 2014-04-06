@@ -20,10 +20,10 @@ but are not generic enough to be in PGC.
 @version 2013/06, 2013/09-2013/10
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_multi)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(foaf,  'http://xmlns.com/foaf/0.1/').
 :- xml_register_namespace(stcn,  'http://stcn.data2semantics.org/resource/').

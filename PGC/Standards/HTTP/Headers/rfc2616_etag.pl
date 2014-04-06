@@ -26,7 +26,7 @@ ETag(
 @version 2013/12
 */
 
-:- use_module(http_parameters(rfc2616_entity_tag)).
+:- use_remote_module(http_parameters(rfc2616_entity_tag)).
 
 
 

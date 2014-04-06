@@ -8,7 +8,7 @@
 
 :- use_module(library(apply)).
 :- use_module(library(plunit)).
-:- use_module(uri(rfc2396_dcg)).
+:- use_remote_module(uri(rfc2396_dcg)).
 
 
 

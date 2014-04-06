@@ -20,8 +20,8 @@
 */
 
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_build)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(skos, 'http://www.w3.org/2004/02/skos/core#').
 

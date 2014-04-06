@@ -13,8 +13,8 @@
 @version 2013/12
 */
 
-:- use_module(http_headers(rfc2616_accept)).
-:- use_module(http_headers(rfc2616_accept_charset)).
+:- use_remote_module(http_headers(rfc2616_accept)).
+:- use_remote_module(http_headers(rfc2616_accept_charset)).
 
 
 

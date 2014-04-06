@@ -20,22 +20,22 @@ This requires a Prolog module whose name is also registered as
 @version 2014/01-2014/03
 */
 
-:- use_module(dcg(dcg_content)). % Meta-argument.
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_replace)). % Meta-argument.
+:- use_remote_module(dcg(dcg_content)). % Meta-argument.
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_replace)). % Meta-argument.
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(lists)).
 :- use_module(library(ordsets)).
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_list)).
-:- use_module(rdf_term(rdf_literal_build)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(xml(xml_namespace)).
-:- use_module(xsd(xsd)).
-:- use_module(xsd(xsd_clean)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf(rdf_list)).
+:- use_remote_module(rdf_term(rdf_literal_build)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(xml(xml_namespace)).
+:- use_remote_module(xsd(xsd)).
+:- use_remote_module(xsd(xsd_clean)).
 
 
 

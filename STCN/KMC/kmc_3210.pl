@@ -92,16 +92,16 @@ are not included in a 4-2-2-1 search. [?]
 @version 2013/01-2013/03, 2013/06, 2013/09, 2014/03
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_content)).
 :- use_module(library(debug)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf(rdf_stat)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(standards(lexvo)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf(rdf_stat)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(standards(lexvo)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(stcn, 'http://stcn.data2semantics.org/resource/').
 :- xml_register_namespace(stcnv, 'http://stcn.data2semantics.org/vocab/').

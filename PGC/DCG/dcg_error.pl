@@ -15,7 +15,7 @@ Error and exception handling for DCGs.
 @version 2013/05-2013/09, 2013/11-2013/12
 */
 
-:- use_module(dcg(dcg_meta)).
+:- use_remote_module(dcg(dcg_meta)).
 
 :- meta_predicate(dcg_catch(//,?,//,?,?)).
 

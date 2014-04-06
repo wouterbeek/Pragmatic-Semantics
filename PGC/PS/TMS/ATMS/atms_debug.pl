@@ -8,8 +8,8 @@ Debug methods for ATMSs.
 @version 2011
 */
 
-:- use_module(atms(atms_db)).
-:- use_module(atms_export).
+:- use_remote_module(atms(atms_db)).
+:- use_remote_module(atms_export).
 
 
 test1:-

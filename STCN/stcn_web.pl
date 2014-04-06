@@ -9,20 +9,20 @@ Web front-end for the STCN.
          2013/12-2014/01
 */
 
-:- use_module(generics(atom_ext)).
-:- use_module(generics(db_ext)).
-:- use_module(graph_theory(graph_web)).
-:- use_module(html(html)).
-:- use_module(html(html_table)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(graph_theory(graph_web)).
+:- use_remote_module(html(html)).
+:- use_remote_module(html(html_table)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/http_server_files)).
 :- use_module(library(http/html_write)).
 :- use_module(library(lists)).
-:- use_module(server(app_ui)).
-:- use_module(server(web_error)).
-:- use_module(server(web_modules)).
-:- use_module(stcn(stcn_statistics)).
+:- use_remote_module(server(app_ui)).
+:- use_remote_module(server(web_error)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(stcn(stcn_statistics)).
 
 :- http_handler(root(stcn), stcn_web, [prefix,priority(10)]).
 

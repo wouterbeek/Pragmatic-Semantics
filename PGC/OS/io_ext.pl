@@ -35,7 +35,7 @@ Predicates that extend the swipl builtin I/O predicates operating on streams.
 @version 2013/01, 2013/06, 2013/08, 2014/01, 2014/03
 */
 
-:- use_module(generics(codes_ext)).
+:- use_remote_module(generics(codes_ext)).
 :- use_module(library(readutil)).
 
 

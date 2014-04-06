@@ -30,17 +30,17 @@ Handles user input and sequences in which user input is needed continuously
 @version 2013/10-2013/12
 */
 
-:- use_module(ap(ap_stat)).
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_meta)).
-:- use_module(dcg(dcg_multi)).
+:- use_remote_module(ap(ap_stat)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_meta)).
+:- use_remote_module(dcg(dcg_multi)).
 :- use_module(library(filesex)).
 :- use_module(library(lists)).
 :- use_module(library(option)).
 :- use_module(library(readutil)).
-:- use_module(os(dir_ext)).
+:- use_remote_module(os(dir_ext)).
 
 :- meta_predicate(user_input(+,3,+)).
 :- meta_predicate(user_interaction(+,+,:,+,+)).

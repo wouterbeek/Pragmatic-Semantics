@@ -188,9 +188,9 @@ the original two values are incomparable.
 @version 2013/08-2013/11, 2014/03-2014/04
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(xsd(xsd_dateTime_generic)).
-:- use_module(xsd(xsd_dateTime_support)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(xsd(xsd_dateTime_generic)).
+:- use_remote_module(xsd(xsd_dateTime_support)).
 
 
 

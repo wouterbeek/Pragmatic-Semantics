@@ -18,17 +18,17 @@ Takes axioms, rules, and the RDF index and performs materializations.
 @version 2013/09-2013/10, 2013/12-2014/01
 */
 
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_collection)). % DCG-meta.
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(doyle(doyle)).
-:- use_module(generics(deb_ext)).
-:- use_module(generics(meta_ext)).
-:- use_module(generics(thread_ext)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_collection)). % DCG-meta.
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(doyle(doyle)).
+:- use_remote_module(generics(deb_ext)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(generics(thread_ext)).
 :- use_module(library(debug)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(
+:- use_remote_module(
   rdf_reasoning(rdf_ent),
   [
     axiom/4 as rdf_axiom,
@@ -36,7 +36,7 @@ Takes axioms, rules, and the RDF index and performs materializations.
     rule/7 as rdf_rule
   ]
 ).
-:- use_module(
+:- use_remote_module(
   rdfs(rdfs_ent),
   [
     axiom/4 as rdfs_axiom,
@@ -44,8 +44,8 @@ Takes axioms, rules, and the RDF index and performs materializations.
     rule/7 as rdfs_rule
   ]
 ).
-:- use_module(tms(tms)).
-:- use_module(tms(tms_print)).
+:- use_remote_module(tms(tms)).
+:- use_remote_module(tms(tms_print)).
 
 :- dynamic(recent_triple/4).
 

@@ -8,15 +8,15 @@ WebQR-specific extensions for RDF Tabular.
 @version 2014/01-2014/02
 */
 
-:- use_module(generics(meta_ext)).
+:- use_remote_module(generics(meta_ext)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(rdf_web(rdf_tabular)).
-:- use_module(rdf_web(rdf_tabular_graph)).
-:- use_module(server(web_modules)).
-:- use_module(webqr(webqr_generic)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(rdf_web(rdf_tabular)).
+:- use_remote_module(rdf_web(rdf_tabular_graph)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(webqr(webqr_generic)).
 
 :- http_handler(rdf_tabular(webqr), rdf_tabular_webqr, []).
 

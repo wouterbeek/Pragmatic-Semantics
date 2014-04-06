@@ -220,14 +220,15 @@ The following API call are not supported:
 @version 2014/01
 */
 
-:- use_module(ckan(ckan)).
-:- use_module(generics(meta_ext)).
-:- use_module(generics(option_ext)).
+:- use_remote_module(ckan, ckan(ckan)).
+:- use_remote_module(pgc,  generics(meta_ext)).
+:- use_remote_module(pgc,  generics(option_ext)).
+:- use_remote_module(pgc,  standards(json_ext)).
+
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(lists)).
 :- use_module(library(option)).
-:- use_module(standards(json_ext)).
 
 
 

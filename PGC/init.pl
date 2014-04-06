@@ -1,10 +1,10 @@
 % PGC initialization file.
 % This is called from [load].
 
-:- use_module(generics(logging)).
+:- use_remote_module(generics(logging)).
 :- ensure_loaded(pgc(pl_debug_option)).
-:- use_module(pl(pl_clas)).
-:- use_module(pl(pl_version)).
+:- use_remote_module(pl(pl_clas)).
+:- use_remote_module(pl(pl_version)).
 
 :- initialization(init_pgc).
 

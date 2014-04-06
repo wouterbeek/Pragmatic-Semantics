@@ -58,10 +58,10 @@ This means that the definitions 'edge' and 'vertex' for graph theoretic
 :- use_module(library(lists)).
 :- use_module(library(option)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf_term(rdf_language_tagged_string)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf_term(rdf_language_tagged_string)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(rdf, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#').
 

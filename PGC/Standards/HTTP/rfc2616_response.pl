@@ -21,14 +21,14 @@ DCG for RFC 2616 response.
 @version 2013/12-2014/01
 */
 
-:- use_module(dcg(parse_tree)).
-:- use_module(generics(codes_ext)).
-:- use_module(http(rfc2616_basic)).
-:- use_module(http(rfc2616_generic_message)).
-:- use_module(http(rfc2616_status_line)).
-:- use_module(http_headers(rfc2616_entity_header)).
-:- use_module(http_headers(rfc2616_general_header)).
-:- use_module(http_headers(rfc2616_response_header)).
+:- use_remote_module(dcg(parse_tree)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(http(rfc2616_basic)).
+:- use_remote_module(http(rfc2616_generic_message)).
+:- use_remote_module(http(rfc2616_status_line)).
+:- use_remote_module(http_headers(rfc2616_entity_header)).
+:- use_remote_module(http_headers(rfc2616_general_header)).
+:- use_remote_module(http_headers(rfc2616_response_header)).
 :- use_module(library(option)).
 
 

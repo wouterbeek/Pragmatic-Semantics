@@ -76,11 +76,11 @@ run_prasem:-
   load_pgc(project),
   
   % PraSem
-  use_module(prasem(prasem)),
+  use_remote_module(prasem(prasem)),
   
   % Enumerate the external program support
   % for the currently loaded modules.
-  use_module(os(run_ext)),
+  use_remote_module(os(run_ext)),
   list_external_programs.
 
 

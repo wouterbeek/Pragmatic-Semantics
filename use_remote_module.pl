@@ -66,7 +66,7 @@ use_remote_module(RepositoryId, ModuleSpec):-
     ),
     close(HttpStream)
   ),
-  use_module(LocalPath).
+  use_remote_module(LocalPath).
 
 cert_verify(_, _, _, _, _):- !.
 

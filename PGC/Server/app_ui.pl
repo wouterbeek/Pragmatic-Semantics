@@ -20,16 +20,16 @@ width: 50em;
 @version 2013/11-2014/03
 */
 
-:- use_module(html(html_form)).
-:- use_module(html(html_list)).
+:- use_remote_module(html(html_form)).
+:- use_remote_module(html(html_list)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/js_write)).
-:- use_module(server(app_server)). % Make sure there is an application server.
-:- use_module(server(web_login)).
-:- use_module(server(web_modules)).
-:- use_module(server(web_ui)). % Make sure the Web paths are defined.
+:- use_remote_module(server(app_server)). % Make sure there is an application server.
+:- use_remote_module(server(web_login)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(server(web_ui)). % Make sure the Web paths are defined.
 
 :- http_handler(root(.), home, []).
 

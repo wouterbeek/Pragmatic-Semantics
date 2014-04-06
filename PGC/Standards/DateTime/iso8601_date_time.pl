@@ -102,11 +102,11 @@ may be use.
 @version 2013/08
 */
 
-:- use_module(datetime(iso8601_date)).
-:- use_module(datetime(iso8601_generic)).
-:- use_module(datetime(iso8601_time_point)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(parse_tree)).
+:- use_remote_module(datetime(iso8601_date)).
+:- use_remote_module(datetime(iso8601_generic)).
+:- use_remote_module(datetime(iso8601_time_point)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(parse_tree)).
 
 
 

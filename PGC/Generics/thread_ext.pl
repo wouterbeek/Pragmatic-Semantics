@@ -40,13 +40,13 @@ Allows one to monitor running threads that register.
 @version 2013/03, 2013/09, 2014/03-2014/04
 */
 
-:- use_module(generics(atom_ext)).
-:- use_module(generics(list_ext)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(generics(list_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(lists)).
-:- use_module(pl(pl_control)).
+:- use_remote_module(pl(pl_control)).
 
 :- meta_predicate(forall_thread(0,0,+,+)).
 :- meta_predicate(intermittent_goal(:,:,+)).

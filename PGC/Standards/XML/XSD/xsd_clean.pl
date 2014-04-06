@@ -30,11 +30,11 @@ Predicates for cleaning XML Scheme 1.1 datatypes.
 @version 2013/08-2013/10, 2014/01, 2014/03-2014/04
 */
 
-:- use_module(generics(boolean_ext)).
-:- use_module(generics(codes_ext)).
-:- use_module(generics(typecheck)).
+:- use_remote_module(generics(boolean_ext)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(generics(typecheck)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(xsd(xsd)).
+:- use_remote_module(xsd(xsd)).
 
 :- rdf_meta(pl_to_xsd_value(r,+,-)).
 :- rdf_meta(xsd_convert_value(r,+,r,-)).

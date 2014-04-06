@@ -10,10 +10,10 @@ Tests for RDFS model theory.
 
 :- use_module(library(plunit)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_mt(rdf_mt_build)).
-:- use_module(rdf_mt(rdf_mt_i)).
-:- use_module(rdf_mt(rdf_mt_print)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf_mt(rdf_mt_build)).
+:- use_remote_module(rdf_mt(rdf_mt_i)).
+:- use_remote_module(rdf_mt(rdf_mt_print)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(ex, 'http://www.example.com/').
 

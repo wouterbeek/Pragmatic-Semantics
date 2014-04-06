@@ -136,25 +136,25 @@ Only SL-justifications can be well-founded justifications.
 @version 2012/06, 2013/05, 2013/09, 2013/12-2014/01, 2014/03
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(set_theory)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(set_theory)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(pl(pl_control)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf(rdf_reification)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(tms(tms)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(pl(pl_control)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf(rdf_reification)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(tms(tms)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(doyle, 'http://www.wouterbeek.com/doyle.owl#').
 :- xml_register_namespace(tms, 'http://www.wouterbeek.com/tms.owl#').

@@ -16,5 +16,5 @@ load_stcn:-
   assert(user:file_search_path(picarta, stcn('Picarta'))),
   assert(user:file_search_path(wnt,     stcn('WNT'    ))),
   
-  use_module(stcn(stcn_web)).
+  use_remote_module(stcn(stcn_web)).
 

@@ -241,8 +241,8 @@ If at any point an error status is received, the client
 @version 2013/12
 */
 
-:- use_module(flp(rfc2616_abnf)).
-:- use_module(http(rfc2616_generic)).
+:- use_remote_module(flp(rfc2616_abnf)).
+:- use_remote_module(http(rfc2616_generic)).
 
 
 

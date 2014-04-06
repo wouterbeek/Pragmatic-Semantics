@@ -23,13 +23,13 @@
 @version 2013/04-2013/05, 2013/07
 */
 
-:- use_module(graph_theory(graph_export)).
-:- use_module(graph_theory(random_vertex_coordinates)).
+:- use_remote_module(graph_theory(graph_export)).
+:- use_remote_module(graph_theory(random_vertex_coordinates)).
 :- use_module(library(aggregate)).
 :- use_module(library(ordsets)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_hierarchy)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_hierarchy)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(skos, 'http://www.w3.org/2004/02/skos/core#').
 

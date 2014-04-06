@@ -13,7 +13,7 @@ load_webqr:-
   % WebQR
   assert(user:file_search_path(webqr, ThisDir)),
   assert(user:file_search_path(qsim, webqr('QSIM'))),
-  use_module(dbpedia(dbpedia_eq)),
-  use_module(webqr(webqr_uc)),
-  use_module(webqr(webqr_web)).
+  use_remote_module(dbpedia(dbpedia_eq)),
+  use_remote_module(webqr(webqr_uc)),
+  use_remote_module(webqr(webqr_web)).
 

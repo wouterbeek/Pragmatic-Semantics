@@ -29,14 +29,14 @@ Support for RDF files and file types.
          2013/08-2013/09, 2013/11, 2014/01-2014/04
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(os(dir_ext)).
-:- use_module(os(file_ext)).
-:- use_module(os(file_mime)).
-:- use_module(rdf(rdf_meta)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(os(file_mime)).
+:- use_remote_module(rdf(rdf_meta)).
 
 
 

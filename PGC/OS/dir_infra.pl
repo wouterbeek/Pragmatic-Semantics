@@ -21,8 +21,8 @@ directories that are used for certain purposes, e.g. output, data, trash.
 
 :- use_module(library(filesex)).
 :- use_module(library(option)).
-:- use_module(os(dir_ext)).
-:- use_module(os(file_ext)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(os(file_ext)).
 
 
 

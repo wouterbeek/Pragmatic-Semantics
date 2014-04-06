@@ -20,21 +20,21 @@ Support for STCN KMCs.
 @version 2013/06, 2013/09
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_meta)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(kmc(kmc_0500)). % Meta-calls.
-:- use_module(kmc(kmc_1100)). % Meta-calls.
-:- use_module(kmc(kmc_1200)). % Meta-calls.
-:- use_module(kmc(kmc_1500)). % Meta-calls.
-:- use_module(kmc(kmc_1700)). % Meta-calls.
-:- use_module(kmc(kmc_3000)). % Meta-calls.
-:- use_module(kmc(kmc_3011)). % Meta-calls.
-:- use_module(kmc(kmc_3210)). % Meta-calls.
-:- use_module(kmc(kmc_4043)). % Meta-calls.
-:- use_module(kmc(kmc_4062)). % Meta-calls.
-:- use_module(kmc(kmc_6511)). % Meta-calls.
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_meta)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(kmc(kmc_0500)). % Meta-calls.
+:- use_remote_module(kmc(kmc_1100)). % Meta-calls.
+:- use_remote_module(kmc(kmc_1200)). % Meta-calls.
+:- use_remote_module(kmc(kmc_1500)). % Meta-calls.
+:- use_remote_module(kmc(kmc_1700)). % Meta-calls.
+:- use_remote_module(kmc(kmc_3000)). % Meta-calls.
+:- use_remote_module(kmc(kmc_3011)). % Meta-calls.
+:- use_remote_module(kmc(kmc_3210)). % Meta-calls.
+:- use_remote_module(kmc(kmc_4043)). % Meta-calls.
+:- use_remote_module(kmc(kmc_4062)). % Meta-calls.
+:- use_remote_module(kmc(kmc_6511)). % Meta-calls.
 
 :- discontiguous(kmc_code/2).
 :- discontiguous(kmc_code/3).

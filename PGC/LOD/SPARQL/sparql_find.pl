@@ -15,11 +15,11 @@ Find a single resource based on a search term.
 @version 2014/01
 */
 
-:- use_module(generics(typecheck)).
+:- use_remote_module(generics(typecheck)).
 :- use_module(library(debug)).
-:- use_module(sparql(sparql_build)).
-:- use_module(sparql(sparql_cache)).
-:- use_module(sparql(sparql_ext)).
+:- use_remote_module(sparql(sparql_build)).
+:- use_remote_module(sparql(sparql_cache)).
+:- use_remote_module(sparql(sparql_ext)).
 
 
 

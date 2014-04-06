@@ -34,10 +34,10 @@ is ignored by this methods.
 @version 2013/06-2013/07
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(debug)).
 :- use_module(library(settings)).
-:- use_module(os(io_ext)).
+:- use_remote_module(os(io_ext)).
 
 :- meta_predicate(xml_stream(+,+,1)).
 :- meta_predicate(xml_stream(+,+,1,0)).

@@ -20,9 +20,9 @@ A search problem for the Classical Problem Solver.
 
 :- use_module(library(lists)).
 :- use_module(library(plunit)).
-:- use_module(math(math_ext)).
-:- use_module(ps(boston)).
-:- use_module(ps(cps)).
+:- use_remote_module(math(math_ext)).
+:- use_remote_module(ps(boston)).
+:- use_remote_module(ps(cps)).
 
 
 

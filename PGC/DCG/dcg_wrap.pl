@@ -42,13 +42,13 @@ The following options are supported:
 @version 2013/07, 2013/09, 2014/01, 2014/03
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(dcg_os)). % Used for newline (meta-DCG argument).
-:- use_module(dcg(dcg_peek)).
-:- use_module(generics(list_ext)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(dcg_os)). % Used for newline (meta-DCG argument).
+:- use_remote_module(dcg(dcg_peek)).
+:- use_remote_module(generics(list_ext)).
 :- use_module(library(lists)).
 :- use_module(library(option)).
 :- use_module(library(settings)).

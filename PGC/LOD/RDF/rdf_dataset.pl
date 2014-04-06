@@ -26,9 +26,9 @@
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_read)).
-:- use_module(void(void_db)). % XML namespace.
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(void(void_db)). % XML namespace.
 
 
 

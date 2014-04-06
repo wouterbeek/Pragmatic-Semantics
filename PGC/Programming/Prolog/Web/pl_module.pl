@@ -14,18 +14,18 @@ Web interface to Prolog modules.
 @version 2014/03
 */
 
-:- use_module(generics(meta_ext)).
-:- use_module(generics(uri_query)).
-:- use_module(html(html_list)).
-:- use_module(html(html_table)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(generics(uri_query)).
+:- use_remote_module(html(html_list)).
+:- use_remote_module(html(html_table)).
 :- use_module(library(aggregate)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/http_path)).
 :- use_module(library(lists)).
 :- use_module(library(prolog_xref)).
-:- use_module(pl_web(pl_predicate)).
-:- use_module(pl_web(html_pl_term)).
+:- use_remote_module(pl_web(pl_predicate)).
+:- use_remote_module(pl_web(html_pl_term)).
 
 
 

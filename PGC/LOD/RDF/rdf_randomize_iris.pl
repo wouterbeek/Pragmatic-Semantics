@@ -11,15 +11,15 @@
 @version 2014/01
 */
 
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(meta_ext)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(meta_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(random)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(uri)).
-:- use_module(rdf_term(rdf_term)).
+:- use_remote_module(rdf_term(rdf_term)).
 
 
 

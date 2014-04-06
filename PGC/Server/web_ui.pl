@@ -21,8 +21,8 @@ This module also defines the dependencies for the JavaScript generics.
 @version 2009, 2013/10-2013/11, 2014/02
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(db_ext)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).

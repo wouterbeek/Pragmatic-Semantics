@@ -16,9 +16,9 @@ Crawler for HTML sites.
 @version 2012/09
 */
 
-:- use_module(server(link_collection)).
-:- use_module(server(parser)).
-:- use_module(standards(html)).
+:- use_remote_module(server(link_collection)).
+:- use_remote_module(server(parser)).
+:- use_remote_module(standards(html)).
 
 :- dynamic(unvisited(_Link)).
 :- dynamic(visited(_Link)).

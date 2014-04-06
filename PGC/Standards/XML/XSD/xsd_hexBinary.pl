@@ -36,8 +36,8 @@ The ·canonical mapping· of hexBinary is given formally in ·hexBinaryCanonical
 @version 2013/08, 2014/03
 */
 
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(math(radix)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(math(radix)).
 
 
 

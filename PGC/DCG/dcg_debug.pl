@@ -14,9 +14,9 @@ Debug support for DCGs.
 @version 2013/05-2013/09, 2013/11-2013/12
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_os)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_os)).
 :- use_module(library(debug)).
 
 :- meta_predicate(dcg_debug(+,//)).

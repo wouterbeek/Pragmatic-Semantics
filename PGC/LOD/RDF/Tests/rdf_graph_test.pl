@@ -12,12 +12,12 @@ Unit testing for RDF graph support.
 
 :- begin_tests(rdf_graph).
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_term(rdf_term)).
+:- use_remote_module(rdf_term(rdf_term)).
 
 
 

@@ -48,7 +48,7 @@ Recipients of an HTTP/1.0 request that lacks a `Host` header field
 @version 2013/12
 */
 
-:- use_module(
+:- use_remote_module(
   uri(rfc2396_dcg),
   [
     abs_path//2,

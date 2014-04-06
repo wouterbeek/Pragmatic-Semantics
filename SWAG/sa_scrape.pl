@@ -18,22 +18,22 @@ by scraping an online Web site.
 @version 2013/04, 2014/03
 */
 
-:- use_module(generics(atom_ext)).
-:- use_module(html(html)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(html(html)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(uri)).
 :- use_module(library(xpath)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf(rdf_image)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(swag(swag)).
-:- use_module(swag(swag_db)).
-:- use_module(xsd(xsd)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf(rdf_image)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(swag(swag)).
+:- use_remote_module(swag(swag_db)).
+:- use_remote_module(xsd(xsd)).
 
 
 

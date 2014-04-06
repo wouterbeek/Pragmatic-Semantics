@@ -15,17 +15,17 @@ Generates HTML tables for overviews of RDFS classes.
 @version 2014/01-2014/04
 */
 
-:- use_module(generics(list_ext)).
+:- use_remote_module(generics(list_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(pl_web(html_pl_term)).
-:- use_module(rdf_term(rdf_term)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(rdf_web(rdf_term_html)).
+:- use_remote_module(pl_web(html_pl_term)).
+:- use_remote_module(rdf_term(rdf_term)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(rdf_web(rdf_term_html)).
 
 
 

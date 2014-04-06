@@ -13,9 +13,9 @@ Verify the well-formedness of IRIs.
 @version 2014/02
 */
 
-:- use_module(dh(dh)).
-:- use_module(dh(dh_walk)). % Meta-argument.
-:- use_module(generic(meta_ext)).
+:- use_remote_module(dh(dh)).
+:- use_remote_module(dh(dh_walk)). % Meta-argument.
+:- use_remote_module(generic(meta_ext)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(uri)).
 

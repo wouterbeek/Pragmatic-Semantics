@@ -18,5 +18,5 @@ load_iotw:-
   % IOTW
   assert(user:file_search_path(iotw, ThisDir)),
   assert(user:file_search_path(iotw_exp, iotw('Experiments'))),
-  use_module(iotw(iotw_web)).
+  use_remote_module(iotw(iotw_web)).
 

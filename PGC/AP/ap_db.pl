@@ -42,19 +42,19 @@
 @version 2014/02-2014/03
 */
 
-:- use_module(generics(error_ext)).
+:- use_remote_module(generics(error_ext)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_container)).
-:- use_module(rdf_term(rdf_boolean)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf(rdf_container)).
+:- use_remote_module(rdf_term(rdf_boolean)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- rdf_meta(ap_resource(r,r,?)).
 :- rdf_meta(ap_stage_resource(r,r,?)).

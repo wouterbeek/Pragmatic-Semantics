@@ -6,12 +6,12 @@
 @version 2014/02
 */
 
-:- use_module(html(html_table)).
+:- use_remote_module(html(html_table)).
 :- use_module(library(apply)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
-:- use_module(server(web_modules)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(xml(xml_namespace)).
 
 http:location(lodobs, root(lodobs), []).
 :- http_handler(lodobs(waterfall), lodobs_waterfall, []).

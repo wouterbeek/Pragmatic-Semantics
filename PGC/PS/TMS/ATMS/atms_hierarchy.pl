@@ -7,9 +7,9 @@
 */
 
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(atms, 'http://www.wouterbeek.com/atms#').
 :- xml_register_namespace(environment, 'http://www.wouterbeek.com/environment#').

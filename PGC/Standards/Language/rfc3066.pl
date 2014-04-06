@@ -15,10 +15,10 @@ Language tag parsing.
 @version 2013/02, 2013/06-2013/07
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(lang('iso639-1')). % Used in meta-call.
-:- use_module(lang('iso639-2')). % Used in meta-call.
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(lang('iso639-1')). % Used in meta-call.
+:- use_remote_module(lang('iso639-2')). % Used in meta-call.
 
 
 

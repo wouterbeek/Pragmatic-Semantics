@@ -34,26 +34,26 @@ We make a distinction between three portions of code in this module:
 @version 2013/01-2013/04, 2013/06, 2013/09-2013/10, 2014/03
 */
 
-:- use_module(generics(atom_ext)).
-:- use_module(generics(list_ext)).
-:- use_module(generics(parse_ext)).
-:- use_module(generics(thread_ext)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(parse_ext)).
+:- use_remote_module(generics(thread_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
 :- use_module(library(xpath)).
-:- use_module(owl(owl_build)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf(rdf_stat)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(rdfs(rdfs_read)).
-:- use_module(skos(skos_build)).
-:- use_module(standards(html)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(owl(owl_build)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf(rdf_stat)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(rdfs(rdfs_read)).
+:- use_remote_module(skos(skos_build)).
+:- use_remote_module(standards(html)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- rdf_meta(assert_schema_picarta(+,r)).
 :- rdf_meta(scrape_picarta(+,r)).

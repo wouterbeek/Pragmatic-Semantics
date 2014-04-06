@@ -15,18 +15,18 @@ Process all energylabels in a single parse.
 @version 2013/06-2013/07, 2013/09-2013/12
 */
 
-:- use_module(ap(ap_stat)).
-:- use_module(dcg(dcg_generic)).
+:- use_remote_module(ap(ap_stat)).
+:- use_remote_module(dcg(dcg_generic)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(settings)).
 :- use_module(library(xpath)).
-:- use_module(os(datetime_ext)).
-:- use_module(os(file_ext)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(xml(xml_namespace)).
-:- use_module(xml(xml_stream)).
-:- use_module(xml(xml_to_rdf)).
+:- use_remote_module(os(datetime_ext)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(xml(xml_namespace)).
+:- use_remote_module(xml(xml_stream)).
+:- use_remote_module(xml(xml_to_rdf)).
 
 :- xml_register_namespace(el, 'https://data.overheid.nl/data/dataset/energielabels-agentschap-nl/').
 

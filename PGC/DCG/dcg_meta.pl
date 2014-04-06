@@ -40,7 +40,7 @@ Meta-DCG rules.
 @version 2013/05-2013/09, 2013/11-2013/12, 2014/02-2014/03
 */
 
-:- use_module(generics(list_ext)).
+:- use_remote_module(generics(list_ext)).
 :- use_module(library(lists)).
 
 :- meta_predicate(';'(2,2,?,?)).

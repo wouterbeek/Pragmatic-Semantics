@@ -24,8 +24,8 @@ Web-interface for Wordnet.
 @version 2012/11, 2014/03
 */
 
-:- use_module(datasets(wordnet)).
-:- use_module(html(html_table)).
+:- use_remote_module(datasets(wordnet)).
+:- use_remote_module(html(html_table)).
 :- use_module(library(aggregate)).
 :- use_module(library(http/html_write)).
 

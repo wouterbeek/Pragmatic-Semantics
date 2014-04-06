@@ -37,11 +37,11 @@ HTML generation for RDF terms.
 @version 2014/01-2014/04
 */
 
-:- use_module(generics(typecheck)).
-:- use_module(generics(uri_ext)).
-:- use_module(generics(uri_query)).
-:- use_module(html(html_list)).
-:- use_module(html(html_tuple)).
+:- use_remote_module(generics(typecheck)).
+:- use_remote_module(generics(uri_ext)).
+:- use_remote_module(generics(uri_query)).
+:- use_remote_module(html(html_list)).
+:- use_remote_module(html(html_tuple)).
 :- use_module(library(apply)).
 :- use_module(library(error)).
 :- use_module(library(http/html_write)).
@@ -51,14 +51,14 @@ HTML generation for RDF terms.
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(pl_web(html_pl_term)).
-:- use_module(rdf(rdf_graph)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(server(web_ui)).
-:- use_module(tms(tms)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(pl_web(html_pl_term)).
+:- use_remote_module(rdf(rdf_graph)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(server(web_ui)).
+:- use_remote_module(tms(tms)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- rdf_meta(rdf_literal_html(+,+,r,+,?)).
 :- rdf_meta(rdf_term_html(+,o,?,?)).

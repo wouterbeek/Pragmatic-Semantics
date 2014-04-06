@@ -27,10 +27,10 @@ DCGs for constructing SPARQL queries.
 @version 2012/12-2013/01, 2013/03-2013/05, 2013/07, 2013/09, 2013/11-2014/02
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_content)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(xml(xml_namespace)).
 
 
 

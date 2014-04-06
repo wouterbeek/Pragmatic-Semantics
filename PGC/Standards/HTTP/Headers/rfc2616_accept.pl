@@ -39,12 +39,12 @@ media_range(
 @version 2013/12
 */
 
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(parse_tree)).
-:- use_module(flp(rfc2616_abnf)).
-:- use_module(http(rfc2616_generic)).
-:- use_module(http_parameters(rfc2616_media_type)).
-:- use_module(http_parameters(rfc2616_quality_value)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(parse_tree)).
+:- use_remote_module(flp(rfc2616_abnf)).
+:- use_remote_module(http(rfc2616_generic)).
+:- use_remote_module(http_parameters(rfc2616_media_type)).
+:- use_remote_module(http_parameters(rfc2616_quality_value)).
 
 
 

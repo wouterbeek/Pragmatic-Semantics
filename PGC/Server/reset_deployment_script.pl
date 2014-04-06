@@ -8,9 +8,9 @@ Script for auto-resetting a PGC-based server deployment.
 @version 2013/12
 */
 
-:- use_module(os(safe_file)).
-:- use_module(server(password_db)).
-:- use_module(server(user_db)).
+:- use_remote_module(os(safe_file)).
+:- use_remote_module(server(password_db)).
+:- use_remote_module(server(user_db)).
 
 :- initialization(reset_deployment).
 

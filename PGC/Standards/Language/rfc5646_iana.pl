@@ -32,20 +32,20 @@ specification.
 @version 2013/07-2013/08, 2014/03
 */
 
-:- use_module(flp(record_jar)). % Used in phrase_from_stream/2.
+:- use_remote_module(flp(record_jar)). % Used in phrase_from_stream/2.
 :- use_module(library(apply)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_language_tagged_string)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(uri(rfc2396_dcg)).
-:- use_module(xml(xml_namespace)).
-:- use_module(xsd(xsd)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_language_tagged_string)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(uri(rfc2396_dcg)).
+:- use_remote_module(xml(xml_namespace)).
+:- use_remote_module(xsd(xsd)).
 
 :- xml_register_namespace(rfc5646, 'http://www.rfc5646.com/').
 :- xml_register_namespace(xsd, 'http://www.w3.org/2001/XMLSchema#').

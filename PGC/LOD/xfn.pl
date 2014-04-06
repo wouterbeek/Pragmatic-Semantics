@@ -10,12 +10,12 @@
 :- use_module(library(plunit)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(os(file_ext)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(xfn, 'http://vocab.sindice.com/xfn#').
 

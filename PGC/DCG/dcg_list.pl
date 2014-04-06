@@ -15,8 +15,8 @@ Support for generating lists using DCG rules.
 @version 2014/03
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_meta)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_meta)).
 
 :- meta_predicate(dcg_list(3,+,?,?)).
 

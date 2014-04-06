@@ -24,17 +24,17 @@ Predicates for running external programs.
 @version 2013/06-2013/07, 2013/11, 2014/01-2014/02
 */
 
-:- use_module(generics(db_ext)).
-:- use_module(generics(error_ext)).
-:- use_module(generics(meta_ext)).
-:- use_module(generics(print_ext)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(error_ext)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(generics(print_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(process)).
 :- use_module(library(www_browser)).
-:- use_module(os(ansi_ext)).
-:- use_module(os(file_ext)).
-:- use_module(os(os_ext)).
+:- use_remote_module(os(ansi_ext)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(os(os_ext)).
 
 :- multifile(prolog:message/3).
 

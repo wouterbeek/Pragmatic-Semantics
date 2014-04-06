@@ -17,14 +17,14 @@ Attributes, their allowed values, and their default values for GraphViz.
 @version 2011-2013/07, 2013/09-2013/10, 2014/01, 2014/03
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(typecheck)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(typecheck)).
 :- use_module(library(lists)).
 :- use_module(library(ordsets)).
-:- use_module(svg(svg_colors)).
-:- use_module(standards(brewer)).
-:- use_module(standards(x11_colors)).
+:- use_remote_module(svg(svg_colors)).
+:- use_remote_module(standards(brewer)).
+:- use_remote_module(standards(x11_colors)).
 
 :- discontiguous(gv_attr/5).
 

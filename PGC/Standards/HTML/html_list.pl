@@ -19,15 +19,15 @@ Support for generating HTML lists.
 @version 2013/10-2013/11, 2014/01, 2014/03
 */
 
-:- use_module(dcg(dcg_meta)).
-:- use_module(html(html)).
+:- use_remote_module(dcg(dcg_meta)).
+:- use_remote_module(html(html)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/http_path)).
 :- use_module(library(lists)).
 :- use_module(library(option)).
-:- use_module(pl_web(html_pl_term)).
-:- use_module(server(web_modules)).
+:- use_remote_module(pl_web(html_pl_term)).
+:- use_remote_module(server(web_modules)).
 
 :- meta_predicate(html_list(+,3,+,?,?)).
 :- meta_predicate(html_list_items(//,+,?,?)).

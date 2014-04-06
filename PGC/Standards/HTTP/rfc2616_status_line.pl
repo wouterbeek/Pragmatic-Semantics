@@ -17,10 +17,10 @@ DCG for RFC 2616 status lines.
 @version 2013/12
 */
 
-:- use_module(dcg(dcg_multi)).
-:- use_module(http(rfc2616_basic)).
-:- use_module(http(rfc2616_version)).
-:- use_module(math(radix)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(http(rfc2616_basic)).
+:- use_remote_module(http(rfc2616_version)).
+:- use_remote_module(math(radix)).
 
 
 

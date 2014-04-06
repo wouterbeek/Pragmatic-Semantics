@@ -18,13 +18,13 @@ A simple RDF vocabulary for representing tables.
 @version 2014/02-2014/03
 */
 
-:- use_module(generics(row_ext)).
+:- use_remote_module(generics(row_ext)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_list)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_list)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(rdf_table, 'http://www.wouterbeek.com/rdf_table#').
 

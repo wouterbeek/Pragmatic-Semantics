@@ -14,13 +14,13 @@ Evaluates results from identity experiments.
 @version 2013/12
 */
 
-:- use_module(generics(pair_ext)).
-:- use_module(generics(set_theory)).
+:- use_remote_module(generics(pair_ext)).
+:- use_remote_module(generics(set_theory)).
 :- use_module(library(csv)).
 :- use_module(library(debug)).
 :- use_module(library(ordsets)).
-:- use_module(iotw(inode)).
-:- use_module(rdf(rdf_stat)).
+:- use_remote_module(iotw(inode)).
+:- use_remote_module(rdf(rdf_stat)).
 
 
 

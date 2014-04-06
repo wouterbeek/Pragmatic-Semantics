@@ -15,10 +15,10 @@ Returns the MIME of a given file.
 @version 2014/01-2014/03
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)). % Meta-DCG
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)). % Meta-DCG
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
 :- use_module(library(debug)).
 :- use_module(library(pure_input)).
 

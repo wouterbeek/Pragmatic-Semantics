@@ -17,17 +17,17 @@ Generic support for VoID, used by other VoID modules.
 @version 2013/11, 2014/03
 */
 
-:- use_module(generics(typecheck)).
-:- use_module(generics(uri_ext)).
-:- use_module(http(http_download)).
+:- use_remote_module(generics(typecheck)).
+:- use_remote_module(generics(uri_ext)).
+:- use_remote_module(http(http_download)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(os(file_ext)).
-:- use_module(rdf(rdf_graph_name)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(rdf_file(rdf_serial_ext)).
-:- use_module(rdf_term(rdf_term)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(rdf(rdf_graph_name)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdf_file(rdf_serial_ext)).
+:- use_remote_module(rdf_term(rdf_term)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(void, 'http://rdfs.org/ns/void#').
 

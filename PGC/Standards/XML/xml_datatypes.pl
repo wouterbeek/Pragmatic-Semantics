@@ -25,10 +25,10 @@ DCG rules for XML datatypes.
 @version 2013/07-2013/08, 2014/02-2014/04
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_unicode)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_unicode)).
 
 :- meta_predicate(xml_namespaced_name(//,//,?,?)).
 

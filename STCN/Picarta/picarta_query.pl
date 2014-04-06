@@ -16,13 +16,13 @@ via its URI-baset/REST API.
 @version 2013/01-2013/04, 2013/06, 2013/09-2013/10
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(atom_ext)).
-:- use_module(html(html)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(html(html)).
 :- use_module(library(debug)).
 :- use_module(library(uri)).
 :- use_module(library(xpath)).
-:- use_module(stcn(stcn_generic)).
+:- use_remote_module(stcn(stcn_generic)).
 
 
 

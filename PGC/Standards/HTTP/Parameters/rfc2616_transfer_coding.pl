@@ -24,13 +24,13 @@ All HTTP/1.1 applications MUST be able to receive and decode the
 @version 2013/12
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(parse_tree)).
-:- use_module(http(rfc2616_basic)).
-:- use_module(http(rfc2616_generic)).
-:- use_module(http_headers(rfc2616_entity_header)).
-:- use_module(math(radix)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(parse_tree)).
+:- use_remote_module(http(rfc2616_basic)).
+:- use_remote_module(http(rfc2616_generic)).
+:- use_remote_module(http_headers(rfc2616_entity_header)).
+:- use_remote_module(math(radix)).
 
 
 

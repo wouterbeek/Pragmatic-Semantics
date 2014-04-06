@@ -20,7 +20,7 @@ Support predicates for working with pairs.
 @version 2013/09-2013/10, 2013/12, 2014/03
 */
 
-:- use_module(generics(list_ext)).
+:- use_remote_module(generics(list_ext)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(ordsets)).

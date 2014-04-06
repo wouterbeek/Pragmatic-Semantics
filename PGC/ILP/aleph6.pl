@@ -61,16 +61,16 @@ please contact Ashwin Srinivasan first.
 @version 2012/06-2012/08, 2013/03, 2013/06
 */
 
-:- use_module(generics(db_ext)).
-:- use_module(generics(listing_ext)).
-:- use_module(generics(logging)).
-:- use_module(generics(meta_ext)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(listing_ext)).
+:- use_remote_module(generics(logging)).
+:- use_remote_module(generics(meta_ext)).
 :- use_module(library(dialect/hprolog), [memberchk_eq/2]).
 :- use_module(library(lists)).
 :- use_module(library(settings)).
 :- use_module(library(time)).
-:- use_module(os(file_ext)).
-:- use_module(pl(pl_control)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(pl(pl_control)).
 
 % This must come before this predicate is defined dynamic.
 :- redefine_system_predicate(false).

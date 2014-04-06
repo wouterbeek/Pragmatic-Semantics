@@ -53,12 +53,12 @@ S --> [niet, in, druk, verschenen].
 @version 2013/05
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(nlp(dcg_dict)).
-:- use_module(nlp(dcg_ordinal)).
-:- use_module(nlp(dcg_volume)).
-:- use_module(nlp(dcg_year)).
-:- use_module(logic(boolean_logic)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(nlp(dcg_dict)).
+:- use_remote_module(nlp(dcg_ordinal)).
+:- use_remote_module(nlp(dcg_volume)).
+:- use_remote_module(nlp(dcg_year)).
+:- use_remote_module(logic(boolean_logic)).
 :- use_module(library(dcg/basics)).
 
 

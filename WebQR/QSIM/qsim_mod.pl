@@ -14,26 +14,26 @@ Exporting of QSIM models to the GIF intermediary format.
 @version 2013/09
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_os)).
-:- use_module(dcg(dcg_wrap)).
-:- use_module(generics(list_ext)).
-:- use_module(generics(pair_ext)).
-:- use_module(gv(gv_dcg)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_os)).
+:- use_remote_module(dcg(dcg_wrap)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(pair_ext)).
+:- use_remote_module(gv(gv_dcg)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(owl(owl_read)).
-:- use_module(qsim(qsim_read)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(rdfs(rdfs_read)).
-:- use_module(server(user_db)).
-:- use_module(webqr(webqr_build)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(owl(owl_read)).
+:- use_remote_module(qsim(qsim_read)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(rdfs(rdfs_read)).
+:- use_remote_module(server(user_db)).
+:- use_remote_module(webqr(webqr_build)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(qsim, 'http://www.wouterbeek.com/qsim#').
 

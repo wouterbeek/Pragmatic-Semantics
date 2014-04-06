@@ -24,8 +24,8 @@ Exports TMS belief states,
 :- use_module(library(ordsets)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(tms(tms)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(tms(tms)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(tms, 'http://www.wouterbeek.com/tms.owl#').
 

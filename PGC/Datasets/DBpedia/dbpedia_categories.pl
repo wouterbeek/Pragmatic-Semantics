@@ -20,7 +20,7 @@ DBpedia publishes the following three kind of files about categories:
 @version 2014/02-2014/03
 */
 
-:- use_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdf_file(rdf_serial)).
 
 
 

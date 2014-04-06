@@ -14,24 +14,24 @@
 @version 2014/02-2014/03
 */
 
-:- use_module(generics(list_ext)). % Meta-argument.
-:- use_module(generics(meta_ext)).
-:- use_module(generics(uri_ext)).
-:- use_module(http(http_download)).
+:- use_remote_module(generics(list_ext)). % Meta-argument.
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(generics(uri_ext)).
+:- use_remote_module(http(http_download)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(ordsets)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(uri)).
-:- use_module(lod(lod_location)).
-:- use_module(os(file_mime)).
-:- use_module(sparql(sparql_build)).
-:- use_module(sparql(sparql_db)).
-:- use_module(sparql(sparql_ext)).
-:- use_module(rdf(rdf_gc_graph)). % Run graph garbage collection.
-:- use_module(rdf(rdf_meta)).
-:- use_module(rdf_file(rdf_serial)).
+:- use_remote_module(lod(lod_location)).
+:- use_remote_module(os(file_mime)).
+:- use_remote_module(sparql(sparql_build)).
+:- use_remote_module(sparql(sparql_db)).
+:- use_remote_module(sparql(sparql_ext)).
+:- use_remote_module(rdf(rdf_gc_graph)). % Run graph garbage collection.
+:- use_remote_module(rdf(rdf_meta)).
+:- use_remote_module(rdf_file(rdf_serial)).
 
 
 

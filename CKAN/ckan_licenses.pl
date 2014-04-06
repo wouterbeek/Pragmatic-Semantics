@@ -60,24 +60,25 @@ After these operations all 4053 datasets have fully described
 @version 2014/02-2014/03
 */
 
-:- use_module(ckan(ckan_db)).
-:- use_module(ckan(opendefinition_licenses)).
-:- use_module(dcg(dcg_content)).
+:- use_remote_module(ckan(ckan_db)).
+:- use_remote_module(ckan(opendefinition_licenses)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(owl(owl_read)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf_term(rdf_boolean)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(server(web_modules)).
+
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(owl(owl_read)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf_term(rdf_boolean)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(server(web_modules)).
 
 :- rdf_meta(license_is_none(r)).
 

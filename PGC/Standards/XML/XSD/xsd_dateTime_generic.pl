@@ -30,10 +30,10 @@ conforming to the XSD 1.1 specification.
 @version 2013/08-2013/11, 2014/03-2014/04
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(xsd(xsd_number_generic)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(xsd(xsd_number_generic)).
 
 
 

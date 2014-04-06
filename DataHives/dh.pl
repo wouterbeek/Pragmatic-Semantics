@@ -28,11 +28,11 @@ Bzzzzz... DataHives!
 @version 2014/02
 */
 
-:- use_module(dcg(dcg_content)). % Meta-argument.
-:- use_module(dcg(dcg_generic)).
-:- use_module(dh(dh_lit_tag)). % Load demo.
+:- use_remote_module(dcg(dcg_content)). % Meta-argument.
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dh(dh_lit_tag)). % Load demo.
 :- use_module(library(debug)).
-:- use_module(rdf(rdf_name)). % Meta-argument.
+:- use_remote_module(rdf(rdf_name)). % Meta-argument.
 
 :- meta_predicate(init_agent(4,4,4,+)).
 :- thread_local(backtrack/4).

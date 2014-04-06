@@ -60,10 +60,10 @@ Statistics for RDF data.
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf(rdf_graph)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf_term(rdf_term)).
-:- use_module(rdfs(rdfs_read)).
+:- use_remote_module(rdf(rdf_graph)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf_term(rdf_term)).
+:- use_remote_module(rdfs(rdfs_read)).
 
 :- rdf_meta(count_individuals(r,+,-)).
 :- rdf_meta(count_objects(r,r,+,-)).

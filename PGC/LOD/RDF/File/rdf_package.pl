@@ -19,9 +19,9 @@ Packaging of RDF datasets
 */
 
 :- use_module(library(option)).
-:- use_module(os(archive_ext)).
-:- use_module(rdf(rdf_dataset)).
-:- use_module(void(void_db)).
+:- use_remote_module(os(archive_ext)).
+:- use_remote_module(rdf(rdf_dataset)).
+:- use_remote_module(void(void_db)).
 
 
 

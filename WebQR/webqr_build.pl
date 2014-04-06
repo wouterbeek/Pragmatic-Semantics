@@ -32,27 +32,27 @@
 @version 2013/07, 2013/09, 2013/11-2014/02
 */
 
-:- use_module(dbpedia(dbpedia_eq)).
+:- use_remote_module(dbpedia(dbpedia_eq)).
 :- use_module(library(aggregate)).
 :- use_module(library(option)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(lod(cache_it)).
-:- use_module(lod(lod_query)).
-:- use_module(owl(owl_build)).
-:- use_module(owl(owl_read)).
-:- use_module(qsim(qsim_build)).
-:- use_module(qsim(qsim_vocabulary)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(rdfs(rdfs_read)).
-:- use_module(server(user_db)).
-:- use_module(sparql(sparql_find)).
-:- use_module(webqr(webqr_generic)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(lod(cache_it)).
+:- use_remote_module(lod(lod_query)).
+:- use_remote_module(owl(owl_build)).
+:- use_remote_module(owl(owl_read)).
+:- use_remote_module(qsim(qsim_build)).
+:- use_remote_module(qsim(qsim_vocabulary)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(rdfs(rdfs_read)).
+:- use_remote_module(server(user_db)).
+:- use_remote_module(sparql(sparql_find)).
+:- use_remote_module(webqr(webqr_generic)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(webqr, 'http://www.wouterbeek.com/webqr#').
 

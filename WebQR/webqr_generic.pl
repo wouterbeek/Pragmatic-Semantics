@@ -26,8 +26,8 @@ Generic predicates for WebQR.
 
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(server(user_db)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(server(user_db)).
 
 
 

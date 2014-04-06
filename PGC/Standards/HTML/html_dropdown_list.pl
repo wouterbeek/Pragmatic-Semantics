@@ -15,7 +15,7 @@ Generates HTML drop-down lists.
 @version 2014/01
 */
 
-:- use_module(dcg(dcg_meta)).
+:- use_remote_module(dcg(dcg_meta)).
 :- use_module(library(http/html_write)).
 
 

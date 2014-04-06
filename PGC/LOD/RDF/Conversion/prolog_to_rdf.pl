@@ -16,16 +16,16 @@ Automated conversion from Prolog terms to RDF triples.
 @version 2014/01
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
 :- use_module(library(apply)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(xml(xml_namespace)).
-:- use_module(xsd(xsd)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(xml(xml_namespace)).
+:- use_remote_module(xsd(xsd)).
 
 
 

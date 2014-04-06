@@ -22,11 +22,11 @@ Cell contents are represented by Prolog ground terms that are elements
 @version 2012/09-2013/06, 2013/09-2014/01
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_meta)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_meta)).
 :- use_module(library(http/html_write)).
 :- use_module(library(option)).
-:- use_module(pl_web(html_pl_term)).
+:- use_remote_module(pl_web(html_pl_term)).
 
 :- meta_predicate(html_table(:,//,+,?,?)).
 :- meta_predicate(html_table(:,//,3,+,?,?)).

@@ -18,15 +18,15 @@ Recommendation sharing non-monotonic?
 @version 2013/05, 2013/08-2013/12
 */
 
-:- use_module(generics(deb_ext)).
-:- use_module(generics(pair_ext)).
-:- use_module(iotw(inode)).
-:- use_module(iotw(inode_evaluate)).
-:- use_module(iotw(inode_export)).
+:- use_remote_module(generics(deb_ext)).
+:- use_remote_module(generics(pair_ext)).
+:- use_remote_module(iotw(inode)).
+:- use_remote_module(iotw(inode_evaluate)).
+:- use_remote_module(iotw(inode_export)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
-:- use_module(xsd(xsd_clean)).
+:- use_remote_module(xsd(xsd_clean)).
 
 
 

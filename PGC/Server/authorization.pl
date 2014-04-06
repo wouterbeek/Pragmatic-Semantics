@@ -19,9 +19,9 @@
 
 :- use_module(library(http/http_authenticate)).
 :- use_module(library(lists)).
-:- use_module(server(login_db)).
-:- use_module(server(password_db)).
-:- use_module(server(user_db)).
+:- use_remote_module(server(login_db)).
+:- use_remote_module(server(password_db)).
+:- use_remote_module(server(user_db)).
 
 %! allow(
 %!   ?Role:oneof([admin]),

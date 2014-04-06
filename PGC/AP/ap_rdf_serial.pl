@@ -18,14 +18,14 @@
 @version 2014/02-2014/03
 */
 
-:- use_module(ap(ap_db)).
-:- use_module(generics(error_ext)).
-:- use_module(generics(meta_ext)).
-:- use_module(generics(uri_ext)).
+:- use_remote_module(ap(ap_db)).
+:- use_remote_module(generics(error_ext)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(generics(uri_ext)).
 :- use_module(library(apply)).
 :- use_module(library(error)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_file(rdf_serial)).
 
 
 

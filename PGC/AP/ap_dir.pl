@@ -28,18 +28,18 @@ Directory management for running automated processes.
 @version 2013/11, 2014/01-2014/03
 */
 
-:- use_module(generics(codes_ext)).
-:- use_module(generics(typecheck)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(generics(typecheck)).
 :- use_module(library(apply)).
 :- use_module(library(filesex)).
 :- use_module(library(lists)).
 :- use_module(library(process)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(os(dir_ext)).
-:- use_module(rdf(rdf_container)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(rdf(rdf_container)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(ap, 'http://www.wouterbeek.com/ap.owl#').
 

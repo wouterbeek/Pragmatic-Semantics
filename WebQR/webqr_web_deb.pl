@@ -22,12 +22,12 @@ bg_web/3 draws the behavior graph of the test model with
 @version 2013/12
 */
 
-:- use_module(generics(db_ext)).
-:- use_module(gv(gv_file)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(gv(gv_file)).
 :- use_module(library(http/http_dispatch)).
-:- use_module(qsim(qsim_mod)).
-:- use_module(server(web_modules)).
-:- use_module(webqr(webqr_uc)).
+:- use_remote_module(qsim(qsim_mod)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(webqr(webqr_uc)).
 
 % /webqr/deb
 :- multifile(http:location/3).

@@ -21,20 +21,20 @@ In GraphViz vertices are called 'nodes'.
 @version 2013/07, 2013/09, 2014/03
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(dcg_os)).
-:- use_module(generics(option_ext)).
-:- use_module(generics(trees)).
-:- use_module(graph_theory(graph_export)).
-:- use_module(gv(gv_attrs)).
-:- use_module(html(html_dcg)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(dcg_os)).
+:- use_remote_module(generics(option_ext)).
+:- use_remote_module(generics(trees)).
+:- use_remote_module(graph_theory(graph_export)).
+:- use_remote_module(gv(gv_attrs)).
+:- use_remote_module(html(html_dcg)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(option)).
-:- use_module(ugraph(ugraph_export)).
+:- use_remote_module(ugraph(ugraph_export)).
 
 
 

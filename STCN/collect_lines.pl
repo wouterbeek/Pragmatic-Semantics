@@ -16,15 +16,15 @@ We first want to create a text file with one line per statement.
 @version 2013/09-2013/10
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(generics(codes_ext)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(generics(codes_ext)).
 :- use_module(library(debug)).
 :- use_module(library(pio)).
-:- use_module(os(file_ext)).
-:- use_module(stcn(stcn_kmc)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(stcn(stcn_kmc)).
 
 
 

@@ -16,16 +16,16 @@ Search for agents (e.g. people) on DBpedia.
 @version 2013/03-2013/05, 2013/08, 2013/12-2014/01
 */
 
-:- use_module(generics(list_ext)).
-:- use_module(generics(typecheck)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(typecheck)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(owl(owl_read)).
-:- use_module(rdf_term(rdf_term)).
-:- use_module(sparql(sparql_build)).
-:- use_module(sparql(sparql_ext)).
+:- use_remote_module(owl(owl_read)).
+:- use_remote_module(rdf_term(rdf_term)).
+:- use_remote_module(sparql(sparql_build)).
+:- use_remote_module(sparql(sparql_ext)).
 
 :- rdf_meta(dbpedia_find_agent(+,+,+,r)).
 

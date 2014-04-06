@@ -14,11 +14,11 @@
 @version 2013/10-2013/12
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(crypt)).
 :- use_module(library(persistency)). % Persistent declaration.
-:- use_module(os(file_ext)).
-:- use_module(os(os_ext)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(os(os_ext)).
 
 :- db_add_novel(user:prolog_file_type(db, database)).
 

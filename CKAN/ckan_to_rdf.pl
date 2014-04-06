@@ -14,12 +14,13 @@ Automated CKAN to RDF conversion.
 @version 2014/01-2014/03
 */
 
-:- use_module(ckan(ckan_api)).
-:- use_module(ckan(ckan_db)).
-:- use_module(ckan(ckan_licenses)).
-:- use_module(ckan(ckan_mime)).
-:- use_module(generics(meta_ext)).
-:- use_module(generics(list_script)).
+:- use_remote_module(ckan(ckan_api)).
+:- use_remote_module(ckan(ckan_db)).
+:- use_remote_module(ckan(ckan_licenses)).
+:- use_remote_module(ckan(ckan_mime)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(generics(list_script)).
+
 :- use_module(library(debug)).
 :- use_module(library(option)).
 

@@ -70,18 +70,18 @@ DCG rules for SVG datatypes.
 @version 2013/07, 2013/09
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(parse_tree)).
-:- use_module(lang(rfc5646_dcg)).
-:- use_module(svg(svg_generic)).
-:- use_module(svg(svg_datatypes)).
-:- use_module(uri(rfc3987_dcg)).
-:- use_module(xml(xlink)).
-:- use_module(xml(xml_attributes)).
-:- use_module(xml(xml_datatypes)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(parse_tree)).
+:- use_remote_module(lang(rfc5646_dcg)).
+:- use_remote_module(svg(svg_generic)).
+:- use_remote_module(svg(svg_datatypes)).
+:- use_remote_module(uri(rfc3987_dcg)).
+:- use_remote_module(xml(xlink)).
+:- use_remote_module(xml(xml_attributes)).
+:- use_remote_module(xml(xml_datatypes)).
 
 :- meta_predicate(svg_attribute(//,//,//,?,?)).
 :- meta_predicate(svg_attribute(//,//,//,//,?,?)).

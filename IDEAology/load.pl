@@ -12,5 +12,5 @@ load_id:-
 
   % IDEAology
   assert(user:file_search_path(id, ThisDir)),
-  use_module(id(id)).
+  use_remote_module(id(id)).
 

@@ -63,8 +63,8 @@ yearMonthDuration.
 @version 2013/08, 2014/03
 */
 
-:- use_module(xsd(xsd_duration)).
-:- use_module(xsd(xsd_duration_generic)).
+:- use_remote_module(xsd(xsd_duration)).
+:- use_remote_module(xsd(xsd_duration_generic)).
 
 
 

@@ -26,8 +26,8 @@ Extensions for date and time.
 @version 2013/06-2013/07, 2013/11
 */
 
-:- use_module(generics(meta_ext)).
-:- use_module(os(dir_ext)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(os(dir_ext)).
 
 
 

@@ -32,14 +32,14 @@ When triples including images are read,
 @version 2014/01
 */
 
-:- use_module(generics(deb_ext)).
-:- use_module(generics(uri_ext)).
-:- use_module(http(http_download)).
+:- use_remote_module(generics(deb_ext)).
+:- use_remote_module(generics(uri_ext)).
+:- use_remote_module(http(http_download)).
 :- use_module(library(option)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf(rdf_build)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- rdf_meta(rdf_assert_image(+,r,r,r,+)).
 :- rdf_meta(rdf_image(r,r,r,-,?)).

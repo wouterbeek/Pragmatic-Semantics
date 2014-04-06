@@ -137,8 +137,8 @@ constructed. (Decision procedure versus structural analysis.)
 @version 2013/12
 */
 
-:- use_module(http(rfc2616_request)).
-:- use_module(http(rfc2616_response)).
+:- use_remote_module(http(rfc2616_request)).
+:- use_remote_module(http(rfc2616_response)).
 
 
 

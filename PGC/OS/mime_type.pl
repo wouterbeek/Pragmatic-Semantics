@@ -22,19 +22,19 @@ Support for IANA-registered MIME types.
 @version 2014/02-2014/03
 */
 
-:- use_module(generics(db_ext)).
-:- use_module(html(html)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(html(html)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
 :- use_module(library(semweb/rdf_turtle)). % RDF-serialization.
 :- use_module(library(semweb/rdf_turtle_write)). % RDF-serialization.
 :- use_module(library(xpath)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(standards(iana_to_rdf)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(standards(iana_to_rdf)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(iana, 'http://www.iana.org/assignments/').
 

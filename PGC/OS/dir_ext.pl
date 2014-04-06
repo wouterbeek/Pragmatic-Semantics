@@ -45,15 +45,15 @@ Extensions for handling directories.
 @version 2013/06-2013/07, 2013/09, 2013/11-2014/02, 2014/04
 */
 
-:- use_module(generics(atom_ext)).
-:- use_module(generics(db_ext)).
-:- use_module(generics(option_ext)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(option_ext)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(filesex)).
 :- use_module(library(lists)).
-:- use_module(os(file_ext)).
-:- use_module(os(safe_file)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(os(safe_file)).
 
 :- meta_predicate(run_in_working_directory(0,+)).
 

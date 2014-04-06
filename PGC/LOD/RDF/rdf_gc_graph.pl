@@ -11,14 +11,14 @@
 @version 2014/02
 */
 
-:- use_module(generics(list_ext)).
-:- use_module(generics(thread_ext)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(thread_ext)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(server(web_modules)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(server(web_modules)).
 
 http:location(rdf, root(rdf), []).
 :- http_handler(rdf(gc_graph), rdf_gc_graph, []).

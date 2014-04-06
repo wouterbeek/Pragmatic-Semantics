@@ -24,11 +24,11 @@ aan voordat dat gaat werken.
 */
 
 :- use_module(library(semweb/rdf_db)).
-:- use_module(qsim(qsim_build)).
-:- use_module(qsim(qsim_read)).
-:- use_module(qsim(qsim_engine)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(webqr(webqr_build)).
+:- use_remote_module(qsim(qsim_build)).
+:- use_remote_module(qsim(qsim_read)).
+:- use_remote_module(qsim(qsim_engine)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(webqr(webqr_build)).
 
 
 

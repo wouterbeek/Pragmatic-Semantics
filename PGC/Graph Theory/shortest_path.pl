@@ -17,7 +17,7 @@
   ]
 ).
 
-:- use_module(graph_theory(graph_traversal)).
+:- use_remote_module(graph_theory(graph_traversal)).
 :- use_module(library(aggregate)).
 :- use_module(library(lists)).
 :- use_module(library(pairs)).

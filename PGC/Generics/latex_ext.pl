@@ -21,20 +21,20 @@ Predicates for handling LaTeX files.
 @tbd Update using new methods in DIR_EXT and FILE_EXT, e.g. directory_files/3.
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_replace)).
-:- use_module(generics(codes_ext)).
-:- use_module(generics(db_ext)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_replace)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(apply)).
 :- use_module(library(option)).
 :- use_module(library(process)).
 :- use_module(library(readutil)).
-:- use_module(os(dir_ext)).
-:- use_module(os(file_ext)).
-:- use_module(os(run_ext)).
-:- use_module(pl(pl_control)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(os(run_ext)).
+:- use_remote_module(pl(pl_control)).
 
 :- db_add_novel(user:prolog_file_type(aux, aux      )).
 :- db_add_novel(user:prolog_file_type(aux, latex_out)).

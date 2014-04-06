@@ -14,32 +14,34 @@ Automated processes for CKAN data.
 
 @author Wouter Beek
 @version 2014/01-2014/03
-*/                                        
+*/
 
-:- use_module(ap(ap)).
-:- use_module(ap(ap_archive_ext)). % Used in AP stage.
-:- use_module(ap(ap_download)).
-:- use_module(ap(ap_db)).
-:- use_module(ap(ap_file_mime)). % Used in AP stage.
-:- use_module(ap(ap_file_size)). % Used in AP stage.
-:- use_module(ap(ap_rdf_serial)). % Used in AP stage.
-:- use_module(ap(ap_void_fetch)). % Used in AP stage.
-:- use_module(ap(ap_void_stat)). % Used in AP stage.
-:- use_module(ckan(ckan_scrape)).
-:- use_module(generics(uri_ext)). % Used in AP stage.
+
+:- use_remote_module(ap(ap)).
+:- use_remote_module(ap(ap_archive_ext)). % Used in AP stage.
+:- use_remote_module(ap(ap_download)).
+:- use_remote_module(ap(ap_db)).
+:- use_remote_module(ap(ap_file_mime)). % Used in AP stage.
+:- use_remote_module(ap(ap_file_size)). % Used in AP stage.
+:- use_remote_module(ap(ap_rdf_serial)). % Used in AP stage.
+:- use_remote_module(ap(ap_void_fetch)). % Used in AP stage.
+:- use_remote_module(ap(ap_void_stat)). % Used in AP stage.
+:- use_remote_module(ckan(ckan_scrape)).
+:- use_remote_module(generics(uri_ext)). % Used in AP stage.
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(rdf(rdf_name)). % Used in meta-DCG.
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(semweb/rdf_db)). % MD5
 :- use_module(library(semweb/rdfs)).
 :- use_module(library(threads)).
-:- use_module(os(dir_ext)).
-:- use_module(os(file_ext)).
-:- use_module(rdf(rdf_name)). % Used in meta-DCG.
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdfs(rdfs_label_ext)).
 
 
 

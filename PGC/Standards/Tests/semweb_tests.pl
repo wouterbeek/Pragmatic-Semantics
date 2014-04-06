@@ -76,17 +76,17 @@ Q: How should option =|base_uri(+URI)|= for =|rdf_load/2|= be used?
 @version 2013/04, 2013/06-2013/07, 2014/03
 */
 
-:- use_module(generics(atom_ext)).
-:- use_module(generics(db_ext)).
-:- use_module(generics(list_ext)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(list_ext)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf(rdf_graph)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_graph)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(test, 'http://www.w3.org/2000/10/rdf-tests/rdfcore/testSchema#').
 

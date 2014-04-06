@@ -31,13 +31,13 @@ There are two groups of predicates here:
 @version 2013/12-2014/04
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(archive)).
 :- use_module(library(filesex)).
 :- use_module(library(process)).
-:- use_module(os(dir_ext)).
-:- use_module(os(file_ext)).
-:- use_module(os(mime_type)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(os(mime_type)).
 
 % application/x-bzip2
 % .bz,.bz2,.tbz,.tbz2

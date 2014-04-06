@@ -24,11 +24,11 @@ The standard for datetime that is used by HTTP 1.1.
 @version 2013/07, 2014/03
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(gv(gv_file)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(gv(gv_file)).
 :- use_module(library(plunit)).
-:- use_module(math(radix)).
+:- use_remote_module(math(radix)).
 
 
 

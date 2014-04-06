@@ -25,20 +25,20 @@ Based on `cowsay` by Tony Monroe,
 @version 2012/09-2012/10, 2013/05-2013/09, 2014/01
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(dcg_os)).
-:- use_module(dcg(dcg_wrap)).
-:- use_module(generics(codes_ext)).
-:- use_module(generics(option_ext)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(dcg_os)).
+:- use_remote_module(dcg(dcg_wrap)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(generics(option_ext)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(lists)).
 :- use_module(library(option)).
 :- use_module(library(plunit)).
 :- use_module(library(settings)).
-:- use_module(os(tts_ext)).
+:- use_remote_module(os(tts_ext)).
 
 % The automated finding of meta-predicates seems to be over-eager.
 :- meta_predicate(dcg_speech_bubble_line(+,+,?,?)).

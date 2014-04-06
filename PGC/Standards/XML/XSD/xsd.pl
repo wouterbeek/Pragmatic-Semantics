@@ -43,27 +43,27 @@ conforming to recommendation version 1.1.
 @version 2013/08-2013/10, 2014/01, 2014/03-2014/04
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(codes_ext)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(codes_ext)).
 :- use_module(library(debug)).
 :- use_module(library(semweb/rdf_db)). % RDF-meta assertions.
-:- use_module(rdf(rdf_read)).
-:- use_module(xml(xml_namespace)).
-:- use_module(xsd(xsd_boolean)).
-:- use_module(xsd(xsd_date)).
-:- use_module(xsd(xsd_dateTime)).
-:- use_module(xsd(xsd_decimal)).
-:- use_module(xsd(xsd_duration)).
-:- use_module(xsd(xsd_float)).
-:- use_module(xsd(xsd_gDay)).
-:- use_module(xsd(xsd_gMonth)).
-:- use_module(xsd(xsd_gMonthDay)).
-:- use_module(xsd(xsd_gYear)).
-:- use_module(xsd(xsd_gYearMonth)).
-:- use_module(xsd(xsd_hexBinary)).
-:- use_module(xsd(xsd_integer)).
-:- use_module(xsd(xsd_string)).
-:- use_module(xsd(xsd_time)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(xml(xml_namespace)).
+:- use_remote_module(xsd(xsd_boolean)).
+:- use_remote_module(xsd(xsd_date)).
+:- use_remote_module(xsd(xsd_dateTime)).
+:- use_remote_module(xsd(xsd_decimal)).
+:- use_remote_module(xsd(xsd_duration)).
+:- use_remote_module(xsd(xsd_float)).
+:- use_remote_module(xsd(xsd_gDay)).
+:- use_remote_module(xsd(xsd_gMonth)).
+:- use_remote_module(xsd(xsd_gMonthDay)).
+:- use_remote_module(xsd(xsd_gYear)).
+:- use_remote_module(xsd(xsd_gYearMonth)).
+:- use_remote_module(xsd(xsd_hexBinary)).
+:- use_remote_module(xsd(xsd_integer)).
+:- use_remote_module(xsd(xsd_string)).
+:- use_remote_module(xsd(xsd_time)).
 
 :- xml_register_namespace(xsd, 'http://www.w3.org/2001/XMLSchema#').
 

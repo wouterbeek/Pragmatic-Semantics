@@ -48,9 +48,9 @@ Interpretation function `I`:
 
 :- use_module(library(apply)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_graph)).
-:- use_module(rdf_term(rdf_term)).
-:- use_module(rdf_mt(rdf_mt)).
+:- use_remote_module(rdf(rdf_graph)).
+:- use_remote_module(rdf_term(rdf_term)).
+:- use_remote_module(rdf_mt(rdf_mt)).
 
 % The overarching interpretation plus assignment function.
 :- rdf_meta(mt_i(r,-,+,-)).

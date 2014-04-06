@@ -16,9 +16,9 @@ GeoNames predicates.
 @version 2013/01, 2013/06
 */
 
-:- use_module(generics(typecheck)).
+:- use_remote_module(generics(typecheck)).
 :- use_module(library(http/http_open)).
-:- use_module(os(io_ext)).
+:- use_remote_module(os(io_ext)).
 
 
 

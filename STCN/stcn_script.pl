@@ -10,30 +10,30 @@ These predicate should be converted to some other module or be removed.
 @version 2013/09-2013/10, 2013/12
 */
 
-:- use_module(ap(ap)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(replace_in_file)).
-:- use_module(generics(thread_ext)).
+:- use_remote_module(ap(ap)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(replace_in_file)).
+:- use_remote_module(generics(thread_ext)).
 :- use_module(library(archive)).
 :- use_module(library(debug)).
 :- use_module(library(filesex)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(os(archive_ext)).
-:- use_module(os(datetime_ext)).
-:- use_module(os(file_ext)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_graph_name)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(stcn(collect_lines)).
-:- use_module(stcn(stcn_generic)).
-:- use_module(stcn(stcn_parse)).
-:- use_module(stcn(stcn_schema)).
-:- use_module(stcn(stcn_scrape)).
-:- use_module(stcn(stcn_void)).
-:- use_module(void(void_file)).
+:- use_remote_module(os(archive_ext)).
+:- use_remote_module(os(datetime_ext)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf(rdf_graph_name)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(stcn(collect_lines)).
+:- use_remote_module(stcn(stcn_generic)).
+:- use_remote_module(stcn(stcn_parse)).
+:- use_remote_module(stcn(stcn_schema)).
+:- use_remote_module(stcn(stcn_scrape)).
+:- use_remote_module(stcn(stcn_void)).
+:- use_remote_module(void(void_file)).
 
 
 

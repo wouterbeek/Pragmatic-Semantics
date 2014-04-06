@@ -15,13 +15,13 @@ e.g. unpacking archives, recursively loading VoID.
 @version 2014/01-2014/04
 */
 
-:- use_module(generics(uri_ext)).
-:- use_module(http(http_download_ext)).
+:- use_remote_module(generics(uri_ext)).
+:- use_remote_module(http(http_download_ext)).
 :- use_module(library(apply)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(os(archive_ext)).
-:- use_module(os(dir_ext)).
-:- use_module(rdf_file(rdf_file)).
+:- use_remote_module(os(archive_ext)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(rdf_file(rdf_file)).
 
 
 

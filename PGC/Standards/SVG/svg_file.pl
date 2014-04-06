@@ -15,9 +15,9 @@
 @version 2012/10, 2013/01-2013/09, 2013/11
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(db_ext)).
-:- use_module(os(os_ext)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(os(os_ext)).
 
 
 

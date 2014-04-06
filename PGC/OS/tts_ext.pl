@@ -13,11 +13,11 @@ Text-to-speech predicates.
 @version 2013/06-2013/07
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(debug)).
 :- use_module(library(process)).
-:- use_module(os(os_ext)).
-:- use_module(os(run_ext)).
+:- use_remote_module(os(os_ext)).
+:- use_remote_module(os(run_ext)).
 
 :- db_add_novel(user:module_uses_program(tts_ext, espeak)).
 

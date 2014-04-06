@@ -12,7 +12,7 @@
 @version 2014/01
 */
 
-:- use_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_cardinal)).
 
 
 

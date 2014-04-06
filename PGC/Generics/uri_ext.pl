@@ -34,18 +34,18 @@
 @version 2013/05, 2013/09, 2013/11-2014/04
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_replace)).
-:- use_module(generics(atom_ext)).
-:- use_module(generics(typecheck)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_replace)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(generics(typecheck)).
 :- use_module(library(apply)).
 :- use_module(library(filesex)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(uri)).
-:- use_module(os(dir_ext)).
-:- use_module(os(file_ext)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(os(file_ext)).
 
 
 

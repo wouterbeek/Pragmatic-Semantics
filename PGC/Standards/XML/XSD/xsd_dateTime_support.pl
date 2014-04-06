@@ -63,8 +63,8 @@ that represent date, time, and duration in a standards-compliant way.
 @version 2013/08-2013/11, 2014/03-2014/04
 */
 
-:- use_module(generics(meta_ext)).
-:- use_module(xsd(xsd_number_generic)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(xsd(xsd_number_generic)).
 
 
 

@@ -17,7 +17,7 @@ load_lodobs:-
   assert(user:file_search_path(lodobs, ThisDir)),
   
   % DEB
-  use_module(rdf_web(rdf_tabular)),
+  use_remote_module(rdf_web(rdf_tabular)),
   
-  use_module(lodobs(lod_observatory)).
+  use_remote_module(lodobs(lod_observatory)).
 

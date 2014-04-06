@@ -14,7 +14,7 @@ Support for the `Content-Length` header in RFC 2616.
 @version 2014/01
 */
 
-:- use_module(http_parameters(rfc2616_media_type)).
+:- use_remote_module(http_parameters(rfc2616_media_type)).
 
 
 

@@ -36,10 +36,10 @@ DCGs for SVG datatypes.
 @version 2013/07
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_content)).
-:- use_module(svg(svg_colors)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(svg(svg_colors)).
 
 
 

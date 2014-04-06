@@ -26,19 +26,19 @@
 @version 2013/04-2013/05, 2013/07-2013/08, 2014/03
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(dcg_os)).
-:- use_module(generics(codes_ext)).
-:- use_module(generics(list_ext)).
-:- use_module(generics(option_ext)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(dcg_os)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(option_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(option)).
 :- use_module(library(ordsets)).
-:- use_module(ugraph(ugraph_ext)).
+:- use_remote_module(ugraph(ugraph_ext)).
 
 :- meta_predicate(print_tree(:,?,+)).
 

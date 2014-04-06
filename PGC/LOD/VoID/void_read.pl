@@ -24,7 +24,7 @@ as it appears in the VoID specification.
 */
 
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_term(rdf_term)).
+:- use_remote_module(rdf_term(rdf_term)).
 
 :- rdf_meta(rdf_link(r,r,o,?,?)).
 :- rdf_meta(rdf_linkset(t,?,?)).

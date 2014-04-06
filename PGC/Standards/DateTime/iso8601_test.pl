@@ -12,10 +12,10 @@ Unit tests for the ISO 8061 DCG.
 
 :- begin_tests(iso8601).
 
-:- use_module(datetime(iso8601_date)).
-:- use_module(datetime(iso8601_date_time)).
-:- use_module(datetime(iso8601_time_interval)).
-:- use_module(datetime(iso8601_time_point)).
+:- use_remote_module(datetime(iso8601_date)).
+:- use_remote_module(datetime(iso8601_date_time)).
+:- use_remote_module(datetime(iso8601_time_interval)).
+:- use_remote_module(datetime(iso8601_time_point)).
 
 :- discontiguous(test/2).
 :- discontiguous(iso8601_time_interval_example/5).

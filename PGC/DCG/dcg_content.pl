@@ -58,16 +58,16 @@ DCG rules for parsing/generating often-occuring content.
 @version 2013/07-2013/09, 2013/11-2014/03
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_meta)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(dcg_unicode)).
-:- use_module(generics(error_ext)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_meta)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(dcg_unicode)).
+:- use_remote_module(generics(error_ext)).
 :- use_module(library(option)).
 :- use_module(library(settings)).
-:- use_module(math(radix)).
-:- use_module(os(shell_ext)).
+:- use_remote_module(math(radix)).
+:- use_remote_module(os(shell_ext)).
 
 :- meta_predicate(quoted(//,?,?)).
 

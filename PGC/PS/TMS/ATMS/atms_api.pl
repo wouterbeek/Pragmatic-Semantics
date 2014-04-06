@@ -140,17 +140,17 @@ The API for ATMSs.
 @version 2012/04, 2014/03
 */
 
-:- use_module(atms(atms_db)).
-:- use_module(atms(atms_env)).
-:- use_module(atms(atms_hierarchy)). % XML namespace.
+:- use_remote_module(atms(atms_db)).
+:- use_remote_module(atms(atms_env)).
+:- use_remote_module(atms(atms_hierarchy)). % XML namespace.
 :- use_module(library(aggregate)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf_term(rdf_boolean)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdfs(rdfs_read)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf_term(rdf_boolean)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdfs(rdfs_read)).
 
 
 

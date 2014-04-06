@@ -246,12 +246,12 @@ Function =|strftime()|= and utility =date=.
 @version 2013/07-2013/08
 */
 
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(parse_tree)).
-:- use_module(math(math_ext)).
-:- use_module(math(radix)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(parse_tree)).
+:- use_remote_module(math(math_ext)).
+:- use_remote_module(math(radix)).
 
 
 

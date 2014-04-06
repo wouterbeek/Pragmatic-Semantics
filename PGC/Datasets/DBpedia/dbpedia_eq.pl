@@ -22,13 +22,13 @@ It would therefore be neat to have a predicate that tells us
 @version 2014/02
 */
 
-:- use_module(dbpedia(dbpedia)).
-:- use_module(dbpedia(dbpedia_categories)). % Ensures DBpedia categories are loaded.
+:- use_remote_module(dbpedia(dbpedia)).
+:- use_remote_module(dbpedia(dbpedia_categories)). % Ensures DBpedia categories are loaded.
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(lod(cache_it)).
-:- use_module(lod(lod_query)).
-:- use_module(math(math_ext)).
+:- use_remote_module(lod(cache_it)).
+:- use_remote_module(lod(lod_query)).
+:- use_remote_module(math(math_ext)).
 
 :- rdf_meta(dbpedia_eq(r,-)).
 :- rdf_meta(dbpedia_eq(r,-,-)).

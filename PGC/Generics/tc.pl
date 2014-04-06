@@ -7,13 +7,13 @@
 @tbd This is work in progress.
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(atom_ext)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(atom_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(debug)).
 :- use_module(library(lists)).
-:- use_module(os(dir_ext)).
-:- use_module(os(file_ext)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(os(file_ext)).
 
 :- dynamic(doc/1).
 :- dynamic(word0/3).

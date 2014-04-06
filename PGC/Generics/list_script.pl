@@ -42,7 +42,7 @@ To process the same items again one should have copied the orginal TODO list.
 @version 2013/06, 2014/01
 */
 
-:- use_module(generics(atom_ext)).
+:- use_remote_module(generics(atom_ext)).
 :- use_module(library(debug)).
 :- use_module(library(ordsets)).
 :- use_module(library(readutil)).

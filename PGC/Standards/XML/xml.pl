@@ -53,9 +53,9 @@ SGML (Standard Generalized Markup Language).
 @version 2013/07
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_content)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(iso, 'http://www.iso.org/').
 :- xml_register_namespace(std, 'http://www.example.org/standards/').

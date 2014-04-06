@@ -13,12 +13,12 @@ the LOD version of the dataset of energy labels.
 @version 2013/10-2013/12, 2014/03
 */
 
-:- use_module(el(el_script)).
-:- use_module(generics(db_ext)).
-:- use_module(generics(list_ext)).
-:- use_module(generics(row_ext)).
-:- use_module(html(html_form)).
-:- use_module(html(html_table)).
+:- use_remote_module(el(el_script)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(row_ext)).
+:- use_remote_module(html(html_form)).
+:- use_remote_module(html(html_table)).
 :- use_module(library(apply)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
@@ -30,14 +30,14 @@ the LOD version of the dataset of energy labels.
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(settings)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(server(app_ui)).
-:- use_module(server(web_modules)).
-:- use_module(sparql(sparql_build)).
-:- use_module(sparql(sparql_db)).
-:- use_module(sparql(sparql_ext)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(server(app_ui)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(sparql(sparql_build)).
+:- use_remote_module(sparql(sparql_db)).
+:- use_remote_module(sparql(sparql_ext)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(el,
     'https://data.overheid.nl/data/dataset/energielabels-agentschap-nl/').

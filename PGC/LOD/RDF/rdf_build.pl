@@ -32,8 +32,8 @@ Triples with literals are treated in dedicated modules.
 */
 
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_read)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(rdf, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#').
 

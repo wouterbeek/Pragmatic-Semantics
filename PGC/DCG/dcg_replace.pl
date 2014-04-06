@@ -207,7 +207,7 @@ Is it possible to use DCG pushback lists in order to replace occurrences of an a
 @version 2013/05-2013/09, 2013/11-2014/01
 */
 
-:- use_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_generic)).
 :- use_module(library(error)).
 
 

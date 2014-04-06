@@ -362,12 +362,12 @@ Using a non-complete time interval representation (see above).
 @version 2013/08
 */
 
-:- use_module(datetime(iso8601_date_time)).
-:- use_module(datetime(iso8601_generic)).
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(parse_tree)).
+:- use_remote_module(datetime(iso8601_date_time)).
+:- use_remote_module(datetime(iso8601_generic)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(parse_tree)).
 
 
 

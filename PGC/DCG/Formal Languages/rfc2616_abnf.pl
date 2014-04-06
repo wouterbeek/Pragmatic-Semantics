@@ -31,9 +31,9 @@ DCGs implementing the ABNF grammar rules defined in RFC 2616 (HTTP 1.1).
 @version 2013/12
 */
 
-:- use_module(dcg(dcg_meta)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(http(rfc2616_basic)).
+:- use_remote_module(dcg(dcg_meta)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(http(rfc2616_basic)).
 :- use_module(library(apply)).
 
 :- meta_predicate rfc2616_abnf:abnf_list1(3,?,?,?,?).

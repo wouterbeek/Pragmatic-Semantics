@@ -24,9 +24,9 @@ Web-based front-end for humanities-R (humR).
 @version 2013/10, 2013/12-2014/01, 2014/03
 */
 
-:- use_module(dcg(dcg_collection)).
-:- use_module(generics(meta_ext)).
-:- use_module(humR(humR_generic)).
+:- use_remote_module(dcg(dcg_collection)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(humR(humR_generic)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(http/html_write)).
@@ -35,16 +35,16 @@ Web-based front-end for humanities-R (humR).
 :- use_module(library(real)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf(rdf_namespace)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(server(app_ui)).
-:- use_module(server(web_modules)).
-:- use_module(svg(svg_file)).
-:- use_module(void(void_file)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf(rdf_namespace)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(server(app_ui)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(svg(svg_file)).
+:- use_remote_module(void(void_file)).
 
 % @tbd Remove the dependency on STCN.
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(xml(xml_namespace)).
 :- xml_register_namespace(stcn,  'http://stcn.data2semantics.org/resource/').
 
 :- http_handler(root(humR), humR_web, []).

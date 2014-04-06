@@ -14,7 +14,7 @@
 @version 2014/03
 */
 
-:- use_module(xml(xml_datatypes)).
+:- use_remote_module(xml(xml_datatypes)).
 
 
 

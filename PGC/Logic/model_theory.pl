@@ -26,7 +26,7 @@ A compound term of the form =|g(-Var,+Val:atom)|=
 @version 2013/05
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(ordsets)).

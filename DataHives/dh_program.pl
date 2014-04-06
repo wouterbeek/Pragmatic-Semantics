@@ -25,16 +25,16 @@ Allows programs to be run inside the DataHives architecture.
 @version 2013/09-2013/10, 2014/02
 */
 
-:- use_module(dh(dh_network)).
-:- use_module(html(html_table)).
+:- use_remote_module(dh(dh_network)).
+:- use_remote_module(html(html_table)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_name)).
-:- use_module(server(web_modules)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(server(web_modules)).
 
 http:location(dh, root(dh), []).
 :- http_handler(dh(program), dh_programs, []).

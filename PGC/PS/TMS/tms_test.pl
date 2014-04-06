@@ -15,13 +15,13 @@ Tests for the TMS module.
 @version 2013/05, 2013/09-2013/10
 */
 
-:- use_module(doyle(doyle)).
-:- use_module(gv(gv_file)).
+:- use_remote_module(doyle(doyle)).
+:- use_remote_module(gv(gv_file)).
 :- use_module(library(http/http_path)).
-:- use_module(os(run_ext)).
-:- use_module(tms(tms)).
-:- use_module(tms(tms_export)).
-:- use_module(tms(tms_web)).
+:- use_remote_module(os(run_ext)).
+:- use_remote_module(tms(tms)).
+:- use_remote_module(tms(tms_export)).
+:- use_remote_module(tms(tms_web)).
 
 
 

@@ -17,7 +17,7 @@
 @version 2012/10, 2013/07
 */
 
-:- use_module(standards(css), [attribute_value/3 as css_attribute_value]).
+:- use_remote_module(standards(css), [attribute_value/3 as css_attribute_value]).
 
 
 

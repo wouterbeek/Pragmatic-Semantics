@@ -21,13 +21,13 @@ The result was initially intended to be used within the Huiskluis project.
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(thread)).
-:- use_module(os(archive_ext)).
-:- use_module(os(dir_ext)).
-:- use_module(os(io_ext)). %DEB
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(xml(xml_namespace)).
-:- use_module(xml(xml_to_rdf)).
+:- use_remote_module(os(archive_ext)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(os(io_ext)). %DEB
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(xml(xml_namespace)).
+:- use_remote_module(xml(xml_to_rdf)).
 
 :- xml_register_namespace(el,
     'https://data.overheid.nl/data/dataset/energielabels-agentschap-nl/').

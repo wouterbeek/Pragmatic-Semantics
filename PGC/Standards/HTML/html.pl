@@ -41,15 +41,15 @@ HTML attribute parsing, used in HTML table generation.
 @version 2012/09-2013/06, 2013/11, 2014/03
 */
 
-:- use_module(dcg(dcg_meta)).
-:- use_module(generics(db_ext)).
-:- use_module(generics(meta_ext)).
-:- use_module(generics(typecheck)).
-:- use_module(http(http_goal)).
+:- use_remote_module(dcg(dcg_meta)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(generics(typecheck)).
+:- use_remote_module(http(http_goal)).
 :- use_module(library(apply)).
 :- use_module(library(http/html_write)).
 :- use_module(library(sgml)).
-:- use_module(pl_web(html_pl_term)).
+:- use_remote_module(pl_web(html_pl_term)).
 
 % Assert DTD file locations.
 user:file_search_path(dtd, html(.)).

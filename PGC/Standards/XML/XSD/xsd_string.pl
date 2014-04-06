@@ -50,7 +50,7 @@ The canonical mapping·for =string= is xsd_string_canonical_map/2.
 @version 2013/08, 2014/03
 */
 
-:- use_module(xml(xml_datatypes)).
+:- use_remote_module(xml(xml_datatypes)).
 
 
 

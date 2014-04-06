@@ -19,12 +19,12 @@ To be used in Automated Process stages.
 @version 2014/01-2014/03
 */
 
-:- use_module(ap(ap_db)).
-:- use_module(generics(codes_ext)).
-:- use_module(os(java_ext)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(su(su_stats)).
+:- use_remote_module(ap(ap_db)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(os(java_ext)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(su(su_stats)).
 
 
 

@@ -14,10 +14,10 @@ Generates HTML descriptions of Prolog error terms.
 @version 2014/01-2014/03
 */
 
-:- use_module(generics(error_ext)).
-:- use_module(http(rfc2616_status_line)).
+:- use_remote_module(generics(error_ext)).
+:- use_remote_module(http(rfc2616_status_line)).
 :- use_module(library(http/html_write)).
-:- use_module(pl_web(html_pl_generic)).
+:- use_remote_module(pl_web(html_pl_generic)).
 
 
 

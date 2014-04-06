@@ -7,7 +7,7 @@ user:project(
    for querying historical datasets.'
 ).
 
-:- use_module(pl(pl_package)).
+:- use_remote_module(pl(pl_package)).
 
 :- initialization(load_humR).
 
@@ -21,5 +21,5 @@ load_humR:-
   
   % humR
   assert(user:file_search_path(humR, ThisDir)),
-  use_module(humR(humR_web)).
+  use_remote_module(humR(humR_web)).
 

@@ -11,10 +11,10 @@ This produces the home page for the development server.
 @version 2013/11-2013/12
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(settings)).
-:- use_module(server(server_ext)).
+:- use_remote_module(server(server_ext)).
 
 :- db_add_novel(user:prolog_file_type(db, database)).
 

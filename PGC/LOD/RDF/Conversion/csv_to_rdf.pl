@@ -19,8 +19,8 @@ Automatic conversion from CSV to RDF.
 :- use_module(library(apply)).
 :- use_module(library(csv)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(xml(xml_namespace)).
 
 
 

@@ -19,14 +19,14 @@ DCG for generic messages (comprising request and response messages)
 @version 2013/12
 */
 
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(parse_tree)).
-:- use_module(http(rfc2616_basic)).
-:- use_module(http(rfc2616_entity)).
-:- use_module(http(rfc2616_request)).
-:- use_module(http(rfc2616_response)).
-:- use_module(http(rfc2616_status_line)).
-:- use_module(http_headers(rfc2616_message_header)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(parse_tree)).
+:- use_remote_module(http(rfc2616_basic)).
+:- use_remote_module(http(rfc2616_entity)).
+:- use_remote_module(http(rfc2616_request)).
+:- use_remote_module(http(rfc2616_response)).
+:- use_remote_module(http(rfc2616_status_line)).
+:- use_remote_module(http_headers(rfc2616_message_header)).
 
 
 

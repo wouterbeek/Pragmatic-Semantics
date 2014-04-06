@@ -15,7 +15,7 @@ DCG for general headers (request and response) in RFC 2616.
 @version 2013/12
 */
 
-:- use_module(http_headers(rfc2616_connection)).
+:- use_remote_module(http_headers(rfc2616_connection)).
 
 
 

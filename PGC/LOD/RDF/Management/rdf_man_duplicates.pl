@@ -14,9 +14,9 @@ Support for visualizing and managing duplicates in an RDF store.
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(server(web_modules)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(server(web_modules)).
 
 http:location(rdf,     root(rdf), []).
 http:location(rdf_man, rdf(man),  []).

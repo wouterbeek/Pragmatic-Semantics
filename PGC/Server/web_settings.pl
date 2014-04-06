@@ -10,14 +10,14 @@ Sets and retrieves settings using JSON.
 @version 2009, 2013/10, 2013/12
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(error)).
 :- use_module(library(http/http_client)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/http_json)).
 :- use_module(library(http/http_parameters)).
 :- use_module(library(settings)).
-:- use_module(server(server_ext)).
+:- use_remote_module(server(server_ext)).
 
 :- http_handler(root(settings), dispatch, []).
 

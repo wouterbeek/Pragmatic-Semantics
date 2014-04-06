@@ -28,25 +28,25 @@ Converts XML DOMs to RDF graphs.
 @version 2013/06, 2013/09-2013/11, 2014/01, 2014/03
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_meta)).
-:- use_module(dcg(dcg_peek)).
-:- use_module(dcg(dcg_replace)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_meta)).
+:- use_remote_module(dcg(dcg_peek)).
+:- use_remote_module(dcg(dcg_replace)).
 :- use_module(library(debug)).
 :- use_module(library(lists)).
 :- use_module(library(pure_input)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(os(file_ext)).
-:- use_module(os(file_mime)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_container)).
-:- use_module(rdf(rdf_graph_name)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(xml(xml_word)).
-:- use_module(xsd(xsd)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(os(file_mime)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf(rdf_container)).
+:- use_remote_module(rdf(rdf_graph_name)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(xml(xml_word)).
+:- use_remote_module(xsd(xsd)).
 
 :- meta_predicate(create_resource(+,+,3,+,+,-,-)).
 :- meta_predicate(create_triples(+,+,3,+,+,-)).

@@ -14,9 +14,9 @@ load_su:-
   assert(user:file_search_path(su, ThisDir)),
   
   % Debug tools.
-  use_module(rdf_web(rdf_store_table)),
-  use_module(rdf_web(rdf_tabular)),
+  use_remote_module(rdf_web(rdf_store_table)),
+  use_remote_module(rdf_web(rdf_tabular)),
   
-  use_module(su(su_ap)),
-  use_module(su(su_btc)).
+  use_remote_module(su(su_ap)),
+  use_remote_module(su(su_btc)).
 

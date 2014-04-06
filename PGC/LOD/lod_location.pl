@@ -22,7 +22,7 @@ Support for Web locations that store LOD descriptions.
 @version 2014/01-2014/02
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 
 :- dynamic(lod_header_/3).
 :- dynamic(lod_location_/2).

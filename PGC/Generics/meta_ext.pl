@@ -61,10 +61,10 @@ Extensions to the SWI-Prolog meta predicates.
          2014/03-2014/04
 */
 
-:- use_module(generics(error_ext)).
-:- use_module(generics(list_ext)).
+:- use_remote_module(generics(error_ext)).
+:- use_remote_module(generics(list_ext)).
 :- use_module(library(aggregate)).
-:- use_module(pl(pl_control)).
+:- use_remote_module(pl(pl_control)).
 
 :- meta_predicate(default_goal(1,?)).
 :- meta_predicate(generic(:,:,+)).

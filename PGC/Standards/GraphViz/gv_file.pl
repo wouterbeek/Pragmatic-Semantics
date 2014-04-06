@@ -25,16 +25,16 @@ and GraphViz output files or SVG DOM structures.
 @version 2011-2013/09, 2013/11-2014/01
 */
 
-:- use_module(generics(codes_ext)).
-:- use_module(generics(db_ext)).
-:- use_module(generics(error_ext)).
-:- use_module(gv(gv_dcg)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(error_ext)).
+:- use_remote_module(gv(gv_dcg)).
 :- use_module(library(option)).
 :- use_module(library(process)).
-:- use_module(os(file_ext)).
-:- use_module(os(run_ext)).
-:- use_module(os(safe_file)).
-:- use_module(svg(svg_file)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(os(run_ext)).
+:- use_remote_module(os(safe_file)).
+:- use_remote_module(svg(svg_file)).
 
 :- db_add_novel(user:module_uses_program(gv_file, dot)).
 

@@ -49,9 +49,9 @@ Performing a action in WebQR consists of the following steps (in that order):
 @version 2013/03, 2013/07, 2013/09-2014/01
 */
 
-:- use_module(generics(codes_ext)).
-:- use_module(generics(db_ext)).
-:- use_module(http(rfc2616_response)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(http(rfc2616_response)).
 :- use_module(library(apply)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
@@ -60,18 +60,18 @@ Performing a action in WebQR consists of the following steps (in that order):
 :- use_module(library(http/http_path)).
 :- use_module(library(http/json_convert)).
 :- use_module(library(http/js_write)).
-:- use_module(owl(owl_read)).
-:- use_module(rdf(rdf_reification)).
-:- use_module(rdf_reasoning(rdf_mat)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(server(app_ui)). % HTML application style.
-:- use_module(server(web_modules)).
-:- use_module(server(web_ui)). % JS generics.
-:- use_module(standards(json_ext)).
-:- use_module(webqr(rdf_tabular_webqr)).
-:- use_module(webqr(webqr_build)).
-:- use_module(webqr(webqr_generic)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(owl(owl_read)).
+:- use_remote_module(rdf(rdf_reification)).
+:- use_remote_module(rdf_reasoning(rdf_mat)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(server(app_ui)). % HTML application style.
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(server(web_ui)). % JS generics.
+:- use_remote_module(standards(json_ext)).
+:- use_remote_module(webqr(rdf_tabular_webqr)).
+:- use_remote_module(webqr(webqr_build)).
+:- use_remote_module(webqr(webqr_generic)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(webqr, 'http://www.wouterbeek.com/webqr#').
 

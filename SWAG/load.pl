@@ -12,5 +12,5 @@ load_swag:-
 
   % SWAG
   assert(user:file_search_path(swag, ThisDir)),
-  use_module(swag(swag)).
+  use_remote_module(swag(swag)).
 

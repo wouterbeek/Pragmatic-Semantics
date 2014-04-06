@@ -27,11 +27,11 @@
 @version 2014/02-2014/03
 */
 
-:- use_module(ap(ap_db)).
-:- use_module(dcg(dcg_content)).
-:- use_module(generics(db_ext)).
-:- use_module(generics(row_ext)).
-:- use_module(html(html_table)).
+:- use_remote_module(ap(ap_db)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(row_ext)).
+:- use_remote_module(html(html_table)).
 :- use_module(library(apply)).
 :- use_module(library(csv)).
 :- use_module(library(http/html_write)).
@@ -41,15 +41,15 @@
 :- use_module(library(readutil)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(math(math_ext)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_list)).
-:- use_module(rdf(rdf_table)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdf_web(rdf_html_table)). % XML namespace.
-:- use_module(rdfs(rdfs_build)).
-:- use_module(server(web_modules)).
+:- use_remote_module(math(math_ext)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf(rdf_list)).
+:- use_remote_module(rdf(rdf_table)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdf_web(rdf_html_table)). % XML namespace.
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(server(web_modules)).
 
 http:location(su, root(su), []).
 :- http_handler(su(emi), su_entropy_and_mutual_information, []).

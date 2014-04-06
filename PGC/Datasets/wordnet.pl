@@ -32,7 +32,7 @@ Wordnet API.
 @version 2012/10, 2014/03
 */
 
-:- use_module(os(file_ext)).
+:- use_remote_module(os(file_ext)).
 
 :- dynamic(ant/4).
 :- dynamic(g/2).

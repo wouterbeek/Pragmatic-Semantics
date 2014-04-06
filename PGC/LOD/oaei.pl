@@ -106,8 +106,8 @@ Mismatch types:
 @version 2013/04-2013/05, 2013/08-2013/09, 2013/12-2014/01, 2014/03
 */
 
-:- use_module(generics(db_ext)).
-:- use_module(generics(meta_ext)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(meta_ext)).
 :- use_module(library(apply)).
 :- use_module(library(csv)).
 :- use_module(library(debug)).
@@ -116,16 +116,16 @@ Mismatch types:
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
 :- use_module(library(uri)).
-:- use_module(math(statistics)).
-:- use_module(os(dir_ext)).
-:- use_module(os(file_ext)).
-:- use_module(pl(pl_mode)).
-:- use_module(rdf(rdf_graph_name)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(math(statistics)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(pl(pl_mode)).
+:- use_remote_module(rdf(rdf_graph_name)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(align, 'http://knowledgeweb.semanticweb.org/heterogeneity/alignment#').
 

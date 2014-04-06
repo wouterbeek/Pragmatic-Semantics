@@ -9,7 +9,7 @@ Support for discovering Google APIs.
 @version 2013/11
 */
 
-:- use_module(generics(uri_ext)).
+:- use_remote_module(generics(uri_ext)).
 :- use_module(library(http/http_client)).
 :- use_module(library(http/http_json)).
 :- use_module(library(http/http_open)).

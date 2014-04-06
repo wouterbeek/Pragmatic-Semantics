@@ -67,17 +67,17 @@ Possible extensions of the alignment pairs:
 @version 2013/05, 2013/08-2013/12, 2014/03
 */
 
-:- use_module(generics(assoc_ext)).
-:- use_module(generics(list_ext)).
-:- use_module(generics(meta_ext)).
-:- use_module(generics(pair_ext)).
+:- use_remote_module(generics(assoc_ext)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(generics(pair_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(lists)).
 :- use_module(library(ordsets)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_term(rdf_term)). % Used in meta-options.
+:- use_remote_module(rdf_term(rdf_term)). % Used in meta-options.
 
 %! ihier(
 %!   ?IdentityHierarchyHash:atom,

@@ -8,13 +8,13 @@ Web-based tools for loading/saving/searching RDF.
 @version 2012/12-2013/01, 2013/03-2013/05, 2013/09, 2013/11-2014/01, 2014/03
 */
 
-:- use_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_generic)).
 :- use_module(library(aggregate)).
 :- use_module(library(http/html_write)).
 :- use_module(library(option)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf_term(rdf_term)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf_term(rdf_term)).
 
 
 

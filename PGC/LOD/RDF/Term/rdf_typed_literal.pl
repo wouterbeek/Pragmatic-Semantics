@@ -22,9 +22,9 @@ the Unicode strings in Normal Form C with the set of datatype URIs.
 @version 2013/09-2013/11, 2014/01, 2014/03
 */
 
-:- use_module(generics(typecheck)).
+:- use_remote_module(generics(typecheck)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_term(rdf_term)).
+:- use_remote_module(rdf_term(rdf_term)).
 
 :- rdf_meta(rdf_typed_literal(o)).
 :- rdf_meta(rdf_typed_literal(o,?)).

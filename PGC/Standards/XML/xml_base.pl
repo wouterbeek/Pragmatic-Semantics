@@ -71,7 +71,7 @@ The full URIs:
 @version 2013/08, 2014/03
 */
 
-:- use_module(uri(rfc2396_dcg)).
+:- use_remote_module(uri(rfc2396_dcg)).
 
 :- meta_predicate(xml_base(-,//,?,?,?,?,?,?,?)).
 

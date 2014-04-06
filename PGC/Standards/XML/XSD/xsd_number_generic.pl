@@ -24,9 +24,9 @@ Grammar rules that are used by various XSD numeric datatypes.
 @version 2013/07-2013/08, 2013/10, 2014/03-2014/04
 */
 
-:- use_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_cardinal)).
 :- use_module(library(arithmetic)).
-:- use_module(math(rational_ext)).
+:- use_remote_module(math(rational_ext)).
 
 :- op(400, yfx, xsd_div).
 :- arithmetic_function(xsd_div/2).

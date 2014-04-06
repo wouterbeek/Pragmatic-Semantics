@@ -16,9 +16,9 @@
 @version 2012/10, 2013/01-2013/08
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(generics(db_ext)).
-:- use_module(standards(markup)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(standards(markup)).
 
 :- meta_predicate(svg_namespace(//,?,?)).
 

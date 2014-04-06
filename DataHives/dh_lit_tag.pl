@@ -13,20 +13,20 @@ Count languages and datatypes used in literals.
 @version 2014/02-2014/04
 */
 
-:- use_module(dbpedia(dbpedia)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dh(dh)).
-:- use_module(dh(dh_walk)).
-:- use_module(generics(meta_ext)).
-:- use_module(html(html_table)).
+:- use_remote_module(dbpedia(dbpedia)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dh(dh)).
+:- use_remote_module(dh(dh_walk)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(html(html_table)).
 :- use_module(library(aggregate)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(lists)).
 :- use_module(library(pairs)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(server(web_modules)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(server(web_modules)).
 
 http:location(dh, root(dh), []).
 :- http_handler(dh(literal_tag), dh_lit_tag, []).

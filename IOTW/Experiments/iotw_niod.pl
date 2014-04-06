@@ -11,16 +11,16 @@
 @version 2013/09
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(debug)).
 :- use_module(library(http/http_open)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdf_library)).
 :- use_module(library(semweb/rdf_turtle)).
 :- use_module(library(xpath)).
-:- use_module(os(dir_ext)).
-:- use_module(void(void_file)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(void(void_file)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- rdf_meta(top_messages(+,r)).
 

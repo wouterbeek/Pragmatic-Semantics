@@ -12,7 +12,7 @@ Hypothesis validation for the Semantic URIs project.
 :- rdf_meta(number_of(r,r,?)).
 :- rdf_meta(same_number_of(r,r,r)).
 
-:- use_module(dcg(dcg_content)). % Meta-DCG.
+:- use_remote_module(dcg(dcg_content)). % Meta-DCG.
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(http/html_write)).
@@ -20,14 +20,14 @@ Hypothesis validation for the Semantic URIs project.
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(math(math_ext)).
-:- use_module(pl_web(html_pl_term)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(server(web_modules)).
-:- use_module(su(su_db)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(math(math_ext)).
+:- use_remote_module(pl_web(html_pl_term)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(su(su_db)).
+:- use_remote_module(xml(xml_namespace)).
 
 http:location(su, root(su), []).
 :- http_handler(su(hypotheses), su_hypotheses, []).

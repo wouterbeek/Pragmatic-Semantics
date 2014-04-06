@@ -1,9 +1,9 @@
 :- module(void_test, []).
 
-:- use_module(rdf(rdf_package)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(void(void_file)).
-:- use_module(void(void_tabular)). % Debug tool.
+:- use_remote_module(rdf(rdf_package)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(void(void_file)).
+:- use_remote_module(void(void_tabular)). % Debug tool.
 
 :- initialization(void_test).
 

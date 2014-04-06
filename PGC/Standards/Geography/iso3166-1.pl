@@ -16,10 +16,10 @@ Suopport for the ISO 3166-1 country code standard.
 */
 
 :- use_module(library(semweb/rdf_db)). % rdf_meta/1
-:- use_module(rdf(rdf_build)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace('iso3166-1', 'http://lexvo.org/id/iso3166/').
 

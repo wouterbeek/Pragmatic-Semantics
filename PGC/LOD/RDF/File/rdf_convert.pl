@@ -20,11 +20,11 @@ Predicates for converting RDF data between different serialization formats.
 @version 
 */
 
-:- use_module(generics(meta_ext)).
+:- use_remote_module(generics(meta_ext)).
 :- use_module(library(lists)).
-:- use_module(os(file_ext)).
-:- use_module(rdf(rdf_meta)).
-:- use_module(rdf_file(rdf_file)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(rdf(rdf_meta)).
+:- use_remote_module(rdf_file(rdf_file)).
 
 
 

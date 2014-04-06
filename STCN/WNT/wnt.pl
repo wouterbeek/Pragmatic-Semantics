@@ -31,13 +31,13 @@ http://gtb.inl.nl/iWDB/search?
 @version 2013/02, 2014/01, 2014/03
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(atom_ext)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(atom_ext)).
 :- use_module(library(http/http_open)).
 :- use_module(library(sgml)).
 :- use_module(library(xpath)).
-:- use_module(picarta(picarta)).
+:- use_remote_module(picarta(picarta)).
 
 
 

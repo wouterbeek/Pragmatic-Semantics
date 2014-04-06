@@ -8,21 +8,21 @@ Support for managing RDF literals.
 @version 2014/03-2014/04
 */
 
-:- use_module(generics(uri_query)).
+:- use_remote_module(generics(uri_query)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf(rdf_stat)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(rdf_web(rdf_term_html)).
-:- use_module(server(web_modules)).
-:- use_module(xsd(xsd)).
-:- use_module(xsd(xsd_clean)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf(rdf_stat)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(rdf_web(rdf_term_html)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(xsd(xsd)).
+:- use_remote_module(xsd(xsd_clean)).
 
 http:location(rdf,     root(rdf), []).
 http:location(rdf_man, rdf(man),  []).

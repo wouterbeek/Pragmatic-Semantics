@@ -38,8 +38,8 @@ Automated checks for Prolog mode enforcement.
 @version 2012/07-2012/08, 2013/01, 2013/03-2013/04, 2013/09-2013/10, 2013/12
 */
 
-:- use_module(generics(error_ext)).
-:- use_module(generics(list_ext)).
+:- use_remote_module(generics(error_ext)).
+:- use_remote_module(generics(list_ext)).
 :- use_module(library(aggregate)).
 
 :- meta_predicate(call_complete(2,+,-)).

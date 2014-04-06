@@ -14,11 +14,11 @@ Methods for traversing a DataHive.
 @version 2013/09-2013/10, 2014/02
 */
 
-:- use_module(dh(dh_network)).
-:- use_module(generics(list_ext)).
+:- use_remote_module(dh(dh_network)).
+:- use_remote_module(generics(list_ext)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_read)).
+:- use_remote_module(rdf(rdf_read)).
 
 :- rdf_meta(next_triple(t,t)).
 :- rdf_meta(next_triple_random(t,t)).

@@ -17,7 +17,7 @@ Communication with the shell and terminal properties.
 */
 
 :- use_module(library(process)).
-:- use_module(os(os_ext)).
+:- use_remote_module(os(os_ext)).
 
 
 

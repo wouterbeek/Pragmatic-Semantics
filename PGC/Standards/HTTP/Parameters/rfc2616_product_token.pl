@@ -26,7 +26,7 @@ product(
 @version 2013/12
 */
 
-:- use_module(dcg(parse_tree)).
+:- use_remote_module(dcg(parse_tree)).
 
 
 

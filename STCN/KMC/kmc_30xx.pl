@@ -26,27 +26,27 @@ These are considered to be the same. Mapped to upper case X using option
 @version 2013/01-2013/03, 2013/05-2013/06, 2013/09, 2013/12-2014/01, 2014/03
 */
 
-:- use_module(dbpedia(dbpedia_agent)).
-:- use_module(dcg(dcg_ascii)). % Meta-DCG.
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(thread_ext)).
+:- use_remote_module(dbpedia(dbpedia_agent)).
+:- use_remote_module(dcg(dcg_ascii)). % Meta-DCG.
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(thread_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(debug)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(owl(owl_build)).
-:- use_module(owl(owl_read)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_stat)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdf_term(rdf_term)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(rdfs(rdfs_read)).
-:- use_module(stcn(stcn_generic)).
-:- use_module(sparql(sparql_cache)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(owl(owl_build)).
+:- use_remote_module(owl(owl_read)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf(rdf_stat)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdf_term(rdf_term)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(rdfs(rdfs_read)).
+:- use_remote_module(stcn(stcn_generic)).
+:- use_remote_module(sparql(sparql_cache)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(foaf, 'http://xmlns.com/foaf/0.1/').
 :- xml_register_namespace(stcn, 'http://stcn.data2semantics.org/resource/').

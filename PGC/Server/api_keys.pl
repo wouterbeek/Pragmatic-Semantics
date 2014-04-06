@@ -15,9 +15,9 @@ Stores API keys per user.
 @version 2014/01
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(generics(db_ext)).
-:- use_module(html(html_table)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(html(html_table)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_authenticate)).
 :- use_module(library(http/http_client)).
@@ -26,10 +26,10 @@ Stores API keys per user.
 :- use_module(library(http/http_path)).
 %:- use_module(library(http/json_convert)).
 :- use_module(library(persistency)).
-:- use_module(server(app_ui)).
-:- use_module(server(login_db)).
-:- use_module(server(password_db)).
-:- use_module(server(server_ext)).
+:- use_remote_module(server(app_ui)).
+:- use_remote_module(server(login_db)).
+:- use_remote_module(server(password_db)).
+:- use_remote_module(server(server_ext)).
 
 %:- json_object api_key(
 %  user:atom,

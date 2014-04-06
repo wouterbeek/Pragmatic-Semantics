@@ -11,13 +11,13 @@
 @version 2014/01-2014/03
 */
 
-:- use_module(generics(uri_query)).
-:- use_module(html(html)).
-:- use_module(html(html_list)).
+:- use_remote_module(generics(uri_query)).
+:- use_remote_module(html(html)).
+:- use_remote_module(html(html_list)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_path)).
-:- use_module(pl_web(html_pl_error)).
-:- use_module(pl_web(html_pl_generic)).
+:- use_remote_module(pl_web(html_pl_error)).
+:- use_remote_module(pl_web(html_pl_generic)).
 
 
 

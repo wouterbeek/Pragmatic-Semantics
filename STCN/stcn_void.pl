@@ -14,20 +14,20 @@ Generates the VoID description of the STCN dataset.
 */
 
 :- use_module(library(semweb/rdf_db)).
-:- use_module(os(datetime_ext)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_language_tagged_string)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf(rdf_namespace)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(rdfs(rdfs_read)).
-:- use_module(void(void_db)). % XML namespace.
-:- use_module(xml(xml_namespace)).
-:- use_module(xsd(xsd_dateTime_ext)).
+:- use_remote_module(os(datetime_ext)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_language_tagged_string)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf(rdf_namespace)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(rdfs(rdfs_read)).
+:- use_remote_module(void(void_db)). % XML namespace.
+:- use_remote_module(xml(xml_namespace)).
+:- use_remote_module(xsd(xsd_dateTime_ext)).
 
 :- xml_register_namespace(dcterms, 'http://purl.org/dc/terms/'    ).
 :- xml_register_namespace(foaf,    'http://xmlns.com/foaf/0.1/'   ).

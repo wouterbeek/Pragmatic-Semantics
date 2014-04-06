@@ -23,11 +23,11 @@ Also includes a status bar with updates/messages.
 @version 2012/10, 2013/02-2013/06, 2013/11-2013/12
 */
 
-:- use_module(generics(db_ext)).
-:- use_module(generics(list_ext)).
-:- use_module(generics(meta_ext)).
-:- use_module(html(html_form)).
-:- use_module(http(http)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(html(html_form)).
+:- use_remote_module(http(http)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
@@ -35,11 +35,11 @@ Also includes a status bar with updates/messages.
 :- use_module(library(http/http_path)).
 :- use_module(library(lists)).
 :- use_module(library(settings)).
-:- use_module(os(datetime_ext)).
-:- use_module(server(app_ui)).
-:- use_module(server(web_commands)).
-:- use_module(server(web_error)).
-:- use_module(server(web_modules)).
+:- use_remote_module(os(datetime_ext)).
+:- use_remote_module(server(app_ui)).
+:- use_remote_module(server(web_commands)).
+:- use_remote_module(server(web_error)).
+:- use_remote_module(server(web_modules)).
 
 % /css
 :- html_resource(css('web_console.css'), []).

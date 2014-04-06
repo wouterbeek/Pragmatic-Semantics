@@ -16,9 +16,9 @@ e.g. automatically extracting the downloaded files if they are archives.
 @version 2013/05, 2013/09, 2013/11-2014/04
 */
 
-:- use_module(http(http_download)).
-:- use_module(os(archive_ext)).
-:- use_module(os(dir_ext)).
+:- use_remote_module(http(http_download)).
+:- use_remote_module(os(archive_ext)).
+:- use_remote_module(os(dir_ext)).
 
 
 

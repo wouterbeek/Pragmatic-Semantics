@@ -482,17 +482,17 @@ a buffer limit in combination with truncation may be applied:
 @version 2013/07-2013/08
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(parse_tree)).
-:- use_module(generics(db_ext)).
-:- use_module(generics(list_ext)).
-:- use_module(lang('iso639-1')). % Used in meta-call.
-:- use_module(lang('iso639-2')). % Used in meta-call.
-:- use_module(lang(rfc5646_iana)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(parse_tree)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(lang('iso639-1')). % Used in meta-call.
+:- use_remote_module(lang('iso639-2')). % Used in meta-call.
+:- use_remote_module(lang(rfc5646_iana)).
 :- use_module(library(plunit)).
 
 :- db_add_novel(user:prolog_file_type(txt, text)).
@@ -1160,7 +1160,7 @@ rfc5646_variants(variants('-',T1), [H]) -->
 
 :- begin_tests(rfc5646_dcg).
 
-:- use_module(generics(print_ext)).
+:- use_remote_module(generics(print_ext)).
 :- use_module(library(apply)).
 
 rfc5646_atom('zh').

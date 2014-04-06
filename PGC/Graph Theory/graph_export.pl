@@ -43,16 +43,16 @@ edge(FromVertexId, ToVertexId, EdgeAttributes)
 @version 2012/12-2013/04, 2013/07
 */
 
-:- use_module(generics(option_ext)).
-:- use_module(graph_theory(graph_generic)).
-:- use_module(graph_theory(random_vertex_coordinates)).
+:- use_remote_module(generics(option_ext)).
+:- use_remote_module(graph_theory(graph_generic)).
+:- use_remote_module(graph_theory(random_vertex_coordinates)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(option)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_export)).
-:- use_module(ugraph(ugraph_ext)).
-:- use_module(ugraph(ugraph_export)).
+:- use_remote_module(rdf(rdf_export)).
+:- use_remote_module(ugraph(ugraph_ext)).
+:- use_remote_module(ugraph(ugraph_export)).
 
 :- meta_predicate(export_graph(+,4,+,-)).
 :- meta_predicate(export_vertex(+,3,+,-)).

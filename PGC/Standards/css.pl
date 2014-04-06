@@ -15,9 +15,9 @@ Support for Cascading Style Sheets.
 @version 2012/10, 2013/02, 2013/06-2013/07
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_multi)).
 
 
 

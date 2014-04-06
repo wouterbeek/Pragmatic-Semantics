@@ -15,8 +15,8 @@ Support for downloading files over HTTP(S).
 @version 2013/05, 2013/09, 2013/11-2014/04
 */
 
-:- use_module(generics(uri_ext)).
-:- use_module(http(http_goal)).
+:- use_remote_module(generics(uri_ext)).
+:- use_remote_module(http(http_goal)).
 :- use_module(library(filesex)).
 :- use_module(library(option)).
 :- use_module(library(uri)).

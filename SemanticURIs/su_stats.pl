@@ -13,13 +13,13 @@
 @version 2014/02
 */
 
-:- use_module(ap(ap_db)).
-:- use_module(dcg(dcg_generic)).
+:- use_remote_module(ap(ap_db)).
+:- use_remote_module(dcg(dcg_generic)).
 :- use_module(library(http/json)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf_conv(json_to_rdf)).
-:- use_module(su(su_db)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf_conv(json_to_rdf)).
+:- use_remote_module(su(su_db)).
 
 legend(
   stats,

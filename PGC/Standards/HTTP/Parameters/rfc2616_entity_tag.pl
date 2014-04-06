@@ -16,8 +16,8 @@ DCG for RFC 2616 entity tags.
 @version 2013/12
 */
 
-:- use_module(http(rfc2616_basic)).
-:- use_module(http(rfc2616_generic)).
+:- use_remote_module(http(rfc2616_basic)).
+:- use_remote_module(http(rfc2616_generic)).
 
 
 

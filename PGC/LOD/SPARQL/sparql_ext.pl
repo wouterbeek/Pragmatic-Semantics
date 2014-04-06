@@ -100,13 +100,13 @@ Warning: [Thread t03] SGML2PL(xmlns): []:216: Inserted omitted end-tag for "spar
 @version 2012/12-2013/01, 2013/03-2013/05, 2013/07, 2013/09, 2013/11-2014/01
 */
 
-:- use_module(generics(atom_ext)).
-:- use_module(generics(codes_ext)).
-:- use_module(generics(list_ext)).
-:- use_module(generics(row_ext)).
-:- use_module(generics(typecheck)).
-:- use_module(graph_theory(graph_closure)).
-:- use_module(http(http)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(row_ext)).
+:- use_remote_module(generics(typecheck)).
+:- use_remote_module(graph_theory(graph_closure)).
+:- use_remote_module(http(http)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(http/thread_httpd)).
@@ -115,10 +115,10 @@ Warning: [Thread t03] SGML2PL(xmlns): []:216: Inserted omitted end-tag for "spar
 :- use_module(library(ordsets)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/sparql_client)).
-:- use_module(math(math_ext)).
-:- use_module(sparql(sparql_build)).
-:- use_module(sparql(sparql_db)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(math(math_ext)).
+:- use_remote_module(sparql(sparql_build)).
+:- use_remote_module(sparql(sparql_db)).
+:- use_remote_module(xml(xml_namespace)).
 
 % OWL
 :- xml_register_namespace(owl, 'http://www.w3.org/2002/07/owl#').

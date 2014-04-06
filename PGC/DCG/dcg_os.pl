@@ -13,8 +13,8 @@ OS-specific DCG rules.
 @version 2013/07
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(os(os_ext)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(os(os_ext)).
 
 
 

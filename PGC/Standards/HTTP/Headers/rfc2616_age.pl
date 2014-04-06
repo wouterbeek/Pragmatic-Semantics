@@ -25,7 +25,7 @@ DCG for the `Age` header of RFC 2616.
 @version 2013/12
 */
 
-:- use_module(http_parameters(rfc2616_date)).
+:- use_remote_module(http_parameters(rfc2616_date)).
 
 
 

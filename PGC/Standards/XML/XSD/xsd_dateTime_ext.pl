@@ -20,9 +20,9 @@ values is in module [xsd_dateTime].
 @version 2013/08-2013/11, 2014/03
 */
 
-:- use_module(xsd(xsd_dateTime)).
-:- use_module(xsd(xsd_dateTime_generic)).
-:- use_module(xsd(xsd_dateTime_support)).
+:- use_remote_module(xsd(xsd_dateTime)).
+:- use_remote_module(xsd(xsd_dateTime_generic)).
+:- use_remote_module(xsd(xsd_dateTime_support)).
 
 
 

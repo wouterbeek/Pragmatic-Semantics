@@ -6,7 +6,7 @@
 @version 2014/03
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 
 
 

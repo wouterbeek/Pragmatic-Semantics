@@ -70,12 +70,12 @@ are physically possible (given the birth and death years of James Joyce).
 @version 2013/05-2013/06
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(nlp(dcg_century)).
-:- use_module(nlp(dcg_dict)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(nlp(dcg_century)).
+:- use_remote_module(nlp(dcg_dict)).
 
 
 

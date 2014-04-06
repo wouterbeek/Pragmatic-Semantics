@@ -68,9 +68,9 @@ URI references can contain characters that are not allowed in names.
 @version 2013/05, 2013/07, 2014/01-2014/02
 */
 
-:- use_module(generics(atom_ext)).
-:- use_module(generics(db_ext)).
-:- use_module(generics(typecheck)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(typecheck)).
 :- use_module(library(aggregate)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(www_browser)).

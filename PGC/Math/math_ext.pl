@@ -76,9 +76,9 @@ Extra arithmetic functions for use in SWI-Prolog.
 
 :- use_module(library(apply)).
 :- use_module(library(lists)).
-:- use_module(math(float_ext)).
-:- use_module(math(int_ext)).
-:- use_module(math(rational_ext)).
+:- use_remote_module(math(float_ext)).
+:- use_remote_module(math(int_ext)).
+:- use_remote_module(math(rational_ext)).
 
 
 

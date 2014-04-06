@@ -13,8 +13,8 @@ Generic predicates and grammar rules that are used by the duration datatypes.
 @version 2013/07-2013/08, 2014/03
 */
 
-:- use_module(xsd(xsd_dateTime_generic)).
-:- use_module(xsd(xsd_number_generic)).
+:- use_remote_module(xsd(xsd_dateTime_generic)).
+:- use_remote_module(xsd(xsd_number_generic)).
 
 
 

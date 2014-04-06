@@ -68,7 +68,7 @@ Stripping codes lists is simply done using append,
 @version 2013/05-2013/07, 2013/12-2014/03
 */
 
-:- use_module(generics(codes_ext)).
+:- use_remote_module(generics(codes_ext)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 

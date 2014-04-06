@@ -10,20 +10,20 @@
 @version 2009, 2013/10-2013/12
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(http(rfc2616_response)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(http(rfc2616_response)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_authenticate)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/http_json)).
 :- use_module(library(http/js_write)).
-:- use_module(server(app_ui)).
-:- use_module(server(password_db)).
-:- use_module(server(server_ext)).
-:- use_module(server(login_db)).
-:- use_module(server(user_db)).
-:- use_module(server(web_ui)). % For JavaScript generics.
+:- use_remote_module(server(app_ui)).
+:- use_remote_module(server(password_db)).
+:- use_remote_module(server(server_ext)).
+:- use_remote_module(server(login_db)).
+:- use_remote_module(server(user_db)).
+:- use_remote_module(server(web_ui)). % For JavaScript generics.
 
 :- http_handler(root(login), dispatch_login, []).
 :- http_handler(root(login_ui), login_ui, []).

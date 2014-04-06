@@ -60,11 +60,11 @@ dateTime.
 @version 2013/08, 2014/03
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(xsd(xsd_dateTime_generic)).
-:- use_module(xsd(xsd_dateTime_support)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(xsd(xsd_dateTime_generic)).
+:- use_remote_module(xsd(xsd_dateTime_support)).
 
 
 

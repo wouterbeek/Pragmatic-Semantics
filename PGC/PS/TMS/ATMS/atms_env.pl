@@ -46,14 +46,14 @@ and the GDE (component assumptions).
 @version 2011/12-2012/08, 2013/12
 */
 
-:- use_module(atms(atms_api)).
-:- use_module(atms(atms_build)).
-:- use_module(ccm(ccm_unpack)).
-:- use_module(diagnosis(diagnosis)).
-:- use_module(generics(list_ext)).
-:- use_module(generics(meta_ext)).
-:- use_module(generics(set_theory)).
-:- use_module(ile(agent)).
+:- use_remote_module(atms(atms_api)).
+:- use_remote_module(atms(atms_build)).
+:- use_remote_module(ccm(ccm_unpack)).
+:- use_remote_module(diagnosis(diagnosis)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(generics(set_theory)).
+:- use_remote_module(ile(agent)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 

@@ -15,11 +15,11 @@ DCG for response headers in RFC 2616.
 @version 2013/12
 */
 
-:- use_module(http_headers(rfc2616_accept_ranges)).
-:- use_module(http_headers(rfc2616_age)).
-:- use_module(http_headers(rfc2616_etag)).
-:- use_module(http_headers(rfc2616_location)).
-:- use_module(http_headers(rfc2616_proxy_authenticate)).
+:- use_remote_module(http_headers(rfc2616_accept_ranges)).
+:- use_remote_module(http_headers(rfc2616_age)).
+:- use_remote_module(http_headers(rfc2616_etag)).
+:- use_remote_module(http_headers(rfc2616_location)).
+:- use_remote_module(http_headers(rfc2616_proxy_authenticate)).
 
 
 

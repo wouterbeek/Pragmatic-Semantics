@@ -9,14 +9,14 @@ The Web interface for the beekeeper project.
 @version 2013/11-2013/12
 */
 
-:- use_module(bk(how)).
-:- use_module(generics(db_ext)).
+:- use_remote_module(bk(how)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/http_path)).
-:- use_module(server(app_ui)).
-:- use_module(server(web_modules)).
+:- use_remote_module(server(app_ui)).
+:- use_remote_module(server(web_modules)).
 
 :- http_handler(root(bk), bk, [prefix,priority(1)]).
 

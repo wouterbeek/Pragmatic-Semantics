@@ -13,18 +13,19 @@ Web-based overview of CKAN datasets sorted by size.
 @version 2014/02
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_table)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_table)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(xml(xml_namespace)).
+
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(lists)).
 :- use_module(library(pairs)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(server(web_modules)).
-:- use_module(xml(xml_namespace)).
 
 :- xml_register_namespace(ap, 'http://www.wouterbeek.com/ap.owl#').
 

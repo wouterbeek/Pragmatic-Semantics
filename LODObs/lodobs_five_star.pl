@@ -8,9 +8,9 @@ Web-based overview of five star LOD.
 @version 2014/02-2014/03
 */
 
-:- use_module(ckan(ckan_mime)).
-:- use_module(html(html_table)).
-:- use_module(http(rfc2616_status_line)).
+:- use_remote_module(ckan(ckan_mime)).
+:- use_remote_module(html(html_table)).
+:- use_remote_module(http(rfc2616_status_line)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(http/html_write)).
@@ -18,17 +18,17 @@ Web-based overview of five star LOD.
 :- use_module(library(lists)).
 :- use_module(library(pairs)).
 :- use_module(library(uri)).
-:- use_module(math(math_ext)).
-:- use_module(pl_web(html_pl_term)).
-:- use_module(rdf(rdf_container)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(rdf_web(rdf_term_html)).
-:- use_module(server(web_modules)).
-:- use_module(uri(uri_scheme)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(math(math_ext)).
+:- use_remote_module(pl_web(html_pl_term)).
+:- use_remote_module(rdf(rdf_container)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(rdf_web(rdf_term_html)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(uri(uri_scheme)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- rdf_meta(license_blacklist(r)).
 :- rdf_meta(licensing(+,r,+,?,?)).

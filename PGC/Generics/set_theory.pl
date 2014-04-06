@@ -28,11 +28,11 @@ Extra set functions for use in SWI-Prolog.
 @version 2011/11-2011/12, 2012/02, 2012/08, 2012/10, 2013/05, 2013/12, 2014/03
 */
 
-:- use_module(generics(list_ext)).
+:- use_remote_module(generics(list_ext)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(ordsets)).
-:- use_module(pl(pl_mode)).
+:- use_remote_module(pl(pl_mode)).
 
 
 

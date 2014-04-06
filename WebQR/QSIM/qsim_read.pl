@@ -100,11 +100,11 @@ Reading in QSIM.
 :- use_module(library(apply)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf(rdf_reification)).
-:- use_module(rdf(rdf_list)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdfs(rdfs_read)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_reification)).
+:- use_remote_module(rdf(rdf_list)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdfs(rdfs_read)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(qsim, 'http://www.wouterbeek.com/qsim#').
 

@@ -49,10 +49,10 @@ Create and describe links between resources from within XML documents.
 @version 2013/05, 2013/07, 2013/09
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(uri(rfc3987_dcg)).
-:- use_module(xml(xml_attributes)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(uri(rfc3987_dcg)).
+:- use_remote_module(xml(xml_attributes)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(xlink, 'http://www.w3.org/1999/xlink').
 

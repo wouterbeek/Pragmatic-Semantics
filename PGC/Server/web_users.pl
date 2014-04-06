@@ -12,7 +12,7 @@ User management for Web applications.
 @version 2009, 2013/10-2013/12
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_client)).
@@ -20,12 +20,12 @@ User management for Web applications.
 :- use_module(library(http/http_json)).
 :- use_module(library(http/http_parameters)).
 :- use_module(library(http/js_write)).
-:- use_module(server(app_ui)).
-:- use_module(server(password_db)).
-:- use_module(server(server_ext)).
-:- use_module(server(user_db)).
-:- use_module(server(web_ui)).
-:- use_module(server(web_users)).
+:- use_remote_module(server(app_ui)).
+:- use_remote_module(server(password_db)).
+:- use_remote_module(server(server_ext)).
+:- use_remote_module(server(user_db)).
+:- use_remote_module(server(web_ui)).
+:- use_remote_module(server(web_users)).
 
 :- db_add_novel(user:prolog_file_type(db, database)).
 

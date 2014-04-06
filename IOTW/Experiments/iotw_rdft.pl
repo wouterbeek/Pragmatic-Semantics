@@ -8,11 +8,11 @@ Runs the RDFT experiment within the IOTW project.
 @version 2013/12
 */
 
-:- use_module(ap(ap)).
-:- use_module(os(archive_ext)).
-:- use_module(owl(owl_mat)).
-:- use_module(rdf(rdf_serial_conv)).
-:- use_module(standards(oaei)).
+:- use_remote_module(ap(ap)).
+:- use_remote_module(os(archive_ext)).
+:- use_remote_module(owl(owl_mat)).
+:- use_remote_module(rdf(rdf_serial_conv)).
+:- use_remote_module(standards(oaei)).
 
 :- initialization(iotw_rdft).
 

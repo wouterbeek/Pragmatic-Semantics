@@ -18,14 +18,14 @@ Make arbitrary consecutive replacements in text files.
 @version 2013/09
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(dcg_replace)).
-:- use_module(generics(codes_ext)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(dcg_replace)).
+:- use_remote_module(generics(codes_ext)).
 :- use_module(library(debug)).
-:- use_module(os(file_ext)).
+:- use_remote_module(os(file_ext)).
 
 
 

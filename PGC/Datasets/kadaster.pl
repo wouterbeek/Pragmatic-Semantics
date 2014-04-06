@@ -17,10 +17,10 @@
 
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(sparql(sparql_build)).
-:- use_module(sparql(sparql_db)).
-:- use_module(sparql(sparql_ext)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(sparql(sparql_build)).
+:- use_remote_module(sparql(sparql_db)).
+:- use_remote_module(sparql(sparql_ext)).
 
 :- sparql_register_remote(kadaster, 'brk.kadaster.nl', default, '/sparql').
 

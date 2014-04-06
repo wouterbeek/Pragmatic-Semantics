@@ -35,9 +35,9 @@ WHERE
 @version 2013/03-2013/05, 2013/08, 2013/12-2014/01
 */
 
-:- use_module(generics(db_ext)).
-:- use_module(sparql(sparql_db)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(sparql(sparql_db)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- db_add_novel(user:prolog_file_type(ttl, turtle)).
 

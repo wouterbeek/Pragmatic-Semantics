@@ -31,7 +31,7 @@ Two methods created during my ending days at the IvI institute:
 */
 
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdfs(rdfs_read)).
+:- use_remote_module(rdfs(rdfs_read)).
 
 :- meta_predicate depth_path(+,0,+,-).
 :- meta_predicate depth_path(+,0,+,+,-).

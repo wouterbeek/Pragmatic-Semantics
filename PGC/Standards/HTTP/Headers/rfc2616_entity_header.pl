@@ -15,10 +15,10 @@ DCG for entity header in RFC 2616.
 @version 2013/12
 */
 
-:- use_module(http_headers(rfc2616_allow)).
-:- use_module(http_headers(rfc2616_content_length)).
-:- use_module(http_headers(rfc2616_content_type)).
-:- use_module(http_headers(rfc2616_message_header)).
+:- use_remote_module(http_headers(rfc2616_allow)).
+:- use_remote_module(http_headers(rfc2616_content_length)).
+:- use_remote_module(http_headers(rfc2616_content_type)).
+:- use_remote_module(http_headers(rfc2616_message_header)).
 
 
 

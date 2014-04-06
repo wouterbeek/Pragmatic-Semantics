@@ -9,7 +9,7 @@ Unit testing for XSD support in PGC.
 */
 
 :- use_module(library(plunit)).
-:- use_module(xsd(xsd_duration)).
+:- use_remote_module(xsd(xsd_duration)).
 
 
 

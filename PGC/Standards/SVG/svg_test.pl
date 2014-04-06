@@ -6,12 +6,12 @@
 @version 2013/07-2013/09
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(generics(print_ext)).
-:- use_module(gv(gv_file)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(generics(print_ext)).
+:- use_remote_module(gv(gv_file)).
 :- use_module(library(plunit)).
-:- use_module(svg(svg_dom)).
-:- use_module(svg(svg_elements)).
+:- use_remote_module(svg(svg_dom)).
+:- use_remote_module(svg(svg_elements)).
 
 
 

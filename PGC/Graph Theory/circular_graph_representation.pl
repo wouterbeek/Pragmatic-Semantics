@@ -16,10 +16,10 @@ Circular graph representation.
 @version 2013/07
 */
 
-:- use_module(generics(list_ext)).
+:- use_remote_module(generics(list_ext)).
 :- use_module(library(option)).
 :- use_module(library(settings)).
-:- use_module(standards(markup)).
+:- use_remote_module(standards(markup)).
 
 :- setting(
   default_border_size,

@@ -65,11 +65,11 @@ When `Repetitions` is a postitive integer `N`,
 @version 2013/08-2013/09, 2013/12-2014/01
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_meta)).
-:- use_module(generics(codes_ext)).
-:- use_module(generics(meta_ext)).
-:- use_module(generics(typecheck)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_meta)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(generics(typecheck)).
 :- use_module(library(apply)).
 :- use_module(library(option)).
 

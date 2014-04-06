@@ -6,10 +6,10 @@
 @version 2014/03
 */
 
-:- use_module(generics(db_ext)).
-:- use_module(generics(uri_query)).
-:- use_module(gv(gv_file)).
-:- use_module(latex(latex_to_html)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(uri_query)).
+:- use_remote_module(gv(gv_file)).
+:- use_remote_module(latex(latex_to_html)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
@@ -17,10 +17,10 @@
 :- use_module(library(http/http_server_files)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(server(web_modules)).
-:- use_module(xml(xml_dom)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(xml(xml_dom)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(id, 'http://www.wouterbeek.com/IDEAology/').
 

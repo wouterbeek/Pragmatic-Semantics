@@ -21,12 +21,12 @@ positions in iterations of spring embedding.
 @version 2013/01, 2013/07, 2014/03
 */
 
-:- use_module(generics(list_ext)).
-:- use_module(graph_theory(graph_export)).
-:- use_module(html(html_table)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(graph_theory(graph_export)).
+:- use_remote_module(html(html_table)).
 :- use_module(library(http/html_write)).
 :- use_module(library(option)).
-:- use_module(xml(xml_dom)).
+:- use_remote_module(xml(xml_dom)).
 
 
 

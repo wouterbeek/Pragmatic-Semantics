@@ -72,13 +72,13 @@ Raster images have their original sample resampled to the output device.
 @version 2012/10, 2013/01-2013/09
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(parse_tree)).
-:- use_module(svg(svg_generic)).
-:- use_module(svg(svg_elements)).
-:- use_module(xml(xml_elements)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(parse_tree)).
+:- use_remote_module(svg(svg_generic)).
+:- use_remote_module(svg(svg_elements)).
+:- use_remote_module(xml(xml_elements)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(svg, 'http://www.w3.org/2000/svg').
 

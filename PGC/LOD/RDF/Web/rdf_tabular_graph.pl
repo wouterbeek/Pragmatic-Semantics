@@ -18,10 +18,10 @@ RDF graphs.
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_web(rdf_tabular_class)).
-:- use_module(rdf_web(rdf_tabular_datatype)).
-:- use_module(rdf_web(rdf_tabular_property)).
-:- use_module(rdf_web(rdf_term_html)).
+:- use_remote_module(rdf_web(rdf_tabular_class)).
+:- use_remote_module(rdf_web(rdf_tabular_datatype)).
+:- use_remote_module(rdf_web(rdf_tabular_property)).
+:- use_remote_module(rdf_web(rdf_term_html)).
 
 
 

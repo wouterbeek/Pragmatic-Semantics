@@ -15,12 +15,12 @@ Support for image files.
 @version 2014/03
 */
 
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
 :- use_module(library(process)).
 :- use_module(library(pure_input)).
-:- use_module(os(io_ext)).
+:- use_remote_module(os(io_ext)).
 
 
 

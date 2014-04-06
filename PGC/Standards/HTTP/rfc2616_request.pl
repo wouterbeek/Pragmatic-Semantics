@@ -17,16 +17,16 @@
 @version 2013/12
 */
 
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(parse_tree)).
-:- use_module(http(rfc2616_basic)).
-:- use_module(http(rfc2616_generic_message)).
-:- use_module(http(rfc2616_method)).
-:- use_module(http(rfc2616_version)).
-:- use_module(http_headers(rfc2616_entity_header)).
-:- use_module(http_headers(rfc2616_general_header)).
-:- use_module(http_headers(rfc2616_request_header)).
-:- use_module(http_parameters(rfc2616_request_uri)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(parse_tree)).
+:- use_remote_module(http(rfc2616_basic)).
+:- use_remote_module(http(rfc2616_generic_message)).
+:- use_remote_module(http(rfc2616_method)).
+:- use_remote_module(http(rfc2616_version)).
+:- use_remote_module(http_headers(rfc2616_entity_header)).
+:- use_remote_module(http_headers(rfc2616_general_header)).
+:- use_remote_module(http_headers(rfc2616_request_header)).
+:- use_remote_module(http_parameters(rfc2616_request_uri)).
 
 
 

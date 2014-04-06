@@ -13,13 +13,13 @@ Simple tests for the IOTW codebase.
 @version 2013/09, 2013/11-2013/12, 2014/03
 */
 
-:- use_module(iotw(iotw)).
+:- use_remote_module(iotw(iotw)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(ex, 'http://www.example.com/').
 

@@ -55,7 +55,7 @@ pred(Converted2, AlsoConverted2, NotConvertedLabel):-
 @version 2011, 2013/08
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(lists)).
 
 :- dynamic(rdf_meta_expand_db/1).

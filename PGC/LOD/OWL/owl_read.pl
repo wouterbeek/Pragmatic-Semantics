@@ -34,12 +34,12 @@ Predicates for reading from OWL data.
 @version 2013/01, 2013/03-2013/05, 2013/08
 */
 
-:- use_module(generics(meta_ext)).
+:- use_remote_module(generics(meta_ext)).
 :- use_module(library(ordsets)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_term(rdf_term)).
-:- use_module(rdfs(rdfs_read)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf_term(rdf_term)).
+:- use_remote_module(rdfs(rdfs_read)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(owl, 'http://www.w3.org/2002/07/owl#').
 :- xml_register_namespace(rdf, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#').

@@ -14,10 +14,10 @@ DCG rules for the C programming language.
 @version 2013/02, 2013/06, 2014/01-2014/02
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_meta)).
-:- use_module(dcg(dcg_replace)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_meta)).
+:- use_remote_module(dcg(dcg_replace)).
 
 
 
@@ -29,7 +29,7 @@ DCG rules for the C programming language.
 % # Example
 %
 % ~~~{.pl}
-% ?- use_module(generics(codes_ext)).
+% ?- use_remote_module(generics(codes_ext)).
 % ?- phrase(c_convert, `aaa\bbbb\nccc\tddd`, X), put_codes(current_output, X).
 % aaabbb
 % ccc	ddd

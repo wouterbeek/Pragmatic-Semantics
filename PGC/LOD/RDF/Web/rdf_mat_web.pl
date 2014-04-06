@@ -8,16 +8,16 @@ Web-interface for RDF materialization.
 @version 2012/12-2013/01, 2013/03-2013/05, 2013/09, 2013/11-2014/01, 2014/03
 */
 
-:- use_module(generics(uri_query)).
-:- use_module(html(html_dropdown_list)).
-:- use_module(html(html_form)).
+:- use_remote_module(generics(uri_query)).
+:- use_remote_module(html(html_dropdown_list)).
+:- use_remote_module(html(html_form)).
 :- use_module(library(aggregate)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
-:- use_module(rdf_term(rdf_term)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf_reasoning(rdf_mat)).
-:- use_module(rdf_web(rdf_html_table)).
+:- use_remote_module(rdf_term(rdf_term)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf_reasoning(rdf_mat)).
+:- use_remote_module(rdf_web(rdf_html_table)).
 
 http:location(rdf, root(rdf), []).
 :- http_handler(rdf(mat), rdf_mat_web, []).

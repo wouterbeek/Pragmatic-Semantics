@@ -28,7 +28,7 @@ Predicates for building OWL ontologies.
 */
 
 :- use_module(library(semweb/rdf_db)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- rdf_meta(owl_assert_class_equivalence(r,r,+)).
 :- rdf_meta(owl_assert_disjointWith(r,r,+)).

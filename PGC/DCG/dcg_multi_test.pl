@@ -8,8 +8,8 @@ Automated tests for module DCG_MULTI.
 @version 2013/12
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_multi)).
 :- use_module(library(plunit)).
 
 

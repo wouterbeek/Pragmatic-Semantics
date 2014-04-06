@@ -96,19 +96,19 @@ We use the following abbreviations in this module:
 @version 2011/08-2012/05, 2012/09, 2013/04-2013/06, 2013/09-2014/01
 */
 
-:- use_module(ap(ap_stat)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(atom_ext)).
-:- use_module(generics(error_ext)).
-:- use_module(generics(meta_ext)).
+:- use_remote_module(ap(ap_stat)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(generics(error_ext)).
+:- use_remote_module(generics(meta_ext)).
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(filesex)).
 :- use_module(library(process)).
 :- use_module(library(readutil)).
-:- use_module(os(dir_ext)).
-:- use_module(os(os_ext)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(os(os_ext)).
 
 
 

@@ -26,8 +26,8 @@ with datatype IRI xsd:boolean.
 */
 
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(xsd(xsd)). % XML namespace.
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(xsd(xsd)). % XML namespace.
 
 :- rdf_meta(rdf_assert_false(r,r,+)).
 :- rdf_meta(rdf_assert_true(r,r,+)).

@@ -29,17 +29,17 @@ Generic predicates that are used within the humR project.
 @version 2013/10, 2014/03
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(generics(list_ext)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(generics(list_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(lists)).
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf_term(rdf_typed_literal)).
-:- use_module(rdfs(rdfs_read)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf_term(rdf_typed_literal)).
+:- use_remote_module(rdfs(rdfs_read)).
 
 
 

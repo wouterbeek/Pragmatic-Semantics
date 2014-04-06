@@ -98,12 +98,12 @@ duDayTimeFrag ::= (duDayFrag duTimeFrag?) | duTimeFrag
 @version 2013/07-2013/08, 2014/03-2014/04
 */
 
-:- use_module(xsd(xsd_dateTime)).
-:- use_module(xsd(xsd_dateTime_generic)).
-:- use_module(xsd(xsd_dateTime_support)).
-:- use_module(xsd(xsd_decimal)).
-:- use_module(xsd(xsd_duration_generic)).
-:- use_module(xsd(xsd_number_generic)).
+:- use_remote_module(xsd(xsd_dateTime)).
+:- use_remote_module(xsd(xsd_dateTime_generic)).
+:- use_remote_module(xsd(xsd_dateTime_support)).
+:- use_remote_module(xsd(xsd_decimal)).
+:- use_remote_module(xsd(xsd_duration_generic)).
+:- use_remote_module(xsd(xsd_number_generic)).
 
 
 

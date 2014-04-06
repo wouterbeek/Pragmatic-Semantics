@@ -28,17 +28,17 @@ proof(Conclusion, Premises)
 @version 2013/01-2013/02, 2013/04-2013/05, 2013/07-2013/09, 2013/11
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(dcg_os)).
-:- use_module(generics(codes_ext)).
-:- use_module(generics(meta_ext)).
-:- use_module(generics(option_ext)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(dcg_os)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(generics(meta_ext)).
+:- use_remote_module(generics(option_ext)).
 :- use_module(library(option)).
 :- use_module(library(settings)).
-:- use_module(os(shell_ext)).
-:- use_module(pl(pl_control)).
-:- use_module(pl(pl_mode)).
+:- use_remote_module(os(shell_ext)).
+:- use_remote_module(pl(pl_control)).
+:- use_remote_module(pl(pl_mode)).
 
 % The number of spaces that go into one indent.
 :- setting(

@@ -44,8 +44,8 @@
 @version 2013/01-2013/04, 2013/07, 2013/09, 2013/12, 2014/03
 */
 
-:- use_module(generics(list_ext)).
-:- use_module(generics(option_ext)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(option_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(debug)).
 :- use_module(library(option)).

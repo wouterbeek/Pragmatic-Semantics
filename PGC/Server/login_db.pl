@@ -20,7 +20,7 @@
 :- use_module(library(error)).
 :- use_module(library(http/http_session)).
 :- use_module(library(persistency)). % Declarations
-:- use_module(os(file_ext)).
+:- use_remote_module(os(file_ext)).
 
 %! logged_in_(?Session:atom, ?UserName:atom, ?LoginTime:float) is nondet.
 :- persistent(logged_in_(session:atom,user_name:atom,login_time:float)).

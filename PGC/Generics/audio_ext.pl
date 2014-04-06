@@ -21,15 +21,15 @@ In the furture services like Google translate
 @version 2012/10, 2014/01-2014/02
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_replace)).
-:- use_module(generics(atom_ext)).
-:- use_module(generics(db_ext)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_replace)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(apply)).
 :- use_module(library(http/http_open)).
 :- use_module(library(uri)).
-:- use_module(os(file_ext)).
-:- use_module(os(mime_type)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(os(mime_type)).
 
 user:file_search_path(audio, project(audio)).
 :- mime_register_type(audio, mpeg, mp3).

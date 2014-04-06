@@ -22,12 +22,13 @@ Registers information about CKAN Web sites.
 @version 2014/04
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(generics(uri_ext)).
-:- use_module(generics(user_input)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(generics(uri_ext)).
+:- use_remote_module(generics(user_input)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(xml(xml_namespace)).
+
 :- use_module(library(uri)).
-:- use_module(os(file_ext)).
-:- use_module(xml(xml_namespace)).
 
 :- xml_register_namespace(ckan, 'http://www.wouterbeek.com/ckan#').
 

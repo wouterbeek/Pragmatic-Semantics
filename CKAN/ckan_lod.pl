@@ -16,23 +16,24 @@ All LOD described in a CKAN calalogue can be downloaded as well.
 @version 2014/03-2014/04
 */
 
-:- use_module(ckan(ckan_catalog)).
-:- use_module(generics(deb_ext)).
-:- use_module(generics(uri_ext)).
-:- use_module(http(http_download)).
+:- use_remote_module(ckan(ckan_catalog)).
+:- use_remote_module(generics(deb_ext)).
+:- use_remote_module(generics(uri_ext)).
+:- use_remote_module(http(http_download)).
+:- use_remote_module(os(archive_ext)).
+:- use_remote_module(os(dir_infra)).
+:- use_remote_module(rdf(rdf_graph_name)).
+:- use_remote_module(rdf_file(rdf_file)).
+:- use_remote_module(rdf_file(rdf_ntriples_write)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(void(void_file)).
+
 :- use_module(library(apply)).
 :- use_module(library(debug)).
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(thread)).
 :- use_module(library(uri)).
-:- use_module(os(archive_ext)).
-:- use_module(os(dir_infra)).
-:- use_module(rdf(rdf_graph_name)).
-:- use_module(rdf_file(rdf_file)).
-:- use_module(rdf_file(rdf_ntriples_write)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(void(void_file)).
 
 
 

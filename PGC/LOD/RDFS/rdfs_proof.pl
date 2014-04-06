@@ -22,16 +22,16 @@ calculated via backward chaining.
 @version 2014/03
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(trees)).
-:- use_module(gv(gv_file)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(trees)).
+:- use_remote_module(gv(gv_file)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(ordsets)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(os(run_ext)).
-:- use_module(rdf(rdf_name)). % Meta-DCG.
-:- use_module(rdfs(rdfs_voc)).
+:- use_remote_module(os(run_ext)).
+:- use_remote_module(rdf(rdf_name)). % Meta-DCG.
+:- use_remote_module(rdfs(rdfs_voc)).
 
 :- rdf_meta(rdfs_proof(r,r,o,+)).
 :- rdf_meta(rdfs_proof(r,r,o,+,-)).

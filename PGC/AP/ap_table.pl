@@ -12,29 +12,29 @@
 @version 2014/01-2014/03
 */
 
-:- use_module(ap(ap_db)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(uri_ext)).
-:- use_module(html(html_list)).
-:- use_module(html(html_table)).
-:- use_module(html(html_tuple)).
+:- use_remote_module(ap(ap_db)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(uri_ext)).
+:- use_remote_module(html(html_list)).
+:- use_remote_module(html(html_table)).
+:- use_remote_module(html(html_tuple)).
 :- use_module(library(apply)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/http_path)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(pl_web(html_pl_term)).
-:- use_module(rdf(rdf_container)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf(rdf_list)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(rdf_web(rdf_term_html)).
-:- use_module(server(app_ui)).
-:- use_module(server(web_modules)).
+:- use_remote_module(pl_web(html_pl_term)).
+:- use_remote_module(rdf(rdf_container)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf(rdf_list)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(rdf_web(rdf_term_html)).
+:- use_remote_module(server(app_ui)).
+:- use_remote_module(server(web_modules)).
 
 http:location(ap, root(ap), []).
 :- http_handler(ap(table), ap_table, []).

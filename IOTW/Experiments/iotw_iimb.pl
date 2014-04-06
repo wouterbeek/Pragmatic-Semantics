@@ -15,18 +15,18 @@ Runs IOTW experiments on the IIMB alignment data.
 @version 2013/05, 2013/08-2013/09, 2013/11-2014/01, 2014/03
 */
 
-:- use_module(ap(ap)).
-:- use_module(ap(ap_stat)).
-:- use_module(generics(atom_ext)).
-:- use_module(generics(db_ext)).
+:- use_remote_module(ap(ap)).
+:- use_remote_module(ap(ap_stat)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(apply)).
-:- use_module(lod(oaei)).
+:- use_remote_module(lod(oaei)).
 :- yse_module(os(safe_file)).
-:- use_module(iotw(iotw)).
-:- use_module(rdf(rdf_meta)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(xml(xml_dom)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(iotw(iotw)).
+:- use_remote_module(rdf(rdf_meta)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(xml(xml_dom)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace('IIMB', 'http://oaei.ontologymatching.org/2012/IIMBTBOX/').
 

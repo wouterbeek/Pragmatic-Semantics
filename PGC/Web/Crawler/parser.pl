@@ -17,12 +17,12 @@ Parser for HTML Web sites.
 @version 2012/09, 2013/01-2013/02, 2013/11, 2014/01
 */
 
-:- use_module(generics(atom_ext)).
+:- use_remote_module(generics(atom_ext)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(http/http_open)).
-:- use_module(server(crawler)).
-:- use_module(server(link_collection)).
+:- use_remote_module(server(crawler)).
+:- use_remote_module(server(link_collection)).
 
 
 

@@ -22,20 +22,20 @@ Web front-end for generic graph visualizations.
 @version 2013/01-2013/02, 2014/03
 */
 
-:- use_module(generics(atom_ext)).
-:- use_module(graph_theory(circular_graph_representation)).
-:- use_module(graph_theory(graph_export)).
-:- use_module(graph_theory(graph_export_svg)).
-:- use_module(graph_theory(graph_generic)).
-:- use_module(graph_theory(random_vertex_coordinates)).
-:- use_module(graph_theory(spring_embedding)).
-:- use_module(graph_theory(vertex_coordinate)).
-:- use_module(gv(gv_file)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(graph_theory(circular_graph_representation)).
+:- use_remote_module(graph_theory(graph_export)).
+:- use_remote_module(graph_theory(graph_export_svg)).
+:- use_remote_module(graph_theory(graph_generic)).
+:- use_remote_module(graph_theory(random_vertex_coordinates)).
+:- use_remote_module(graph_theory(spring_embedding)).
+:- use_remote_module(graph_theory(vertex_coordinate)).
+:- use_remote_module(gv(gv_file)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_graph(rdf_graph_theory)).
-:- use_module(server(web_error)).
-:- use_module(ugraph(ugraph_ext)).
-:- use_module(xml(xml_dom)).
+:- use_remote_module(rdf_graph(rdf_graph_theory)).
+:- use_remote_module(server(web_error)).
+:- use_remote_module(ugraph(ugraph_ext)).
+:- use_remote_module(xml(xml_dom)).
 
 :- rdf_meta(vertex_web(r,?,?)).
 

@@ -14,8 +14,8 @@
 @version 2011/09, 2012/09
 */
 
-:- use_module(generics(list_ext)).
-:- use_module(generics(meta_ext)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(meta_ext)).
 
 :- dynamic(runner_opponent_result/3).
 :- dynamic(runner_result/2).

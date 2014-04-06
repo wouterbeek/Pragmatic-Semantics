@@ -113,11 +113,11 @@ between =−1074= and =971=, inclusive.
 @version 2013/08, 2014/02-2014/04
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
 :- use_module(library(debug)).
-:- use_module(math(math_ext)).
-:- use_module(xsd(xsd_number_generic)).
+:- use_remote_module(math(math_ext)).
+:- use_remote_module(xsd(xsd_number_generic)).
 
 
 

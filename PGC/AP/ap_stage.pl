@@ -27,17 +27,17 @@ The following options can be added to AP stages:
 @version 2013/10-2014/03
 */
 
-:- use_module(ap(ap_db)).
-:- use_module(ap(ap_dir)).
-:- use_module(generics(error_ext)).
+:- use_remote_module(ap(ap_db)).
+:- use_remote_module(ap(ap_dir)).
+:- use_remote_module(generics(error_ext)).
 :- use_module(library(debug)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(os(datetime_ext)).
-:- use_module(rdf(rdf_container)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(os(datetime_ext)).
+:- use_remote_module(rdf(rdf_container)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(ap, 'http://www.wouterbeek.com/ap.owl#').
 

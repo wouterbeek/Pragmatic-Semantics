@@ -20,21 +20,21 @@ Generated RDF HTML tables.
 @version 2013/12-2014/04
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(list_ext)).
-:- use_module(generics(uri_query)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(generics(uri_query)).
 :- use_module(library(aggregate)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf(rdf_parse)).
-:- use_module(rdf_web(rdf_tabular_graph)).
-:- use_module(rdf_web(rdf_tabular_term)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(rdf_web(rdf_term_html)).
-:- use_module(server(app_ui)).
-:- use_module(server(web_modules)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf(rdf_parse)).
+:- use_remote_module(rdf_web(rdf_tabular_graph)).
+:- use_remote_module(rdf_web(rdf_tabular_term)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(rdf_web(rdf_term_html)).
+:- use_remote_module(server(app_ui)).
+:- use_remote_module(server(web_modules)).
 
 http:location(rdf, root(rdf), []).
 :- http_handler(rdf(tabular), rdf_tabular, [priority(-1)]).

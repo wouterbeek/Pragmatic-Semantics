@@ -12,5 +12,5 @@ load_bk:-
   
   % Beekeeper
   assert(user:file_search_path(bk, ThisDir)),
-  use_module(bk(bk_web)).
+  use_remote_module(bk(bk_web)).
 

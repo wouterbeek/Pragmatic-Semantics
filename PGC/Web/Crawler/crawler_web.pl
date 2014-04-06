@@ -15,7 +15,7 @@ Web front-end to the crawler methods.
 @version 2012/12
 */
 
-:- use_module(server(crawler)).
+:- use_remote_module(server(crawler)).
 
 
 

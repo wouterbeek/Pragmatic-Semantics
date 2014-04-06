@@ -17,11 +17,11 @@ Web predicates for RDF graphs.
          2014/03-2014/04
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(typecheck)).
-:- use_module(generics(uri_ext)).
-:- use_module(gv(gv_file)).
-:- use_module(html(html_table)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(typecheck)).
+:- use_remote_module(generics(uri_ext)).
+:- use_remote_module(gv(gv_file)).
+:- use_remote_module(html(html_table)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(error)).
@@ -29,20 +29,20 @@ Web predicates for RDF graphs.
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/http_path)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_meta_auto_expand)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf(rdf_namespace)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(rdf_term(rdf_term)).
-:- use_module(rdf_reasoning(rdf_bnode_map)).
-:- use_module(rdf_reasoning(rdf_mat)).
-:- use_module(rdf_web(rdf_term_html)).
-:- use_module(server(app_ui)).
-:- use_module(server(web_modules)).
-:- use_module(tms(tms)).
-:- use_module(tms(tms_export)).
-:- use_module(xml(xml_dom)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_meta_auto_expand)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf(rdf_namespace)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdf_term(rdf_term)).
+:- use_remote_module(rdf_reasoning(rdf_bnode_map)).
+:- use_remote_module(rdf_reasoning(rdf_mat)).
+:- use_remote_module(rdf_web(rdf_term_html)).
+:- use_remote_module(server(app_ui)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(tms(tms)).
+:- use_remote_module(tms(tms_export)).
+:- use_remote_module(xml(xml_dom)).
+:- use_remote_module(xml(xml_namespace)).
 
 % This allows a user to type `rdf:type` in the Web console and
 % have it translated to a full URI.

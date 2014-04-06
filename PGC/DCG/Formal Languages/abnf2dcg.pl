@@ -15,15 +15,15 @@ Converts ABNF grammars to DCGs.
 @version 2013/08, 2014/03
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_cardinal)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(flp(rfc4234_basic)).
-:- use_module(generics(db_ext)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_cardinal)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(flp(rfc4234_basic)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(pio)).
 :- use_module(library(plunit)).
-:- use_module(math(radix)).
+:- use_remote_module(math(radix)).
 
 abnf2dcg(File):-
   access_file(File, read),

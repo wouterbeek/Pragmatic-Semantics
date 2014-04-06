@@ -23,20 +23,20 @@ Generates names for RDF terms and triples.
 @version 2013/07-2013/09, 2014/01-2014/04
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_collection)).
-:- use_module(generics(codes_ext)).
-:- use_module(generics(error_ext)).
-:- use_module(generics(typecheck)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_collection)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(generics(error_ext)).
+:- use_remote_module(generics(typecheck)).
 :- use_module(library(option)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf(rdf_list)).
-:- use_module(rdf(rdf_namespace)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(xml(xml_namespace)).
-:- use_module(xsd(xsd)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf(rdf_list)).
+:- use_remote_module(rdf(rdf_namespace)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(xml(xml_namespace)).
+:- use_remote_module(xsd(xsd)).
 
 :- rdf_meta(rdf_term_name(r,?,?)).
 :- rdf_meta(rdf_triple_name(r,r,r,?,?)).

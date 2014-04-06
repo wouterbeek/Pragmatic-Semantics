@@ -112,22 +112,22 @@ value:
 @version 2013/02-2013/03, 2013/07, 2013/09
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_debug)).
-:- use_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_debug)).
+:- use_remote_module(dcg(dcg_generic)).
 :- use_module(library(aggregate)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(qsim(qsim_build)).
-:- use_module(qsim(qsim_export)).
-:- use_module(qsim(qsim_read)).
-:- use_module(rdf(rdf_list)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf(rdf_reification)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(rdfs(rdfs_read)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(qsim(qsim_build)).
+:- use_remote_module(qsim(qsim_export)).
+:- use_remote_module(qsim(qsim_read)).
+:- use_remote_module(rdf(rdf_list)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf(rdf_reification)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdfs(rdfs_read)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(qsim, 'http://www.wouterbeek.com/qsim#').
 

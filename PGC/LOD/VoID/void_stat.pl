@@ -13,20 +13,20 @@ Asserts statistics for VoID descriptions.
 @version 2013/03-2013/05, 2013/09-2014/03
 */
 
-:- use_module(generics(thread_ext)).
+:- use_remote_module(generics(thread_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(regex)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf(rdf_graph_name)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(rdf(rdf_stat)).
-:- use_module(rdf_term(rdf_dateTime)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(void(void_db)). % XML namespace.
-:- use_module(xml(xml_namespace)).
-:- use_module(xsd(xsd_dateTime_ext)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf(rdf_graph_name)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdf(rdf_stat)).
+:- use_remote_module(rdf_term(rdf_dateTime)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(void(void_db)). % XML namespace.
+:- use_remote_module(xml(xml_namespace)).
+:- use_remote_module(xsd(xsd_dateTime_ext)).
 
 :- xml_register_namespace(dc, 'http://purl.org/dc/elements/1.1/').
 

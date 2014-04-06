@@ -11,10 +11,10 @@
 @version 2013/10
 */
 
-:- use_module(rdf(rdf_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(xml(xml_namespace)).
-:- use_module(xsd(xsd)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(xml(xml_namespace)).
+:- use_remote_module(xsd(xsd)).
 
 :- xml_register_namespace(rdfs, 'http://www.w3.org/2000/01/rdf-schema#').
 

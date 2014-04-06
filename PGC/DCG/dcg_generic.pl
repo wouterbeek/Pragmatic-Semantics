@@ -49,7 +49,7 @@ Generic support for DCG rules.
 @version 2013/05-2013/09, 2013/11-2014/01, 2014/03
 */
 
-:- use_module(generics(codes_ext)).
+:- use_remote_module(generics(codes_ext)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(option)).

@@ -11,19 +11,19 @@
 @version 2014/02-2014/04
 */
 
-:- use_module(ap(ap)).
-:- use_module(ap(ap_archive_ext)). % AP stage.
-:- use_module(ap(ap_db)).
-:- use_module(ap(ap_download)). % AP stage.
-:- use_module(ap(ap_rdf_serial)). % AP stage.
-:- use_module(generics(db_ext)).
-:- use_module(generics(uri_ext)).
+:- use_remote_module(ap(ap)).
+:- use_remote_module(ap(ap_archive_ext)). % AP stage.
+:- use_remote_module(ap(ap_db)).
+:- use_remote_module(ap(ap_download)). % AP stage.
+:- use_remote_module(ap(ap_rdf_serial)). % AP stage.
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(uri_ext)).
 :- use_module(library(filesex)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(su(rdf_compress)). % AP stages.
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(su(rdf_compress)). % AP stages.
 
 
 

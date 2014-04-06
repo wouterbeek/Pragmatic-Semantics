@@ -123,23 +123,24 @@ text/xml
 @version 2014/02
 */
 
-:- use_module(ckan(ckan_db)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(html(html_table)).
-:- use_module(http_parameters(rfc2616_media_type)).
+:- use_remote_module(ckan(ckan_db)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(html(html_table)).
+:- use_remote_module(http_parameters(rfc2616_media_type)).
+:- use_remote_module(pl_web(html_pl_term)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(xml(xml_namespace)).
+
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(pl_web(html_pl_term)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(server(web_modules)).
-:- use_module(xml(xml_namespace)).
 
 :- meta_predicate(mime_table(//,+,?,?)).
 

@@ -40,10 +40,10 @@ ATMS build methods.
 @version Aug 2012
 */
 
-:- use_module(atms(atms_api)).
-:- use_module(atms(atms_db)).
-:- use_module(ile(agent)).
-:- use_module(rdf(rdf_build)).
+:- use_remote_module(atms(atms_api)).
+:- use_remote_module(atms(atms_db)).
+:- use_remote_module(ile(agent)).
+:- use_remote_module(rdf(rdf_build)).
 
 
 

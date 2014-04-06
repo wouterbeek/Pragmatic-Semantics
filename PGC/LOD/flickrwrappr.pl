@@ -34,14 +34,14 @@ While caching, location [2] is reached via triple [1],
 @version 2014/01
 */
 
-:- use_module(generics(uri_query)).
+:- use_remote_module(generics(uri_query)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(ordsets)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(uri)).
-:- use_module(lod(lod_query)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(lod(lod_query)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(dbpprop, 'http://dbpedia.org/property/').
 

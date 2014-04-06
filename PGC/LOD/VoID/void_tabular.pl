@@ -14,9 +14,9 @@
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf(rdf_dataset)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(server(web_modules)).
+:- use_remote_module(rdf(rdf_dataset)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(server(web_modules)).
 
 http:location(void, root(void), []).
 :- http_handler(void(tabular), void_tabular, []).

@@ -14,10 +14,10 @@ of SWI-Prolog.
 @version 2014/03
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_content)).
-:- use_module(latex(latex_db)).
-:- use_module(latex(latex_tree)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(latex(latex_db)).
+:- use_remote_module(latex(latex_tree)).
 :- use_module(library(http/html_write)).
 
 

@@ -10,7 +10,7 @@ Handle requests to view plDoc via a Web interface.
 
 :- use_module(library(doc_http)).
 :- use_module(library(http/http_dispatch)).
-:- use_module(server(web_modules)).
+:- use_remote_module(server(web_modules)).
 
 :- http_handler(root(help), pldoc_web, []).
 

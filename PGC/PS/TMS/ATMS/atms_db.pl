@@ -77,17 +77,17 @@ De Kleer 1993 book 'Building Problem Solvers'.
 @version 2011/11-2012/01, 2012/08, 2014/03
 */
 
-:- use_module(atms(atms_api)).
-:- use_module(atms(atms_build)).
-:- use_module(atms(atms_hierarchy)). % XML namespace.
-:- use_module(atms(atms_env)).
-:- use_module(atms(atms_update)).
+:- use_remote_module(atms(atms_api)).
+:- use_remote_module(atms(atms_build)).
+:- use_remote_module(atms(atms_hierarchy)). % XML namespace.
+:- use_remote_module(atms(atms_env)).
+:- use_remote_module(atms(atms_update)).
 :- use_module(library(aggregate)).
 :- use_module(library(debug)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_read)).
-:- use_module(rdf_term(rdf_boolean)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf(rdf_read)).
+:- use_remote_module(rdf_term(rdf_boolean)).
 
 :- dynamic(has_label/3).
 

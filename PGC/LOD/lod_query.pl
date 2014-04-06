@@ -21,19 +21,19 @@
 @version 2014/01-2014/02
 */
 
-:- use_module(generics(typecheck)).
-:- use_module(generics(uri_ext)).
-:- use_module(http(http_download)).
+:- use_remote_module(generics(typecheck)).
+:- use_remote_module(generics(uri_ext)).
+:- use_remote_module(http(http_download)).
 :- use_module(library(aggregate)).
 :- use_module(library(ordsets)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(sgml)).
-:- use_module(lod(flickrwrappr)).
-:- use_module(lod(lod_location)).
-:- use_module(os(file_mime)).
-:- use_module(rdf(rdf_meta)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(sparql(sparql_cache)).
+:- use_remote_module(lod(flickrwrappr)).
+:- use_remote_module(lod(lod_location)).
+:- use_remote_module(os(file_mime)).
+:- use_remote_module(rdf(rdf_meta)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(sparql(sparql_cache)).
 
 
 

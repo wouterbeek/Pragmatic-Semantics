@@ -48,15 +48,15 @@ Support for RDF lists.
          2014/01-2014/02
 */
 
-:- use_module(dcg(dcg_collection)).
+:- use_remote_module(dcg(dcg_collection)).
 :- use_module(library(apply)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf_reasoning(rdf_bnode_map)).
-:- use_module(rdfs(rdfs_read)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf_reasoning(rdf_bnode_map)).
+:- use_remote_module(rdfs(rdfs_read)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(rdf, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#').
 

@@ -15,16 +15,16 @@ Asserts the vocabulary for QSIM.
 
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(owl(owl_build)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf(rdf_export)).
-:- use_module(rdf(rdf_list)).
-:- use_module(rdf(rdf_reification)).
-:- use_module(rdf_term(rdf_term)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(rdfs(rdfs_read)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(owl(owl_build)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf(rdf_export)).
+:- use_remote_module(rdf(rdf_list)).
+:- use_remote_module(rdf(rdf_reification)).
+:- use_remote_module(rdf_term(rdf_term)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(rdfs(rdfs_read)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(qsim, 'http://www.wouterbeek.com/qsim#').
 :- xml_register_namespace(webqr, 'http://www.wouterbeek.com/webqr#').

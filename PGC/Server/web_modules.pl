@@ -14,8 +14,8 @@ Registration infrastructure for Web modules.
 @version 2012/10, 2013/02-2013/06, 2013/11, 2014/01, 2014/03-2014/04
 */
 
-:- use_module(html(html)). % Meta-DCG.
-:- use_module(html(html_list)).
+:- use_remote_module(html(html)). % Meta-DCG.
+:- use_remote_module(html(html_list)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(error)).

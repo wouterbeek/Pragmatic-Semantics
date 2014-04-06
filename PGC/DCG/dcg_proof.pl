@@ -12,8 +12,8 @@
 @version 2013/07-2013/09, 2013/11-2014/01
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(generics(option_ext)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(generics(option_ext)).
 :- use_module(library(option)).
 
 :- meta_predicate(proof(:,+,?,?)).

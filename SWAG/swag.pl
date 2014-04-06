@@ -9,9 +9,9 @@ Web front-end for the Social Web of the Avant-Garde.
 @version 2013/04, 2014/01, 2014/03-2014/04
 */
 
-:- use_module(generics(db_ext)).
-:- use_module(generics(uri_ext)).
-:- use_module(html(html_image)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(generics(uri_ext)).
+:- use_remote_module(html(html_image)).
 :- use_module(library(aggregate)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
@@ -21,12 +21,12 @@ Web front-end for the Social Web of the Avant-Garde.
 :- use_module(library(random)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(server(web_modules)).
-:- use_module(swag(sa_clean)).
-:- use_module(swag(swag_db)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(swag(sa_clean)).
+:- use_remote_module(swag(swag_db)).
 
 :- http_handler(root(swag), swag, [prefix]).
 

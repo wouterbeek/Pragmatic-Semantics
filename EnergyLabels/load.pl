@@ -16,5 +16,5 @@ load_el:-
   % EnergyLabels
   assert(user:file_search_path(el, ThisDir)),
   assert(user:file_search_path(el_data, data(el))),
-  use_module(el(el_app)).
+  use_remote_module(el(el_app)).
 

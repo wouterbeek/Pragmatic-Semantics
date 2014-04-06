@@ -16,20 +16,20 @@ Generates HTML tables for overviews of singular RDF terms.
 @version 2014/01-2014/03
 */
 
-:- use_module(dcg(dcg_content)). % Meta-argument.
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(meta_ext)).
+:- use_remote_module(dcg(dcg_content)). % Meta-argument.
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(meta_ext)).
 :- use_module(library(http/html_write)).
 :- use_module(library(lists)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf_term(rdf_datatype)).
-:- use_module(rdf(rdf_stat)).
-:- use_module(rdf_web(rdf_html_table)).
-:- use_module(rdf_web(rdf_tabular)).
-:- use_module(rdf_web(rdf_tabular_class)).
-:- use_module(rdf_web(rdf_tabular_datatype)).
-:- use_module(rdf_web(rdf_tabular_property)).
+:- use_remote_module(rdf_term(rdf_datatype)).
+:- use_remote_module(rdf(rdf_stat)).
+:- use_remote_module(rdf_web(rdf_html_table)).
+:- use_remote_module(rdf_web(rdf_tabular)).
+:- use_remote_module(rdf_web(rdf_tabular_class)).
+:- use_remote_module(rdf_web(rdf_tabular_datatype)).
+:- use_remote_module(rdf_web(rdf_tabular_property)).
 
 
 

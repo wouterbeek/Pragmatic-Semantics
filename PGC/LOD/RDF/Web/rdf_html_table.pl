@@ -19,18 +19,18 @@ Generates HTML tables with RDF content.
 @version 2014/01-2014/04
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_meta)).
-:- use_module(generics(typecheck)).
-:- use_module(html(html_table)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_meta)).
+:- use_remote_module(generics(typecheck)).
+:- use_remote_module(html(html_table)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(option)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_list)).
-:- use_module(rdf(rdf_table)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdf_web(rdf_term_html)).
+:- use_remote_module(rdf(rdf_list)).
+:- use_remote_module(rdf(rdf_table)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdf_web(rdf_term_html)).
 
 :- meta_predicate(rdf_html_table(+,//,+,?,?)).
 

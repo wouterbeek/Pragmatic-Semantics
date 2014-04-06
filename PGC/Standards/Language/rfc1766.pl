@@ -16,9 +16,9 @@ Stupport for RFC 1766: *Tags for the Identification of Languages*.
 @version 2013/07
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(generics(atom_ext)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(generics(atom_ext)).
 
 
 

@@ -49,15 +49,15 @@ Predicates that apply to entire RDF graphs.
 @version 2012/01-2013/05, 2013/07-2013/08, 2013/11
 */
 
-:- use_module(generics(list_ext)).
+:- use_remote_module(generics(list_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(ordsets)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(rdf(rdf_graph_name)).
-:- use_module(rdf_term(rdf_term)).
+:- use_remote_module(rdf(rdf_graph_name)).
+:- use_remote_module(rdf_term(rdf_term)).
 
 :- rdf_meta(rdf_triple(r,r,r,?)).
 

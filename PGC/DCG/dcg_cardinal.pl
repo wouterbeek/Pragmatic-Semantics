@@ -53,12 +53,12 @@ DCGs for cardinal numbers.
 @version 2013/06-2013/09
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_meta)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(math(math_ext)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_meta)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(math(math_ext)).
 
 :- meta_predicate(digits_to_decimal_number(//,+,?,?,?)).
 :- meta_predicate(digits_to_decimal_number(//,+,+,?,?,?)).

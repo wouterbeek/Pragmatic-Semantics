@@ -107,12 +107,12 @@ It has the form =|vertex_coordinate(<vertive>, <2d_coordinate>)|=.
 @version 2012/09-2013/02, 2013/07, 2014/03
 */
 
-:- use_module(generics(list_ext)).
-:- use_module(graph_theory(graph_generic)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(graph_theory(graph_generic)).
 :- use_module(library(aggregate)).
 :- use_module(library(lists)).
 :- use_module(library(ordsets)).
-:- use_module(math(math_ext)).
+:- use_remote_module(math(math_ext)).
 
 :- meta_predicate(ugraph_harary(+,2,+,-)).
 

@@ -14,16 +14,16 @@
 @version 2014/01-2014/03
 */
 
-:- use_module(generics(uri_ext)).
-:- use_module(http(http_download)).
+:- use_remote_module(generics(uri_ext)).
+:- use_remote_module(http(http_download)).
 :- use_module(library(apply)).
 :- use_module(library(csv)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdfs(rdfs_build)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdfs(rdfs_build)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(iana, 'http://www.iana.org/assignments/').
 

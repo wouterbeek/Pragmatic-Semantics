@@ -29,7 +29,7 @@ error(
 @version 2012/12, 2013/02, 2014/01
 */
 
-:- use_module(generics(error_ext)).
+:- use_remote_module(generics(error_ext)).
 :- use_module(library(apply)).
 :- use_module(library(http/http_json)).
 

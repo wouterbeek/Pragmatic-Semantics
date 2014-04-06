@@ -13,10 +13,10 @@ Parses RDF terms.
 @version 2013/07-2013/09, 2014/01
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(xml(xml_namespace)).
 
 
 

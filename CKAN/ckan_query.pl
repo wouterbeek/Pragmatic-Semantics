@@ -15,8 +15,8 @@ Support for querying CKAN.
 @version 2014/03
 */
 
-:- use_module(ckan(ckan_api)).
-:- use_module(ckan(ckan_db)).
+:- use_remote_module(ckan(ckan_api)).
+:- use_remote_module(ckan(ckan_db)).
 
 
 

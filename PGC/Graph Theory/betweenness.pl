@@ -23,8 +23,8 @@ Predicates that calculate betweenness metrics.
 @version 2013/01-2013/04, 2013/07, 2013/09
 */
 
-:- use_module(generics(list_ext)).
-:- use_module(graph_theory(shortest_path)).
+:- use_remote_module(generics(list_ext)).
+:- use_remote_module(graph_theory(shortest_path)).
 :- use_module(library(lists)).
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).

@@ -19,13 +19,13 @@ File size identification and filtering for the AP architecture.
 @version 2014/02
 */
 
-:- use_module(ap(ap_db)).
+:- use_remote_module(ap(ap_db)).
 :- use_module(library(apply)).
 :- use_module(library(error)).
 :- use_module(library(lists)).
-:- use_module(os(dir_ext)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_datatype)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_datatype)).
 
 
 

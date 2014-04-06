@@ -22,7 +22,7 @@ Support for the query string part of URIs.
 @version 2014/03
 */
 
-:- use_module(generics(option_ext)).
+:- use_remote_module(generics(option_ext)).
 :- use_module(library(uri)).
 
 

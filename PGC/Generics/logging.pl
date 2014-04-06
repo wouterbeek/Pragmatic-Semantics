@@ -42,15 +42,15 @@ logging started.
 @version 2012/05-2012/07, 2013/03-2013/07, 2013/09, 2013/11, 2014/01-2014/02
 */
 
-:- use_module(generics(codes_ext)).
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(codes_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(ansi_term)). % Used in markup.
 :- use_module(library(debug)).
 :- use_module(library(http/http_client)).
-:- use_module(os(datetime_ext)).
-:- use_module(os(dir_ext)).
-:- use_module(os(dir_infra)).
-:- use_module(os(file_ext)).
+:- use_remote_module(os(datetime_ext)).
+:- use_remote_module(os(dir_ext)).
+:- use_remote_module(os(dir_infra)).
+:- use_remote_module(os(file_ext)).
 
 :- discontiguous(prolog:message/1).
 :- multifile(prolog:message/1).

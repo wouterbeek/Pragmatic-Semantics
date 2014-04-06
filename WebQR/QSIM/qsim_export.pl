@@ -31,21 +31,21 @@ graph can then subsequently be exported using export methods from the PGC.
 @version 2013/03, 2013/07, 2013/09, 2014/01
 */
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_multi)).
-:- use_module(dcg(dcg_os)).
-:- use_module(generics(option_ext)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_multi)).
+:- use_remote_module(dcg(dcg_os)).
+:- use_remote_module(generics(option_ext)).
 :- use_module(library(aggregate)).
 :- use_module(library(option)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
-:- use_module(qsim(qsim_read)).
-:- use_module(rdf(rdf_list)).
-:- use_module(rdf(rdf_name)).
-:- use_module(rdf_term(rdf_term)).
-:- use_module(rdf(rdf_reification)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(qsim(qsim_read)).
+:- use_remote_module(rdf(rdf_list)).
+:- use_remote_module(rdf(rdf_name)).
+:- use_remote_module(rdf_term(rdf_term)).
+:- use_remote_module(rdf(rdf_reification)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(qsim, 'http://www.wouterbeek.com/qsim#').
 

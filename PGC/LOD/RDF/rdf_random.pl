@@ -22,14 +22,14 @@
 @version 2013/09, 2014/02
 */
 
-:- use_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_generic)).
 :- use_module(library(lists)).
 :- use_module(library(random)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_graph)).
-:- use_module(rdf(rdf_parse)).
-:- use_module(rdf_term(rdf_term)).
-:- use_module(rdf_graph(rdf_graph_theory)).
+:- use_remote_module(rdf(rdf_graph)).
+:- use_remote_module(rdf(rdf_parse)).
+:- use_remote_module(rdf_term(rdf_term)).
+:- use_remote_module(rdf_graph(rdf_graph_theory)).
 
 :- rdf_meta(rdf_index(r,r,r,?,?)).
 :- rdf_meta(rdf_random_neighbor(+,r,r)).

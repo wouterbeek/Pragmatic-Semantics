@@ -46,8 +46,8 @@ authority(
 @version 2013/12
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(uri(rfc2396_dcg)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(uri(rfc2396_dcg)).
 
 
 

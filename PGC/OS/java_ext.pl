@@ -20,10 +20,10 @@ Extensions for executing Java JARs from within Prolog.
 @version 2014/01-2014/02
 */
 
-:- use_module(generics(db_ext)).
+:- use_remote_module(generics(db_ext)).
 :- use_module(library(apply)).
 :- use_module(library(process)).
-:- use_module(os(run_ext)).
+:- use_remote_module(os(run_ext)).
 
 % JAR
 :- db_add_novel(user:prolog_file_type(jar, jar)).

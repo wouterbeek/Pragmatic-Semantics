@@ -16,14 +16,14 @@ This parses 139.817 PPN entries in the redactiebladen file.
 @version 2013/09
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
 :- use_module(library(debug)).
 :- use_module(library(pio)).
-:- use_module(rdf(rdf_build)).
-:- use_module(stcn(stcn_generic)).
-:- use_module(stcn(stcn_kmc)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(stcn(stcn_generic)).
+:- use_remote_module(stcn(stcn_kmc)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(stcn,  'http://stcn.data2semantics.org/resource/').
 :- xml_register_namespace(stcnv, 'http://stcn.data2semantics.org/vocab/').

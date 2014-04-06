@@ -62,13 +62,13 @@ Predicates used for parsing and checking value-type conformance.
 @version 2013/01, 2013/08, 2014/01, 2014/03-2014/04
 */
 
-:- use_module(dcg(dcg_generic)).
-:- use_module(generics(atom_ext)).
-:- use_module(generics(boolean_ext)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(generics(atom_ext)).
+:- use_remote_module(generics(boolean_ext)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(uri)).
-:- use_module(uri(rfc3987_dcg)).
+:- use_remote_module(uri(rfc3987_dcg)).
 
 
 
@@ -166,8 +166,8 @@ error:has_type(iri, Term):-
   %%%%once(dcg_phrase('IRI'(_), Term)),
 
 
-:- use_module(dcg(dcg_ascii)).
-:- use_module(dcg(dcg_generic)).
+:- use_remote_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_generic)).
 email -->
   dcg_until([end_mode(inclusive),output_format(codes)], at_sign, _),
   dcg_all.

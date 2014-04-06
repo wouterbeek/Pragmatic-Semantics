@@ -17,7 +17,7 @@ Dictionary for DCGs.
 @version 2013/05-2013/06
 */
 
-:- use_module(dcg(dcg_ascii)).
+:- use_remote_module(dcg(dcg_ascii)).
 
 
 

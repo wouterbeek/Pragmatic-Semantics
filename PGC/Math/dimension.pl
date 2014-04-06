@@ -18,7 +18,7 @@ Operations in dimensions.
 :- use_module(library(apply)).
 :- use_module(library(error)).
 :- use_module(library(lists)).
-:- use_module(math(float_ext)).
+:- use_remote_module(math(float_ext)).
 
 
 

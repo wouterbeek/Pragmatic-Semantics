@@ -14,15 +14,15 @@ Runs IOTW experiments on the anatomy alignment data.
 @version 2013/05, 2013/08
 */
 
-:- use_module(generics(db_ext)).
-:- use_module(iotw(iotw_relatedness)).
+:- use_remote_module(generics(db_ext)).
+:- use_remote_module(iotw(iotw_relatedness)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
-:- use_module(os(filepath_ext)).
-:- use_module(rdf(rdf_graph_name)).
-:- use_module(rdf_file(rdf_serial)).
-:- use_module(standards(oaei)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(os(filepath_ext)).
+:- use_remote_module(rdf(rdf_graph_name)).
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(standards(oaei)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(
   oboInOwl,

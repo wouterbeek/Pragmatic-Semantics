@@ -14,7 +14,7 @@ Support for the `Allow` header in HTTP.
 @version 2014/01
 */
 
-:- use_module(http(rfc2616_method)).
+:- use_remote_module(http(rfc2616_method)).
 
 
 

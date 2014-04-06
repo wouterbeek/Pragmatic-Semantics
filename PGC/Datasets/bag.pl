@@ -16,12 +16,12 @@ info@geodan.nl
 @version 2013/04, 2013/12-2014/01
 */
 
-:- use_module(dcg(dcg_content)).
-:- use_module(dcg(dcg_generic)).
-:- use_module(sparql(sparql_build)).
-:- use_module(sparql(sparql_db)).
-:- use_module(sparql(sparql_ext)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(dcg(dcg_content)).
+:- use_remote_module(dcg(dcg_generic)).
+:- use_remote_module(sparql(sparql_build)).
+:- use_remote_module(sparql(sparql_db)).
+:- use_remote_module(sparql(sparql_ext)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(bag, 'http://lod.geodan.nl/BAG/').
 :- sparql_register_remote(bag, 'lod.geodan.nl', default, '/BAG/sparql').

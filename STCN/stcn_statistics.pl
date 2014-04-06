@@ -97,18 +97,18 @@ New parse results are coming soon!
 @version 2013/01-2013/03, 2013/06
 */
 
-:- use_module(rdf(rdf_stat)).
-:- use_module(kmc(kmc_0500)).
-:- use_module(kmc(kmc_1100)).
-:- use_module(kmc(kmc_1200)).
-:- use_module(kmc(kmc_1500)).
-:- use_module(kmc(kmc_1700)).
-:- use_module(kmc(kmc_3000)).
-:- use_module(kmc(kmc_3011)).
-:- use_module(kmc(kmc_4062)).
+:- use_remote_module(rdf(rdf_stat)).
+:- use_remote_module(kmc(kmc_0500)).
+:- use_remote_module(kmc(kmc_1100)).
+:- use_remote_module(kmc(kmc_1200)).
+:- use_remote_module(kmc(kmc_1500)).
+:- use_remote_module(kmc(kmc_1700)).
+:- use_remote_module(kmc(kmc_3000)).
+:- use_remote_module(kmc(kmc_3011)).
+:- use_remote_module(kmc(kmc_4062)).
 :- use_module(library(debug)).
 :- use_module(library(lists)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(stcnv, 'http://stcn.data2semantics.org/vocab/').
 

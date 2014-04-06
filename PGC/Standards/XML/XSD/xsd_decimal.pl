@@ -73,7 +73,7 @@ of the decimal point which may be a zero.
 @version 2013/07-2013/08, 2013/10, 2014/03
 */
 
-:- use_module(xsd(xsd_number_generic)).
+:- use_remote_module(xsd(xsd_number_generic)).
 
 
 % CANONICAL MAP %
@@ -117,9 +117,9 @@ xsd_decimal_lexical_map(N) -->
 
 
 /* BIDIRECTIONAL IMPLEMENTATION
-:- use_module(dcg(parse_tree)).
+:- use_remote_module(dcg(parse_tree)).
 :- use_module(library(lists)).
-:- use_module(math(radix)).
+:- use_remote_module(math(radix)).
 
 decimalLexicalMap1(Lexical, D):-
   phrase(decimalLexicalRep1(D), Lexical).

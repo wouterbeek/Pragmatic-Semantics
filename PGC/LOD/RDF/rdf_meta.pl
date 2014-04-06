@@ -20,13 +20,13 @@ Meta-callings on an RDF graph.
 @version 2014/01-2014/02
 */
 
-:- use_module(generics(meta_ext)).
+:- use_remote_module(generics(meta_ext)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(os(file_ext)).
-:- use_module(os(file_mime)).
-:- use_module(rdf(rdf_graph_name)).
-:- use_module(rdf_file(rdf_file)).
-:- use_module(rdf_file(rdf_serial)).
+:- use_remote_module(os(file_ext)).
+:- use_remote_module(os(file_mime)).
+:- use_remote_module(rdf(rdf_graph_name)).
+:- use_remote_module(rdf_file(rdf_file)).
+:- use_remote_module(rdf_file(rdf_serial)).
 
 :- meta_predicate(rdf_setup_call_cleanup(+,+,1)).
 :- meta_predicate(rdf_setup_call_cleanup(+,+,1,+,?)).
