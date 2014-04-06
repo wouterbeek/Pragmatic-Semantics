@@ -28,7 +28,7 @@ url('http://km.aifb.kit.edu/projects/btc-2012/datahub/data-2.nq.gz').
 
 go:-
   url(URL),
-  url_to_file_name(URL, ArchiveFile),
+  url_nested_file(URL, ArchiveFile),
   download_to_file(URL, ArchiveFile),
   process_create(path(gunzip), ['-f',file(ArchiveFile)], []),
   file_name_extension(NQuadsFile, _, ArchiveFile),
@@ -79,7 +79,7 @@ download_to_file(URL, File):-
   ).
 
 
-url_to_file_name(URL, File):-
+url_nested_file(URL, File):-
   uri_components(URL, uri_components(_,_,Path,_,_)),
   atomic_list_concat(PathComponents, '/', Path),
   last(PathComponents, File).
