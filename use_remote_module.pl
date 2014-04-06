@@ -15,7 +15,6 @@ use_module/1 imports local Prolog modules.
 @version 2014/04
 */
 
-:- use_module(library(apply)).
 :- use_module(library(filesex)).
 :- use_module(library(http/http_open)).
 :- use_module(library(http/http_ssl_plugin)).
@@ -29,6 +28,7 @@ use_module/1 imports local Prolog modules.
 %! ) is nondet.
 
 :- multifile(user:github_repository/4).
+:- dynamic(user:github_repository/4).
 
 :- initialization(init_use_remote_module).
 
@@ -69,4 +69,10 @@ use_remote_module(RepositoryId, ModuleSpec):-
   use_remote_module(LocalPath).
 
 cert_verify(_, _, _, _, _):- !.
+
+
+
+
+
+
 
