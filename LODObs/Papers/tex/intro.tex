@@ -1,0 +1,93 @@
+\section{Introduction}
+\label{sec:intro}
+
+There is an increasing amount of structured and semi-structured data
+ available on the Web \cite{Dalvi:2012:ASD:2180912.2180920}.
+This data is made available in a variety of formats ranging from
+ HTML tables to databases \cite{Adelfio:2013:SET:2536336.2536343}.
+Initiatives such as the Open Knowledge Foundation (OKFN) and
+ the Linking Open Data (LOD) community have promoted the release of data
+ in an open fashion with the explicit goal of facilitating
+ ease of reuse by others.
+
+While facilitating reuse by humans is important,
+ one of the initial aims of the Web of Data (WOD)
+ was that data be accessible and usable by machines in an
+ {\em automatic fashion} \cite{Lee2001}.
+
+Indeed, the W3C set of standards for exposing data on the Web
+ (i.e. the Semantic Web set of standards) is specifically designed
+ to enable machine reasoning \cite{Hayes2004}.
+However, the data currently available is often far from machine-friendly.
+Even data made available using Semantic Web standards is rife with
+ quality issues making them difficult to process
+ by machines \cite{DBLP:conf/www/HoganHPDP10}.
+
+In 2006 Tim Berners-Lee published
+ an opinion piece on LOD publishing \cite{Bernerslee2006},
+ which became known as the ``5 star model''.
+This model quickly obtained the status of a manifesto
+ for \emph{the right way} to publish data:
+ webby, machine readable, non-proprietary,
+ standards conformant and linked.
+The impact of this, and other, calls to arms has been tremendous
+ with the famous LOD cloud probably being
+ the most prominent witness \cite{deri_2011}.
+
+Now, 7 years later, the community tends to believe that
+ LOD publishing according to the 5 star model
+ has become the de facto standard.
+There are three tightly related problems with this claim, though.
+First, as the manifesto is just a manifesto it is conceptual
+ rather than operational.
+This means that there is, to the best of our knowledge,
+ no simple checklist to which datasets have to comply
+ in order to receive the 5 star predicate.
+The lack of such explicit criteria implies that investigating adherence
+ to the manifesto is impossible to automate, which then means
+ that claims about success or failure of LOD publishing
+ remain vague and difficult to quantify.
+
+In this work, we tackle the problem of
+ {\em providing an up-to-date view on the machine friendliness of the Web of Data.}
+
+In this paper, we address this problem in three ways:
+ first we argue for an operationalization of the 5 criteria
+ for Linked Open Data publishing from the manifesto.
+With this operationalization, checking for compliance with
+ Linked Open Data principles can now be automated.
+To this end we implement a Web Observatory, called \obs,
+ which collects and analyses thousands of datasets,
+ and measures and reports on their machine friendliness.
+This allows us to focus on specific aspects that prevent a dataset
+ from being consumed and processed by a software agent.
+This analysis, which we present in detail at the end of this paper,
+ gives a far more detailed and shaded picture of the state of
+ Linked Open Data publishing than previous analyses have provided.
+These results show that in its current state the Web of Data is not yet
+ machine friendly.
+
+The main contributions of the paper are: 
+\begin{enumerate}[noitemsep,nolistsep]
+\item an operationalization of the 5 star model for
+       Linked Open Data publishing;
+\item a Web Observatory , called \obs,
+       that is able to provide quantified analytics
+       regarding the machine processability of Linked Open Data;
+\item an in-depth analysis of the current state of Linked Open Data
+       according to our operationalization.
+\end{enumerate}
+
+The rest of this paper is organized as follows.
+In section \ref{sec:operationalization}, we present our operationalization of
+ the Linked Data principles.
+The observatory itself is explained in section \ref{sec:implementation}.
+In section, \ref{sec:results}, we provide a snapshot of
+ the state of the Web of Data as produced by the \obs.
+We then discuss the potential technical issues leading to
+ lack of machine friendliness.
+Perhaps more importantly, we reflect on
+ the societal and organizational causes of the current state of Web Data.
+Finally, we conclude with some thoughts on both technical and social paths
+ forward.
+

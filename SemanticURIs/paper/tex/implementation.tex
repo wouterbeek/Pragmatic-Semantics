@@ -1,0 +1,131 @@
+\section{Implementation}
+\label{sec:implementation}
+
+Finding the model $\M$ that minimizes the code length as
+ in equation~\eqref{eq:mdl} requires giving a precise definition of
+ the used code, and searching the model space for the optimal solution.
+
+\subsection{The Code}
+
+We attempt to identify ``kinds'' of terms, which is a semantic property,
+ not a syntactic one.
+While the encoding of the URIs and literal text is often
+ the determining factor in the code length for RDF datasets,
+ the choice of the model $\M$ should not influence the length of this portion
+ of the code.
+But then $\M_\tn{mdl}$ does not depend on how we encode URIs and literals,
+ so it makes sense to skip designing this part of the code altogether
+ and focus on designing a code for only the \emph{structure} of the data,
+ while treating the set of URIs and the set of literals as given.
+
+Our implementation of the code was guided by the following requirements:
+
+\begin{itemize}
+\item The time required to calculate the code length should scale
+      reasonably well with the size of the data set.
+\item The obtained code length should not depend on the serialization format
+      used to syntactically encode the data in: two equivalent RDF datasets
+      should always get the same code length.
+\end{itemize}
+
+Due to the presence of blank nodes, the graph isomorphism problem,
+ which is not known to be solvable in polynomial time \cite{Garey1990},
+ can be reduced to equivalence of RDF data sets which suggests that it
+ is also hard to construct a code with this second property.
+Luckily it turns out that these two problems are \emph{not} the same,
+ and it is in fact not particularly hard to ensure that the code length
+ does not depend on the data representation.
+We feel it is a particularly strong property of our approach that it is
+ completely insensitive to serialization,
+ unlike many other RDF compression algorithms,
+ such as HDT \cite{Fernandez2013}.
+
+We do not have space here to describe all details of the code.\footnote{
+  The full details of the formal framework we use,
+  including a proof of representation-independence,
+  and the automated evaluation script can be found
+  online at \url{https://github.com/wouterbeek/SemanticURIs.git}.}
+Instead, we describe its most important
+ components and properties, in the order in which they are encoded.
+
+\bigskip\unnumberedalgo
+\begin{algorithm}{$\ts{EncodeGraph}$}
+\\ Encode the partition $\M$, taking $L(\M)$ bits, as follows:
+\\ \For all terms $t$ that occur in the data
+\>
+\\ Encode index of partition cell $C$, where $t\in C$ and
+$C\in\M$
+\<
+\\ \End\For
+\\ Encode the data $D$ given $\M$, using $L_\M(D)$ bits, as
+  follows:
+\\ \For every URI and blank node term $t$:
+\>
+\\ Encode the fingerprint $\phi_\M(s)$ if it is new, or a reference
+  to the fingerprint if it occurred earlier
+\\ \For all $\tuple{p,C}$ in the fingerprint $\phi_\M(s)$
+\>
+\\ Encode all objects $\{o\mid \tuple{s,p,o}\in D\}$,
+  using that $o\in C$
+\<
+\\ \End\For
+\<
+\\ \End\For
+\end{algorithm}
+
+There are some subtleties in the code design that are glossed over in
+the above pseudocode. Most importantly, in the encoding process any
+information that has been previously encoded can be used to better
+predict the symbol that has to be encoded now, and thus to obtain a
+more efficient code. For instance, depending on the partition cell the
+subject is in, the distribution of references to previous fingerprints
+can differ quite a bit. To exploit this, the sequence of fingerprint
+references is split into several sequences, one for each partition
+cell, and each is encoded separately using a code that is close to the
+optimal distribution for that cell.
+
+\subsection{Search Heuristic}
+After defining codes with length functions $L(\M)$ and $L_\M(D)$, we
+wish to search for the model $\M$ that minimizes the two-part code
+length, as per~\eqref{eq:mdl}. Unfortunately, the search space is too
+large to allow for a brute force search. We use the following
+heuristic algorithm to efficiently find a reasonable partition.
+
+\bigskip\unnumberedalgo
+\begin{algorithm}{$\ts{SearchModel}$}
+\\ Order all terms $t_1,t_2,\ldots,t_n$ such that $f(t_1)\ge
+f(t_2)\ge\ldots\ge f(t_n)$, where $f(t)=|\{\tuple{s,p,o}\in D\mid
+o=t\}|$ denotes frequency of appearing in the object position. Let
+$\textsf{U}$, $\textsf{B}$ and $\textsf{L}$ denote the indices of URIs, blank nodes,
+and literals, respectively.
+\\ Initialise special set $\textsf{S}^*\=\emptyset$ and $i^*\=0$.
+\\ Let $\tn{part}(\textsf{S})=\{\{i\}\mid i\in\textsf{S}\}\cup \{\textsf{U}\setminus\textsf{S},
+\textsf{B}\setminus\textsf{S}, \textsf{L}\setminus\textsf{S}\}$
+\\ Let $\M^*\=\tn{part}(\textsf{S}^*)$.
+\\ \For $i=1,2,\ldots,n$
+\>
+\\ Let $\textsf{S}'\=\textsf{S}\cup\{i\}$ and $\M'\=\tn{part}(\textsf{S}')$
+\\ \If $L(\M')+L_{\M'}(D)<L(\M^*)+L_{\M^*}(D)$ \Then 
+\>
+\\ $\tuple{\textsf{S}^*, \M^*, i^*} = \tuple{\textsf{S}',\M', i}$
+\<
+\\ \End\If
+\\ \If $i-i^*\ge\tn{threshold}$ \Then break the loop \End\If 
+\<
+\\ \End\For
+\\ \Return $\M^*$
+\end{algorithm}
+
+\medskip Essentially, by default terms are partitioned based on whether they
+are a URI, a blank node or a literal, but the algorithm tries to
+identify special terms for which the overall code length improves if
+they are in a separate partition cell of their own. Candidates for
+inclusion in this special set are tested in order of their frequency
+of appearing in the object position; any improvements are greedily
+accepted. The algorithm terminates once a certain number of
+consecutive attempts to include a term in the special set have yielded
+no improvement. The threshold is set at $\max\{20,  i^*/10\}$; this
+way we keep the loop running as long as possible without allowing the
+overall execution time to be dominated by failed attempts to enlarge
+the special set.
+

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html><head>
+
+<link rel="stylesheet" type="text/css" href="how_files/1.css">
+<link rel="stylesheet" type="text/css" href="how_files/pure-min.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+<div class="pure-g-r" id="layout">
+<div class="pure-u-1" id="main">
+<div class="content">
+
+
+<h1 id="toc">Table of contents</h1>
+
+<ol>
+<li><a href="#barriers">Waiting for the Semantic Web to happen...</a></li>
+<li><a href="#help">So... how can DataHives help?</a></li>
+<li><a href="#reasoning">Reasoning</a></li>
+<li><a href="#sharing">Sharing</a></li>
+<li><a href="#technology">Technology used</a></li>
+<li><a href="#more_info">More info</a></li>
+</ol>
+
+<h1 id="barriers">Waiting for the Semantic Web to happen...</h1>
+
+<p>
+The Semantic Web has been a great idea since 2001. Unfortunately the use
+ of Open and Linked Data is still relatively limited. Individuals and 
+institutions depend on big corporations such as Google and Facebook in 
+order to maintain their data. This has disadvantages in terms of privacy
+ and ownership.</p>
+<div class="image" style="float:right;"><a href="http://localhost:5000/img/triple_store.png" target="_blank"><img class="image_thumbnail" src="how_files/triple_store.png" alt="Overview of a standard deployment situation for Linked Data." style="height: 10cm;"></a>
+<div class="image_description">Overview of a standard deployment situation for Linked Data.</div>
+</div>
+
+<p>
+The orginal idea of the Semantic Web was to empower people and 
+institutions by allowing them to manage their own data. There are three 
+reasons why this has not yet happended on a large scale:</p>
+
+<ol>
+<li><b>Infrastructural &amp; financial barrier </b>Existing Semantic Web deployment systems require a server infrastructure with continuous uptime. </li>
+<li><b>Management barrier </b>Once you have your triple store up and running, it is not straightforward how to go about <i>curating</i> and <i>enriching</i> your data.</li>
+<li><b>Sharing barrier </b>Once you have an interesting dataset it is 
+not easy to share your data with others. Triple stores are often 
+accessed via SPARQL endpoints, requiring the user to write complicate 
+database-like queries.</li>
+</ol>
+
+<h1 id="help">So... how can DataHives help?</h1>
+
+<p>
+DataHives allows you to curate and share your Linked Open Data </p>
+
+<ol>
+<li>... without you having to set up a server.</li>
+<li>... without having to be online all of the time (just be online when you want to be)</li>
+<li>... without you having to write complicated queries</li>
+</ol>
+
+<p>
+DataHives puts the original data owner in control by letting her decice</p>
+<ul>
+<li>... which knowledge is shared with whom.</li>
+<li>... what sources are used for dataset enrichment.</li>
+</ul>
+<hr>
+
+<h1 id="reasoning">Reasoning</h1>
+
+<p>
+Local agents (blue dots) traverse the local graph in order to deduce new information (blue arrows) from the graph.</p>
+<div class="image"><a href="http://localhost:5000/img/local_inference.png" target="_blank"><img class="image_thumbnail" src="how_files/local_inference.png" alt="A graph with locally traversing agents (blue dots) that have made local inferences (blue arrows)."></a>
+<div class="image_description">A graph with locally traversing agents (blue dots) that have made local inferences (blue arrows).</div>
+</div>
+<hr>
+<h1 id="sharing">Sharing</h1>
+
+<p>
+Remote agents (red dots) travel across graphs. They look for knowledge 
+that is related to knowledge that is already present in the home graph 
+(red arrows).</p>
+<div class="image"><a href="http://localhost:5000/img/knowledge_sharing.png" target="_blank"><img class="image_thumbnail" src="how_files/knowledge_sharing.png" alt="A graph with locally traversing agents (blue dots) that have made local inferences (blue arrows)."></a>
+<div class="image_description">A graph with locally traversing agents (blue dots) that have made local inferences (blue arrows).</div>
+</div>
+<hr>
+
+<h1 id="user_groups">User groups</h1>
+
+<h2>Data publishers</h2>
+
+<p>
+By setting up DataHives, a data publisher will automatically enrich her 
+curated database with triples that are relevant and trusted. Uptake of 
+the DataHives system is made easy by the system not requiring any 
+changes to existing Linked Datasets and by the fact that its enrichments
+ can be kept separate from the original dataset.</p>
+
+<h2>MSB</h2>
+
+<p>
+Small organizations, institutions, and maybe individuals who want to 
+maintain their own data but do not have the time, money, or proficiency 
+to enrich the data themselves. Such organizations may have data they 
+would like to disseminate, but the data in isolation is not interesting 
+enough for data consumers. </p>
+<hr>
+
+<h1 id="technology">Technology used</h1>
+
+<p>
+DataHives is built using only open and standards-compliant technology 
+exclusively. The Web-based user interface is built in JavaScript and 
+HTML5. The communication of agents and data is established by following 
+the new WebRTC standard for between-browser communication. For data 
+format support the W3C standards for triple representation and 
+serialization are used (e.g., N-Triples). For calculating the local 
+deductive closure the standards-compliant semantics for RDF and RDF 
+Schema is used.</p>
+<hr>
+
+<h1 id="more_info">More info</h1>
+
+<p>
+DataHives was developed by:</p>
+<ul>
+<li>Pepijn Kroes</li>
+<li><a href="http://www.wouterbeek.com/">Wouter Beek (KR&amp;R, VU)</a></li>
+<li><a href="http://www.few.vu.nl/%7Eschlobac/">Stefan Schlobach (KR&amp;R, VU)</a></li>
+</ul>
+
+<p>
+DataHives was developed within the context of the NWO-funded project <i>Pragmatic Semantics for the Web of Data</i></p>
+
+</div>
+</div>
+</div>
+
+
+</body></html>

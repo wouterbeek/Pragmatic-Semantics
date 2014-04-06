@@ -1,0 +1,83 @@
+\subsection{Path-expressions}
+\label{sec:path_expressions}
+
+The indiscernibility predicates in
+  definition \ref{def:indiscernibility_predicates}
+  were assumed to consist of single RDF predicate terms.
+This restriction is rather arbitrary.
+For instance,
+  it may be the case that resources {\small \texttt{dbp:Amsterdam}}
+  and {\small \texttt{openei:Amsterdam}} may not share a single property,
+  even though the format is located in {\small \texttt{dbp:Netherlands}}
+  and the latter is located in {\small \texttt{openei:Netherlands}}
+  (but these are not asserted as being the same country).
+However, suppose that {\small \texttt{dbp:Netherlands}}
+  borders {\small \texttt{dbp:Germany}}
+  and {\small \texttt{openei:Netherlands}}
+  borders {\small \texttt{openei:Germany}},
+  where {\small \texttt{dbp:Germany}} and
+  {\small \texttt{openei:Germany}} are asserted to be identical.
+If we generalize the notion of a predicate,
+  then {\small \texttt{dbp:Amsterdam}} and
+  {\small \texttt{openei:Amsterdam}} will share the property
+  of being located in a country that borders Germany.
+Obviously, Brussels and Brno share this property as well,
+  so Brussels, Brno and Amsterdam will be indiscernible with respect to
+  this predicate (taken in isolation), but the property is at least
+  able to discern Brussels, Brno and Amsterdam from
+  Stuttgart, Portland, and The Netherlands.
+
+The notion of a predicate, can be easily generalized
+  so that it can be denoted by a sequence of RDF predicate terms.
+Such sequences are called \emph{path-expressions} in RDF. 
+
+\begin{comment}
+For each sequence of predicate terms $\tuplerange{p_1}{p_n}$
+  we assume a functional mapping
+  $f_{\tuplerange{p_1}{p_n}} : S_G \rightarrow \powerset{O_G}$,
+  called the property sequence mapping
+  \mbox{(definition \ref{def:generalized_property_map})}.
+
+\begin{definition}[Property sequence map]
+\label{def:generalized_property_map}
+\begin{align}
+  f_{\tuplerange{p_1}{p_n}}(s)
+\,=\,
+  \bigsetdef{o \in O_G}{
+    \exists_{\range{x_0}{x_n}}(
+      x_0 = s \land x_n = o \land\nonumber\\
+      \bigwedge_{i=0}^{n-1}\nolimits
+          \pair{I(x_i)}{I(x_{i+1})}
+        \in
+          \bigcup_{p \in \equivset{p_{i+1}}}\nolimits \mathit{Ext}(I(p))
+    )
+  }\nonumber
+\end{align}
+\end{definition}
+
+By using property sequence maps,
+  the definition for generalized indiscernibility predicates
+  is only slightly more complex than its simplified version.
+
+\begin{definition}[Indiscernibility criteria]
+\label{def:indiscernibility_criteria}
+\begin{align}
+  \indp_{\approx}(\set{\range{x_1}{x_n}})
+=
+  \setdef{
+    \tuplerange{p_1}{p_n} \in P_G^n
+  }{\nonumber\\
+      \exists \range{p_1^1}{p_1^n} \in \equivset{p_1},
+    \ldots,
+      \exists \range{p_m^1}{p_m^n} \in \equivset{p_n}
+    (\nonumber\\
+        \equivset{f_{\tuplerange{p_1^1}{p_m^1}} (x_1)}
+      =
+        \ldots
+      =
+        \equivset{f_{\tuplerange{p_1^n}{p_m^n}} (x_n)}
+    )
+  }\nonumber
+\end{align}
+\end{definition}
+\end{comment}

@@ -1,0 +1,12 @@
+External Prolog Files/*
+.metadata/*
+RemoteSystemsTempFiles/*
+*~
+*.db
+*.dot
+*.jpeg
+*.log
+Data/
+password
+audio/
+tmp/

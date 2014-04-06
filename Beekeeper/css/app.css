@@ -1,0 +1,93 @@
+/* File open button. */
+
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+}
+.fileUpload input {
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+}
+
+
+
+#pull {
+  border-radius: 0px 0px 5px 5px;
+  bottom: 10%;
+  height: 10;
+  left: 25%;
+  position: absolute;
+  right: 25%;
+  top: 0%;
+  width: 50%;
+}
+
+#pull_content {
+  display: none;
+  overflow: auto;
+}
+
+.some_pull_content {
+  background: none repeat scroll 0 0 #333333;
+  display: none;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  overflow: auto;
+  text-align: center;
+}
+
+#pull form legend {
+  color: #FFFFFF;
+}
+
+#saveFile             { display: none; }
+#saveExperiment       { display: none; }
+
+#showOptions, #hideOptions { float: right; }
+
+#ownerID {
+  color: #fff;
+  padding: 15px 5px;
+  font-weight: bold;
+}
+
+#friendsList          { margin: 10px; }
+div.friend            { font-weight: bold; color: #999; cursor: pointer; }
+span.name             { color: red; }
+span.option           { margin-left: 2px; float: right; }
+
+#history {
+  height: 320px;
+  overflow: scroll;
+}
+
+#graph                {  } /*clear: both;*/
+
+svg                   { background: #FFF; }
+path.link             { stroke: grey; }
+path.marker           { fill: grey; }
+path.locallyInferred  { stroke-dasharray: 2,2; stroke: red; }
+path.remotelyInferred { stroke-dasharray: 2,2; stroke: blue; }
+circle.node           { fill: #eee; stroke-width: 2; stroke: #999; }
+text.id               { text-anchor: middle; font-weight: bold; font: bold 10px sans-serif; }
+text.RDFlinkTarget    { fill: grey; }
+
+circle.bee            { fill: brown; stroke: red; }
+
+/* toggle classes friendsList */
+span.block            { color: #000; }
+span.selected         { background: #000; }
+span.connected        { color: green; }
+
+/* toggle classes monitor */
+p.data                { color: grey; font: italic 12px sans-serif;  }
+
+/* toggle classes visualization */
+circle.scout          { fill: red; }
+circle.forager        { stroke: blue; }
+circle.nurse          { stroke-width: 4px; }
+circle.RDFlink        { /*some style for RDF link targets*/ }
+

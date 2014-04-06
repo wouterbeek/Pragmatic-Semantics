@@ -1,0 +1,55 @@
+### Primitive datatypes
+
+| *Datatype*   | *ordered* | *bounded* | *cardinality*      | *numeric* |
+| string       | false     | false     | countably infinite | false     |
+| boolean      | false     | false     | finite             | false     |
+| float        | partial   | true      | finite             | true      |
+| double       | partial   | true      | finite             | true      |
+| decimal      | total     | false     | countably infinite | true      |
+| duration     | partial   | false     | countably infinite | false     |
+| dateTime     | partial   | false     | countably infinite | false     |
+| time         | partial   | false     | countably infinite | false     |
+| date         | partial   | false     | countably infinite | false     |
+| gYearMonth   | partial   | false     | countably infinite | false     |
+| gYear        | partial   | false     | countably infinite | false     |
+| gMonthDay    | partial   | false     | countably infinite | false     |
+| gDay         | partial   | false     | countably infinite | false     |
+| gMonth       | partial   | false     | countably infinite | false     |
+| hexBinary    | false     | false     | countably infinite | false     |
+| base64Binary | false     | false     | countably infinite | false     |
+| anyURI       | false     | false     | countably infinite | false     |
+| QName        | false     | false     | countably infinite | false     |
+| NOTATION     | false     | false     | countably infinite | false     |
+
+### Non-primitive datatypes
+
+| *Datatype*         | *ordered* | *bounded* | *cardinality*      | *numeric* |
+| normalizedString   | false     | false     | countably infinite | false     |
+| token              | false     | false     | countably infinite | false     |
+| language           | false     | false     | countably infinite | false     |
+| IDREFS             | false     | false     | countably infinite | false     |
+| ENTITIES           | false     | false     | countably infinite | false     |
+| NMTOKEN            | false     | false     | countably infinite | false     |
+| NMTOKENS           | false     | false     | countably infinite | false     |
+| Name               | false     | false     | countably infinite | false     |
+| NCName             | false     | false     | countably infinite | false     |
+| ID                 | false     | false     | countably infinite | false     |
+| IDREF              | false     | false     | countably infinite | false     |
+| ENTITY             | false     | false     | countably infinite | false     |
+| integer            | total     | false     | countably infinite | true      |
+| nonPositiveInteger | total     | false     | countably infinite | true      |
+| negativeInteger    | total     | false     | countably infinite | true      |
+| long               | total     | true      | finite             | true      |
+| int                | total     | true      | finite             | true      |
+| short              | total     | true      | finite             | true      |
+| byte               | total     | true      | finite             | true      |
+| nonNegativeInteger | total     | false     | countably infinite | true      |
+| unsignedLong       | total     | true      | finite             | true      |
+| unsignedInt        | total     | true      | finite             | true      |
+| unsignedShort      | total     | true      | finite             | true      |
+| unsignedByte       | total     | true      | finite             | true      |
+| positiveInteger    | total     | false     | countably infinite | true      |
+| yearMonthDuration  | partial   | false     | countably infinite | false     |
+| dayTimeDuration    | partial   | false     | countably infinite | false     |
+| dateTimeStamp      | partial   | false     | countably infinite | false     |
+

@@ -1,0 +1,67 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Identity relations are a cornerstone of logic-based knowledge representation.
+They allow to state and relate properties of an object
+  using multiple names for that object, and conversely,
+  they allow to infer that different names actually refer to the same object.
+
+In particular, identity relations are
+  at the foundation of the Linked Open Data initiative
+  and the Semantic Web (SW) in general \cite{BizerCyganiakHeath2007}.
+The SW consists of many different sets of assertions
+  that are published on the Web by different authors in different locations,
+  often using different names for the same object.
+Identity relations then allow the interlinking of these multiple descriptions
+  of the same thing.
+For example, statements about Amsterdam in the DBpedia dataset
+  (where Amsterdam is referred to as
+  \URL{http://dbpedia.org/resource/amsterdam}, abbreviated as
+  \URL{dbp:amsterdam})
+  can be combined with statements about Amsterdam in GeoNames
+  (where Amsterdam is referred to as
+  \URL{http://sws.geonames.rg/2759794}), by asserting identity between
+  these two names.
+
+However, the traditional notion of identity
+  (expressed by \texttt{owl:sameAs} \cite{MotikPaterschneiderGrau2012})
+  is often problematic, e.g. when objects are considered the same in some
+  contexts but not in others.
+The standing practice in such cases is to use weaker relations of relatedness
+  (e.g., \texttt{skos:related} \cite{MilesBechhofer2009}).
+Unfortunately, these relations suffer from the opposite problem of having
+  almost no formal semantics, thereby limiting reasoners
+  in drawing inferences.
+
+According to the traditional semantics of the identity relation,
+  identical terms can be replaced for one another in all non-modal contexts
+  \emph{salva veritate}.
+Practical uses of \texttt{owl:sameAs} are known to violate this
+  strict condition
+  \cite{HalpinHayes2010,HalpinHayesMccuskerMcguinnessThompson2010}.
+
+\begin{comment}
+The SW is not only a formal model,
+  but is also a social component that evolves over time,
+  i.e. it is a social machine cite{Www2013}.
+Being a social and symbolic system at the same time,
+  meaning on the SW is denoted by its semantics as well as its pragmatics.
+\end{comment}
+
+\subsection{Outline}
+
+In the following section,
+  we will analyze in some more detail the problems that
+  are caused by the traditional notion of identity, both in general,
+  and in the SW setting in particular.
+After surveying existing work on these problems
+  in section \ref{sec:related_work},
+  we will then present our approach to the problem of identity
+  in section \ref{sec:approach}.
+First at a very high level and then in more formal detail.
+We illustrate the results of applying our formalism to
+  a realistic heterogeneous SW dataset.
+In sections \ref{sec:implementation} and \ref{sec:experimental_design}
+  we put our formalism to the test
+  in an experimental setting,
+  showing that it behaves as required.

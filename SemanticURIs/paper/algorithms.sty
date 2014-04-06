@@ -1,0 +1,336 @@
+%%%%%%%%%%%   ALGORITHMS STYLE  %%%%%%%%%%%
+% This style defines an environment for algorithms with the following
+% features:
+% 
+% 1) Defines an Theorem like environment (not exactly one) for
+%    algorithms called ``algorithm''.
+%    \begin{algorithm}{NAME} ... \end{algorithm}
+%    NAME is the NAME of the algorithm.
+%    Algorithms are numbered using a counter called ``algorithm''. If
+%    the style is appropriate (report, book), the numbering takes
+%    place within a chapter.
+%    The body of the algorithm is italicized.
+% 
+% 2) Inside this environment, the following commands are defined.
+% 
+%    \=  Put the small left arrow commonly used for assignment.
+% 
+%    \invariant{INVARIANT} Use to describe invariants, put its parameter
+%                          between ``{}'' in math mode.
+% 
+%    \begin{Block} ... \end{Block} Environment use to start a indented
+%                                  block of instructions.
+%    \> and \< are useful equivalents of \begin{Block} and \end{Block}.
+% 
+% 3) \Blockindent and \algorithmindent are length that specify the
+%    indentention of Blocks and of the algorithm resp.
+% 
+%  4) Instructions are began by ``\\'', ``\instr'', ``\N'' (to have a
+%     numbered instruction) or ``\U'' (to have an unnumbered one).
+%     Instructions are numbered unless a ``\unnumberalgo'' command is
+%     issued. Later a ``\numberedalgo'' switches back to the numbered
+%     behavior. Numbered instruction lines can be refered by a \label.
+%
+%  5) Comments can be done either by the ``\comment{COMMENT}'' or
+%     ``\C{COMMENT}'' command. In that case the comment is aligned
+%     with the current block, typeset in roman and starts with a specific
+%     sign (a triangle obtained by \triangleright).
+%
+%     Alternatively, one can have end of line comments, aligned to
+%     predefined tabulations. The command is
+%     ``\tcomment{TAB}{COMMENT}'' or ``\T{TAB}{COMMENT}'', where TAB
+%     is a positive number indicating the tab position. 0 indicates
+%     the rightmost tab position. To put a comment on tab position 5,
+%     one can use \T{5}{A tabulated comment}, or \T5{A tabulated
+%     comment}. If TAB > 9, the first version must be used. The
+%     formatting is similar to the regular comment. These comments
+%     must be put *after* the instruction they refer.
+%
+%     Comment start sign is defined by the ``\algobegincommentsign''
+%     command and comment end sign (empty per default) by the
+%     ``\algoendcommentsign'' command. Redefine them to customize to
+%     your needs.
+% 
+%   6) Keywords are typeset in boldface with the predefined commands
+%      ``\If'', ``\Then'', ``\Else'', ``\End'', ``\For'', ``\While'',
+%      ``\Where'', ``\Elsewhere'', ``\Para'', ``\Case'', ``\Repeat'',
+%      ``\Until'' and ``\Do''. 
+%
+%      If the algorithm is unnumbered, it is closed with a boldface
+%      ``end''. It is possible to force algorithm closing by
+%      ``\alwaysclosealgo'', to forbidd closing by ``\neverclosealgo''
+%      and to switch back to the regular behavior by ``\closeunnumberedalgo''.
+%
+%   7) By  default, the algorithm is typeset smaller than the text and
+%      the comments even smaller. This behavior is useful for
+%      articles. For reports, it is better (to my opinion) to have the
+%      complete algorithm typeset in normalsize. This behavior is
+%      obtained with the ``\largealgo'' command. To switch back to the
+%      smaller behavior, use ``\smallalgo''. Any size can be obtained
+%      by defining the ``\algocommentsize'' and ``\algoinstrsize''.
+%      Similarly, \emalgo and \rmalgo (default) select wether the
+%      algorithm or the comments are italicized.
+%
+%   8) To ease the writing of bilingual reports (to us poor Europeans)
+%      the commands ``\algorithmname'' (put a the beginning of an
+%      algorithm) and ``\endalgorithmname'' (put at the end) can be
+%      redefined. The command ``\frenchalgo'' translates them, as well
+%      as the predefined keywords in French.
+%
+% An example file with a simple algorithm is appended at the end of
+% this file (after the ``\iffalse'' command).
+%
+% Created by Alain M\'erigot (am@ief-paris-sud.fr) from an indenting
+% environment by Jose Alberto Fernandez R. (alberto@cs.umd.edu).
+% 
+
+% 
+\def\algobegincommentsign{{$\displaystyle\triangleright$~}}
+\def\algoendcommentsign{}
+\def\algocommentsize{\footnotesize}
+\def\algoinstrsize{\small}
+\def\algorithmname{Algorithm}
+
+\def\largealgo{%
+\def\algocommentsize{\normalsize}
+\def\algoinstrsize{\normalsize}
+\setlength{\algorithmindent}{2em}
+\setlength{\Blockindent}{1.5em}
+}
+\def\smallalgo{%
+\def\algocommentsize{\footnotesize}
+\def\algoinstrsize{\small}
+\setlength{\algorithmindent}{1.5em}
+\setlength{\Blockindent}{1.5em}
+}
+
+\def\If{{\bf if\ }}
+\def\Then{{\bf then\ }}
+\def\Else{{\bf else\ }}
+\def\End{{\bf end\ }}
+\def\For{{\bf for\ }}
+\def\All{{\bf all\ }}
+\def\To{{\bf to\ }}
+\def\Downto{{\bf downto\ }}
+\def\While{{\bf while\ }}
+\def\Where{{\bf where\ }}
+\def\Elsewhere{{\bf elsewhere\ }}
+\def\Para{{\bf in parallel\ }}
+\def\Case{{\bf case\ }}
+\def\Repeat{{\bf repeat\ }}
+\def\Until{{\bf until\ }}
+\def\Do{{\bf do\ }}
+\def\Let{{\bf let\ }}
+\def\Return{{\bf return\ }}
+\def\endalgorithmname{end}
+
+\def\frenchalgo{\def\algorithmname{Algorithme}
+\def\If{{\bf si\ }}
+\def\Then{{\bf alors\ }}
+\def\Else{{\bf sinon\ }}
+\def\End{{\bf fin\ }}
+\def\For{{\bf pour\ }}
+\def\To{{\bf \`a\ }}
+\def\Downto{{\bf \`a\ }}
+\def\While{{\bf tant que\ }}
+\def\Where{{\bf partout o\`u\ }}
+\def\Elsewhere{{\bf ailleurs\ }}
+\def\Para{{\bf en parall\`ele\ }}
+\def\Case{{\bf selon\ }}
+\def\Repeat{{\bf r\'ep\'eter\ }}
+\def\Until{{\bf jusqu'\`a ce que\ }}
+\def\Do{{\bf faire\ }}
+\def\Let{{\bf soit\ }}
+\def\endalgorithmname{fin}
+}
+
+\newif\if@nalgo \@nalgotrue % vrai si on numerote les algorithmes
+\def\numberedalgo{\@nalgotrue}
+\def\unnumberedalgo{\@nalgofalse}
+\newif\if@alwaysclosealgo \@alwaysclosealgofalse
+\newif\if@neverclosealgo \@neverclosealgofalse
+\def\alwaysclosealgo{\@alwaysclosealgotrue}
+\def\neverclosealgo{\@neverclosealgotrue}
+\def\closeunnumberedalgo{\@alwaysclosealgofalse\@neverclosealgofalse}
+
+
+\@ifundefined{chapter}{\newcounter{algorithm}}%
+{\newcounter{algorithm}[chapter]%
+\def\thealgorithm{\thechapter.\arabic{algorithm}}}
+\newcounter{algorithmline}
+\newlength{\linelabelwidth}
+\newlength{\margindistance}
+\setlength{\linelabelwidth}{1em}
+\newlength{\commenttab}
+%\setlength\commenttab{5em}
+\setlength\commenttab{0.06\columnwidth}
+
+%\newtheorem{Alg@orithm}[algorithm]{\algorithmname}
+\newenvironment{Alg@orithm}[1]%
+{\smallskip\par\refstepcounter{algorithm}\noindent%
+{\algoheaderstyle\algorithmname~\thealgorithm}~{\algotitlestyle
+{#1}}\algobodystyle}{}
+
+
+% Invariants
+\newcommand{\inv@ariant}[1]{\mbox{$\{#1\}$}}
+% Steps environment
+\newenvironment{ste@ps}[2]{
+% #1 l'indentation des item, #2 la distance absolue item -- marge
+\begin{list}{}
+{\setlength\labelsep{#2}
+\setlength\labelwidth{\linelabelwidth}
+\setlength\partopsep{0pt}
+\setlength\parsep{0in}
+\setlength\parskip{0pt}
+\setlength\topsep{0in}
+\setlength\itemsep{0in}
+\setlength\itemindent{0in}
+\setlength\listparindent{0in}
+\setlength\parindent{0pt}
+\setlength\rightmargin{0in}
+\setlength\leftmargin{#1}%
+}
+}{
+\end{list}
+}
+
+% Block environment
+% Indentation of the Block
+\newlength{\Blockindent}
+
+
+\newenvironment{Blo@ck}{
+\addtolength{\margindistance}{\Blockindent}
+\begin{ste@ps}{\Blockindent}{\margindistance}
+}{
+\addtolength{\margindistance}{-1.0\Blockindent}
+\end{ste@ps}
+%end
+}
+\newsavebox{\algosbox}
+\newlength{\algosboxwidth}
+\newlength{\algototab}
+\def\ind@ent{\begin{Block}}
+\def\deind@ent{\end{Block}}
+
+
+
+
+\def\emalgo{
+  \def\algonumberstyle{\em}
+  \def\algocommentstyle{\em}
+  \def\algoheaderstyle{\bf}
+  \def\algotitlestyle{\it}
+  \def\algobodystyle{\it}
+}
+
+\def\rmalgo{
+  \def\algonumberstyle{\rm}
+  \def\algocommentstyle{\it}
+  \def\algoheaderstyle{\bf}
+  \def\algotitlestyle{\rm}
+  \def\algobodystyle{\rm}
+}
+
+
+\def\instr@{\refstepcounter{algorithmline}%
+\item[\hfill{\algonumberstyle\thealgorithmline}]}
+\def\uinstr@{\item[]}
+
+\def\comm@ent#1{\item\algobegincommentsign{\algocommentsize\algocommentstyle
+#1}\algoendcommentsign}
+\def\tcomm@ent#1#2{%
+\vspace{-1.0\baselineskip}% on remonte
+\par%on va a la ligne
+% on commence par calculer la distance a la tabulation
+% la distance sera de la tabulation i sera finligne - 4em -i*tabstop
+% avec tabstop d'environ texwidth/15
+\setlength{\algototab}{\columnwidth}\addtolength{\algototab}{-4.0em}%
+\addtolength{\algototab}{-#1\commenttab}%
+\hspace{-1.0\margindistance}\hspace{\algototab}% on est a la tabulation
+\savebox{\algosbox}{\algobegincommentsign{\algocommentsize\algocommentstyle
+#2}\algoendcommentsign}%
+\usebox{\algosbox}%
+\settowidth{\algosboxwidth}{\usebox{\algosbox}}\hspace{-1.0\algosboxwidth}%
+% on est revenu a la tabulation
+\hspace{-1.0\algototab}% et on revient a la marge
+% et on peut faire un \item normal
+}
+
+% Algorithm environment
+% Assign command
+\newcommand{\ass@ign}{\mbox{$\leftarrow$}}
+% Indentation of the algorithm
+\newlength{\algorithmindent}
+% Algorithm definition
+\newenvironment{algorithm}[1]{
+\begin{Alg@orithm}{#1}
+\let\>\ind@ent
+\let\<\deind@ent
+\let\=\ass@ign
+\if@nalgo \let\\\instr@ \let\instr\instr@
+\else\let\\\uinstr@ \let\instr\uinstr@\fi
+\let\U\uinstr@
+\let\N\instr@
+\let\comment\comm@ent
+\let\C\comm@ent
+\let\tcomment\tcomm@ent
+\let\T\tcomm@ent
+\let\invariant\inv@ariant
+\let\Block\Blo@ck
+\let\endBlock\endBlo@ck
+\setlength{\margindistance}{\algorithmindent}
+\addtolength\margindistance{-1.0\linelabelwidth}
+\setcounter{algorithmline}{0}
+\algoinstrsize\par
+\nopagebreak[4]
+\begin{ste@ps}{\algorithmindent}{\margindistance}
+}{
+\end{ste@ps}
+\if@nalgo\if@alwaysclosealgo\nopagebreak[4]\bf\endalgorithmname\fi%
+\else\if@neverclosealgo\else\nopagebreak[4]\bf\endalgorithmname\fi\fi
+\end{Alg@orithm}
+}
+
+% Setting default style
+\largealgo\rmalgo 
+%
+\endinput
+% End of algorithm.sty
+% --------------------------------------------------------------------
+% \iffalse
+\documentstyle[algorithm]{article}
+
+\largealgo
+\begin{document}
+
+We can see on algorithm~\ref{algo:fft} a classical implementation of a Fast
+Fourier Transform.
+
+\begin{algorithm}{Fast-Fourier-Transform(N,f)}
+\label{algo:fft}
+  \\\If N = 2 \Then\Do
+  \>\\f(0) \= f(0) + f(1) 
+    \\f(1) \= f(0) $-$ 2*f(1)\T7{In fact old-$f(0)$ $-$ old-$f(1)$}
+  \<\\\Else\>
+    \\g \= extract from the initial array f  all the points that have
+      an even index\label{lin:fft1} 
+    \\h \= extract  the other points of f\label{lin:fft2}
+    \C{Recursively call FFT on these sets}
+    \\ FFT(N/2,g)\T7{even indexes}
+    \\ FFT(N/2,h)\T7{odd indexes}
+    \\\For i = 0 to $N-1$\label{lin:fft3}
+      \> \\f(i) \= g(i) + $e^{-j2\pi/N}h(i)$\<
+    \<
+  \\\End\If
+\end{algorithm}
+
+Instructions~\ref{lin:fft1}--\ref{lin:fft2}, as well as the \For loop
+of line~\ref{lin:fft3} run in $O(N)$. Accordingly, complexity of
+FFT$(N,f)$, $C_N(FFT) = N + 2 C_{N/2}(FFT)$. If follows that
+FFT$(N,f)$ has a complexity in $O(N \log N)$.
+
+\end{document}
+
+% \fi

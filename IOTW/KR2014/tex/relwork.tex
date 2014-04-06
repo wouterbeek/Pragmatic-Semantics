@@ -1,0 +1,89 @@
+\section{Related work}
+\label{sec:related_work}
+
+Existing research suggests six different solutions for
+  the problem of identity on the SW.
+
+\textbf{[1] Introduce weaker versions of {\small \texttt{owl:sameAs}}}
+  \cite{HalpinHayes2010,MccuskerMcguinness2010}.
+Candidates for replacement are
+  the SKOS concepts
+  {\small \texttt{skos:related}} and {\small \texttt{skos:exactMatch}}
+  \cite{MilesBechhofer2009}.
+The former is not transitive,
+  thereby limiting the possibilities for reasoning.
+The latter is transitive,
+  but can only be used in certain contexts.
+It is not defined in what contexts it can be used
+  \cite{MilesBechhofer2009}.\footnote{
+    For instance, the property {\small \texttt{skos:exactMatch}}
+    ``is used to link two concepts, indicating a high degree of confidence
+    that the concepts can be used interchangeably across a wide range of
+    information retrieval applications.''
+  }
+\begin{comment}
+% SIMILARITY
+The problem with using weaker notions such as relatedness,
+  is that everything is related to everything in \emph{some} way.}
+% Shall we discuss similarity here as well?
+% Does similarity differ from relatedness?
+\end{comment}
+
+\textbf{[2] Restrict the applicability of identity relations}
+  to specific contexts.
+In terms of Semantic Web technology, identities are expected to hold
+  within a named graph or within a namespace,
+  but not necessarily outside of it \cite{HalpinHayes2010}.
+\cite{Melo2013} has successfully used the Unique Names Assumption
+  within namespaces in order to identify many (arguably) spurious
+  identity statements.
+
+\textbf{[3] Introduce additional vocabulary} that does not weaken but extends
+  the existing identity relation.
+\cite{HalpinHayes2010} mention an explicit distinction that could be made
+  between mentioning a term and using a term,
+  thereby distinguishing an object and a Web document describing that object.
+Other possible extensions of {\small \texttt{owl:sameAs}} might take
+  the Fuzzyness and/or uncertainty of identity statements into account.
+
+\textbf{[4] Use domain-specific identity relations}
+  \cite{MccuskerMcguinness2010}.
+For instance
+    ``$x$ and $y$ have the same medical use''
+  replaces
+    identity in the domain of medicine,
+and
+    ``$x$ and $y$ are the same molecule''
+  replaces
+    identity in the domain of chemistry.
+The downside to this solution is that domain-specific links are
+  only locally valid, thereby limiting knowledge reuse.
+
+\textbf{[5] Change the modeling practice}, possibly in a (semi-)automated way
+  by adapting visualization and modeling toolkits to produce notifications
+  upon reading SW data, or by posing additional restrictions on the creation
+  and alteration of data. For example, adding an RDF link could require
+  reciprocal confirmation from the maintainers of the respective datasets.
+  \cite{HalpinHayes2010,DingShinavierFininMcguinness2010}
+The problem with introducing checks on editing operations,
+  is that it violates one of the fundamental underpinnings of the SW;
+  namely that on the Web of Data anybody is allowed to say
+  anything about anything \cite{AntoniouGrothHarmelenHoekstra2012}.
+
+\textbf{[6] Extract network properties of {\small \texttt{owl:sameAs}}
+  datasets} \cite{DingShinavierShangguanMcguinness2010}.
+Although this work shows that network analysis can provide insights
+  into the ways in which identity is used in the SW,
+  these endeavors have not yet been related to the semantics of the
+  identity relation.
+We believe that utilizing network theoretic aspects in order to
+  determine the meaning of identity statements
+  would be interesting future research.
+
+What the existing approaches have in common is
+  that quite some work has to be done
+  (adapting or creating standards, instructing modelers, converting existing
+  datasets) in order to resolve only some of the problems of identity.
+Our approach provides a way of dealing with the heterogeneous real-world
+  usage of identity in the SW that is fully automated and requires
+  no changes to standards, modeling practices, or existing datasets.
