@@ -19,6 +19,7 @@ I have written this script to create a file for JW.
 */
 
 :- use_module(library(csv)).
+
 :- use_remote_module(os(file_ext)).
 :- use_remote_module(rdf_term(rdf_datatype)).
 :- use_remote_module(rdf(rdf_meta)).

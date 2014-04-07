@@ -8,10 +8,10 @@ Command-line argument handling for the CKAN project.
 @version 2014/04
 */
 
-:- use_remote_module(ckan(ckan_catalog)).
-:- use_remote_module(ckan(ckan_lod)).
-
 :- use_module(library(aggregate)).
+
+:- use_remote_module(prasem, ckan(ckan_catalog)).
+:- use_remote_module(prasem, ckan(ckan_lod)).
 
 :- dynamic(site/1).
 

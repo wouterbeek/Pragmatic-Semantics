@@ -123,7 +123,13 @@ text/xml
 @version 2014/02
 */
 
-:- use_remote_module(ckan(ckan_db)).
+:- use_module(library(aggregate)).
+:- use_module(library(apply)).
+:- use_module(library(http/html_write)).
+:- use_module(library(http/http_dispatch)).
+:- use_module(library(lists)).
+:- use_module(library(semweb/rdfs)).
+
 :- use_remote_module(dcg(dcg_content)).
 :- use_remote_module(dcg(dcg_generic)).
 :- use_remote_module(html(html_table)).
@@ -135,12 +141,7 @@ text/xml
 :- use_remote_module(server(web_modules)).
 :- use_remote_module(xml(xml_namespace)).
 
-:- use_module(library(aggregate)).
-:- use_module(library(apply)).
-:- use_module(library(http/html_write)).
-:- use_module(library(http/http_dispatch)).
-:- use_module(library(lists)).
-:- use_module(library(semweb/rdfs)).
+:- use_remote_module(prasem, ckan(ckan_db)).
 
 :- meta_predicate(mime_table(//,+,?,?)).
 

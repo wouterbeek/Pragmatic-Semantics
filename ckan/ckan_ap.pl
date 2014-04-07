@@ -17,6 +17,13 @@ Automated processes for CKAN data.
 */
 
 
+:- use_module(library(aggregate)).
+:- use_module(library(apply)).
+:- use_module(library(debug)).
+:- use_module(library(semweb/rdf_db)). % MD5
+:- use_module(library(semweb/rdfs)).
+:- use_module(library(threads)).
+
 :- use_remote_module(ap(ap)).
 :- use_remote_module(ap(ap_archive_ext)). % Used in AP stage.
 :- use_remote_module(ap(ap_download)).
@@ -26,7 +33,6 @@ Automated processes for CKAN data.
 :- use_remote_module(ap(ap_rdf_serial)). % Used in AP stage.
 :- use_remote_module(ap(ap_void_fetch)). % Used in AP stage.
 :- use_remote_module(ap(ap_void_stat)). % Used in AP stage.
-:- use_remote_module(ckan(ckan_scrape)).
 :- use_remote_module(generics(uri_ext)). % Used in AP stage.
 :- use_remote_module(os(dir_ext)).
 :- use_remote_module(os(file_ext)).
@@ -36,12 +42,7 @@ Automated processes for CKAN data.
 :- use_remote_module(rdf_term(rdf_string)).
 :- use_remote_module(rdfs(rdfs_label_ext)).
 
-:- use_module(library(aggregate)).
-:- use_module(library(apply)).
-:- use_module(library(debug)).
-:- use_module(library(semweb/rdf_db)). % MD5
-:- use_module(library(semweb/rdfs)).
-:- use_module(library(threads)).
+:- use_remote_module(prasem, ckan(ckan_scrape)).
 
 
 

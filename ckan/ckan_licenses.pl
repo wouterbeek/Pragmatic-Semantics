@@ -60,8 +60,12 @@ After these operations all 4053 datasets have fully described
 @version 2014/02-2014/03
 */
 
-:- use_remote_module(ckan(ckan_db)).
-:- use_remote_module(ckan(opendefinition_licenses)).
+:- use_module(library(http/html_write)).
+:- use_module(library(http/http_dispatch)).
+:- use_module(library(lists)).
+:- use_module(library(semweb/rdf_db)).
+:- use_module(library(semweb/rdfs)).
+
 :- use_remote_module(dcg(dcg_content)).
 :- use_remote_module(owl(owl_read)).
 :- use_remote_module(rdf(rdf_build)).
@@ -74,11 +78,8 @@ After these operations all 4053 datasets have fully described
 :- use_remote_module(rdfs(rdfs_build)).
 :- use_remote_module(server(web_modules)).
 
-:- use_module(library(http/html_write)).
-:- use_module(library(http/http_dispatch)).
-:- use_module(library(lists)).
-:- use_module(library(semweb/rdf_db)).
-:- use_module(library(semweb/rdfs)).
+:- use_remote_module(prasem, ckan(ckan_db)).
+:- use_remote_module(prasem, ckan(opendefinition_licenses)).
 
 :- rdf_meta(license_is_none(r)).
 

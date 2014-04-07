@@ -18,14 +18,15 @@ Support for the CKAN catalog in RDF.
 @version 2014/03
 */
 
-:- use_remote_module(ckan(ckan_db)).
-:- use_remote_module(ckan(ckan_to_rdf)).
-:- use_remote_module(rdf_file(rdf_serial)).
-:- use_remote_module(rdf_term(rdf_string)).
-
 :- use_module(library(aggregate)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/rdfs)).
+
+:- use_remote_module(rdf_file(rdf_serial)).
+:- use_remote_module(rdf_term(rdf_string)).
+
+:- use_remote_module(prasem, ckan(ckan_db)).
+:- use_remote_module(prasem, ckan(ckan_to_rdf)).
 
 
 
