@@ -94,11 +94,11 @@ load_or_debug(Project):-
 
 
 load_pgc(_Project):-
-  user:file_search_path(pgc, _Spec), !.
+  user:file_search_path(plc, _Spec), !.
 load_pgc(Project):-
   Spec =.. [Project,'PGC'],
-  assert(user:file_search_path(pgc, Spec)),
-  load_or_debug(pgc).
+  assert(user:file_search_path(plc, Spec)),
+  load_or_debug(plc).
 
 
 %! load_project(+Project:atom) is det.

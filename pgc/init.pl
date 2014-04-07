@@ -2,9 +2,10 @@
 % This is called from [load].
 
 :- use_remote_module(generics(logging)).
-:- ensure_loaded(pgc(pl_debug_option)).
 :- use_remote_module(pl(pl_clas)).
 :- use_remote_module(pl(pl_version)).
+
+:- ensure_remote_loaded(plc(pl_debug_option)).
 
 :- initialization(init_pgc).
 

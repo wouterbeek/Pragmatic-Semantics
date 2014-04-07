@@ -11,9 +11,9 @@ run_pgc:-
   source_file(run_pgc, ThisFile),
   file_directory_name(ThisFile, ThisDir),
   assert(user:file_search_path(project, ThisDir)),
-  assert(user:file_search_path(pgc, ThisDir)),
+  assert(user:file_search_path(plc, ThisDir)),
   
   % Load in debug mode.
   % We do not expect production use of the PGC in isolation.
-  ensure_loaded(pgc(debug)).
+  ensure_loaded(plc(debug)).
 

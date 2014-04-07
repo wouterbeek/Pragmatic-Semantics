@@ -17,11 +17,11 @@ run_bk:-
   ensure_loaded(load).
 
 load_pgc(_Project):-
-  user:file_search_path(pgc, _), !.
+  user:file_search_path(plc, _), !.
 load_pgc(Project):-
   compound_name_arguments(Spec, Project, ['PGC']),
-  assert(user:file_search_path(pgc, Spec)),
-  load_or_debug(pgc).
+  assert(user:file_search_path(plc, Spec)),
+  load_or_debug(plc).
 
 load_or_debug(Project):-
   predicate_property(user:debug_mode, visible), !,
