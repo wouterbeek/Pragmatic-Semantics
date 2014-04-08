@@ -14,6 +14,7 @@ Command-line argument handling for the CKAN project.
 :- use_remote_module(pl(pl_clas)).
 
 :- use_remote_module(prasem, ckan(ckan_catalog)).
+:- use_remote_module(prasem, ckan(ckan_db)).
 :- use_remote_module(prasem, ckan(ckan_lod)).
 
 :- dynamic(ckan_site/1).
@@ -120,6 +121,7 @@ commands([H|T]) -->
 
 
 ckan_process_options:-
+gtrace,
   read_options(O1),
   cmd_ckan_site(O1),
   cmd_ckan_command(O1).
