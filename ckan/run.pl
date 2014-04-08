@@ -10,27 +10,12 @@ run_ckan:-
   file_directory_name(ThisFile, ThisDir),
   assert(user:file_search_path(project, ThisDir)),
   
-  % Project-specific command-line options. To be caught up by PGC.
-  ensure_loaded(ckan(ckan_clas)),
-  
   % PGC
   load_pgc(project),
   
+  % Project-specific command-line options. To be caught up by PGC.
+  ensure_loaded(ckan(ckan_clas)),
+  
   % CKAN load file.
   ensure_loaded(load).
-
-load_pgc(_Project):-
-  user:file_search_path(plc, _Spec), !.
-load_pgc(Project):-
-  Spec =.. [Project,'PGC'],
-  assert(user:file_search_path(plc, Spec)),
-  load_or_debug(plc).
-
-load_or_debug(Project):-
-  predicate_property(user:debug_mode, visible), !,
-  Spec =.. [Project,debug],
-  ensure_loaded(Spec).
-load_or_debug(Project):-
-  Spec =.. [Project,load],
-  ensure_loaded(Spec).
 
