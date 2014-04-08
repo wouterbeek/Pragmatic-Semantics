@@ -76,11 +76,11 @@ run_prasem:-
   load_pgc(project),
   
   % PraSem
-  use_module(prasem(prasem)),
+  use_remote_module(prasem(prasem)),
   
   % Enumerate the external program support
   % for the currently loaded modules.
-  use_module(os(run_ext)),
+  use_remote_module(os(run_ext)),
   list_external_programs.
 
 
@@ -94,11 +94,11 @@ load_or_debug(Project):-
 
 
 load_pgc(_Project):-
-  user:file_search_path(pgc, _Spec), !.
+  user:file_search_path(plc, _Spec), !.
 load_pgc(Project):-
   Spec =.. [Project,'PGC'],
-  assert(user:file_search_path(pgc, Spec)),
-  load_or_debug(pgc).
+  assert(user:file_search_path(plc, Spec)),
+  load_or_debug(plc).
 
 
 %! load_project(+Project:atom) is det.

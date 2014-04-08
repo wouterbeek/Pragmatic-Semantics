@@ -1,0 +1,274 @@
+<!DOCTYPE
+  HTML
+  PUBLIC
+  "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd"
+>
+
+<html>
+  <head>
+    <title>STCN, Short Title Catalogue Netherlands</title>
+  </head>
+  <body>
+    <h1>STCN, Short Title Catalogue Netherlands</h1>
+    <p>The STCN contains 139.817 entries. These have been parsed for the
+       following KMC codes. This page documents (1) what data has been parsed
+       and turned into RDF(S), (2) what other datasets the parsed STCN data
+       has been linked to, and (3) some of the undocumented values we came
+       across during the process.</p>
+    <h2>KMC 0500 - Status</h2>
+    <p>The STCN documents three values (<i>Aav</i>, <i>Abv</i>, <i>Acv</i>),
+       but 23 PPNs contain other values (these values are documented in GGC).
+    </p>
+    <table border="1">
+      <tr><th>STCN code</th><th>Number of PPNs</th></tr>
+      <tr><td>Aav</td><td>132.670</td></tr>
+      <tr><td>Abv</td><td>6.608</td></tr>
+      <tr><td>Acv</td><td>516</td></tr>
+      <tr><td>Other GGC codes (not defined for STCN)</td><td>23</td></tr>
+    </table>
+    <h2>KMC 1100 - Year</h2>
+    <p>139.817 PPNs (100%) have a year value. Of these 126.598 (91%) are
+       exactly dated and 12.219 (9%) are approximately dated. The year values
+       that occur in the STCN range from 1473 (earliest) to 1847 (latest).</p>
+    <h2>KMC 1200 - Typographic property</h2>
+    <p>There are 419.711 typographic property values in the STCN. All of them
+       are mapped to appropriate resources. For this conversion we have made
+       decisions on how to represent undocumented values (see the list below).
+    </p>
+    <ol>
+      <li>Some PPNs use this code to encode some completely different
+          property. E.g. PPN 14162843X, PPN 14162843X, PPN 314559655.</li>
+      <li>'1' (the number between 0 and 2) seems to occur to be a typo of 'l'
+          (the letter between 'k' and 'm'). E.g. PPN 321339320.</li>
+      <li>Uppercase variants of documented lowercase versions occur.
+          E.g. PPN 298324997, PPN 305305972.</li>
+      <li>Some PPNs have the undocumented value '5'. E.g. PPN 271591978.</li>
+      <li>Some PPNs have the undocumented value '9'. E.g. PPN 301032831.</li>
+      <li>The value 'w.' (with the dot) seems to occur as a variant of 'w'
+          (without the dot). E.g. PPN 204513316.</li>
+      <li>'v' occurs in the STCN documentation, but not in the GGC
+          documentation.</li>
+      <li>'b)' seems to be a variant of 'b'. E.g. PPN 261654624.</li>
+    </ol>
+    <h2>KMC 1500 - Language</h2>
+    <p>The STCN and GGC do not distinguish languages from language families.
+    </p>
+    <p>139.801 PPNs have a language value. All of these have at least a
+       value for the language of the work itself.
+       23.586 of these PPNs (with known language) also have a value for a
+       language from which they were translated.
+       827 of these PPNs (with known language) also have a value for the
+       language via which they were translated.
+       53 languages occur in the STCN.</p>
+    <p>Language codes have been linked to languages in the ISO standards
+       639-1, 639-2, 639-3; and to language families in the ISO standard
+       639-5. The URIs are drawn from the Lexvo dataset.</p>
+    <p>The Lexvo dataset links languages and language families to several
+       other resources. For example the Dutch language is linked to the
+       following resources:</p>
+    <ul>
+      <li>owl:sameAs http://dbpedia.org/resource/Dutch_language</li>
+      <li>owl:sameAs http://psi.oasis-open.org/iso/639/#nld</li>
+      <li>owl:sameAs http://www.lingvoj.org/lang/nl</li>
+      <li>owl:sameAs http://www.mpii.de/yago/resource/Dutch_language</li>
+    </ul>
+    <ol>
+      <li>The following translations have been made to bring the STCN/GGC
+          language codes in agreement with ISO standards (STCN lhs; ISO rhs):
+        <ol>
+          <li>arm --- hye</li>
+          <li>chi --- cmn</li>
+          <li>dmh --- gmh</li>
+          <li>fri --- fry, ISO 639-3 distinguishes between the West-Frisian
+              (spoken in The Netherlands) and the North-Frisian language
+              (spoken in Germany). West-Frisian has been chosen as the
+              translation in all cases.</li>
+          <li>grk --- grc</li>
+          <li>hon --- hun</li>
+          <li>jap --- jpn</li>
+          <li>ned --- nld</li>
+          <li>per --- fas</li>
+          <li>zwe --- swe</li>
+        </ol></li>
+      <li>Some PPNs have language families encoded i.o. individual languages:
+        <ol>
+          <li>Prakrit (pra) used in PPN 303735422</li>
+          <li>Iroquoian (iro) used in PPN 305228218</li>
+          <li>Creole or Pidgin (crp) used in PPNs 301776601, 23838229X</li>
+        </ol></li>
+      <li>There are 84 language codes that are documented by GGC but that are
+          not in the ISO standards. These language codes do not occur in the
+          STCN.</li>
+      <li>There are multiple ways of specifying that the (exact) language is
+          unknown.</li>
+    </ol>
+    <h2>KMC 1700 - Countries</h2>
+    <p>139.778 PPNs (99.97%) have a country value. 7.574 PPNs (5.4%) have,
+       in addition to that, a value for the actual country in which they
+       were published (which is different from the country that is mentioned
+       in the publication itself). 34 countries occur in the STCN.
+    </p>
+    <p>Country codes have been completely (all PPNs) linked to countries in
+       the ISO standard 3266-1. The URIs are drawn from the Lexvo dataset.</p>
+    <p>The Lexvo dataset links countries to several other resources.</p>
+    <ol>
+      <li>Czechoslovakia no longer exists (as of 1992), so country code
+          <i>cs</i> is currently obsolete.</li>
+      <li>There are 21 country codes that are documented by GGC but that are
+          not in the ISO standards. These country codes do not occur in the
+          STCN.</li>
+    </ol>
+    <h2>KMC 3000 and KMCs 3011 through 3019</h2>
+    <p>Primary and secondary authors are linked to their Picarta entries.
+       Picata does not have a linked dataset yet, so we used page scraping
+       for this. Picarta is still a good linker, since it uses PPN codes for
+       author which are unique identifiers.</p>
+    <p>PPN statistics related to authors:</p>
+    <ol>
+      <li>93.724 PPNs (67%) have at least one author.</li>
+      <li>86.324 PPNs (62%) have a primary author.<\li>
+      <li>70.040 PPNs (50%) only have a primary author.<\li>
+      <li>23.684 PPNs (17%) have a secondary author.<\li>
+      <li>7.400 PPNs (5%) only have a secondary author.</li>
+      <li>2.244 PPNs (1.6%) are written under pseudonym.</li>
+    </ol>
+    <p>Author statistics:</p>
+    <ol>
+      <li>The STCN contains 22.814 authors.</li>
+      <li>All authors were found in Picarta (which is evident, since Picarta
+          contains the STCN).
+      <li>578 authors (2.5%) were linked to DBpedia entries.</li>
+      <li>445 authors (2.0%) are pseudonyms of authors within the STCN
+          dataset.</li>
+    </ol>
+    <h2>KMC 4062 Format</h2>
+    <p>The following formats are not documented. The values for
+       'kettinglijnen' are infered from the other formats.
+    <table border="1">
+      <tr><th>Name</th><th>Assumed value for 'kettinglijnen'</th></tr>
+      <tr><td>32mo</td><td>vertical</td></tr>
+      <tr><td>48mo</td><td>vertical</td></tr>
+      <tr><td>64mo</td><td>horizontal</td></tr>
+      <tr><td>Other</td><td>none</td></tr>
+    </table>
+    <p>The following formats seem to be mistakes and have been mapped to
+       documented formats:
+    <table border="1">
+      <tr><th>Unrecognized value</th><th>Assumed equivalent value</th><th>Comment</th></tr>
+      <tr><td>?</td><td>UnknownFormat</td><td></td></tr>
+      <tr><td>&#176;</td><td>UnknownFormat</td><td></td></tr>
+      <tr><td>4&#231;</td><td>4&#176;</td><td></td></tr>
+      <tr><td>4 for example</td><td>4&#176; for example</td><td>Recognized values without the '&#176;'</td></tr>
+      <tr><td>agenda</td><td>Agenda</td><td>Case-distinction</td></tr>
+      <tr><td>oblong</td><td>Oblong</td><td>Case-distinction</td></tr>
+      <tr><td>Other&#176;</td><td>Other</td><td>Recognized values with an extra '&#176;'</td></tr>
+      <tr><td>8 &#176;</td><td>8&#176;</td><td>E.g. PPN 236634119</td></tr>
+      <tr><td>8&#234;</td><td>8&#176;</td><td>E.g. PPN 109363094</td></tr>
+      <tr><td>12 &#176;</td><td>12&#176;</td><td>E.g. PPN 189120959</td></tr>
+      <tr><td>?&#234;</td><td>Unknown</td><td>E.g. PPN 109361423</td></tr>
+      <tr><td>4&#234;</td><td>4&#176;</td><td>E.g. PPN 108526747</td></tr>
+      <tr><td>2&#234;</td><td>2&#176;</td><td>E.g. PPN 108495264</td></tr>
+      <tr><td>NUMBER x NUMBER mm</td><td>Unknown</td><td>E.g. PPN 317798766, PPN 31858817X</td></tr>
+    </table>
+    <p>Then there are some more idiosyncratic problems we have come accross:
+    <ol>
+      <li>It is not possible to distinguish between formats 24mo-long and
+       24mo based on the STCN data. Currently these formats are treated as
+       one and the same.</li>
+      <li>PPN 333614321 contains a value that is very different from the
+          documented formats.</li>
+      <li>PPN 31858817X has the following value: '2 volumes'.</li>
+      <li>PPN 291582117 contains an extra space at the beginning.</li>
+      <li>PPN 115264302</li>
+      <li>It is not possible to distinguish between formats 'duodecimolong'
+       and 'duodecimocommon' based on the STCN data. Currently these formats
+       are treated as one and the same.</li>
+    </ol>
+    <h1>Using the redactiebladen parsed created by data2semantics / VU</h1>
+    <h2>Installation</h2>
+    <ol>
+      <li>Retrieve the codebase:
+          <tt>git clone https://github.com/Data2Semantics/STCN.git</tt>.</li>
+      <li>Install the latest
+          <a href="http://www.swi-prolog.org">SWI-Prolog</a>
+          <i>development</i> release (tested on 6.3.10).</li>
+      <li>Create a directory <span class="directory_name">.STCN</span> in
+        your home folder and copy the
+        redactiebladen text file (uncompressed) there. Give the file the
+        name <span class="file_name">redactiebladen.txt</span>.</li>
+      <li>In the console run the command
+        <span class="shell_command">swipl -s stcn.pl</span>.
+      <li>In the SWI-Prolog console run the following:
+          <tt>stcn_web:stcn_redactiebladen_web(_).</tt>.</li>
+      <li>Open a Web browser on <tt>http://localhost:5000/prasem/</tt>.
+        From the Web interface you can run various commands (described in
+        the next section) to check the parsing process.</li>
+    </ol>
+    <h2>Detailed documentation</h2>
+    <p>Detailed documentation was written for each of the files in the
+       codebase. For the files covering the respective KMCs, the documentation
+       includes all the exceptions we came across while building the parser,
+       as well as complete tables of legal and illegal values.</p>
+    <p>The detailed documentation is accessed by running the
+       <tt>documentation</tt> command from the Web-interface.</p>
+    <h2>Displaying dynamic tables in the detailed documentation</h2>
+    <p>If you want to make the dynamic tables visible in the plDoc
+      documentation server, you need to add the following clause to the
+      <span class="predicate_name">take_block</span> predicate in module
+      <span class="module_name">pldoc/doc_wiki.pl</span> of your SWI-Prolog
+      installation. (This code cannot be included in SWI-Prolog releases
+      because of the security implications of running arbitrary code on the
+      documentation server.</p>
+    <pre>
+take_block(
+  [_-['!', '!', w(Module), '!', '!', w(Predicate), '!', '!', w(Arity0), '!', '!'] | Lines],
+  _BaseIndent,
+  table([class(wiki)], Rows),
+  Lines
+):-
+  atom_number(Arity0, Arity),
+  findall(
+    tr(Cells),
+    (
+      length(Vars, Arity),
+      Call =.. [Predicate | Vars],
+      call(Module:Call),
+      findall(
+        td([w(Atom)]),
+        (
+          member(Var, Vars),
+          (atomic(Var) -> Atom = Var ; term_to_atom(Var, Atom))
+        ),
+        Cells
+      )
+    ),
+    Rows
+  ).
+    </pre>
+    <h2>Commands run from the Web interface</h2>
+    <p>The Web interface can be run locally (as described above) or a sample
+       version of it can be run only at
+       <tt>http://http://semanticweb.cs.vu.nl/prasem/</tt>.</p>
+    <p>The Web interface shows a console in which commands can be given. The
+       following lists some of the commands that can be used w.r.t. the STCN
+       dataset.</p>
+    <dl>
+      <dt><span class="predicate_name">help</span></dt>
+      <dd>Gives an list of the avialable commands.</dd>
+      <dt><span class="predicate_name">stcn_statistics</span></dt>
+      <dd>Displays the statistics for the STCN parser. This command can be
+        executed during and after the parsing process in order to show
+        partial or complete results.</dd>
+      <dt><span class="predicate_name">schema(stcn)</span></dt>
+      <dd>Displays the schema of the STCN dataset, i.e., the concepts that
+          structure it.</dd>
+      <dt><span class="predicate_name">ppn(NUMBER)</span></dt>
+      <dd>Shows a visual representation of the information the dataset
+          contains regarding a specific PPN <tt>NUMBER</tt>.</dd>
+      <dt><span class="predicate_name">sparql</span></dt>
+      <dd>Opens an input field for entering a SPARQL query.</dd>
+    </dl>
+  </body>
+</html>
+

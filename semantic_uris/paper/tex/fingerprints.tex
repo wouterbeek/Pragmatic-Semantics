@@ -1,0 +1,112 @@
+\section{Fingerprints for identifying kinds}
+\label{sec:fingerprints}
+
+The ``kind'' of a resource is identified by a fingerprinting technique.
+We first define the existing fingerprint techniques
+ (see Section \ref{sec:relwork})
+ in a uniform way, and then define our own technique,
+ which is a generalization of the existing methods.
+
+We use $G$ to denote a graph, i.e. an arbitrary set of triples
+The set of subject, predicate, and object terms that occur in $G$
+ are denoted by $S_G$, $P_G$, and $O_G$ respectively.
+A fingerprint is then a function $f : S_G \rightarrow \mathcal{P}(O_G)$
+ such that the equivalence relation characterized by $f$
+ (equation \ref{def:eq}) induces a partition on $O_G$
+ that distinguishes between different kinds of resources.
+
+\begin{definition}
+  \label{def:eq}
+  For an arbitrary fingerprint function $f$,
+   the partition induced by $f$ is $\{ [s]_{\approx} \mid s \in S_G \}$,
+   where $\approx \,\, = \{ \langle s, s' \rangle \in S_G^2 \mid f(s) = f(s') \}$.
+\end{definition}
+
+We identify subsets of RDF terms based on
+  their positional occurrence in triples in $G$:
+  $S_G$, $P_G$, and $O_G$ denote the subject, predicate and object terms
+  in $G$ respectively.
+
+The interpretation $I$ maps RDF terms onto resources,
+  and triples onto truth values.
+The extension function $Ext$ maps resources onto pairs of resources.
+$I(\triple{s}{p}{o})$ is true iff
+  $\pair{I(s)}{I(o)} \in Ext(I(p))$ \cite{Hayes2014}.
+
+The first candidate for the fingerprint (called $f_1$)
+ identifies kinds in terms of the set of classes
+ of which a given resource is an instance (definition \ref{def:class}).
+The usefulness of this method depends on
+ the availability of explicit `instance-of' predications in the data.
+
+\begin{definition}[Approach using classes]
+  \label{def:class}
+  $f_1(s) = \\
+  \{ c \mid I(s) \in Ext(I(c)) \}$
+\end{definition}
+
+The second approach for the fingerprint (called $f_2$)
+ identifies kinds in terms of the set of shared predicates
+ (definition \ref{def:predicate}).
+This approach has drawbacks in those cases in which the property occurs
+ for resources of different kinds.
+An example is 
+
+\begin{definition}[Approach using predicate terms]
+  \label{def:predicate}
+  $f_2(s) = \\
+  \{ p \mid \exists o: \langle I(s), I(o) \rangle \in Ext(I(p)) \}$
+\end{definition}
+
+The drawback of this method is that it cannot distinguish between
+ different kinds that have the same properties,
+ i.e. it missed out on a potentially relevant granularity level:
+ the object terms that occur in the predicate extension.
+For instance, in a dataset that consists of personal profiles,
+ most resources may be the property ``gender'' defined,
+ but the distinction between the kinds male and female persons
+ can only be made when the object terms ``male'' and ``female''
+ are known as well.
+
+The third candidate for the fingerprint (called $f_3$)
+ identifies kinds in terms of the set of shared predicate-object pairs
+ (definition \ref{def:po_pairs}).
+
+\begin{definition}[Approach using predicate-object pairs]
+  \label{def:po_pairs}
+  \[
+    f_3(s)
+  =
+    \{
+      \langle p, o \rangle \in P_G \times O_G
+    \mid
+      \langle I(s), I(O) \rangle \in I(p)
+    \}
+  \]
+\end{definition}
+
+Including the object terms in the fingerprint solves the granularity problem:
+ now
+  resources with male gender
+ can be distinguished from
+  resources with the female gender.
+But by including every object in the fingerprint,
+ the granularity level may be too fine-grained,
+ inviting over-fitting.
+In these cases the object terms are too specific to give
+ useful information about the kind of its related subject term.
+%For example, if another predicate in the database of personal profiles
+% is \texttt{foaf:family\_name},
+% then each resource has a different type as identified by $\psi$.
+For example, in a dataset describing a social network
+ there will be many people who are intuitively of the same kind
+ (people living in the UK, people who went to the same high school),
+ even though they may not share any friends.
+
+We conclude that it is sometimes useful to include the object term
+ in the fingerprint, but this is not always so.
+In the next section we introduce an approach that allows us
+ to automatically determine when an object is useful to be included
+ in the fingerprint and when it is no longer useful to do so,
+ i.e. when overfitting occurs.
+

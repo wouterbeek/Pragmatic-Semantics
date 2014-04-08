@@ -10,22 +10,22 @@ Pragmatic Semantic for the Web of Data.
 @version 2013/11, 2014/03
 */
 
-:- use_module(html(html_article)).
-:- use_module(html(html_image)).
+:- use_remote_module(html(html_article)).
+:- use_remote_module(html(html_image)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/http_server_files)).
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
-:- use_module(rdf(rdf_build)).
-:- use_module(rdf_term(rdf_language_tagged_string)).
-:- use_module(rdf_term(rdf_literal)).
-:- use_module(rdf_term(rdf_string)).
-:- use_module(rdfs(rdfs_label_ext)).
-:- use_module(server(app_ui)). % Uses the default application style.
-:- use_module(server(web_modules)).
-:- use_module(xml(xml_namespace)).
+:- use_remote_module(rdf(rdf_build)).
+:- use_remote_module(rdf_term(rdf_language_tagged_string)).
+:- use_remote_module(rdf_term(rdf_literal)).
+:- use_remote_module(rdf_term(rdf_string)).
+:- use_remote_module(rdfs(rdfs_label_ext)).
+:- use_remote_module(server(app_ui)). % Uses the default application style.
+:- use_remote_module(server(web_modules)).
+:- use_remote_module(xml(xml_namespace)).
 
 :- xml_register_namespace(foaf, 'http://xmlns.com/foaf/0.1/').
 :- xml_register_namespace(prasem, 'http://www.wouterbeek.com/prasem#').

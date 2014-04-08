@@ -1,0 +1,32 @@
+.data_item {
+  background: black;
+  border-radius: 5px; 
+  border-style: solid;
+  border-width: 1px;
+  height: 75px;
+  opacity: 0.6;
+  position: absolute;
+  top: -1px;
+}
+
+.rainbow {
+  margin-top: 5%;
+}
+
+.rb {
+  background: #6aff00; /* Old browsers */
+  background: -moz-linear-gradient(left,  #6aff00 0%, #faff00 50%, #ff0000 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#6aff00), color-stop(50%,#faff00), color-stop(100%,#ff0000)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  #6aff00 0%,#faff00 50%,#ff0000 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  #6aff00 0%,#faff00 50%,#ff0000 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  #6aff00 0%,#faff00 50%,#ff0000 100%); /* IE10+ */
+  background: linear-gradient(to right,  #6aff00 0%,#faff00 50%,#ff0000 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6aff00', endColorstr='#ff0000',GradientType=1 ); /* IE6-9 */
+
+  border-radius: 5px; 
+  border-style: solid;
+  border-width: 1px;
+  height: 75px;
+  position: relative;
+}
+

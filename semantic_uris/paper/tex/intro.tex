@@ -1,0 +1,56 @@
+\section{Introduction}
+\label{sec:intro}
+\label{sec:relwork}
+
+Clustering resources into different kinds can be useful
+ for various purposes, e.g. browsing based on categories,
+ providing automatic suggestions for ontology design.
+
+We argue that RDF data deals with resources of different ``kinds'':
+ two resources of the same kind will have similar relations
+ to other resources.
+We exploit this to partition the data into ``kinds'' automatically.
+
+There are various ways to partition a set of resources into kinds.
+The most straightforward approach is to use an explicit vocabulary
+ in order to indicate
+   that resources are members of the same set (extensional definition)
+ or
+   that resources are instance of the same class (intensional definition).
+The vocabulary of RDF(S) \cite{BrickleyGuha2014} uses
+ the intensional definition,
+ denoted by the \texttt{rdf:type} property term.
+
+In addition to used the explicit schema information,
+ various methods have been explored that
+ extract implicit schema information.
+In \cite{NeumannMoerkotte2011},
+ kinds of resources are identified
+ by their \emph{characteristic set},
+ which is the set properties that are asserted of a resource.
+
+A comparison of the type-based and the property-based
+ identification of resource kinds was performed by \cite{GottronKSS13},
+ who showed that there is considerable mutual information between
+ these two approaches.
+
+A third approach is to use the object terms in addition to the predicate terms
+ in order to characterize a resource.
+In \cite{buikstra2011ranking}, the similarity between two resources
+ is measured by the number of predicate-object pairs they have in common.
+
+As we will argue in Section \ref{sec:fingerprints},
+ the existing approaches towards partitioning a set of resources
+ have shortcomings: they either identify too few partition members
+ given the data at hand, or they identify too many partition members
+ than can be substantiated by the data. 
+
+In Section \ref{sec:approach} we give a generalization of
+ these existing approaches and show that for arbitrary datasets
+ more granular partitions can be found that are still validated
+ by the data, i.e. that do not overfit.
+Section \ref{sec:implementation} gives some implementation details,
+ and Section \ref{sec:evaluation} shows the evaluation results we
+ obtained by executing our implementation on existing datasets.
+Section \ref{sec:conclusion} concludes.
+

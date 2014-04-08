@@ -1,0 +1,270 @@
+\appendix
+
+\section{Encoding RDF structure}
+We present an algorithm for encoding the structure of an RDF data set
+with the following properties. First, the resulting code length does
+not depend on the serialization. This is a natural property for a code
+to have, and it is especially important if the code is used for
+machine learning purposes, as it is in our application. Second,
+although we present the algorithm in pseudocode, it is suitable for
+efficient implementation, in terms of both time and space
+requirements. A Java implementation is available from the authors.
+
+The design of the code uses a number of crucial results and insights
+from information theory and the Bayesian literature that we introduce
+first. We then apply these in our code for RDF structure.
+
+Throughout this description we make heavy use of the following
+notation for sequences: let $f(i)$ denote a function of a natural
+number $i$ and let $A$ be a set of natural numbers, then $(f(i))_{i\in
+  A}$ denotes the sequence $(f(a_1), f(a_2), \ldots)$, where
+$a_1<a_2<\ldots$ are the elements of $A$ in increasing order.
+We also use the indicator function $\ind_A(x)$, which is $1$ if $x\in
+A$ and $0$ otherwise.
+
+\subsection{Building blocks}
+One of the most crucial results in information theory is the
+Kraft-McMillan inequality \cite{KraftMcMillan1956} (or see
+\cite[page 82]{cover1991}) which states that,
+for any uniquely decodable code with length function $L$, there is a
+corresponding probability distribution $P$ with $P(x)=2^{-L(x)}$, and
+vice versa, for every $P$ there is an $L$ with $L(x)=\lceil-\log_2
+P(x)\rceil$. (From here on, logarithms are to base two unless
+otherwise specified.) The code length has to be rounded up to the
+nearest integer, but if several outcomes $(x_i)_{i=1}^n$ are encoded
+sequentially, as will be done in our application, there are efficient
+practical techniques such as arithmetic coding \cite{Rissanen1976} that allow
+this rounding step to be postponed to the very end of the code stream.
+
+We illustrate this idea using three concrete probability distributions
+for sequential data, that can be transformed into efficient practical
+codes using arithmetic coding.
+
+\subsubsection{Uniform distribution}
+The first is simply the distribution that is uniform on the alphabet $\X$:
+\[P_{\tn{u}[\X]}(X=x) = 1/|\X|.\] Every symbol $x\in\X$ gets the same
+probability, and clearly $\sum_{x\in\X}P_{\tn{u}[\X]}(X=x)=1$ so
+$P_\tn{u}$ is a valid distribution. By using arithmetic coding with
+the uniform distribution, we can encode any sequence $(x_i)_{i=1}^n$
+of symbols from $\X$ using a code length of
+\[\left\lceil\sum_{i=1}^n -\log P_{\tn{u}[\X]}(x_i)\right\rceil=\lceil
+n\log|\X|\rceil.\]
+
+Note that the rounding has to be performed only once: from here on
+out, we will ignore the rounding as its effect on the total code
+length is at most one bit.
+
+\subsubsection{Krichevsky-Trofimov estimator} The
+\emph{Krichevsky-Trofimov estimator} \cite{krichevsky1981} is another building
+block that we require.  Given a data sequence $(x_i)_{i=1}^n$, where
+each $x_i$ comes from some known alphabet $\X$, the the next outcome
+is predicted using
+\[
+P_{\tn{kt}[\X]}(X_{n+1}=x\mid (x_i)_{i=1}^n)=\frac{\#x((x_i)_{i=1}^n)+\half}{n+\half|\X|},
+\]
+where $\#x(\tn{sequence})$ denotes the number of occurrences of $x$ in
+the sequence. It is again easy to check that
+$\sum_{x\in\X}P_\tn{kt}(X_{n+1}=x\mid(x_i)_{i=1}^n)=1$, so $P_\tn{kt}$
+is a valid probability distribution on $\X$. Moreover, the KT
+estimator is adaptive: the probability estimates for symbols that
+occur often in $(x_i)_{i=1}^n$ are higher than for rare symbols. In a
+way, $P_\tn{kt}$ \emph{learns} the correct probabilities for each of
+the symbols based on past frequency. A final attractive property of
+the estimator is that the probability of a sequence does not depend on
+its ordering: writing out the probability as a product of fractions
+using the definition above, we find that all the denominators remain
+the same under reordering, while the numerators change place, but
+since multiplication is commutative this does not influence the
+result. As before, using the KT estimator in conjunction with
+arithmetic coding yields an efficient code. The code length thus
+obtained for a sequence $(x_i)_{i=1}^n$ is never far from $\min_P
+\sum_{i=1}^n -\log P(x_i)$, the code length obtained with the best
+possible nonadaptive distribution $P$ on $\X$.
+
+\subsubsection{Pitman-Yor process}
+The last building block of the code derives from the Bayesian
+literature and is called the Pitman-Yor process \cite{pitman1997}. Like the
+previous two prediction strategies, it is exchangable: the probability
+it assigns to a sequence does not change under reordering. However,
+unlike $P_\tn{u}$ and $P_\tn{kt}$, it is useful for sequences that are
+drawn from a very large alphabet, which could be countably infinite or
+finite but of unknown size; the PY process then exploits sparsity,
+becoming efficient when the number of distinct symbols that occur in a
+sequence of length $n$ is much smaller than $n$.
+
+For simplicity, we describe the PY process as a distribution on
+patterns. The \emph{pattern} of a sequence $(x_i)_{i\in A}$ is a
+sequence of integer references, obtained by replacing every symbol in
+the original sequence by the number of distinct symbols that appeared
+before its first occurrence. It is defined as follows,
+
+\[
+\tn{ref}((x_i)_{i=1}^n)=(y_i)_{i=1}^n,\tn{~where~} 
+{y_i=|\{x_1,\ldots,x_{f_i-1}\}| \atop f_i=\min\{j\mid x_j=x_i\}.}
+\]
+
+Thus, a sequence $(x_i)_{i=1}^n$ can be represented by its pattern
+$\tn{ref}((x_i)_{i=1}^n)$ and the subsequence of unique symbols,
+$(x_i)_{\{i\mid i=f_i\}}$. This way, all symbols in the sequence have
+to be encoded only once. Even if there are no repetitions, the
+sequence of references can be encoded using only a reasonably small
+number of bits, so it does not hurt much to use $P_\tn{py}$ even in
+that case; the details of these considerations are omitted.
+
+Given a pattern $(y_i)_{i=1}^n$, the PY process predicts the next
+reference according to the distribution
+\begin{multline*}
+P_{\tn{py}[\alpha,\beta]}(Y_{n+1}=y\mid (y_i)_{i=1}^n)\\
+\qquad=\begin{cases}
+\displaystyle\frac{\#y((y_i)_{i=1}^n)-\alpha}{n+\beta}&\tn{if $y\in\{y_1,\ldots,y_n\}$,}\\
+\displaystyle\frac{\alpha y+\beta}{n+\beta}&\tn{if $y=|\{y_1,\ldots,y_n\}|$, and}\\
+0&\tn{otherwise}.
+\end{cases}\end{multline*}
+
+Here, $\alpha$ and $\beta$ are parameters of the prediction strategy;
+setting both to a value of $1/2$ yields a good tradeoff between
+robustness and adaptivity of the prediction process.
+
+
+\subsection{A Code for RDF Graph Structure}
+We now describe the exact implementation of the code length functions
+$L(\M)$ and $L_\M(D)$. We use the following sequences and definitions
+globally:
+
+\paragraph{Data} We assume that the set of URIs $\U$ and the set of
+literals is fixed and known, as well as the number of blank
+nodes. We fix an arbitrary ordering $<$ on terms, and order all
+triples in $D$ lexicographically by $<$ to obtain a sequence
+$(\tuple{s_i,p_i,o_i})_{i=1}^n$. This ordering ensures that, among
+other things, triples with the same subject are adjacent.
+
+\paragraph{Partition, Types, Links and Fingerprints} 
+Let $C(t)$ be the partition cell of term $t$, i.e. the unique element
+of $\M$ that contains $t$. Let
+$\tau_i\in\{\tn{URI},\tn{BNode},\tn{Literal}\}$ represent the node
+type of $s_i$. Let the link $\lambda_i=\tuple{p_i,C(o_i))}$ denote the
+part of the $i$th triple that is part of the fingerprint. The
+fingerprint of a subject is the set of links with the same subject:
+$\phi_\M(s)=\{\lambda_i\mid s_i=s\}$.
+
+\paragraph{Index sets}
+Let $I_s=\{n\}\cup\{i\in\{1,\ldots,n-1\}\mid s_i\not=s_{i+1}\}$ be the
+set of indices where the last triple for a subject term appears.
+Similarly, let $I_\lambda=\{n\}\cup\{i\in\{1,\ldots,n-1\}\mid
+\lambda_i\not= \lambda_{i+1}\}$ be the set of indices where the last
+triple with the same link appears. We also need index sets identifying
+whether an element of $I_s$ represents the first occurrence of each
+fingerprint for each partition cell, and the set of corresponding
+links: let $F_s = \{i \in I_s\mid \forall j<i:
+\phi_\M(s_j)\ne\phi_\M(s_i) \vee C(o_j)\ne C(o_i)\}$ and let $F_\lambda =
+\{i\in I_\lambda\mid \exists j\in F_s:s_i=s_j\}$.
+
+We can now encode the data with the following algorithm:
+
+
+\bigskip\begin{algorithm}{$\ts{EncodeGraph}$}\label{alg:encodegraph}
+% \item[$\triangleright$] 
+\C{Encode the partition $\M$}
+\\ Let $p=1/\log(|\M|+1) - 1/\log(|\M|+2)$
+\\ Encode the number of partition cells using $-\log p$ bits
+\\ \For $i=(j)_{j\in I_s}$ \Do
+\>
+\\ Let $p\=P_{\tn{kt}[\M]}(C(s_i)\mid(C(s_j))_{\{j\in I_s\mid j<i\wedge \tau_j=\tau_i\}})$
+\\ Encode partition cell for $s_i$ using $-\log p$ bits
+\<
+\\ \End \For
+\C{Encode the fingerprints}
+\\ \For $i=(j)_{j\in I_s}$ \Do
+\>
+\\ Let $I_\phi=\{j\in I_s\mid j\le i\wedge C(s_i)=C(s_j)\}$
+\\ Let $(\rho_j)_{j\in I_\phi}=\tn{ref}((\phi_\M(s_j))_{j\in I_\phi})$
+\\ Let $p\=P_\tn{py}(\rho_i\mid (\rho_j)_{j\in I_\phi\setminus\{i\}})$
+\\ Encode the signature reference using $-\log p$ bits
+\\ \If $i\in F_s$ \Then $\ts{EncodeFingerprint}(i)$ \End\If
+\<
+\\ \End\For
+\C{Encode the objects given the partition cells}
+\\ \For $i=1,\ldots,n$ \Do
+\>
+\\ Let $p\=P_{\tn{kt}[\B]}(\ind_{I_\lambda}(i) \mid
+(\ind_{I_\lambda}(j))_{\{j\in\{1,\ldots,i-1\}\mid
+  \lambda_j=\lambda_i\}})$
+\\ Encode whether more objects for this link using $-\log p$ bits
+\\ Let $p\=P_{\tn{kt}[C(o_i)]}(o_i\mid
+(o_j)_{\{j\in\{1,\ldots,i-1\}\mid
+  \lambda_j=\lambda_i\}})$
+\\ Encode which element of $C(o_i)$ is $o_i$ using $-\log p$ bits
+\<
+\\ \End \For
+\end{algorithm}
+
+\newcommand{\tabpos}{5}
+
+\bigskip\begin{algorithm}{$\ts{EncodeFingerprint}(k)$}
+\\ \For $i=(j)_{\{j\in I_\lambda\mid s_j=s_k\}}$
+\>
+\\ Let $F_\lambda^i=\{j\in F_\lambda\mid j<i\}$\T{\tabpos}{previously
+  encoded links}
+\\ Let $p\=P_{\tn{kt}[\B]}(\ind_{I_s}(i) \mid (\ind_{I_s}(j))_{j\in F_\lambda^i})$
+\\ Encode whether more links for fingerprint using $-\log p$ bits
+\\ Let $p\=P_\tn{py}(\lambda_i \mid (\lambda_j)_{j\in F_\lambda^i})$
+\\ Encode a reference to this link using $-\log p$ bits
+\\ \If $\lambda_i\notin\{\lambda_j\mid j\in F_\lambda^i\}$
+\Then\T{\tabpos}{new link?}
+\>
+\\ $p=P_\tn{PY}(p_i\mid (p_j)_{j\in F_\lambda^i})$
+\\ Encode reference to predicate using $-\log p$ bits
+\\ Let $A=\mathcal U\setminus\{p_j \mid j\in F_\lambda^i\}$
+\\ \If $p_i\in A$ \Then
+\>
+\\ Encode $p_i$ using $-\log P_{\tn{uu}[A]}(p_i)=\log|A|$ bits
+\<
+\\ \End\If
+\\ Let $p\=P_{\tn{kt}[\M]}(C(o_i)) \mid (C(o_j))_{j\in
+  F_\lambda^i})$
+\\ Encode object class using $-\log p$ bits
+\<
+\\ \End\If
+\<
+\\ \End\For
+\end{algorithm}
+
+\paragraph{Some Refinements of the Code Length}
+The code as described above is a very efficient and \emph{practical}
+way to encode the structure of an RDF data set.  Comparison of its
+performance to that of other RDF compression algorithms, such as HDT
+\cite{Fernandez2013} is left as future work. However, the code still contains a
+number of redundancies that are not easy to address without affecting
+the computational efficiency of the algorithm. But if we are only
+interested in the code \emph{lengths}, it suffices to calculate how
+many bits can be saved and simply subtract that from the result of the
+algorithm above.
+
+One type of redundancy stems from the fact that a number of
+\emph{sets} are encoded as \emph{sequences}. While the code length
+does not depend on the sequence order, it is redundant because a
+different encoding is reserved for every possible ordering while only
+one is used. For a set of size $n$, this creates an overhead of
+$\log(n!)$ bits. This redundancy appears when encoding the set of
+links that are associated with a specific subject (in the second loop
+of Algorithm~\ref{alg:encodegraph}). It also appears when encoding the
+set of objects that are associated with a specific subject and link
+(in the last loop).
+
+A second type of redundancy occurs when object equivalence is
+encoded using arbitrary integer identifiers. For example, we associate
+the blank nodes with integer identifiers, but which blank node is
+identified by which integer is arbitrary; all possible permutations of
+the mapping are equally valid and yield a different code stream, but
+the same code length. Again, if there are $n$ distinct objects then the
+redundancy this introduces is $\log(n!)$ bits. This applies to the
+blank nodes, but also to the assignment of terms to partition cells in
+the first loop of Algorithm~\ref{alg:encodegraph}.
+
+All these four redundancies are corrected for in the code lengths we
+report; we do not know of a practical encoding scheme that actually
+achieves these code lengths.
+
+%%% Local Variables:
+%%% TeX-master: "../ecai2014.tex"
+%%% End:
