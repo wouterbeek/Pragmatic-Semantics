@@ -1,6 +1,0 @@
-{
-    "push_branch": null, 
-    "application": "prasem", 
-    "version": "0.9.7", 
-    "push_protocol": "rsync"
-}
