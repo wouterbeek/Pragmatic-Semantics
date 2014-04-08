@@ -18,6 +18,9 @@ Command-line argument handling for the CKAN project.
 
 :- dynamic(ckan_site/1).
 
+:- discontiguous(user:option_specification/4).
+:- multifile(user:option_specification/4).
+
 :- initialization(ckan_process_options).
 
 
