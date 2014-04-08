@@ -51,7 +51,8 @@ api_key(Site, Key):-
 ckan_file(Site, Base, Ext, File):-
   ckan_uri(Site, Uri),
   file_name_extension(Base, Ext, Name),
-  url_nested_directory(data(.), Uri, File).
+  url_nested_directory(data(.), Uri, Dir),
+  absolute_file_name(Name, File, [relative_to(Dir)]).
 
 
 %! ckan_graph(+Site:atom, -RdfGraph:atom) is det.
