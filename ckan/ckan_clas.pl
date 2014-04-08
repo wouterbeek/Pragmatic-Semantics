@@ -56,7 +56,7 @@ cmd_ckan_command(O1):-
   option(command(Command), O1),
   command(Command), !.
 cmd_ckan_command(_):-
-  print_message(warning, ckan_no_command(Command)).
+  print_message(warning, ckan_no_command).
 
 command(download_catalog):- !,
   forall(
@@ -81,7 +81,7 @@ command(download_lod):- !,
     Sites
   ),
   prolog_message(informational, ckan_list_sites(Sites)).
-command(_):-
+command(Command):-
   print_message(warning, ckan_unsupported_command(Command)).
 
 prolog:message(ckan_download_catalog(Site, File)) -->
@@ -92,19 +92,14 @@ prolog:message(ckan_list_sites([])) --> [].
 prolog:message(ckan_list_sites([H|T])) -->
   ['  * ',H,'~n'],
   prolog:message(ckan_list_sites(T)).
-prolog:message(ckan_no_command(Command)) -->
+prolog:message(ckan_no_command) -->
+  commands.
 prolog:message(ckan_unsupported_command(Command)) -->
-  [
-    'Command ',
-    Command,
-    ' is not supported.~nThe following commands are supported:~n'
-  ],
+  ['Command ',Command,' is not supported.~n'],
   commands.
 
-command(Command) -->
-  ['  * ',Command,'~n'].
-
 commands -->
+  ['The following commands are supported:~n'],
   {
     aggregate_all(
       set(Command),
@@ -114,6 +109,9 @@ commands -->
   },
   commands(Commands).
 
+command(Command) -->
+  ['  * ',Command,'~n'].
+
 commands([]) --> [].
 commands([H|T]) -->
   command(H),
@@ -122,7 +120,7 @@ commands([H|T]) -->
 
 
 ckan_process_options:-
-  read_options(Options),
+  read_options(O1),
   cmd_ckan_site(O1),
   cmd_ckan_command(O1).
 
