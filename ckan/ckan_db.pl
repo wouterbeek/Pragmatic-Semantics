@@ -7,6 +7,8 @@
                  % -File:atom
     ckan_graph/2, % +Site:atom
                   % -RdfGraph:atom
+    ckan_property/2, % ?Site:atom
+                     % ?Property:compound
     ckan_properties/2, % +Site:atom
                        % -Properties:list(compound)
     ckan_uri/2 % +Site:atom

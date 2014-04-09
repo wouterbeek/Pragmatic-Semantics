@@ -9,7 +9,7 @@ Command-line argument handling for the CKAN project.
 */
 
 :- use_module(library(aggregate)).
-:- use_module(library(optparse)).
+:- use_module(library(option)).
 
 :- use_remote_module(pl(pl_clas)).
 
@@ -36,10 +36,40 @@ user:option_specification([
   type(atom)
 ]).
 
-cmd_ckan_site(Site):-
-  ckan_site(Site), !.
-cmd_ckan_site(Site):-
+cmd_ckan_site(O1):-
+  option(site(Site), O1),
+  nonvar(Site), !,
+  register_ckan_site(Site).
+cmd_ckan_site(_):-
+  print_message(information, no_ckan_site).
+
+register_ckan_site(Site):-
+  ckan_site(Site), !,
+  print_message(information, duplicate_ckan_site(Site)).
+register_ckan_site(Site):-
+  ckan_property(Site, _), !,
+  print_message(information, unknown_ckan_site(Site)).
+register_ckan_site(Site):-
   assert(ckan_site(Site)).
+
+prolog:message(duplicate_ckan_site(Site)) -->
+  ['CKAN site ',Site,' was already registered.'].
+prolog:message(no_ckan_site) -->
+  ['No CKAN site was specified.'],
+  ckan_sites.
+prolog:message(unknown_ckan_site(Site)) -->
+  ['No CKAN site named \"',Site,'\" is know to this library.~n'],
+  ckan_sites.
+
+ckan_sites -->
+  ['The following CKAN sites are supported:~n'],
+  {aggregate_all(set(Site), ckan_property(Site, _), Sites)},
+  ckan_sites(Sites).
+
+ckan_sites([]) --> [].
+ckan_sites([H|T]) -->
+  ['  * ',H,'~n'],
+  ckan_sites(T).
 
 
 
