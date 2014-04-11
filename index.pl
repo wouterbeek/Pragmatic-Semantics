@@ -1,7 +1,7 @@
 % Index for the Pragmatic Semantics repository.
 
-index(Dir):-
-  assert(user:file_search_path(prasem, Dir)),
+index(PrasemDir):-
+  assert(user:file_search_path(prasem, PrasemDir)),
     assert(user:file_search_path(bk,     prasem(beekeeper      ))),
     assert(user:file_search_path(ckan,   prasem(ckan           ))),
     assert(user:file_search_path(dh,     prasem(data_hives     ))),
