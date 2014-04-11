@@ -36,12 +36,15 @@ user:option_specification([
   type(atom)
 ]).
 
+
 cmd_ckan_site(O1):-
   option(site(Site), O1),
   nonvar(Site), !,
   register_ckan_site(Site).
 cmd_ckan_site(_):-
-  print_message(information, no_ckan_site).
+  print_message(information, no_ckan_site),
+  halt.
+
 
 register_ckan_site(Site):-
   ckan_site(Site), !,
@@ -51,6 +54,7 @@ register_ckan_site(Site):-
   print_message(information, unknown_ckan_site(Site)).
 register_ckan_site(Site):-
   assert(ckan_site(Site)).
+
 
 prolog:message(duplicate_ckan_site(Site)) -->
   ['CKAN site ',Site,' was already registered.'].
@@ -83,11 +87,13 @@ user:option_specification([
   type(atom)
 ]).
 
+
 cmd_ckan_command(O1):-
   option(command(Command), O1),
   command(Command), !.
 cmd_ckan_command(_):-
   print_message(warning, ckan_no_command).
+
 
 command(download_catalog):- !,
   forall(
@@ -114,6 +120,7 @@ command(download_lod):- !,
   print_message(informational, ckan_list_sites(Sites)).
 command(Command):-
   print_message(warning, ckan_unsupported_command(Command)).
+
 
 prolog:message(ckan_download_catalog(Site, File)) -->
   ['CKAN site ',Site,'\'s catalog was downloaded to file ',File,'.~n'].
