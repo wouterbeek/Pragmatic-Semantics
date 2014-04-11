@@ -40,7 +40,6 @@ user:option_specification([
 cmd_ckan_site(O1):-
   option(site(Site), O1),
   nonvar(Site), !,
-gtrace,
   register_ckan_site(Site).
 cmd_ckan_site(_):-
   print_message(information, no_ckan_site),
@@ -51,7 +50,7 @@ register_ckan_site(Site):-
   ckan_site(Site), !,
   print_message(information, duplicate_ckan_site(Site)).
 register_ckan_site(Site):-
-  ckan_property(Site, _), !,
+  \+ ckan_property(Site, _), !,
   print_message(information, unknown_ckan_site(Site)).
 register_ckan_site(Site):-
   assert(ckan_site(Site)).
