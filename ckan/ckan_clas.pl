@@ -40,6 +40,7 @@ user:option_specification([
 cmd_ckan_site(O1):-
   option(site(Site), O1),
   nonvar(Site), !,
+gtrace,
   register_ckan_site(Site).
 cmd_ckan_site(_):-
   print_message(information, no_ckan_site),
