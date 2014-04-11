@@ -93,7 +93,9 @@ user:option_specification([
 
 cmd_ckan_command(O1):-
   option(command(Command), O1),
-  run_command(Command), !.
+  nonvar(Command),
+  command(Command), !,
+  run_command(Command).
 cmd_ckan_command(_):-
   print_message(warning, ckan_no_command).
 
