@@ -22,6 +22,9 @@ Command-line argument handling for the CKAN project.
 :- discontiguous(user:option_specification/1).
 :- multifile(user:option_specification/1).
 
+:- discontiguous(command/1).
+:- discontiguous(run_command/1).
+
 :- initialization(ckan_process_options).
 
 
@@ -90,12 +93,13 @@ user:option_specification([
 
 cmd_ckan_command(O1):-
   option(command(Command), O1),
-  command(Command), !.
+  run_command(Command), !.
 cmd_ckan_command(_):-
   print_message(warning, ckan_no_command).
 
 
-command(download_catalog):- !,
+command(download_catalog).
+run_command(download_catalog):- !,
   forall(
     ckan_site(Site),
     (
@@ -103,7 +107,8 @@ command(download_catalog):- !,
       print_message(informational, ckan_download_catalog(Site, File))
     )
   ).
-command(download_lod):- !,
+command(download_lod).
+run_command(download_lod):- !,
   forall(
     ckan_site(Site),
     (
@@ -111,14 +116,15 @@ command(download_lod):- !,
       print_message(informational, ckan_download_lod(Site))
     )
   ).
-command(download_lod):- !,
+command(download_lod).
+run_command(download_lod):- !,
   aggregate_all(
     set(Site),
     ckan_properties(Site, _),
     Sites
   ),
   print_message(informational, ckan_list_sites(Sites)).
-command(Command):-
+run_command(Command):-
   print_message(warning, ckan_unsupported_command(Command)).
 
 
