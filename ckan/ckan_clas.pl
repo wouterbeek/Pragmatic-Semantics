@@ -97,7 +97,8 @@ cmd_ckan_command(O1):-
   command(Command), !,
   run_command(Command).
 cmd_ckan_command(_):-
-  print_message(warning, ckan_no_command).
+  print_message(information, ckan_no_command),
+  halt.
 
 
 command(download_catalog).
@@ -106,7 +107,7 @@ run_command(download_catalog):- !,
     ckan_site(Site),
     (
       ckan_download_catalog(Site, File),
-      print_message(informational, ckan_download_catalog(Site, File))
+      print_message(information, ckan_download_catalog(Site, File))
     )
   ).
 command(download_lod).
@@ -115,19 +116,20 @@ run_command(download_lod):- !,
     ckan_site(Site),
     (
       ckan_download_lod(Site),
-      print_message(informational, ckan_download_lod(Site))
+      print_message(information, ckan_download_lod(Site))
     )
   ).
-command(download_lod).
-run_command(download_lod):- !,
+command(list_sites).
+run_command(list_sited):- !,
   aggregate_all(
     set(Site),
     ckan_properties(Site, _),
     Sites
   ),
-  print_message(informational, ckan_list_sites(Sites)).
+  print_message(information, ckan_list_sites(Sites)).
 run_command(Command):-
-  print_message(warning, ckan_unsupported_command(Command)).
+  print_message(information, ckan_unsupported_command(Command)),
+  halt.
 
 
 prolog:message(ckan_download_catalog(Site, File)) -->
