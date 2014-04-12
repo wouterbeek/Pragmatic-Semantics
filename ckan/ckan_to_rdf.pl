@@ -2,7 +2,7 @@
   ckan_to_rdf,
   [
     ckan_to_rdf/2 % +Site:atom
-                  % ?RdfGraph:atom
+                  % +RdfGraph:atom
   ]
 ).
 
@@ -27,12 +27,11 @@ Automated CKAN to RDF conversion.
 
 
 
-%! ckan_to_rdf(+Site:atom, ?RdfGraph:atom) is det.
+%! ckan_to_rdf(+Site:atom, +RdfGraph:atom) is det.
 % Scrapes the given CKAN site and asserts all of its contents in RDF.
 
 ckan_to_rdf(Site, G):-
   % Options are passed to the predicates in module [ckan].
-  default_goal(ckan_graph(Site), G),
   ckan_properties(Site, OPl),
   merge_options([graph(G)], OPl, ORdf),
 

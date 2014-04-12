@@ -35,8 +35,9 @@ ckan_download_catalog(Site, File):-
   access_file(File, read), !.
 ckan_download_catalog(Site, File):-
   setup_call_cleanup(
-    ckan_to_rdf(Site, G),
+    ckan_graph(Site, G),
     (
+      ckan_to_rdf(Site, G),
       ckan_file(Site, catalog, ttl, File),
       rdf_save([], G, File)
     ),
