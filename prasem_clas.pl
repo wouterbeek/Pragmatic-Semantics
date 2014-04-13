@@ -13,6 +13,7 @@ Command-line argument handling for the PraSem project collection.
 @version 2014/04
 */
 
+:- use_module(library(aggregate)).
 :- use_module(library(option)).
 
 :- use_remote_module(pl(pl_clas)).
@@ -36,17 +37,19 @@ user:option_specification([
 cmd_prasem_project(O1):-
   option(project(Project), O1),
   nonvar(Project),
-  prasem_subproject(Project), !,
+  prasem_project(Project), !,
   option(debug(Debug), O1, false),
   load_prasem_project(Project, Debug).
 % Unknown project name given.
 cmd_prasem_project(O1):-
   option(project(Project), O1),
   nonvar(Project), !,
-  print_message(information, unknown_prasem_project(Project)).
+  print_message(information, unknown_prasem_project(Project)),
+  halt.
 % No project name given.
 cmd_prasem_project(_):-
-  print_message(information, no_prasem_project).
+  print_message(information, no_prasem_project),
+  halt.
 
 
 %! debug_prasem_project(+Project:atom, +Debug:boolean) is det.
@@ -62,9 +65,10 @@ debug_prasem_project(_, false).
 % Loads the given Prolog file
 % within the direct context of the given PraSem project.
 
-file_prasem_project(Project, Base):-
+file_prasem_project(Project1, Base):-
+  downcase_atom(Project1, Project2),
   absolute_file_name(
-    prasem(Project),
+    prasem(Project2),
     Dir,
     [access(read),file_type(directory)]
   ),
@@ -79,30 +83,30 @@ file_prasem_project(Project, Base):-
 %! load_prasem_project(+Project:atom, +Debug:boolean) is det.
 % Loads the project with the given name.
 %
-% @arg Project Registered with prasem_subproject/1.
+% @arg Project Registered with prasem_project/1.
 
 load_prasem_project(Project, Debug):-
   file_prasem_project(Project, load),
   debug_prasem_project(Project, Debug).
 
 
-%! prasem_subproject(+ProjectName:atom) is semidet.
-%! prasem_subproject(-ProjectName:atom) is nondet.
+%! prasem_project(+ProjectName:atom) is semidet.
+%! prasem_project(-ProjectName:atom) is nondet.
 % Enumeration of supported PraSem projects.
 
-prasem_subproject('Beekeeper').
-prasem_subproject('CKAN').
-prasem_subproject('DataHives').
-prasem_subproject('EnergyLabels').
-prasem_subproject(humR).
-prasem_subproject('IDEAology').
-prasem_subproject('IOTW').
-prasem_subproject('LODObs').
-prasem_subproject('PGC').
-prasem_subproject('SemanticURIs').
-prasem_subproject('STCN').
-prasem_subproject('SWAG').
-prasem_subproject('WebQR').
+prasem_project('Beekeeper').
+prasem_project('CKAN').
+prasem_project('DataHives').
+prasem_project('EnergyLabels').
+prasem_project(humR).
+prasem_project('IDEAology').
+prasem_project('IOTW').
+prasem_project('LODObs').
+prasem_project('PGC').
+prasem_project('SemanticURIs').
+prasem_project('STCN').
+prasem_project('SWAG').
+prasem_project('WebQR').
 
 
 
@@ -113,4 +117,32 @@ prasem_subproject('WebQR').
 prasem_process_options:-
   read_options(O1), !,
   cmd_prasem_project(O1).
+
+
+
+% Messages.
+
+prolog:message(unknown_prasem_project(Project)) -->
+  [Project,' is not a known PraSem project.~n'],
+  prasem_projects.
+
+prolog:message(no_prasem_project) -->
+  ['No PraSem project was specified.~n'],
+  prasem_projects.
+
+prasem_projects -->
+  ['The following PraSem projects are supported:~n'],
+  {
+    aggregate_all(
+      set(Project),
+      prasem_project(Project),
+      Projects
+    )
+  },
+  prasem_projects(Projects).
+
+prasem_projects([]) --> [].
+prasem_projects([H|T]) -->
+  ['  * ',H,'~n'],
+  prasem_projects(T).
 
