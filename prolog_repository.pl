@@ -17,7 +17,9 @@ base_url(Url):-
     uri_components(
       https,
       'github.com',
-      'wouterbeek/Prolog-Communities/raw/master'
+      '/wouterbeek/Prolog-Communities/raw/master/',
+      _,
+      _
     )
   ).
 
@@ -55,13 +57,15 @@ http_process(_, _, Url, Path):-
 
 
 load_remote_file(Base):-
-  base_url(Url),
+  base_url(Url1),
+  file_name_extension(Base, pl, Name),
+  atom_concat(Url1, Name, Url2),
   absolute_file_name(project(Base), File, [access(write),file_type(prolog)]),
-  guarantee_download(Url, File),
+  guarantee_download(Url2, File),
   ensure_loaded(File).
 
 
-prolog_repository(Mode):-
+prolog_repository(Mode, Dir):-
   load_remote_file(optparse2),
   (
     Mode == remote
@@ -70,6 +74,7 @@ prolog_repository(Mode):-
   ;
     Mode == local
   ->
-    load_remote_file(prolog_repository_local)
+    load_remote_file(prolog_repository_local),
+    prolog_local_init(Dir)
   ).
 

@@ -11,7 +11,7 @@ run_prasem:-
   assert(user:file_search_path(project, ProjectDir)),
   
   ensure_loaded(prolog_repository),
-  prolog_repository(local),
+  prolog_repository(local, ProjectDir),
   
   % Load PLC index.
   absolute_file_name('.', ThisDir, [access(read),file_type(directory)]),
