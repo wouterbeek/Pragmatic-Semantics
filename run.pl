@@ -1,26 +1,41 @@
+% The run file for the PraSem project.
+
 :- set_prolog_flag(encoding, utf8).
 
 % Do not write module loads to the standard output stream.
 :- set_prolog_flag(verbose_load, silent).
 
-% The run file for the PraSem project.
+:- use_module(optparse2).
 
-:- initialization(run_prasem).
+:- meta_predicate(user:ensure_remote_loaded(:)).
+:- meta_predicate(user:reexport_remote_module(:)).
+:- meta_predicate(user:reexport_remote_module(+,:)).
+:- meta_predicate(user:reexport_remote_module(+,:,+)).
+:- meta_predicate(user:use_remote_module(:)).
+:- meta_predicate(user:use_remote_module(+,:)).
+:- meta_predicate(user:use_remote_module(+,:,+)).
 
 :- multifile(user:project/2).
 user:project('PraSem', 'Pragmatic Semantics for the Web of Data').
 
 :- multifile(prolog:message//1).
 
-:- multifile(user:cmd_option/4).
-:- multifile(user:process_cmd_option/1).
-:- multifile(user:process_cmd_options/1).
+:- discontiguous(user:option_specification/1).
+:- multifile(user:option_specification/1).
+
+:- initialization(run_prasem).
 
 
 
 % Option: project.
 
-user:cmd_option(p, project, atom, 'Load a PraSem subproject.').
+user:option_specification([
+  help('Load a PraSem subproject.'),
+  longflags([project]),
+  opt(project),
+  shortflags([p]),
+  type(atom)
+]).
 
 user:process_cmd_option(project(Name)):-
   prasem_subproject(Name), !,
@@ -66,14 +81,11 @@ list_projects([H|T]) -->
 
 
 run_prasem:-
-  % Entry point.
+  % Load the index.
   source_file(run_prasem, ThisFile),
   file_directory_name(ThisFile, ThisDir),
-  assert(user:file_search_path(project, ThisDir)),
-  assert(user:file_search_path(prasem, ThisDir)),
-  
-  % PGC
-  load_pgc(project),
+  ensure_loaded(index),
+  index(ThisDir)m
   
   % PraSem
   use_remote_module(prasem(prasem)),
@@ -159,4 +171,26 @@ prasem_subproject('SemanticURIs').
 prasem_subproject('STCN').
 prasem_subproject('SWAG').
 prasem_subproject('WebQR').
+
+
+user:ensure_remote_loaded(CallingModule:CalledModuleSpec):-
+  CallingModule:ensure_loaded(CalledModuleSpec).
+
+user:reexport_remote_module(CallingModule:CalledModuleSpec):-
+  CallingModule:reexport(CalledModuleSpec).
+
+user:reexport_remote_module(_, ModuleSpec):-
+  user:reexport_remote_module(ModuleSpec).
+
+user:reexport_remote_module(_, CallingModule:CalledModuleSpec, Import):-
+  CallingModule:reexport(CalledModuleSpec, Import).
+
+user:use_remote_module(CallingModule:CalledModuleSpec):-
+  CallingModule:use_module(CalledModuleSpec).
+
+user:use_remote_module(_, ModuleSpec):-
+  user:use_remote_module(ModuleSpec).
+
+user:use_remote_module(_, CallingModule:CalledModuleSpec, ImportList):-
+  CallingModule:use_module(CalledModuleSpec, ImportList).
 
