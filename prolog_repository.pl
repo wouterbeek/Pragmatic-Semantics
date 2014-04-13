@@ -5,10 +5,24 @@
 % over unreliable internet connections,
 % since it simply retries until it succeeds.
 
+:- use_module(library(filesex)).
 :- use_module(library(http/http_open)).
 :- use_module(library(http/http_ssl_plugin)).
 :- use_module(library(uri)).
 
+
+
+assert_index(Alias, Path):-
+  catch(is_absolute_file_name(Path), _, fail), !,
+  make_directory_path(Path),
+  assert(user:file_search_path(Alias, Path)).
+assert_index(Alias, Path):-
+  Path =.. [Parent,Child],
+  Spec =.. [Parent,'.'],
+  absolute_file_name(Spec, ParentDir, [file_type(directory)]),
+  directory_file_path(ParentDir, Child, ChildDir),
+  make_directory_path(ChildDir),
+  assert(user:file_search_path(Alias, ChildDir)).
 
 
 base_url(Url):-
