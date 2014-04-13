@@ -42,10 +42,6 @@ cert_verify(_, _, _, _, _):- !.
 
 
 guarantee_download(Url, Path):-
-  exists_file(Path), !,
-  delete_file(Path),
-  guarantee_download(Url, Path).
-guarantee_download(Url, Path):-
   catch(
     setup_call_cleanup(
       http_open(
@@ -59,6 +55,16 @@ guarantee_download(Url, Path):-
     _,
     guarantee_download(Url, Path)
   ).
+
+
+guarantee_download(_, Path, false):-
+  exists_file(Path), !.
+guarantee_download(Url, Path, true):-
+  exists_file(Path), !,
+  delete_file(Path),
+  guarantee_download(Url, Path).
+guarantee_download(Url, Path, _):-
+  guarantee_download(Url, Path).
 
 
 http_process(Status, HttpStream, _, File):-
