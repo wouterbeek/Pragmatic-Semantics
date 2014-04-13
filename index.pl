@@ -1,7 +1,7 @@
 % Index for the Pragmatic Semantics repository.
 
 index(PrasemDir):-
-  assert_index(prasem, PrasemDir)),
+  assert_index(prasem, PrasemDir),
     assert_index(bk,     prasem(beekeeper)),
     assert_index(ckan,   prasem(ckan)),
     assert_index(dh,     prasem(data_hives)),

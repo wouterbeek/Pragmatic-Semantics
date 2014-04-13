@@ -27,8 +27,10 @@ base_url(Url):-
 cert_verify(_, _, _, _, _):- !.
 
 
-guarantee_download(_, LocalPath):-
-  exists_file(LocalPath), !.
+guarantee_download(Url, Path):-
+  exists_file(Path), !,
+  delete_file(Path),
+  guarantee_download(Url, Path).
 guarantee_download(Url, Path):-
   catch(
     setup_call_cleanup(
