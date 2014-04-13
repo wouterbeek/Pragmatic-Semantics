@@ -14,9 +14,17 @@ run_prasem:-
   prolog_repository(local, ProjectDir),
   
   % Load PLC index.
-  absolute_file_name('.', ThisDir, [access(read),file_type(directory)]),
-  directory_file_path(ThisDir, plc, PlcDir),
-  load_index(PlcDir),
+  directory_file_path(ProjectDir, plc, PlcDir),
+  absolute_file_name(
+    index,
+    PlcIndexFile,
+    [access(read),file_type(prolog),relative_to(PlcDir)]
+  ),
+  setup_call_cleanup(
+    ensure_loaded(PlcIndexFile),
+    index(PlcDir),
+    unload_file(PlcIndexFile)
+  ),
   
   % Load PraSem.
   use_module(prasem(prasem_clas)).
