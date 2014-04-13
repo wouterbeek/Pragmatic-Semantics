@@ -1,7 +1,7 @@
 :- module(
   prasem_clas,
   [
-    process_options/0
+    prasem_process_options/0
   ]
 ).
 
@@ -36,11 +36,11 @@ user:option_specification([
 cmd_prasem_project(O1):-
   option(project(Project), O1),
   nonvar(Project),
-  prasem_subproject(Name), !,
+  prasem_subproject(Project), !,
   option(debug(Debug), O1, false),
   load_prasem_project(Project, Debug).
 % Unknown project name given.
-cmd_prasem_project(_):-
+cmd_prasem_project(O1):-
   option(project(Project), O1),
   nonvar(Project), !,
   print_message(information, unknown_prasem_project(Project)).
@@ -55,7 +55,7 @@ cmd_prasem_project(_):-
 
 debug_prasem_project(Project, true):- !,
   file_prasem_project(Project, debug).
-debug_prasem_project(Project, false).
+debug_prasem_project(_, false).
 
 
 %! file_prasem_project(+Project:atom, +File:atom) is det.
@@ -106,11 +106,11 @@ prasem_subproject('WebQR').
 
 
 
-%! process_options is det.
+%! prasem_process_options is det.
 % Reads the command-line arguments and executes those
 % that are common among the PGC-using projects,
 
-process_options:-
+prasem_process_options:-
   read_options(O1), !,
   cmd_prasem_project(O1).
 

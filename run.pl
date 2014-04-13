@@ -27,5 +27,6 @@ run_prasem:-
   ),
 
   % Load PraSem.
-  use_module(prasem(prasem_clas)).
+  use_module(prasem(prasem_clas)),
+  prasem_process_options.
 
