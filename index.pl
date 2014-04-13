@@ -15,15 +15,3 @@ index(PrasemDir):-
     assert_index(swag,   prasem(swag)),
     assert_index(webqr,  prasem(webqr)).
 
-
-assert_index(Alias, Path):-
-  is_absolute_file_name(Path), !,
-  make_directory_path(Path),
-  assert(user:file_searhc_path(Alias, Path)).
-assert_index(Alias, Path):-
-  Path =.. [Parent(Child)],
-  absolute_file_name(Parent, ParentDir, [file_type(directory)]),
-  directory_file_path(ParentDir, Child, ChildDir),
-  make_directory_path(ChildDir),
-  assert(user:file_search_path(Alias, ChildDir)).
-
