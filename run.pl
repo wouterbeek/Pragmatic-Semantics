@@ -71,7 +71,7 @@ run_prasem:-
   file_directory_name(ThisFile, ThisDir),
   assert(user:file_search_path(project, ThisDir)),
   assert(user:file_search_path(prasem, ThisDir)),
-  
+gtrace,  
   % PGC
   load_pgc(project),
   
