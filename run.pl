@@ -5,6 +5,7 @@
 % Do not write module loads to the standard output stream.
 :- set_prolog_flag(verbose_load, silent).
 
+:- use_module(library(apply)).
 :- use_module(library(filesex)).
 :- use_module(library(option)).
 
@@ -40,20 +41,31 @@ run_prasem:-
   % Process the `project` command-line option.
   ensure_loaded(prasem_clas),
   use_module(pl(pl_clas)),
-  gtrace,
   prasem_process_options.
+
 
 prasem_process_options:-
   read_options(O1),
-  prasem_process_options(O1).
+  prasem_process_options(O1, []).
 
-prasem_process_options(O1):-
+prasem_process_options(O1, L):-
   select_option(data(Data), O1, O2), !,
   user:process_option(data(Data)),
-  prasem_process_options(O2).
-prasem_process_options(O1):-
-  select_option(project(Project), O1, O2), !,
+  prasem_process_options(O2, L).
+prasem_process_options(O1, T):-
+  select_option(project(Project), O1, _), !,
   user:process_option(project(Project)),
-  prasem_process_options(O2).
-prasem_process_options(O1):-
+  
+  % After loading a project there may be more options.
+  read_options(O3),
+  exclude(prasem_data, O3, O4),
+  exclude(prasem_project(T), O4, O5),
+  prasem_process_options(O5, [Project|T]).
+prasem_process_options(O1, _):-
   process_options(O1).
+
+prasem_data(data(_)).
+
+prasem_project(Projects, project(Project)):-
+  memberchk(Project, Projects).
+

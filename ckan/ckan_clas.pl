@@ -89,7 +89,7 @@ user:option_specification([
 
 user:process_option(command(Command)):-
   var(Command), !,
-  print_message(warning, no_command(Command)),
+  print_message(warning, no_command),
   halt.
 user:process_option(command(Command)):-
   command(Command), !,
