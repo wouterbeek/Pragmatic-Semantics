@@ -168,6 +168,7 @@ commands([H|T]) -->
 
 
 ckan_process_options:-
+gtrace,
   read_options(O1),
   cmd_ckan_site(O1),
   cmd_ckan_command(O1).
