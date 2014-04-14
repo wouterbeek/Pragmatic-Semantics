@@ -7,6 +7,8 @@
                  % -File:atom
     ckan_graph/2, % +Site:atom
                   % -RdfGraph:atom
+    ckan_property/2, % ?Site:atom
+                     % ?Property:compound
     ckan_properties/2, % +Site:atom
                        % -Properties:list(compound)
     ckan_uri/2 % +Site:atom
@@ -43,7 +45,7 @@ api_key(Site, Key):-
   user:api_key_hook(Site, Key), !.
 api_key(Site, Key):-
   format(atom(Msg), 'Enter the API key for ~a.', [Site]),
-  user_input(Msg, codes, Key).
+  user_input(Msg, atom, Key).
 
 
 %! ckan_file(+Site:atom, +Name:atom, +Extension:atom, -File:atom) is det.

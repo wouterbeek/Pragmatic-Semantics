@@ -9,7 +9,7 @@ Command-line argument handling for the CKAN project.
 */
 
 :- use_module(library(aggregate)).
-:- use_module(library(optparse)).
+:- use_module(library(option)).
 
 :- use_remote_module(pl(pl_clas)).
 
@@ -36,10 +36,44 @@ user:option_specification([
   type(atom)
 ]).
 
-cmd_ckan_site(Site):-
-  ckan_site(Site), !.
-cmd_ckan_site(Site):-
+
+cmd_ckan_site(O1):-
+  option(site(Site), O1),
+  nonvar(Site), !,
+  register_ckan_site(Site).
+cmd_ckan_site(_):-
+  print_message(information, no_ckan_site),
+  halt.
+
+
+register_ckan_site(Site):-
+  ckan_site(Site), !,
+  print_message(information, duplicate_ckan_site(Site)).
+register_ckan_site(Site):-
+  \+ ckan_property(Site, _), !,
+  print_message(information, unknown_ckan_site(Site)).
+register_ckan_site(Site):-
   assert(ckan_site(Site)).
+
+
+prolog:message(duplicate_ckan_site(Site)) -->
+  ['CKAN site ',Site,' was already registered.'].
+prolog:message(no_ckan_site) -->
+  ['No CKAN site was specified.'],
+  ckan_sites.
+prolog:message(unknown_ckan_site(Site)) -->
+  ['No CKAN site named \"',Site,'\" is know to this library.~n'],
+  ckan_sites.
+
+ckan_sites -->
+  ['The following CKAN sites are supported:~n'],
+  {aggregate_all(set(Site), ckan_property(Site, _), Sites)},
+  ckan_sites(Sites).
+
+ckan_sites([]) --> [].
+ckan_sites([H|T]) -->
+  ['  * ',H,'~n'],
+  ckan_sites(T).
 
 
 
@@ -53,37 +87,47 @@ user:option_specification([
   type(atom)
 ]).
 
+
 cmd_ckan_command(O1):-
   option(command(Command), O1),
-  command(Command), !.
+  nonvar(Command),
+  command(Command), !,
+  run_command(Command).
 cmd_ckan_command(_):-
-  print_message(warning, ckan_no_command).
+  print_message(information, ckan_no_command),
+  halt.
 
-command(download_catalog):- !,
+
+command(download_catalog).
+run_command(download_catalog):- !,
   forall(
     ckan_site(Site),
     (
       ckan_download_catalog(Site, File),
-      print_message(informational, ckan_download_catalog(Site, File))
+      print_message(information, ckan_download_catalog(Site, File))
     )
   ).
-command(download_lod):- !,
+command(download_lod).
+run_command(download_lod):- !,
   forall(
     ckan_site(Site),
     (
       ckan_download_lod(Site),
-      print_message(informational, ckan_download_lod(Site))
+      print_message(information, ckan_download_lod(Site))
     )
   ).
-command(download_lod):- !,
+command(list_sites).
+run_command(list_sited):- !,
   aggregate_all(
     set(Site),
     ckan_properties(Site, _),
     Sites
   ),
-  print_message(informational, ckan_list_sites(Sites)).
-command(Command):-
-  print_message(warning, ckan_unsupported_command(Command)).
+  print_message(information, ckan_list_sites(Sites)).
+run_command(Command):-
+  print_message(information, ckan_unsupported_command(Command)),
+  halt.
+
 
 prolog:message(ckan_download_catalog(Site, File)) -->
   ['CKAN site ',Site,'\'s catalog was downloaded to file ',File,'.~n'].
@@ -121,7 +165,6 @@ commands([H|T]) -->
 
 
 ckan_process_options:-
-gtrace,
   read_options(O1),
   cmd_ckan_site(O1),
   cmd_ckan_command(O1).
