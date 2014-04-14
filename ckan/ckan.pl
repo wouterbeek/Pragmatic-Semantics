@@ -16,10 +16,11 @@
 @tbd The JSON `null` value is not replaced with a given default value.
 @tbd Email addresses cannot all be parsed.
 @tbd URLs cannot all be parsed.
-@version 2013/11-2014/01
+@version 2013/11-2014/01, 2014/04
 */
 
 :- use_module(library(http/json)).
+:- use_module(library(lists)).
 :- use_module(library(option)).
 :- use_module(library(uri)).
 
@@ -75,23 +76,23 @@ ckan_http(O1, Action, Parameters, Goal):-
   (
     option(api_key(Key), O1)
   ->
-    HTTP_O1 = [request_header('Authorization'=Key)]
+    HttpO1 = [request_header('Authorization'=Key)]
   ;
-    HTTP_O1 = []
+    HttpO1 = []
   ),
 
   JSON_In = json(Parameters),
-  merge_options(
+  append(
     [
       method(post),
       never_give_up(true),
       post(json(JSON_In)),
       request_header('Accept'='application/json')
     ],
-    HTTP_O1,
-    HTTP_O2
+    HttpO1,
+    HttpO2
   ),
-  http_goal(URL, HTTP_O2, Goal).
+  http_goal(URL, HttpO2, Goal).
 
 
 % To: Prolog
