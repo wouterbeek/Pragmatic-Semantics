@@ -1,6 +1,4 @@
-:- module(ckan_clas, []).
-
-/** <module> CLAN command-line arguments
+/* CKAN command-line arguments
 
 Command-line argument handling for the CKAN project.
 
@@ -22,10 +20,13 @@ Command-line argument handling for the CKAN project.
 :- discontiguous(user:option_specification/1).
 :- multifile(user:option_specification/1).
 
+:- discontiguous(user:process_option/1).
+:- multifile(user:process_option/1).
+
+:- multifile(prolog:message//1).
+
 :- discontiguous(command/1).
 :- discontiguous(run_command/1).
-
-:- initialization(ckan_process_options).
 
 
 
@@ -40,22 +41,13 @@ user:option_specification([
 ]).
 
 
-cmd_ckan_site(O1):-
-  option(site(Site), O1),
-  nonvar(Site), !,
-  register_ckan_site(Site).
-cmd_ckan_site(_):-
-  print_message(information, no_ckan_site),
-  halt.
-
-
-register_ckan_site(Site):-
+user:process_option(site(Site)):-
   ckan_site(Site), !,
   print_message(information, duplicate_ckan_site(Site)).
-register_ckan_site(Site):-
+user:process_option(site(Site)):-
   \+ ckan_property(Site, _), !,
   print_message(information, unknown_ckan_site(Site)).
-register_ckan_site(Site):-
+user:process_option(site(Site)):-
   assert(ckan_site(Site)).
 
 
@@ -91,13 +83,11 @@ user:option_specification([
 ]).
 
 
-cmd_ckan_command(O1):-
-  option(command(Command), O1),
-  nonvar(Command),
+user:process_option(command(Command)):-
   command(Command), !,
   run_command(Command).
-cmd_ckan_command(_):-
-  print_message(information, ckan_no_command),
+user:process_option(command(Command)):-
+  print_message(information, ckan_unsupported_command(Command)),
   halt.
 
 
@@ -127,9 +117,6 @@ run_command(list_sited):- !,
     Sites
   ),
   print_message(information, ckan_list_sites(Sites)).
-run_command(Command):-
-  print_message(information, ckan_unsupported_command(Command)),
-  halt.
 
 
 prolog:message(ckan_download_catalog(Site, File)) -->
@@ -140,8 +127,6 @@ prolog:message(ckan_list_sites([])) --> [].
 prolog:message(ckan_list_sites([H|T])) -->
   ['  * ',H,'~n'],
   prolog:message(ckan_list_sites(T)).
-prolog:message(ckan_no_command) -->
-  commands.
 prolog:message(ckan_unsupported_command(Command)) -->
   ['Command ',Command,' is not supported.~n'],
   commands.
@@ -164,12 +149,4 @@ commands([]) --> [].
 commands([H|T]) -->
   command(H),
   commands(T).
-
-
-
-ckan_process_options:-
-gtrace,
-  read_options(O1),
-  cmd_ckan_site(O1),
-  cmd_ckan_command(O1).
 
