@@ -1,25 +1,10 @@
-:- module(
-  prasem_clas,
-  [
-    prasem_process_options/0
-  ]
-).
-
-/** <module> PraSem command-line arguments
-
-Command-line argument handling for the PraSem project collection.
-
-@author Wouter Beek
-@version 2014/04
-*/
-
-:- use_module(library(aggregate)).
-:- use_module(library(option)).
-
-:- use_remote_module(pl(pl_clas)).
-
 :- discontiguous(user:option_specification/1).
 :- multifile(user:option_specification/1).
+
+:- discontiguous(user:process_option/1).
+:- multifile(user:process_option/1).
+
+:- multifile(prolog:message//1).
 
 
 
@@ -33,116 +18,91 @@ user:option_specification([
   type(atom)
 ]).
 
-% Load a specific PraSem project.
-cmd_prasem_project(O1):-
-  option(project(Project), O1),
-  nonvar(Project),
-  prasem_project(Project), !,
-  option(debug(Debug), O1, false),
-  load_prasem_project(Project, Debug).
-% Unknown project name given.
-cmd_prasem_project(O1):-
-  option(project(Project), O1),
-  nonvar(Project), !,
-  print_message(information, unknown_prasem_project(Project)),
+user:process_option(project(Project)):-
+  var(Project), !,
+  print_message(warning, no_project),
   halt.
-% No project name given.
-cmd_prasem_project(_):-
-  print_message(information, no_prasem_project),
+user:process_option(project(Project)):-
+  project(Project), !,
+
+  % Execute the project load file.
+  load_project(Project),
+
+  % Execute the project debug file, if any.
+  debug_project(Project).
+user:process_option(project(Project)):-
+  print_message(warning, unknown_project(Project)),
   halt.
 
 
-%! debug_prasem_project(+Project:atom, +Debug:boolean) is det.
-% Loads the debug tools for the given PraSem project,
-% in case `Debug=true`.
+prolog:message(no_project) -->
+  ['No project specified.~n'],
+  projects.
+prolog:message(unknown_project(Project)) -->
+  ['No project named ', Project, '~n'],
+  projects.
 
-debug_prasem_project(Project, true):- !,
-  file_prasem_project(Project, debug).
-debug_prasem_project(_, false).
+projects -->
+  {
+    aggregate_all(
+      set(Project),
+      project(Project),
+      Projects
+    )
+  },
+  ['The following projects are supported:~n'],
+  projects(Projects).
+
+projects([]) --> !, [].
+projects([H|T]) -->
+  ['  * ',H,'~n'],
+  projects(T).
 
 
-%! file_prasem_project(+Project:atom, +File:atom) is det.
-% Loads the given Prolog file
-% within the direct context of the given PraSem project.
+%! project(+ProjectName:atom) is semidet.
+%! project(-ProjectName:atom) is nondet.
+% Enumeration of supported PraSem projects.
 
-file_prasem_project(Project1, Base):-
-  downcase_atom(Project1, Project2),
+project(beekeeper).
+project(ckan).
+project(data_hives).
+project(energy_labels).
+project(humr).
+project(ideaology).
+project(iotw).
+project(lodobs).
+project(semantic_uris).
+project(stcn).
+project(swag).
+project(webqr).
+
+
+%! load_project(+Project:atom) is det.
+% Loads the project with the given name.
+%
+% @arg Project Registered with project/1.
+
+load_project(Project):-
+  file_project(Project, load).
+
+debug_project(Project):-
+  % Only in debug mode.
+  predicate_property(user:debug_mode, visible),
+  file_project(Project, debug).
+% Never fail, e.g. when not in debug mode or when there is no debug file.
+debug_project(_).
+
+
+file_project(Project, FileName):-
   absolute_file_name(
-    prasem(Project2),
+    prasem(Project),
     Dir,
     [access(read),file_type(directory)]
   ),
   absolute_file_name(
-    Base,
+    FileName,
     File,
     [access(read),file_errors(fail),file_type(prolog),relative_to(Dir)]
   ),
-  ensure_remote_loaded(File).
-
-
-%! load_prasem_project(+Project:atom, +Debug:boolean) is det.
-% Loads the project with the given name.
-%
-% @arg Project Registered with prasem_project/1.
-
-load_prasem_project(Project, Debug):-
-  file_prasem_project(Project, load),
-  debug_prasem_project(Project, Debug).
-
-
-%! prasem_project(+ProjectName:atom) is semidet.
-%! prasem_project(-ProjectName:atom) is nondet.
-% Enumeration of supported PraSem projects.
-
-prasem_project('Beekeeper').
-prasem_project('CKAN').
-prasem_project('DataHives').
-prasem_project('EnergyLabels').
-prasem_project(humR).
-prasem_project('IDEAology').
-prasem_project('IOTW').
-prasem_project('LODObs').
-prasem_project('PGC').
-prasem_project('SemanticURIs').
-prasem_project('STCN').
-prasem_project('SWAG').
-prasem_project('WebQR').
-
-
-
-%! prasem_process_options is det.
-% Reads the command-line arguments and executes those
-% that are common among the PGC-using projects,
-
-prasem_process_options:-
-  read_options(O1), !,
-  cmd_prasem_project(O1).
-
-
-
-% Messages.
-
-prolog:message(unknown_prasem_project(Project)) -->
-  [Project,' is not a known PraSem project.~n'],
-  prasem_projects.
-
-prolog:message(no_prasem_project) -->
-  ['No PraSem project was specified.~n'],
-  prasem_projects.
-
-prasem_projects -->
-  ['The following PraSem projects are supported:~n'],
-  {
-    aggregate_all(
-      set(Project),
-      prasem_project(Project),
-      Projects
-    )
-  },
-  prasem_projects(Projects).
-
-prasem_projects([]) --> [].
-prasem_projects([H|T]) -->
-  ['  * ',H,'~n'],
-  prasem_projects(T).
+  ensure_loaded(File).
 

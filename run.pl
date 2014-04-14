@@ -23,9 +23,7 @@ run_prasem:-
   ensure_loaded(prolog_repository),
   prolog_repository(local, ThisDir),
   
-  ensure_loaded(clas),
-  
-  % PLC
+  % The PLC is available as a Git submodule.
   directory_file_path(ThisDir, 'Prolog-Library-Collection', PlcDir),
   absolute_file_name(
     index,
@@ -37,13 +35,7 @@ run_prasem:-
     assert_index(PlcDir),
     unload_file(PlcIndexFile)
   ),
-  ensure_loaded(plc(load)),
   
-  % PraSem
-  use_module(prasem(prasem)),
-  
-  % Enumerate the external program support
-  % for the currently loaded modules.
-  use_module(os(run_ext)),
-  list_external_programs.
-
+  % Process the `project` command-line option.
+  ensure_loaded(prasem_clas),
+  use_module(pl(pl_clas)).
