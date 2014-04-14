@@ -42,6 +42,10 @@ user:option_specification([
 
 
 user:process_option(site(Site)):-
+  var(Site), !,
+  print_message(warning, no_ckan_site),
+  halt.
+user:process_option(site(Site)):-
   ckan_site(Site), !,
   print_message(information, duplicate_ckan_site(Site)).
 user:process_option(site(Site)):-
@@ -84,10 +88,14 @@ user:option_specification([
 
 
 user:process_option(command(Command)):-
+  var(Command), !,
+  print_message(warning, no_command(Command)),
+  halt.
+user:process_option(command(Command)):-
   command(Command), !,
   run_command(Command).
 user:process_option(command(Command)):-
-  print_message(information, ckan_unsupported_command(Command)),
+  print_message(information, unsupported_command(Command)),
   halt.
 
 
@@ -119,15 +127,18 @@ run_command(list_sited):- !,
   print_message(information, ckan_list_sites(Sites)).
 
 
-prolog:message(ckan_download_catalog(Site, File)) -->
+prolog:message(download_catalog(Site, File)) -->
   ['CKAN site ',Site,'\'s catalog was downloaded to file ',File,'.~n'].
-prolog:message(ckan_download_lod(Site)) -->
+prolog:message(download_lod(Site)) -->
   ['CKAN site ',Site,'\'s LOD was downloaded.~n'].
-prolog:message(ckan_list_sites([])) --> [].
-prolog:message(ckan_list_sites([H|T])) -->
+prolog:message(list_sites([])) --> [].
+prolog:message(list_sites([H|T])) -->
   ['  * ',H,'~n'],
   prolog:message(ckan_list_sites(T)).
-prolog:message(ckan_unsupported_command(Command)) -->
+prolog:message(no_command) -->
+  ['No command is given.~n'],
+  commands.
+prolog:message(unsupported_command(Command)) -->
   ['Command ',Command,' is not supported.~n'],
   commands.
 
