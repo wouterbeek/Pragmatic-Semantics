@@ -63,19 +63,18 @@ projects([H|T]) -->
 %! project(-ProjectName:atom) is nondet.
 % Enumeration of supported PraSem projects.
 
-project('Beekeeper').
-project('CKAN').
-project('DataHives').
-project('EnergyLabels').
-project(humR).
-project('IDEAology').
-project('IOTW').
-project('LODObs').
-project('PGC').
-project('SemanticURIs').
-project('STCN').
-project('SWAG').
-project('WebQR').
+project(beekeeper).
+project(ckan).
+project(data_hives).
+project(energy_labels).
+project(humr).
+project(ideaology).
+project(iotw).
+project(lodobs).
+project(semantic_uris).
+project(stcn).
+project(swag).
+project(webqr).
 
 
 %! load_project(+Project:atom) is det.
