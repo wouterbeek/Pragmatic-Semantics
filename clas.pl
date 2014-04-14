@@ -18,21 +18,28 @@ user:option_specification([
   type(atom)
 ]).
 
-user:process_option(project(Name)):-
-  project(Name), !,
+user:process_option(project(Project)):-
+  var(Project), !,
+  print_message(warning, no_project),
+  halt.
+user:process_option(project(Project)):-
+  project(Project), !,
 
   % Execute the project load file.
-  load_project(Name),
+  load_project(Project),
 
   % Execute the project debug file, if any.
-  debug_project(Name).
-user:process_option(project(Name)):-
-  print_message(warning, unknown_project(Name)),
+  debug_project(Project).
+user:process_option(project(Project)):-
+  print_message(warning, unknown_project(Project)),
   halt.
 
 
-prolog:message(unknown_project(Name)) -->
-  ['No project named ', Name, '~n'],
+prolog:message(no_project) -->
+  ['No project specified.~n'],
+  projects.
+prolog:message(unknown_project(Project)) -->
+  ['No project named ', Project, '~n'],
   projects.
 
 projects -->
