@@ -1,3 +1,5 @@
+:- use_module(pl(pl_clas)).
+
 :- discontiguous(user:option_specification/1).
 :- multifile(user:option_specification/1).
 
@@ -27,6 +29,7 @@ user:process_option(project(Project)):-
 
   % Execute the project load file.
   load_project(Project),
+  load_clas(Project),
 
   % Execute the project debug file, if any.
   debug_project(Project).
@@ -75,6 +78,11 @@ project(semantic_uris).
 project(stcn).
 project(swag).
 project(webqr).
+
+
+load_clas(Project):-
+  atomic_list_concat([Project,clas], '_', Base),
+  file_project(Project, Base).
 
 
 %! load_project(+Project:atom) is det.
