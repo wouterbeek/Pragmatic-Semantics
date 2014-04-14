@@ -1,6 +1,7 @@
 % Index for the Pragmatic Semantics repository.
 
 index(PrasemDir):-
+gtrace,
   assert_index(prasem, PrasemDir),
     assert_index(bk,     prasem(beekeeper)),
     assert_index(ckan,   prasem(ckan)),
