@@ -55,7 +55,7 @@ projects -->
 
 projects([]) --> !, [].
 projects([H|T]) -->
-  [H,'~n'],
+  ['  * ',H,'~n'],
   projects(T).
 
 
