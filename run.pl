@@ -89,7 +89,6 @@ run_prasem:-
 
   % PraSem
   use_module(prasem(prasem)),
-gtrace,
 
   % Enumerate the external program support
   % for the currently loaded modules.
