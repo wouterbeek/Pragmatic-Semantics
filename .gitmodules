@@ -1,4 +1,4 @@
 [submodule "Prolog-Library-Collection"]
-	branch = master
+	ignore = dirty
 	path = Prolog-Library-Collection
 	url = https://github.com/wouterbeek/Prolog-Library-Collection.git
