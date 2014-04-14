@@ -19,6 +19,7 @@
 @version 2013/11-2014/01, 2014/04
 */
 
+:- use_module(library(http/http_header)).
 :- use_module(library(http/json)).
 :- use_module(library(lists)).
 :- use_module(library(option)).
