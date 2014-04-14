@@ -3,6 +3,8 @@
 % Do not write module loads to the standard output stream.
 :- set_prolog_flag(verbose_load, silent).
 
+:- use_module(library(filesex)).
+
 % The run file for the PraSem project.
 
 :- initialization(run_prasem).
@@ -24,10 +26,10 @@ user:cmd_option(p, project, atom, 'Load a PraSem subproject.').
 
 user:process_cmd_option(project(Name)):-
   prasem_subproject(Name), !,
-  
+
   % Execute the project load file.
   load_project(Name),
-  
+
   % Execute the project debug file, if any.
   debug_project(Name).
 user:process_cmd_option(project(Name)):-
@@ -71,34 +73,28 @@ run_prasem:-
   file_directory_name(ThisFile, ThisDir),
   assert(user:file_search_path(project, ThisDir)),
   assert(user:file_search_path(prasem, ThisDir)),
-gtrace,  
-  % PGC
-  load_pgc(project),
-  
+
+  ensure_loaded(prolog_repository),
+  prolog_repository(local, ThisDir),
+
+  % PLC
+  directory_file_path(ThisDir, 'Prolog-Library-Collection', PlcDir),
+  absolute_file_name(index, PlcIndexFile, [access(read),file_type(prolog),relative_to(PlcDir)]),
+  setup_call_cleanup(
+    ensure_loaded(PlcIndexFile),
+    assert_index(PlcDir),
+    unload_file(PlcIndexFile)
+  ),
+  ensure_loaded(plc(load)),
+
   % PraSem
-  use_remote_module(prasem(prasem)),
-  
+  use_module(prasem(prasem)),
+gtrace,
+
   % Enumerate the external program support
   % for the currently loaded modules.
-  use_remote_module(os(run_ext)),
+  use_module(os(run_ext)),
   list_external_programs.
-
-
-load_or_debug(Project):-
-  predicate_property(user:debug_mode, visible), !,
-  Spec =.. [Project,debug],
-  ensure_loaded(Spec).
-load_or_debug(Project):-
-  Spec =.. [Project,load],
-  ensure_loaded(Spec).
-
-
-load_pgc(_Project):-
-  user:file_search_path(plc, _Spec), !.
-load_pgc(Project):-
-  Spec =.. [Project,'PGC'],
-  assert(user:file_search_path(plc, Spec)),
-  load_or_debug(plc).
 
 
 %! load_project(+Project:atom) is det.

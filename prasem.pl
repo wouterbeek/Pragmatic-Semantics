@@ -10,14 +10,15 @@ Pragmatic Semantic for the Web of Data.
 @version 2013/11, 2014/03
 */
 
-:- use_remote_module(html(html_article)).
-:- use_remote_module(html(html_image)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/http_server_files)).
 :- use_module(library(pairs)).
 :- use_module(library(semweb/rdf_db)).
+
+:- use_remote_module(html(html_article)).
+:- use_remote_module(html(html_image)).
 :- use_remote_module(rdf(rdf_build)).
 :- use_remote_module(rdf_term(rdf_language_tagged_string)).
 :- use_remote_module(rdf_term(rdf_literal)).
