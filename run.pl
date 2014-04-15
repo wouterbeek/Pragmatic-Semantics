@@ -26,7 +26,7 @@ run_prasem:-
   ensure_loaded(plc(load)),
 
   % Process the `project` command-line option.
-  ensure_loaded(prasem(prasem_clas)),
+  ensure_loaded(prasem(clas)),
   use_module(pl(pl_clas)),
   prasem_process_options.
 
