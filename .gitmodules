@@ -38,3 +38,6 @@
 [submodule "CKAN-2-RDF"]
 	path = CKAN-2-RDF
 	url = https://github.com/wouterbeek/CKAN-2-RDF.git
+[submodule "SemanticURIs"]
+	path = SemanticURIs
+	url = https://github.com/wouterbeek/SemanticURIs.git

@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Remove files.                                                                                       
-
-rm optparse2.pl
-rm prolog_repository_remote.pl
-
-
 # Taken from ClioPatria, written by Jan Wielemaker.
 
 findexe()

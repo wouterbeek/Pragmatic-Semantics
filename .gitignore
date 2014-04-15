@@ -6,7 +6,7 @@ RemoteSystemsTempFiles/*
 *.dot
 *.jpeg
 *.log
-Data/
+data/
 password
 audio/
 tmp/
