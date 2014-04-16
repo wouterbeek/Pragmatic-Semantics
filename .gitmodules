@@ -40,3 +40,6 @@
 [submodule "SemanticURIs"]
 	path = SemanticURIs
 	url = https://github.com/wouterbeek/SemanticURIs.git
+[submodule "Quality"]
+	path = Quality
+	url = https://github.com/wouterbeek/Quality.git
