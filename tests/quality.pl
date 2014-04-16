@@ -1,5 +1,6 @@
 :- module(quality, [quality/3]).
 
+:- use_module(library(check_installation)).
 :- use_module(library(semweb/rdf_db)).
 :- use_module(library(semweb/turtle)).
 
@@ -13,16 +14,19 @@ errors in semantics.
 @version 2014/04
 */
 
-%! quality(+File:atom, Format:oneof([turtle]), -Quality:between(0.0,1.0)) is det.
+%! quality(
+%!   +File:atom,
+%!   +Format:oneof([turtle]),
+%!   -Quality:between(0.0,1.0)
+%! ) is det.
 
 quality(File, Format, Quality):-
-  rdf_load(File, [format(Format),graph(monkey)]),
+  check_installation:run_collect_messages(
+    rdf_db:rdf_load(File, [format(Format),graph(monkey)]),
+    true,
+    Messages
+  ),
+  length(Messages, I),
   rdf_statistics(triples_by_graph(monkey,T)),
-  flag(x, I, I),
   Quality is T / (I + T).
-
-:- multifile(user:message).
-
-user:message(syntax_error(X)) -->
-  ['Ok',X], {flag(a, X, X + 1)}.
 
