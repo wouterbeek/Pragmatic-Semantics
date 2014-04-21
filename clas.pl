@@ -1,4 +1,4 @@
-:- use_module(pl(pl_clas)).
+:- use_module(library(aggregate)).
 
 :- discontiguous(user:option_specification/1).
 :- multifile(user:option_specification/1).

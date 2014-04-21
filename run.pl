@@ -2,6 +2,9 @@
 
 :- set_prolog_flag(encoding, utf8).
 
+% Do not autoload modules.
+:- set_prolog_flag(autoload, true).
+
 % Do not write module loads to the standard output stream.
 :- set_prolog_flag(verbose_load, silent).
 
@@ -20,13 +23,13 @@ run_prasem:-
   assert(user:file_search_path(project, ThisDir)),
   assert(user:file_search_path(prasem, ThisDir)),
   ensure_loaded(prasem(prasem_project)),
+  ensure_loaded(prasem(clas)),
 
   % The PLC is available as a Git submodule.
   assert(user:file_search_path(plc, prasem('Prolog-Library-Collection'))),
   ensure_loaded(plc(load)),
 
   % Process the `project` command-line option.
-  ensure_loaded(prasem(clas)),
   use_module(pl(pl_clas)),
   prasem_process_options.
 
