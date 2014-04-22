@@ -25,6 +25,7 @@ project(humr,   humR).
 project(id,     'IDEAology').
 project(iotw,   'IOTW').
 project(lodobs, 'LODObs').
+project(plc,    'PLC').
 project(semuri, 'SemanticURIs').
 project(stcn,   'STCN').
 project(swag,   'SWAG').
