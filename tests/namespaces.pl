@@ -34,5 +34,5 @@ test(N, O1):-
       merge_options([graph(G)], O1, O2),
       rdf_save_turtle(TTL_File, O2)
     ),
-    rdf_unload_graph(G)
+    rdf_unload_graph_debug(G)
   ).

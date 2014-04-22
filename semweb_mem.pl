@@ -21,7 +21,7 @@ test:-
   test(Url).
 
 test(Url):-
-  rdf_load([], Graph, Url),
-  rdf_unload_graph_deb(Graph),
+  rdf_load_any([graph(Graph)], Url),
+  rdf_unload_graph_debug(Graph),
   rdf_gc.
 
