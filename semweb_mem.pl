@@ -10,9 +10,10 @@
 :- prolog_ide(debug_monitor).
 :- debug(mem_triples).
 
-:- initialization(test).
+%:- initialization(test).
 
-url('https://dl.dropboxusercontent.com/s/brxpfdwn4n72c2z/datahub_io.ttl?dl=1&token_hash=AAEd9UWXY3SsIBAILVE-yIH7fuRq-_s8RYFgdEAePb0oSQ').
+%url('https://commondatastorage.googleapis.com/ckannet-storage/2012-05-23T142816/bne.ttl').
+url('http://www.babelnet.org/data/babelnet-2.0-lemon-URIs.tar.xz').
 
 
 
