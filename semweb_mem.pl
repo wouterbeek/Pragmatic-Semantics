@@ -10,11 +10,8 @@
 :- prolog_ide(debug_monitor).
 :- debug(mem_triples).
 
-%:- initialization(test).
-
-%url('https://commondatastorage.googleapis.com/ckannet-storage/2012-05-23T142816/bne.ttl').
-url('http://www.babelnet.org/data/babelnet-2.0-lemon-URIs.tar.xz').
-
+%url('http://www.babelnet.org/data/babelnet-2.0-lemon-URIs.tar.xz').
+url('http://epsrc.rkbexplorer.com/models/dump.tgz').
 
 
 test:-
