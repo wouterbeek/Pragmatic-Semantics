@@ -43,3 +43,6 @@
 [submodule "Quality"]
 	path = Quality
 	url = https://github.com/wouterbeek/Quality.git
+[submodule "LOD-Washing-Machine"]
+	path = LOD-Washing-Machine
+	url = https://github.com/wouterbeek/LOD-Washing-Machine.git
