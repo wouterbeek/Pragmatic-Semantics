@@ -46,3 +46,6 @@
 [submodule "LOD-Washing-Machine"]
 	path = LOD-Washing-Machine
 	url = https://github.com/wouterbeek/LOD-Washing-Machine.git
+[submodule "LODBench"]
+	path = LODBench
+	url = https://github.com/wouterbeek/LODBench.git
